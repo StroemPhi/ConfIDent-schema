@@ -1,3 +1,4 @@
-# Placeholder README
-This file will be replaced in the build process.  The details about how to use this template
-can be found in [ABOUT.md](./ABOUT.md).
+# LinkML A model to describe academic events and event series.
+This is a schema used in the ConfIDent project to specify the metadata requirements needed in the description of academic events and event series.
+
+## [Documentation](https://stroemphi.github.io/ConfIDent-schema/)

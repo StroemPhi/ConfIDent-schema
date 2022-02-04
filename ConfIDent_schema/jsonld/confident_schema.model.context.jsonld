@@ -1,0 +1,72 @@
+{
+   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-04T20:22:08\n    Schema: ConfIDent_schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/CC-by4.0\n    ",
+   "@context": {
+      "OBI": {
+         "@id": "http://purl.obolibrary.org/obo/OBI_",
+         "@prefix": true
+      },
+      "aeon": {
+         "@id": "https://github.com/tibonto/aeon#AEON_",
+         "@prefix": true
+      },
+      "confid": {
+         "@id": "https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml",
+         "@prefix": true
+      },
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "linkml": "https://w3id.org/linkml/",
+      "sdo": "https://schema.org/",
+      "skos": "http://www.w3.org/2004/02/skos/core#",
+      "@vocab": "https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml",
+      "event_format": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "aeon:0000032"
+      },
+      "event_status": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "end_date": {
+         "@type": "xsd:dateTime"
+      },
+      "id": "@id",
+      "first_name": {
+         "@id": "sdo:givenName"
+      },
+      "knows": {
+         "@type": "@id",
+         "@id": "foaf:knows"
+      },
+      "last_name": {
+         "@id": "sdo:familyName"
+      },
+      "previous_end_date": {
+         "@type": "xsd:dateTime"
+      },
+      "previous_start_date": {
+         "@type": "xsd:dateTime"
+      },
+      "start_date": {
+         "@type": "xsd:dateTime"
+      },
+      "AcademicEvent": {
+         "@id": "aeon:0000001"
+      },
+      "AcademicEventSeries": {
+         "@id": "aeon:0000002"
+      },
+      "Person": {
+         "@id": "sdo:Person"
+      }
+   }
+}
+
