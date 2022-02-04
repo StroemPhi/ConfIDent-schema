@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-04T20:22:08\n    Schema: ConfIDent_schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/CC-by4.0\n    ",
+   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-04T20:55:18\n    Schema: ConfIDent-metadata-schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
    "@context": {
       "OBI": {
          "@id": "http://purl.obolibrary.org/obo/OBI_",

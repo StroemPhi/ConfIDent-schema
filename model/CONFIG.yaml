@@ -1,10 +1,10 @@
 model_organization: stroemphi         # Name of github individual / organization where this clone exists (e.g. linkml / mygithub)
-model_name: ConfIDent schema                 # Name of target repository (e.g. my-wonderful-model)
-root_schema: confident_schema     # Name of the base schema file (w/o .yaml)
+model_name: ConfIDent metadata schema          # Name of target repository (e.g. my-wonderful-model)
+root_schema: confident_schema         # Name of the base schema file (w/o .yaml)
 model_root_class: PlannedProcess      # Name of the base class in the schema for testing
 
-model_author: Philip Strömert                # Your name
-model_author_email: philip.stroemert@tib.eu          # Your email
+model_author: Philip Strömert                 
+model_author_email: philip.stroemert@tib.eu          
 model_synopsis: A model to describe academic events and event series.  # One liner about the model
 model_description: |-         # Longer description of the model
   This is a schema used in the ConfIDent project to specify the metadata requirements needed in the description of academic events and event series.
@@ -16,11 +16,7 @@ classifiers:
     - "Intended Audience :: Developers"
     - "Intended Audience :: Science/Research"
     - "Intended Audience :: Information Technology"
-    - "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication"
-    - "Programming Language :: Python :: 3 :: Only"
-    - "Programming Language :: Python :: 3.7"
-    - "Programming Language :: Python :: 3.8"
-    - "Programming Language :: Python :: 3.9"
+    - "License :: Attribution 4.0 International (CC BY 4.0) "
 
 # Keywords -- these can also be omitted from this file if the below is ok
 keywords: [linkml, LOD, Modeling, Linked open data, model]

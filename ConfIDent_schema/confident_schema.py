@@ -1,11 +1,11 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-04T20:22:36
-# Schema: ConfIDent_schema
+# Generation date: 2022-02-04T20:55:41
+# Schema: ConfIDent-metadata-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml
 # description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of
 #              academic events and event series.
-# license: https://creativecommons.org/licenses/CC-by4.0
+# license: https://creativecommons.org/licenses/by/4.0/
 
 import dataclasses
 import sys

@@ -1,8 +1,8 @@
 id: https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml
-name: ConfIDent_schema
+name: ConfIDent-metadata-schema
 description: |-
   This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.
-license: https://creativecommons.org/licenses/CC-by4.0
+license: https://creativecommons.org/licenses/by/4.0/
 default_curi_maps:
   - semweb_context
 version: 0.0.1

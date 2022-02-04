@@ -259,7 +259,7 @@
    "additionalProperties": true,
    "properties": {},
    "required": [],
-   "title": "ConfIDent_schema",
+   "title": "ConfIDent-metadata-schema",
    "type": "object"
 }
 
