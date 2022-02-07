@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-04T20:55:41
+# Generation date: 2022-02-04T21:15:36
 # Schema: ConfIDent-metadata-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml
