@@ -3,7 +3,7 @@ import unittest
 
 from linkml_runtime.loaders import yaml_loader, json_loader, rdf_loader
 
-from ConfIDent_schema.confident_schema import PlannedProcess
+from ConfIDent_schema.confident_schema import AcademicEvent
 
 CWD = os.path.abspath(os.path.dirname(__file__))
 INPUT_DIR = os.path.join(CWD, 'input')
@@ -27,15 +27,15 @@ class InputFileTestCase(unittest.TestCase):
                 try:
                     if fname.endswith('.yaml'):
                         nyaml += 1
-                        o: PlannedProcess = yaml_loader.load(full_fname, PlannedProcess)
+                        o: AcademicEvent = yaml_loader.load(full_fname, AcademicEvent)
                         pyaml += 1
                     elif fname.endswith('.json'):
                         njson += 1
-                        o: PlannedProcess = json_loader.load(full_fname, PlannedProcess)
+                        o: AcademicEvent = json_loader.load(full_fname, AcademicEvent)
                         pjson += 1
                     elif fname.endswith('.ttl'):
                         nttl += 1
-                        o: PlannedProcess = rdf_loader.load(full_fname, PlannedProcess)
+                        o: AcademicEvent = rdf_loader.load(full_fname, AcademicEvent)
                         pttl += 1
                     elif fname.endswith('.md'):
                         pass

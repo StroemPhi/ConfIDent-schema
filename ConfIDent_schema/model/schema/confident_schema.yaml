@@ -1,5 +1,5 @@
-id: https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml
-name: ConfIDent-metadata-schema
+id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
+name: ConfIDent-schema
 title: ConfIDent metadata schema - v0.0.1
 description: |-
   This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.
@@ -13,6 +13,8 @@ prefixes:
  confid: https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml
  aeon: https://github.com/tibonto/aeon#AEON_
  OBI: http://purl.obolibrary.org/obo/OBI_
+ provo: https://www.w3.org/TR/2013/REC-prov-o-20130430/#
+ dc: http://purl.org/dc/terms/
 default_prefix: confid
 default_range: string
 
@@ -21,98 +23,35 @@ imports:
  - linkml:types
 
 classes:
-  PlannedProcess:
-    abstract: true # should not be instantiated directly
+
+  # Mixins
+  CommonMetadata:
     slots:
       - id
-      - official_name
+      - name
       - acronym
-      - alternative_name
-      - social_links
-      - logo
+      - at_location
       - organizers
       - sponsors
       - contact
-      - topics
-      - subjects
-      - summary
+      - event_relation
+      - output
+      - topic
+      - academic_field
       - website
-      - landing_page
-      - process_relations
-      - outputs
-      - metrics
-    exact_mappings:
-      - OBI:0000011
-
 
   AcademicEvent:
-    is_a: PlannedProcess
-    description: An academic event is part of the established instruments of science communication as a format for conveying the latest scientific outputs. It is defined by the meeting of researchers at a specific time and place (virtual or physical) and with a specific thematic focus to present, hear and discuss these outputs. In contrast to other forms of events, academic events should primarily serve the exchange of results and methods of scientific research and their didactic mediation.  Furthermore, a significant participation of scientific organizations in the realization of an academic event is constitutive for this type of event; for example, to distinguish it from events in which researchers mainly act as external experts or with a purely legitimising function.
-    class_uri: aeon:0000001
-    attributes:
-      event_format:
-        description: The sociocultural format that defines the type of an academic event. It is derived from a controlled list of possible values defined in EventFormat.
-        slot_uri: aeon:0000032
-        range: EventFormat
-        recommended: true
-      ordinal:
-      event_status:
-        description: :-
-          The status of the academic event which indicates if it takes place as planned. It is derived from a controlled list of possible values defined in EventStatus.
-            * as scheduled (default)
-            * postponed
-            * delayed
-            * canceled
-            * planned
-        range: EventStatus
-        recommended: true
-      deadline:
-        recommended: true
-      location:
-        recommended: true
-      fee:
-        recommended: true
-        multivalued: true
-      committee:
-        recommended: true
-        multivalued: true
+    mixins:
+      - CommonMetadata
     slots:
       - start_date
-      - previous_start_date
       - end_date
-      - previous_end_date
-
-
-
-  AcademicEventSeries:
-    is_a: PlannedProcess
-    description: An academic event series describes the set of academic events which take place on a regular basis and thus have an established common identity. This identity is constituted, for example, through institutional continuity in the hosting of a series (e.g. by a specialised society), thematic focuses and/or a common label under which a series is defined (particularly name and acronym). Nevertheless, it is possible that each of these criteria may change over time.
-    class_uri: aeon:0000002
-
-
-  Person:
-   description: Minimal information about a person
-   class_uri: sdo:Person
-   attributes:
-     id:
-       identifier: true
-       slot_uri: sdo:taxID
-     first_name:
-       required: true
-       slot_uri: sdo:givenName
-       multivalued: true
-     last_name:
-       required: true
-       slot_uri: sdo:familyName
-     knows:
-       range: Person
-       multivalued: true
-       slot_uri: foaf:knows
-
-
-#####################################
-#               Slots               #
-#####################################
+      - committees
+      - participants
+      - ordinal
+      - logo
+      - summary
+      - metric
 
 slots:
   id:
@@ -120,91 +59,21 @@ slots:
     required: true
   name:
     required: true
-  official_name:
-    is_a: name
-    required: true
   acronym:
-    is_a: name
-    recommended: true
-  alternative_name:
-    is_a: name
-  social_links:
-  logo:
-  organizers:
-    required: true
-  sponsors:
-    recommended: true
-  contact:
-    recommended: true
-  topics:
-    recommended: true
-  subjects:
-    recommended: true
-  summary:
-  website:
-    recommended: true
-  landing_page:
-    required: true
-  process_relations:
-    recommended: true
-  outputs:
-    recommended: true
-  metrics:
+  at_location:
   start_date:
-    range: datetime
-    required: true
-    multivalued: false
-  previous_start_date:
-    is_a: start_date
-    multivalued: true
   end_date:
-    multivalued: false
-    range: datetime
-    required: true
-  previous_end_date:
-    is_a: end_date
-    multivalued: true
-
-#####################################
-#               Enums               #
-#####################################
-
-enums:
-  EventFormat:
-    permissible_values:
-      colloquium:
-        meaning: aeon:0010000
-      conference:
-        meaning: aeon:0010001
-      congress:
-        meaning: aeon:0010011
-      event session:
-        meaning: aeon:0010000
-      poster session:
-        meaning: aeon:0010005
-      event talk:
-        meaning: aeon:0010012
-      keynote speech:
-        meaning: aeon:0010007
-      event track:
-        meaning: aeon:0010008
-      forum:
-        meaning: aeon:0010002
-      hackathon:
-        meaning: aeon:0010003
-      seminar:
-        meaning: aeon:0010004
-      symposium:
-        meaning: aeon:0010006
-      tutorial:
-        meaning: aeon:0010009
-      workshop:
-        meaning: aeon:0010010
-  EventStatus:
-    permissible_values:
-      as scheduled:
-        description: This should be used as default to indicate that an academic event takes place as planned.
-      postponed:
-      delayed:
-      canceled:
-      planned:
+  organizers:
+  sponsors:
+  committees:
+  participants:
+  contact:
+  event_relation:
+  output:
+  website:
+  ordinal:
+  topic:
+  academic_field:
+  logo:
+  summary:
+  metric:

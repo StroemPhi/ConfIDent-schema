@@ -2,60 +2,39 @@
    "$defs": {
       "AcademicEvent": {
          "additionalProperties": false,
-         "description": "An academic event is part of the established instruments of science communication as a format for conveying the latest scientific outputs. It is defined by the meeting of researchers at a specific time and place (virtual or physical) and with a specific thematic focus to present, hear and discuss these outputs. In contrast to other forms of events, academic events should primarily serve the exchange of results and methods of scientific research and their didactic mediation.  Furthermore, a significant participation of scientific organizations in the realization of an academic event is constitutive for this type of event; for example, to distinguish it from events in which researchers mainly act as external experts or with a purely legitimising function.",
+         "description": "",
          "properties": {
+            "academic_field": {
+               "type": "string"
+            },
             "acronym": {
                "type": "string"
             },
-            "alternative_name": {
+            "at_location": {
                "type": "string"
             },
-            "committee": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
+            "committees": {
+               "type": "string"
             },
             "contact": {
                "type": "string"
             },
-            "deadline": {
-               "type": "string"
-            },
             "end_date": {
-               "format": "date-time",
                "type": "string"
             },
-            "event_format": {
-               "$ref": "#/$defs/EventFormat",
-               "description": "The sociocultural format that defines the type of an academic event. It is derived from a controlled list of possible values defined in EventFormat."
-            },
-            "event_status": {
-               "$ref": "#/$defs/EventStatus",
-               "description": ":- The status of the academic event which indicates if it takes place as planned. It is derived from a controlled list of possible values defined in EventStatus. * as scheduled (default) * postponed * delayed * canceled * planned"
-            },
-            "fee": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
+            "event_relation": {
+               "type": "string"
             },
             "id": {
-               "type": "string"
-            },
-            "landing_page": {
-               "type": "string"
-            },
-            "location": {
                "type": "string"
             },
             "logo": {
                "type": "string"
             },
-            "metrics": {
+            "metric": {
                "type": "string"
             },
-            "official_name": {
+            "name": {
                "type": "string"
             },
             "ordinal": {
@@ -64,43 +43,22 @@
             "organizers": {
                "type": "string"
             },
-            "outputs": {
+            "output": {
                "type": "string"
             },
-            "previous_end_date": {
-               "items": {
-                  "format": "date-time",
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "previous_start_date": {
-               "items": {
-                  "format": "date-time",
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "process_relations": {
-               "type": "string"
-            },
-            "social_links": {
+            "participants": {
                "type": "string"
             },
             "sponsors": {
                "type": "string"
             },
             "start_date": {
-               "format": "date-time",
-               "type": "string"
-            },
-            "subjects": {
                "type": "string"
             },
             "summary": {
                "type": "string"
             },
-            "topics": {
+            "topic": {
                "type": "string"
             },
             "website": {
@@ -109,69 +67,46 @@
          },
          "required": [
             "id",
-            "official_name",
-            "acronym",
-            "alternative_name",
-            "organizers",
-            "landing_page",
-            "start_date",
-            "previous_start_date",
-            "end_date",
-            "previous_end_date"
+            "name"
          ],
          "title": "AcademicEvent",
          "type": "object"
       },
-      "AcademicEventSeries": {
+      "CommonMetadata": {
          "additionalProperties": false,
-         "description": "An academic event series describes the set of academic events which take place on a regular basis and thus have an established common identity. This identity is constituted, for example, through institutional continuity in the hosting of a series (e.g. by a specialised society), thematic focuses and/or a common label under which a series is defined (particularly name and acronym). Nevertheless, it is possible that each of these criteria may change over time.",
+         "description": "",
          "properties": {
+            "academic_field": {
+               "type": "string"
+            },
             "acronym": {
                "type": "string"
             },
-            "alternative_name": {
+            "at_location": {
                "type": "string"
             },
             "contact": {
                "type": "string"
             },
+            "event_relation": {
+               "type": "string"
+            },
             "id": {
                "type": "string"
             },
-            "landing_page": {
-               "type": "string"
-            },
-            "logo": {
-               "type": "string"
-            },
-            "metrics": {
-               "type": "string"
-            },
-            "official_name": {
+            "name": {
                "type": "string"
             },
             "organizers": {
                "type": "string"
             },
-            "outputs": {
-               "type": "string"
-            },
-            "process_relations": {
-               "type": "string"
-            },
-            "social_links": {
+            "output": {
                "type": "string"
             },
             "sponsors": {
                "type": "string"
             },
-            "subjects": {
-               "type": "string"
-            },
-            "summary": {
-               "type": "string"
-            },
-            "topics": {
+            "topic": {
                "type": "string"
             },
             "website": {
@@ -180,86 +115,18 @@
          },
          "required": [
             "id",
-            "official_name",
-            "acronym",
-            "alternative_name",
-            "organizers",
-            "landing_page"
+            "name"
          ],
-         "title": "AcademicEventSeries",
-         "type": "object"
-      },
-      "EventFormat": {
-         "description": "",
-         "enum": [
-            "colloquium",
-            "conference",
-            "congress",
-            "event session",
-            "poster session",
-            "event talk",
-            "keynote speech",
-            "event track",
-            "forum",
-            "hackathon",
-            "seminar",
-            "symposium",
-            "tutorial",
-            "workshop"
-         ],
-         "title": "EventFormat",
-         "type": "string"
-      },
-      "EventStatus": {
-         "description": "",
-         "enum": [
-            "as scheduled",
-            "postponed",
-            "delayed",
-            "canceled",
-            "planned"
-         ],
-         "title": "EventStatus",
-         "type": "string"
-      },
-      "Person": {
-         "additionalProperties": false,
-         "description": "Minimal information about a person",
-         "properties": {
-            "first_name": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "id": {
-               "type": "string"
-            },
-            "knows": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "last_name": {
-               "type": "string"
-            }
-         },
-         "required": [
-            "id",
-            "first_name",
-            "last_name"
-         ],
-         "title": "Person",
+         "title": "CommonMetadata",
          "type": "object"
       }
    },
-   "$id": "https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml",
+   "$id": "https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": true,
    "properties": {},
    "required": [],
-   "title": "ConfIDent-metadata-schema",
+   "title": "ConfIDent-schema",
    "type": "object"
 }
 

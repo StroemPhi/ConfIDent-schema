@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: id - A model to describe academic events and event series.</title>
+  <title>Class: CommonMetadata - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: id";
-    var mkdocs_page_input_path = "id.md";
+    var mkdocs_page_name = "Class: CommonMetadata";
+    var mkdocs_page_input_path = "CommonMetadata.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: id</li>
+    <li>Class: CommonMetadata</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,16 +91,65 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-id">Slot: id</h1>
-<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlid">confid:id</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>1..1</sub> <a href="../String/">String</a></p>
-<h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
-<h2 id="used-by">Used by</h2>
+                <h1 id="class-commonmetadata">Class: CommonMetadata</h1>
+<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlCommonMetadata">confid:CommonMetadata</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEvent]uses%20-.-&gt;[CommonMetadata&#124;id:string;name:string;acronym:string%20%3F;at_location:string%20%3F;organizers:string%20%3F;sponsors:string%20%3F;contact:string%20%3F;event_relation:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEvent]uses%20-.-&gt;[CommonMetadata&#124;id:string;name:string;acronym:string%20%3F;at_location:string%20%3F;organizers:string%20%3F;sponsors:string%20%3F;contact:string%20%3F;event_relation:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F],[AcademicEvent]" /></a></p>
+<h2 id="mixin-for">Mixin for</h2>
 <ul>
-<li><a href="../AcademicEvent/">AcademicEvent</a></li>
-<li><a href="../CommonMetadata/">CommonMetadata</a></li>
+<li><a href="../AcademicEvent/">AcademicEvent</a> (mixin) </li>
+</ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../name/">name</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../acronym/">acronym</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../at_location/">at_location</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../organizers/">organizers</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../sponsors/">sponsors</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../contact/">contact</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../event_relation/">event_relation</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../output/">output</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../topic/">topic</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../academic_field/">academic_field</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../website/">website</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 </ul>
               
             </div>

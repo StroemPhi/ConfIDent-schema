@@ -111,65 +111,38 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="confident-metadata-schema-schema">ConfIDent metadata schema</h1>
+                <h1 id="confident-schema-schema">ConfIDent-schema schema</h1>
 <p>This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.</p>
 <h3 id="classes">Classes</h3>
 <ul>
-<li><a href="Person/">Person</a> - Minimal information about a person</li>
-<li><a href="PlannedProcess/">PlannedProcess</a><ul>
-<li><a href="AcademicEvent/">AcademicEvent</a> - An academic event is part of the established instruments of science communication as a format for conveying the latest scientific outputs. It is defined by the meeting of researchers at a specific time and place (virtual or physical) and with a specific thematic focus to present, hear and discuss these outputs. In contrast to other forms of events, academic events should primarily serve the exchange of results and methods of scientific research and their didactic mediation.  Furthermore, a significant participation of scientific organizations in the realization of an academic event is constitutive for this type of event; for example, to distinguish it from events in which researchers mainly act as external experts or with a purely legitimising function.</li>
-<li><a href="AcademicEventSeries/">AcademicEventSeries</a> - An academic event series describes the set of academic events which take place on a regular basis and thus have an established common identity. This identity is constituted, for example, through institutional continuity in the hosting of a series (e.g. by a specialised society), thematic focuses and/or a common label under which a series is defined (particularly name and acronym). Nevertheless, it is possible that each of these criteria may change over time.</li>
-</ul>
-</li>
+<li><a href="AcademicEvent/">AcademicEvent</a></li>
+<li><a href="CommonMetadata/">CommonMetadata</a></li>
 </ul>
 <h3 id="mixins">Mixins</h3>
 <h3 id="slots">Slots</h3>
 <ul>
-<li><a href="academicEvent__committee/">➞committee</a></li>
-<li><a href="academicEvent__deadline/">➞deadline</a></li>
-<li><a href="academicEvent__event_format/">➞event_format</a> - The sociocultural format that defines the type of an academic event. It is derived from a controlled list of possible values defined in EventFormat.</li>
-<li><a href="academicEvent__event_status/">➞event_status</a> - :- The status of the academic event which indicates if it takes place as planned. It is derived from a controlled list of possible values defined in EventStatus. * as scheduled (default) * postponed * delayed * canceled * planned</li>
-<li><a href="academicEvent__fee/">➞fee</a></li>
-<li><a href="academicEvent__location/">➞location</a></li>
-<li><a href="academicEvent__ordinal/">➞ordinal</a></li>
-<li><a href="contact/">contact</a></li>
-<li><a href="end_date/">end_date</a><ul>
-<li><a href="previous_end_date/">previous_end_date</a></li>
-</ul>
-</li>
-<li><a href="id/">id</a></li>
-<li><a href="landing_page/">landing_page</a></li>
-<li><a href="logo/">logo</a></li>
-<li><a href="metrics/">metrics</a></li>
-<li><a href="name/">name</a><ul>
+<li><a href="academic_field/">academic_field</a></li>
 <li><a href="acronym/">acronym</a></li>
-<li><a href="alternative_name/">alternative_name</a></li>
-<li><a href="official_name/">official_name</a></li>
-</ul>
-</li>
+<li><a href="at_location/">at_location</a></li>
+<li><a href="committees/">committees</a></li>
+<li><a href="contact/">contact</a></li>
+<li><a href="end_date/">end_date</a></li>
+<li><a href="event_relation/">event_relation</a></li>
+<li><a href="id/">id</a></li>
+<li><a href="logo/">logo</a></li>
+<li><a href="metric/">metric</a></li>
+<li><a href="name/">name</a></li>
+<li><a href="ordinal/">ordinal</a></li>
 <li><a href="organizers/">organizers</a></li>
-<li><a href="outputs/">outputs</a></li>
-<li><a href="person__first_name/">➞first_name</a></li>
-<li><a href="person__id/">➞id</a></li>
-<li><a href="person__knows/">➞knows</a></li>
-<li><a href="person__last_name/">➞last_name</a></li>
-<li><a href="process_relations/">process_relations</a></li>
-<li><a href="social_links/">social_links</a></li>
+<li><a href="output/">output</a></li>
+<li><a href="participants/">participants</a></li>
 <li><a href="sponsors/">sponsors</a></li>
-<li><a href="start_date/">start_date</a><ul>
-<li><a href="previous_start_date/">previous_start_date</a></li>
-</ul>
-</li>
-<li><a href="subjects/">subjects</a></li>
+<li><a href="start_date/">start_date</a></li>
 <li><a href="summary/">summary</a></li>
-<li><a href="topics/">topics</a></li>
+<li><a href="topic/">topic</a></li>
 <li><a href="website/">website</a></li>
 </ul>
 <h3 id="enums">Enums</h3>
-<ul>
-<li><a href="EventFormat/">EventFormat</a></li>
-<li><a href="EventStatus/">EventStatus</a></li>
-</ul>
 <h3 id="subsets">Subsets</h3>
 <h3 id="types">Types</h3>
 <h4 id="built-in">Built in</h4>
@@ -263,5 +236,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-02-04 20:15:22.168997+00:00
+Build Date UTC : 2022-02-13 13:48:45.560529+00:00
 -->
