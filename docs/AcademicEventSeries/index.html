@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Class: AcademicEvent - A model to describe academic events and event series.</title>
+  <title>Class: AcademicEventSeries - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Class: AcademicEvent";
-    var mkdocs_page_input_path = "AcademicEvent.md";
+    var mkdocs_page_name = "Class: AcademicEventSeries";
+    var mkdocs_page_input_path = "AcademicEventSeries.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Class: AcademicEvent</li>
+    <li>Class: AcademicEventSeries</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,9 +91,9 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="class-academicevent">Class: AcademicEvent</h1>
-<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlAcademicEvent">confid:AcademicEvent</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Metric],[Deadline],[CommonMetadata],[Deadline]&lt;deadlines%200..*-++[AcademicEvent&#124;at_location:string%20%3F;start_date:string%20%3F;end_date:string%20%3F;committees:string%20%3F;participants:string%20%3F;ordinal:string%20%3F;event_type:EventType%20%3F;event_status:EventStatus%20%3F;id:string;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;name(i):string],[CommonMetadata]-%20event_relation%200..1&gt;[AcademicEvent],[AcademicEvent]uses%20-.-&gt;[CommonMetadata],[NamedThing]^-[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Metric],[Deadline],[CommonMetadata],[Deadline]&lt;deadlines%200..*-++[AcademicEvent&#124;at_location:string%20%3F;start_date:string%20%3F;end_date:string%20%3F;committees:string%20%3F;participants:string%20%3F;ordinal:string%20%3F;event_type:EventType%20%3F;event_status:EventStatus%20%3F;id:string;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;name(i):string],[CommonMetadata]-%20event_relation%200..1&gt;[AcademicEvent],[AcademicEvent]uses%20-.-&gt;[CommonMetadata],[NamedThing]^-[AcademicEvent]" /></a></p>
+                <h1 id="class-academiceventseries">Class: AcademicEventSeries</h1>
+<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlAcademicEventSeries">confid:AcademicEventSeries</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Metric],[CommonMetadata],[AcademicEventSeries&#124;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;id(i):string;name(i):string]uses%20-.-&gt;[CommonMetadata],[NamedThing]^-[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Metric],[CommonMetadata],[AcademicEventSeries&#124;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;id(i):string;name(i):string]uses%20-.-&gt;[CommonMetadata],[NamedThing]^-[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../NamedThing/">NamedThing</a> - A generic grouping for any identifiable entity</li>
@@ -104,55 +104,15 @@
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li><strong>None</strong> <em><a href="../event_relation/">event_relation</a></em>  <sub>0..1</sub>  <strong><a href="./">AcademicEvent</a></strong></li>
-<li><strong>None</strong> <em><a href="../series_of/">series_of</a></em>  <sub>0..1</sub>  <strong><a href="./">AcademicEvent</a></strong></li>
+<li><strong>None</strong> <em><a href="../in_series/">in_series</a></em>  <sub>0..1</sub>  <strong><a href="./">AcademicEventSeries</a></strong></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
-<h3 id="own">Own</h3>
-<ul>
-<li><a href="../at_location/">at_location</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../start_date/">start_date</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../end_date/">end_date</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../committees/">committees</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../participants/">participants</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../ordinal/">ordinal</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../deadlines/">deadlines</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../Deadline/">Deadline</a></li>
-</ul>
-</li>
-<li><a href="../event_type/">event_type</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../EventType/">EventType</a></li>
-</ul>
-</li>
-<li><a href="../event_status/">event_status</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../EventStatus/">EventStatus</a></li>
-</ul>
-</li>
-<li><a href="../AcademicEvent_id/">AcademicEvent➞id</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-</ul>
 <h3 id="inherited-from-namedthing">Inherited from NamedThing:</h3>
 <ul>
+<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 <li><a href="../name/">name</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
@@ -189,7 +149,7 @@
 <h3 id="mixed-in-from-commonmetadata_4">Mixed in from CommonMetadata:</h3>
 <ul>
 <li><a href="../event_relation/">event_relation</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="./">AcademicEvent</a></li>
+<li>Range: <a href="../AcademicEvent/">AcademicEvent</a></li>
 </ul>
 </li>
 </ul>

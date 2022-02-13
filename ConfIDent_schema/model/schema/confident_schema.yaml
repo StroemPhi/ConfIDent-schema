@@ -8,13 +8,18 @@ default_curi_maps:
   - semweb_context
 version: 0.0.1
 prefixes:
- linkml: https://w3id.org/linkml/
- sdo: https://schema.org/
- confid: https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml
- aeon: https://github.com/tibonto/aeon#AEON_
- OBI: http://purl.obolibrary.org/obo/OBI_
- provo: https://www.w3.org/TR/2013/REC-prov-o-20130430/#
- dc: http://purl.org/dc/terms/
+  linkml: https://w3id.org/linkml/
+  sdo: https://schema.org/
+  confid: https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml
+  aeon: https://github.com/tibonto/aeon#AEON_
+  obi: http://purl.obolibrary.org/obo/OBI_
+  provo: https://www.w3.org/TR/2013/REC-prov-o-20130430/#
+  dc: http://purl.org/dc/terms/
+  orcid: https://orcid.org/
+  ror: ror.org/
+  wikidata: https://www.wikidata.org/wiki/
+  dblp_series: https://dblp.org/db/conf/
+
 default_prefix: confid
 default_range: string
 
@@ -50,6 +55,11 @@ classes:
     close_mappings:
      - sdo:Thing
 
+  AcademicEventSeries:
+    is_a: NamedThing
+    mixins: 
+      - CommonMetadata
+
   AcademicEvent:
     is_a: NamedThing
     mixins:
@@ -64,6 +74,11 @@ classes:
       - deadlines
       - event_type
       - event_status
+    slot_usage:
+      id:
+        id_prefixes:
+          - orcid
+          - wikidata
 
   Deadline:
     attributes:
@@ -85,11 +100,13 @@ classes:
         required: true
 
 slots:
+# named thing properties
   id:
     identifier: true
     required: true
   name:
     required: true
+# common metadata properties
   acronym:
   organizers:
     required: true
@@ -97,6 +114,13 @@ slots:
     recommended: true
   contact:
   event_relation:
+    range: AcademicEvent
+  in_series:
+    is_a: event_relation
+    range: AcademicEventSeries
+  series_of:
+    is_a: event_relation
+    range: AcademicEvent
   output:
   topic:
   academic_field:
@@ -105,6 +129,7 @@ slots:
   summary:
   metrics:
     range: Metric
+
 # academic event properties
   at_location:
   start_date:
@@ -114,6 +139,7 @@ slots:
   ordinal:
   deadlines:
     range: Deadline
+    recommended: true
     multivalued: true
     inlined: true
     inlined_as_list: true

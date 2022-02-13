@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: event_relation - A model to describe academic events and event series.</title>
+  <title>Slot: id - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: event_relation";
-    var mkdocs_page_input_path = "event_relation.md";
+    var mkdocs_page_name = "Slot: id";
+    var mkdocs_page_input_path = "AcademicEvent_id.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: event_relation</li>
+    <li>Slot: id</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,21 +91,18 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-event_relation">Slot: event_relation</h1>
-<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlevent_relation">confid:event_relation</a></p>
+                <h1 id="slot-id">Slot: id</h1>
+<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlAcademicEvent_id">confid:AcademicEvent_id</a></p>
 <h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>0..1</sub> <a href="../AcademicEvent/">AcademicEvent</a></p>
+<p><a href="../AcademicEvent/">AcademicEvent</a> &#8594;  <sub>1..1</sub> <a href="../String/">String</a></p>
 <h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
 <ul>
-<li><a href="../in_series/">in_series</a></li>
-<li><a href="../series_of/">series_of</a></li>
+<li>is_a: <a href="../id/">id</a></li>
 </ul>
+<h2 id="children">Children</h2>
 <h2 id="used-by">Used by</h2>
 <ul>
 <li><a href="../AcademicEvent/">AcademicEvent</a></li>
-<li><a href="../AcademicEventSeries/">AcademicEventSeries</a></li>
-<li><a href="../CommonMetadata/">CommonMetadata</a></li>
 </ul>
               
             </div>

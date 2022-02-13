@@ -1,10 +1,6 @@
 {
-   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-13T21:00:54\n    Schema: ConfIDent-schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
+   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-13T21:50:43\n    Schema: ConfIDent-schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
    "@context": {
-      "OBI": {
-         "@id": "http://purl.obolibrary.org/obo/OBI_",
-         "@prefix": true
-      },
       "aeon": {
          "@id": "https://github.com/tibonto/aeon#AEON_",
          "@prefix": true
@@ -13,16 +9,28 @@
          "@id": "https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml",
          "@prefix": true
       },
+      "dblp_series": "https://dblp.org/db/conf/",
       "dc": "http://purl.org/dc/terms/",
       "linkml": "https://w3id.org/linkml/",
+      "obi": {
+         "@id": "http://purl.obolibrary.org/obo/OBI_",
+         "@prefix": true
+      },
+      "orcid": "https://orcid.org/",
       "provo": "https://www.w3.org/TR/2013/REC-prov-o-20130430/#",
+      "ror": "ror.org/",
       "sdo": "https://schema.org/",
       "skos": "http://www.w3.org/2004/02/skos/core#",
+      "wikidata": "https://www.wikidata.org/wiki/",
       "@vocab": "https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml",
+      "id": "@id",
       "deadline_date": {
          "@type": "xsd:dateTime"
       },
       "deadlines": {
+         "@type": "@id"
+      },
+      "event_relation": {
          "@type": "@id"
       },
       "event_status": {
@@ -41,8 +49,13 @@
             "meaning": "@id"
          }
       },
-      "id": "@id",
+      "in_series": {
+         "@type": "@id"
+      },
       "metrics": {
+         "@type": "@id"
+      },
+      "series_of": {
          "@type": "@id"
       },
       "type": {

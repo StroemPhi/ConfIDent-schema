@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-13T21:01:56
+# Generation date: 2022-02-13T21:51:29
 # Schema: ConfIDent-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
@@ -32,13 +32,17 @@ metamodel_version = "1.7.0"
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
-OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 AEON = CurieNamespace('aeon', 'https://github.com/tibonto/aeon#AEON_')
 CONFID = CurieNamespace('confid', 'https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml')
+DBLP_SERIES = CurieNamespace('dblp_series', 'https://dblp.org/db/conf/')
 DC = CurieNamespace('dc', 'http://purl.org/dc/terms/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
+OBI = CurieNamespace('obi', 'http://purl.obolibrary.org/obo/OBI_')
+ORCID = CurieNamespace('orcid', 'https://orcid.org/')
 PROVO = CurieNamespace('provo', 'https://www.w3.org/TR/2013/REC-prov-o-20130430/#')
+ROR = CurieNamespace('ror', 'ror.org/')
 SDO = CurieNamespace('sdo', 'https://schema.org/')
+WIKIDATA = CurieNamespace('wikidata', 'https://www.wikidata.org/wiki/')
 DEFAULT_ = CONFID
 
 
@@ -46,6 +50,10 @@ DEFAULT_ = CONFID
 
 # Class references
 class NamedThingId(extended_str):
+    pass
+
+
+class AcademicEventSeriesId(NamedThingId):
     pass
 
 
@@ -70,7 +78,7 @@ class CommonMetadata(YAMLRoot):
     acronym: Optional[str] = None
     sponsors: Optional[str] = None
     contact: Optional[str] = None
-    event_relation: Optional[str] = None
+    event_relation: Optional[Union[str, AcademicEventId]] = None
     output: Optional[str] = None
     topic: Optional[str] = None
     academic_field: Optional[str] = None
@@ -94,8 +102,8 @@ class CommonMetadata(YAMLRoot):
         if self.contact is not None and not isinstance(self.contact, str):
             self.contact = str(self.contact)
 
-        if self.event_relation is not None and not isinstance(self.event_relation, str):
-            self.event_relation = str(self.event_relation)
+        if self.event_relation is not None and not isinstance(self.event_relation, AcademicEventId):
+            self.event_relation = AcademicEventId(self.event_relation)
 
         if self.output is not None and not isinstance(self.output, str):
             self.output = str(self.output)
@@ -151,6 +159,77 @@ class NamedThing(YAMLRoot):
 
 
 @dataclass
+class AcademicEventSeries(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFID.AcademicEventSeries
+    class_class_curie: ClassVar[str] = "confid:AcademicEventSeries"
+    class_name: ClassVar[str] = "AcademicEventSeries"
+    class_model_uri: ClassVar[URIRef] = CONFID.AcademicEventSeries
+
+    id: Union[str, AcademicEventSeriesId] = None
+    name: str = None
+    organizers: str = None
+    acronym: Optional[str] = None
+    sponsors: Optional[str] = None
+    contact: Optional[str] = None
+    event_relation: Optional[Union[str, AcademicEventId]] = None
+    output: Optional[str] = None
+    topic: Optional[str] = None
+    academic_field: Optional[str] = None
+    website: Optional[str] = None
+    logo: Optional[str] = None
+    summary: Optional[str] = None
+    metrics: Optional[Union[str, MetricId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AcademicEventSeriesId):
+            self.id = AcademicEventSeriesId(self.id)
+
+        if self._is_empty(self.organizers):
+            self.MissingRequiredField("organizers")
+        if not isinstance(self.organizers, str):
+            self.organizers = str(self.organizers)
+
+        if self.acronym is not None and not isinstance(self.acronym, str):
+            self.acronym = str(self.acronym)
+
+        if self.sponsors is not None and not isinstance(self.sponsors, str):
+            self.sponsors = str(self.sponsors)
+
+        if self.contact is not None and not isinstance(self.contact, str):
+            self.contact = str(self.contact)
+
+        if self.event_relation is not None and not isinstance(self.event_relation, AcademicEventId):
+            self.event_relation = AcademicEventId(self.event_relation)
+
+        if self.output is not None and not isinstance(self.output, str):
+            self.output = str(self.output)
+
+        if self.topic is not None and not isinstance(self.topic, str):
+            self.topic = str(self.topic)
+
+        if self.academic_field is not None and not isinstance(self.academic_field, str):
+            self.academic_field = str(self.academic_field)
+
+        if self.website is not None and not isinstance(self.website, str):
+            self.website = str(self.website)
+
+        if self.logo is not None and not isinstance(self.logo, str):
+            self.logo = str(self.logo)
+
+        if self.summary is not None and not isinstance(self.summary, str):
+            self.summary = str(self.summary)
+
+        if self.metrics is not None and not isinstance(self.metrics, MetricId):
+            self.metrics = MetricId(self.metrics)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class AcademicEvent(NamedThing):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -174,7 +253,7 @@ class AcademicEvent(NamedThing):
     acronym: Optional[str] = None
     sponsors: Optional[str] = None
     contact: Optional[str] = None
-    event_relation: Optional[str] = None
+    event_relation: Optional[Union[str, AcademicEventId]] = None
     output: Optional[str] = None
     topic: Optional[str] = None
     academic_field: Optional[str] = None
@@ -231,8 +310,8 @@ class AcademicEvent(NamedThing):
         if self.contact is not None and not isinstance(self.contact, str):
             self.contact = str(self.contact)
 
-        if self.event_relation is not None and not isinstance(self.event_relation, str):
-            self.event_relation = str(self.event_relation)
+        if self.event_relation is not None and not isinstance(self.event_relation, AcademicEventId):
+            self.event_relation = AcademicEventId(self.event_relation)
 
         if self.output is not None and not isinstance(self.output, str):
             self.output = str(self.output)

@@ -78,11 +78,66 @@
             }
          },
          "required": [
+            "name",
+            "id",
+            "organizers"
+         ],
+         "title": "AcademicEvent",
+         "type": "object"
+      },
+      "AcademicEventSeries": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "academic_field": {
+               "type": "string"
+            },
+            "acronym": {
+               "type": "string"
+            },
+            "contact": {
+               "type": "string"
+            },
+            "event_relation": {
+               "type": "string"
+            },
+            "id": {
+               "type": "string"
+            },
+            "logo": {
+               "type": "string"
+            },
+            "metrics": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            },
+            "organizers": {
+               "type": "string"
+            },
+            "output": {
+               "type": "string"
+            },
+            "sponsors": {
+               "type": "string"
+            },
+            "summary": {
+               "type": "string"
+            },
+            "topic": {
+               "type": "string"
+            },
+            "website": {
+               "type": "string"
+            }
+         },
+         "required": [
             "id",
             "name",
             "organizers"
          ],
-         "title": "AcademicEvent",
+         "title": "AcademicEventSeries",
          "type": "object"
       },
       "Deadline": {
