@@ -93,7 +93,7 @@
               
                 <h1 id="class-commonmetadata">Class: CommonMetadata</h1>
 <p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlCommonMetadata">confid:CommonMetadata</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Metric],[Metric]&lt;metrics%200..1-%20[CommonMetadata&#124;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[AcademicEvent]&lt;event_relation%200..1-%20[CommonMetadata],[AcademicEventSeries]uses%20-.-&gt;[CommonMetadata],[AcademicEvent]uses%20-.-&gt;[CommonMetadata],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Metric],[Metric]&lt;metrics%200..1-%20[CommonMetadata&#124;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[AcademicEvent]&lt;event_relation%200..1-%20[CommonMetadata],[AcademicEventSeries]uses%20-.-&gt;[CommonMetadata],[AcademicEvent]uses%20-.-&gt;[CommonMetadata],[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Metric],[Metric]&lt;metrics%200..*-++[CommonMetadata&#124;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[AcademicEvent]&lt;event_relation%200..1-%20[CommonMetadata],[AcademicEventSeries]uses%20-.-&gt;[CommonMetadata],[AcademicEvent]uses%20-.-&gt;[CommonMetadata],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Metric],[Metric]&lt;metrics%200..*-++[CommonMetadata&#124;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[AcademicEvent]&lt;event_relation%200..1-%20[CommonMetadata],[AcademicEventSeries]uses%20-.-&gt;[CommonMetadata],[AcademicEvent]uses%20-.-&gt;[CommonMetadata],[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="mixin-for">Mixin for</h2>
 <ul>
 <li><a href="../AcademicEvent/">AcademicEvent</a> (mixin) </li>
@@ -147,7 +147,7 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../metrics/">metrics</a>  <sub>0..1</sub><ul>
+<li><a href="../metrics/">metrics</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../Metric/">Metric</a></li>
 </ul>
 </li>

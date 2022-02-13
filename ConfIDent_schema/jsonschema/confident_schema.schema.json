@@ -44,7 +44,10 @@
                "type": "string"
             },
             "metrics": {
-               "type": "string"
+               "items": {
+                  "$ref": "#/$defs/Metric"
+               },
+               "type": "array"
             },
             "name": {
                "type": "string"
@@ -108,7 +111,10 @@
                "type": "string"
             },
             "metrics": {
-               "type": "string"
+               "items": {
+                  "$ref": "#/$defs/Metric"
+               },
+               "type": "array"
             },
             "name": {
                "type": "string"
@@ -138,6 +144,79 @@
             "organizers"
          ],
          "title": "AcademicEventSeries",
+         "type": "object"
+      },
+      "AcceptedPapers": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "id": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            },
+            "value": {
+               "type": "integer"
+            }
+         },
+         "required": [
+            "id",
+            "name",
+            "value"
+         ],
+         "title": "AcceptedPapers",
+         "type": "object"
+      },
+      "City": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "id": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "name"
+         ],
+         "title": "City",
+         "type": "object"
+      },
+      "Coordinates": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "lattitude": {
+               "type": "number"
+            },
+            "longitude": {
+               "type": "number"
+            }
+         },
+         "required": [],
+         "title": "Coordinates",
+         "type": "object"
+      },
+      "Country": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "id": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "name"
+         ],
+         "title": "Country",
          "type": "object"
       },
       "Deadline": {
@@ -211,6 +290,39 @@
          "title": "EventType",
          "type": "string"
       },
+      "Location": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "city": {
+               "type": "string"
+            },
+            "coordinates": {
+               "$ref": "#/$defs/Coordinates"
+            },
+            "country": {
+               "type": "string"
+            },
+            "id": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            },
+            "region": {
+               "type": "string"
+            },
+            "venue": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "name"
+         ],
+         "title": "Location",
+         "type": "object"
+      },
       "Metric": {
          "additionalProperties": false,
          "description": "",
@@ -218,17 +330,17 @@
             "id": {
                "type": "string"
             },
-            "metric_value": {
+            "name": {
                "type": "string"
             },
-            "name": {
+            "value": {
                "type": "string"
             }
          },
          "required": [
             "id",
             "name",
-            "metric_value"
+            "value"
          ],
          "title": "Metric",
          "type": "object"
@@ -249,6 +361,42 @@
             "name"
          ],
          "title": "NamedThing",
+         "type": "object"
+      },
+      "Region": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "id": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "name"
+         ],
+         "title": "Region",
+         "type": "object"
+      },
+      "Venue": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "id": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "name"
+         ],
+         "title": "Venue",
          "type": "object"
       }
    },

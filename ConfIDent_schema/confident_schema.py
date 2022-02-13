@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-13T21:51:29
+# Generation date: 2022-02-13T22:15:28
 # Schema: ConfIDent-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
@@ -23,7 +23,7 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Datetime, String
+from linkml_runtime.linkml_model.types import Datetime, Float, Integer, String
 from linkml_runtime.utils.metamodelcore import XSDDateTime
 
 metamodel_version = "1.7.0"
@@ -61,7 +61,31 @@ class AcademicEventId(NamedThingId):
     pass
 
 
+class LocationId(NamedThingId):
+    pass
+
+
+class CityId(NamedThingId):
+    pass
+
+
+class CountryId(NamedThingId):
+    pass
+
+
+class RegionId(NamedThingId):
+    pass
+
+
+class VenueId(NamedThingId):
+    pass
+
+
 class MetricId(NamedThingId):
+    pass
+
+
+class AcceptedPapersId(MetricId):
     pass
 
 
@@ -85,7 +109,7 @@ class CommonMetadata(YAMLRoot):
     website: Optional[str] = None
     logo: Optional[str] = None
     summary: Optional[str] = None
-    metrics: Optional[Union[str, MetricId]] = None
+    metrics: Optional[Union[Dict[Union[str, MetricId], Union[dict, "Metric"]], List[Union[dict, "Metric"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.organizers):
@@ -123,8 +147,7 @@ class CommonMetadata(YAMLRoot):
         if self.summary is not None and not isinstance(self.summary, str):
             self.summary = str(self.summary)
 
-        if self.metrics is not None and not isinstance(self.metrics, MetricId):
-            self.metrics = MetricId(self.metrics)
+        self._normalize_inlined_as_list(slot_name="metrics", slot_type=Metric, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -180,7 +203,7 @@ class AcademicEventSeries(NamedThing):
     website: Optional[str] = None
     logo: Optional[str] = None
     summary: Optional[str] = None
-    metrics: Optional[Union[str, MetricId]] = None
+    metrics: Optional[Union[Dict[Union[str, MetricId], Union[dict, "Metric"]], List[Union[dict, "Metric"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -223,8 +246,7 @@ class AcademicEventSeries(NamedThing):
         if self.summary is not None and not isinstance(self.summary, str):
             self.summary = str(self.summary)
 
-        if self.metrics is not None and not isinstance(self.metrics, MetricId):
-            self.metrics = MetricId(self.metrics)
+        self._normalize_inlined_as_list(slot_name="metrics", slot_type=Metric, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -260,7 +282,7 @@ class AcademicEvent(NamedThing):
     website: Optional[str] = None
     logo: Optional[str] = None
     summary: Optional[str] = None
-    metrics: Optional[Union[str, MetricId]] = None
+    metrics: Optional[Union[Dict[Union[str, MetricId], Union[dict, "Metric"]], List[Union[dict, "Metric"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -331,8 +353,154 @@ class AcademicEvent(NamedThing):
         if self.summary is not None and not isinstance(self.summary, str):
             self.summary = str(self.summary)
 
-        if self.metrics is not None and not isinstance(self.metrics, MetricId):
-            self.metrics = MetricId(self.metrics)
+        self._normalize_inlined_as_list(slot_name="metrics", slot_type=Metric, key_name="id", keyed=True)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Location(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFID.Location
+    class_class_curie: ClassVar[str] = "confid:Location"
+    class_name: ClassVar[str] = "Location"
+    class_model_uri: ClassVar[URIRef] = CONFID.Location
+
+    id: Union[str, LocationId] = None
+    name: str = None
+    city: Optional[Union[str, CityId]] = None
+    country: Optional[Union[str, CountryId]] = None
+    region: Optional[Union[str, RegionId]] = None
+    venue: Optional[Union[str, VenueId]] = None
+    coordinates: Optional[Union[dict, "Coordinates"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, LocationId):
+            self.id = LocationId(self.id)
+
+        if self.city is not None and not isinstance(self.city, CityId):
+            self.city = CityId(self.city)
+
+        if self.country is not None and not isinstance(self.country, CountryId):
+            self.country = CountryId(self.country)
+
+        if self.region is not None and not isinstance(self.region, RegionId):
+            self.region = RegionId(self.region)
+
+        if self.venue is not None and not isinstance(self.venue, VenueId):
+            self.venue = VenueId(self.venue)
+
+        if self.coordinates is not None and not isinstance(self.coordinates, Coordinates):
+            self.coordinates = Coordinates(**as_dict(self.coordinates))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class City(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFID.City
+    class_class_curie: ClassVar[str] = "confid:City"
+    class_name: ClassVar[str] = "City"
+    class_model_uri: ClassVar[URIRef] = CONFID.City
+
+    id: Union[str, CityId] = None
+    name: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CityId):
+            self.id = CityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Country(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFID.Country
+    class_class_curie: ClassVar[str] = "confid:Country"
+    class_name: ClassVar[str] = "Country"
+    class_model_uri: ClassVar[URIRef] = CONFID.Country
+
+    id: Union[str, CountryId] = None
+    name: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CountryId):
+            self.id = CountryId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Region(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFID.Region
+    class_class_curie: ClassVar[str] = "confid:Region"
+    class_name: ClassVar[str] = "Region"
+    class_model_uri: ClassVar[URIRef] = CONFID.Region
+
+    id: Union[str, RegionId] = None
+    name: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, RegionId):
+            self.id = RegionId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Venue(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFID.Venue
+    class_class_curie: ClassVar[str] = "confid:Venue"
+    class_name: ClassVar[str] = "Venue"
+    class_model_uri: ClassVar[URIRef] = CONFID.Venue
+
+    id: Union[str, VenueId] = None
+    name: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, VenueId):
+            self.id = VenueId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Coordinates(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFID.Coordinates
+    class_class_curie: ClassVar[str] = "confid:Coordinates"
+    class_name: ClassVar[str] = "Coordinates"
+    class_model_uri: ClassVar[URIRef] = CONFID.Coordinates
+
+    lattitude: Optional[float] = None
+    longitude: Optional[float] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.lattitude is not None and not isinstance(self.lattitude, float):
+            self.lattitude = float(self.lattitude)
+
+        if self.longitude is not None and not isinstance(self.longitude, float):
+            self.longitude = float(self.longitude)
 
         super().__post_init__(**kwargs)
 
@@ -378,7 +546,7 @@ class Metric(NamedThing):
 
     id: Union[str, MetricId] = None
     name: str = None
-    metric_value: str = None
+    value: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -386,10 +554,37 @@ class Metric(NamedThing):
         if not isinstance(self.id, MetricId):
             self.id = MetricId(self.id)
 
-        if self._is_empty(self.metric_value):
-            self.MissingRequiredField("metric_value")
-        if not isinstance(self.metric_value, str):
-            self.metric_value = str(self.metric_value)
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
+            self.value = str(self.value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AcceptedPapers(Metric):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFID.AcceptedPapers
+    class_class_curie: ClassVar[str] = "confid:AcceptedPapers"
+    class_name: ClassVar[str] = "AcceptedPapers"
+    class_model_uri: ClassVar[URIRef] = CONFID.AcceptedPapers
+
+    id: Union[str, AcceptedPapersId] = None
+    name: str = None
+    value: int = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AcceptedPapersId):
+            self.id = AcceptedPapersId(self.id)
+
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, int):
+            self.value = int(self.value)
 
         super().__post_init__(**kwargs)
 

@@ -115,11 +115,20 @@
 <p>This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.</p>
 <h3 id="classes">Classes</h3>
 <ul>
+<li><a href="Coordinates/">Coordinates</a></li>
 <li><a href="Deadline/">Deadline</a></li>
 <li><a href="NamedThing/">NamedThing</a> - A generic grouping for any identifiable entity<ul>
 <li><a href="AcademicEvent/">AcademicEvent</a></li>
 <li><a href="AcademicEventSeries/">AcademicEventSeries</a></li>
-<li><a href="Metric/">Metric</a></li>
+<li><a href="City/">City</a></li>
+<li><a href="Country/">Country</a></li>
+<li><a href="Location/">Location</a></li>
+<li><a href="Metric/">Metric</a><ul>
+<li><a href="AcceptedPapers/">AcceptedPapers</a></li>
+</ul>
+</li>
+<li><a href="Region/">Region</a></li>
+<li><a href="Venue/">Venue</a></li>
 </ul>
 </li>
 </ul>
@@ -134,6 +143,8 @@
 <li><a href="at_location/">at_location</a></li>
 <li><a href="committees/">committees</a></li>
 <li><a href="contact/">contact</a></li>
+<li><a href="coordinates__lattitude/">➞lattitude</a></li>
+<li><a href="coordinates__longitude/">➞longitude</a></li>
 <li><a href="deadline__deadline_date/">➞deadline_date</a></li>
 <li><a href="deadline__deadline_other/">➞deadline_other</a></li>
 <li><a href="deadlines/">deadlines</a></li>
@@ -149,8 +160,16 @@
 <li><a href="AcademicEvent_id/">AcademicEvent➞id</a></li>
 </ul>
 </li>
+<li><a href="location__city/">➞city</a></li>
+<li><a href="location__coordinates/">➞coordinates</a></li>
+<li><a href="location__country/">➞country</a></li>
+<li><a href="location__region/">➞region</a></li>
+<li><a href="location__venue/">➞venue</a></li>
 <li><a href="logo/">logo</a></li>
-<li><a href="metric__metric_value/">➞metric_value</a></li>
+<li><a href="metric__value/">➞value</a><ul>
+<li><a href="AcceptedPapers_value/">AcceptedPapers➞value</a></li>
+</ul>
+</li>
 <li><a href="metrics/">metrics</a></li>
 <li><a href="name/">name</a></li>
 <li><a href="ordinal/">ordinal</a></li>
@@ -266,5 +285,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-02-13 20:50:31.374325+00:00
+Build Date UTC : 2022-02-13 21:14:18.628620+00:00
 -->

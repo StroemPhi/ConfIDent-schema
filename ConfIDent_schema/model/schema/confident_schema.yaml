@@ -80,6 +80,39 @@ classes:
           - orcid
           - wikidata
 
+  Location:
+    is_a: NamedThing
+    attributes:
+      city:
+        range: City
+        recommended: true
+      country:
+        range: Country
+        recommended: true
+      region:
+        range: Region
+      venue:
+        range: Venue
+      coordinates:
+        range: Coordinates
+
+  City:
+    is_a: NamedThing
+  Country:
+    is_a: NamedThing
+  Region:
+    is_a: NamedThing
+  Venue:
+    is_a: NamedThing
+  Coordinates:
+    attributes:
+      lattitude:
+        range: float
+      longitude:
+        range: float
+
+
+
   Deadline:
     attributes:
       deadline_date:
@@ -95,9 +128,14 @@ classes:
   Metric:
     is_a: NamedThing
     attributes:
-      metric_value:
-        range: string
+      value:
         required: true
+
+  AcceptedPapers:
+    is_a: Metric
+    slot_usage:
+      value:
+        range: integer
 
 slots:
 # named thing properties
@@ -128,7 +166,11 @@ slots:
   logo:
   summary:
   metrics:
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
     range: Metric
+
 
 # academic event properties
   at_location:

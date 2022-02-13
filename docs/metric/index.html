@@ -93,19 +93,23 @@
               
                 <h1 id="class-metric">Class: Metric</h1>
 <p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlMetric">confid:Metric</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[CommonMetadata]-%20metrics%200..1&gt;[Metric&#124;metric_value:string;id(i):string;name(i):string],[NamedThing]^-[Metric],[CommonMetadata]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[CommonMetadata]-%20metrics%200..1&gt;[Metric&#124;metric_value:string;id(i):string;name(i):string],[NamedThing]^-[Metric],[CommonMetadata]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[CommonMetadata]++-%20metrics%200..*&gt;[Metric&#124;value:string;id(i):string;name(i):string],[Metric]^-[AcceptedPapers],[NamedThing]^-[Metric],[CommonMetadata],[AcceptedPapers]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[CommonMetadata]++-%20metrics%200..*&gt;[Metric&#124;value:string;id(i):string;name(i):string],[Metric]^-[AcceptedPapers],[NamedThing]^-[Metric],[CommonMetadata],[AcceptedPapers]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../NamedThing/">NamedThing</a> - A generic grouping for any identifiable entity</li>
 </ul>
+<h2 id="children">Children</h2>
+<ul>
+<li><a href="../AcceptedPapers/">AcceptedPapers</a></li>
+</ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li><strong>None</strong> <em><a href="../metrics/">metrics</a></em>  <sub>0..1</sub>  <strong><a href="./">Metric</a></strong></li>
+<li><strong>None</strong> <em><a href="../metrics/">metrics</a></em>  <sub>0..*</sub>  <strong><a href="./">Metric</a></strong></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../metric__metric_value/">➞metric_value</a>  <sub>1..1</sub><ul>
+<li><a href="../metric__value/">➞value</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
