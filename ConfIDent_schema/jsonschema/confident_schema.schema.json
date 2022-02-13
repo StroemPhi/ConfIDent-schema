@@ -19,11 +19,23 @@
             "contact": {
                "type": "string"
             },
+            "deadlines": {
+               "items": {
+                  "$ref": "#/$defs/Deadline"
+               },
+               "type": "array"
+            },
             "end_date": {
                "type": "string"
             },
             "event_relation": {
                "type": "string"
+            },
+            "event_status": {
+               "$ref": "#/$defs/EventStatus"
+            },
+            "event_type": {
+               "$ref": "#/$defs/EventType"
             },
             "id": {
                "type": "string"
@@ -31,7 +43,7 @@
             "logo": {
                "type": "string"
             },
-            "metric": {
+            "metrics": {
                "type": "string"
             },
             "name": {
@@ -67,49 +79,113 @@
          },
          "required": [
             "id",
-            "name"
+            "name",
+            "organizers"
          ],
          "title": "AcademicEvent",
          "type": "object"
       },
-      "CommonMetadata": {
+      "Deadline": {
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "academic_field": {
+            "deadline_date": {
+               "format": "date-time",
                "type": "string"
             },
-            "acronym": {
+            "deadline_other": {
                "type": "string"
             },
-            "at_location": {
-               "type": "string"
-            },
-            "contact": {
-               "type": "string"
-            },
-            "event_relation": {
-               "type": "string"
-            },
+            "type": {
+               "$ref": "#/$defs/DeadlineType"
+            }
+         },
+         "required": [
+            "deadline_date",
+            "type"
+         ],
+         "title": "Deadline",
+         "type": "object"
+      },
+      "DeadlineType": {
+         "description": "",
+         "enum": [
+            "submission deadline",
+            "notification deadline",
+            "abstract deadline",
+            "camera-ready deadline",
+            "demo deadline",
+            "paper deadline",
+            "poster deadline",
+            "tutorial deadline",
+            "workshop deadline"
+         ],
+         "title": "DeadlineType",
+         "type": "string"
+      },
+      "EventStatus": {
+         "description": "",
+         "enum": [
+            "as scheduled",
+            "postponed",
+            "delayed",
+            "canceled",
+            "planned"
+         ],
+         "title": "EventStatus",
+         "type": "string"
+      },
+      "EventType": {
+         "description": "",
+         "enum": [
+            "colloquium",
+            "conference",
+            "congress",
+            "event session",
+            "poster session",
+            "event talk",
+            "keynote speech",
+            "event track",
+            "forum",
+            "hackathon",
+            "seminar",
+            "symposium",
+            "tutorial",
+            "workshop"
+         ],
+         "title": "EventType",
+         "type": "string"
+      },
+      "Metric": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
             "id": {
+               "type": "string"
+            },
+            "metric_value": {
                "type": "string"
             },
             "name": {
                "type": "string"
-            },
-            "organizers": {
+            }
+         },
+         "required": [
+            "id",
+            "name",
+            "metric_value"
+         ],
+         "title": "Metric",
+         "type": "object"
+      },
+      "NamedThing": {
+         "additionalProperties": false,
+         "description": "A generic grouping for any identifiable entity",
+         "properties": {
+            "id": {
                "type": "string"
             },
-            "output": {
-               "type": "string"
-            },
-            "sponsors": {
-               "type": "string"
-            },
-            "topic": {
-               "type": "string"
-            },
-            "website": {
+            "name": {
                "type": "string"
             }
          },
@@ -117,7 +193,7 @@
             "id",
             "name"
          ],
-         "title": "CommonMetadata",
+         "title": "NamedThing",
          "type": "object"
       }
    },

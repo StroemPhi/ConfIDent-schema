@@ -26,11 +26,9 @@ classes:
 
   # Mixins
   CommonMetadata:
+    mixin: true
     slots:
-      - id
-      - name
       - acronym
-      - at_location
       - organizers
       - sponsors
       - contact
@@ -39,19 +37,52 @@ classes:
       - topic
       - academic_field
       - website
+      - logo
+      - summary
+      - metrics
+
+  NamedThing:
+    description: >-
+      A generic grouping for any identifiable entity
+    slots:
+      - id
+      - name
+    close_mappings:
+     - sdo:Thing
 
   AcademicEvent:
+    is_a: NamedThing
     mixins:
       - CommonMetadata
     slots:
+      - at_location
       - start_date
       - end_date
       - committees
       - participants
       - ordinal
-      - logo
-      - summary
-      - metric
+      - deadlines
+      - event_type
+      - event_status
+
+  Deadline:
+    attributes:
+      deadline_date:
+        range: datetime
+        required: true        
+      deadline_other:
+        range: string
+    slot_usage:
+      type: 
+        range: DeadlineType
+        required: true
+
+  Metric:
+    is_a: NamedThing
+    attributes:
+      metric_value:
+        range: string
+        required: true
 
 slots:
   id:
@@ -60,20 +91,102 @@ slots:
   name:
     required: true
   acronym:
-  at_location:
-  start_date:
-  end_date:
   organizers:
+    required: true
   sponsors:
-  committees:
-  participants:
+    recommended: true
   contact:
   event_relation:
   output:
-  website:
-  ordinal:
   topic:
   academic_field:
+  website:
   logo:
   summary:
-  metric:
+  metrics:
+    range: Metric
+# academic event properties
+  at_location:
+  start_date:
+  end_date:
+  committees:
+  participants:
+  ordinal:
+  deadlines:
+    range: Deadline
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  event_type:
+    range: EventType
+  event_status:
+    range: EventStatus
+
+
+#####################################
+#               Enums               #
+#####################################
+
+enums:
+
+  EventType:
+    permissible_values:
+      colloquium:
+        meaning: aeon:0010000
+      conference:
+        meaning: aeon:0010001
+      congress:
+        meaning: aeon:0010011
+      event session:
+        meaning: aeon:0010000
+      poster session:
+        meaning: aeon:0010005
+      event talk:
+        meaning: aeon:0010012
+      keynote speech:
+        meaning: aeon:0010007
+      event track:
+        meaning: aeon:0010008
+      forum:
+        meaning: aeon:0010002
+      hackathon:
+        meaning: aeon:0010003
+      seminar:
+        meaning: aeon:0010004
+      symposium:
+        meaning: aeon:0010006
+      tutorial:
+        meaning: aeon:0010009
+      workshop:
+        meaning: aeon:0010010
+
+  EventStatus:
+    permissible_values:
+      as scheduled:
+        description: This should be used as default to indicate that an academic event takes place as planned.
+      postponed:
+      delayed:
+      canceled:
+      planned:
+
+  DeadlineType:
+    permissible_values:
+      submission deadline:
+        meaning: aeon:0000067
+      notification deadline:
+        meaning: aeon:0000064
+      abstract deadline:
+        meaning: aeon:0000061
+      camera-ready deadline:
+        meaning: aeon:0000062
+      demo deadline:
+        meaning: aeon:0000063
+      paper deadline:
+        meaning: aeon:0000065
+      poster deadline:
+        meaning: aeon:0000066
+      tutorial deadline:
+        meaning: aeon:0000068
+      workshop deadline:
+        meaning: aeon:0000069
+

@@ -115,10 +115,17 @@
 <p>This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.</p>
 <h3 id="classes">Classes</h3>
 <ul>
+<li><a href="Deadline/">Deadline</a></li>
+<li><a href="NamedThing/">NamedThing</a> - A generic grouping for any identifiable entity<ul>
 <li><a href="AcademicEvent/">AcademicEvent</a></li>
-<li><a href="CommonMetadata/">CommonMetadata</a></li>
+<li><a href="Metric/">Metric</a></li>
+</ul>
+</li>
 </ul>
 <h3 id="mixins">Mixins</h3>
+<ul>
+<li><a href="CommonMetadata/">CommonMetadata</a></li>
+</ul>
 <h3 id="slots">Slots</h3>
 <ul>
 <li><a href="academic_field/">academic_field</a></li>
@@ -126,11 +133,17 @@
 <li><a href="at_location/">at_location</a></li>
 <li><a href="committees/">committees</a></li>
 <li><a href="contact/">contact</a></li>
+<li><a href="deadline__deadline_date/">➞deadline_date</a></li>
+<li><a href="deadline__deadline_other/">➞deadline_other</a></li>
+<li><a href="deadlines/">deadlines</a></li>
 <li><a href="end_date/">end_date</a></li>
 <li><a href="event_relation/">event_relation</a></li>
+<li><a href="event_status/">event_status</a></li>
+<li><a href="event_type/">event_type</a></li>
 <li><a href="id/">id</a></li>
 <li><a href="logo/">logo</a></li>
-<li><a href="metric/">metric</a></li>
+<li><a href="metric__metric_value/">➞metric_value</a></li>
+<li><a href="metrics/">metrics</a></li>
 <li><a href="name/">name</a></li>
 <li><a href="ordinal/">ordinal</a></li>
 <li><a href="organizers/">organizers</a></li>
@@ -140,9 +153,18 @@
 <li><a href="start_date/">start_date</a></li>
 <li><a href="summary/">summary</a></li>
 <li><a href="topic/">topic</a></li>
+<li><a href="type/">type</a><ul>
+<li><a href="Deadline_type/">Deadline➞type</a></li>
+</ul>
+</li>
 <li><a href="website/">website</a></li>
 </ul>
 <h3 id="enums">Enums</h3>
+<ul>
+<li><a href="DeadlineType/">DeadlineType</a></li>
+<li><a href="EventStatus/">EventStatus</a></li>
+<li><a href="EventType/">EventType</a></li>
+</ul>
 <h3 id="subsets">Subsets</h3>
 <h3 id="types">Types</h3>
 <h4 id="built-in">Built in</h4>
@@ -236,5 +258,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-02-13 13:48:45.560529+00:00
+Build Date UTC : 2022-02-13 20:00:35.934781+00:00
 -->

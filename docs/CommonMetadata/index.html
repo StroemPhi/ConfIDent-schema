@@ -93,7 +93,7 @@
               
                 <h1 id="class-commonmetadata">Class: CommonMetadata</h1>
 <p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlCommonMetadata">confid:CommonMetadata</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEvent]uses%20-.-&gt;[CommonMetadata&#124;id:string;name:string;acronym:string%20%3F;at_location:string%20%3F;organizers:string%20%3F;sponsors:string%20%3F;contact:string%20%3F;event_relation:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEvent]uses%20-.-&gt;[CommonMetadata&#124;id:string;name:string;acronym:string%20%3F;at_location:string%20%3F;organizers:string%20%3F;sponsors:string%20%3F;contact:string%20%3F;event_relation:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Metric],[Metric]&lt;metrics%200..1-%20[CommonMetadata&#124;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;event_relation:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[AcademicEvent]uses%20-.-&gt;[CommonMetadata],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Metric],[Metric]&lt;metrics%200..1-%20[CommonMetadata&#124;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;event_relation:string%20%3F;output:string%20%3F;topic:string%20%3F;academic_field:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[AcademicEvent]uses%20-.-&gt;[CommonMetadata],[AcademicEvent]" /></a></p>
 <h2 id="mixin-for">Mixin for</h2>
 <ul>
 <li><a href="../AcademicEvent/">AcademicEvent</a> (mixin) </li>
@@ -102,23 +102,11 @@
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../name/">name</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
 <li><a href="../acronym/">acronym</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../at_location/">at_location</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../organizers/">organizers</a>  <sub>0..1</sub><ul>
+<li><a href="../organizers/">organizers</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
@@ -148,6 +136,18 @@
 </li>
 <li><a href="../website/">website</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../logo/">logo</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../summary/">summary</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../metrics/">metrics</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Metric/">Metric</a></li>
 </ul>
 </li>
 </ul>
