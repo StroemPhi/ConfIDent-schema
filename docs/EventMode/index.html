@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Class: Region - A model to describe academic events and event series.</title>
+  <title>Enum: EventMode - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Class: Region";
-    var mkdocs_page_input_path = "Region.md";
+    var mkdocs_page_name = "Enum: EventMode";
+    var mkdocs_page_input_path = "EventMode.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Class: Region</li>
+    <li>Enum: EventMode</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,29 +91,56 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="class-region">Class: Region</h1>
-<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlRegion">confid:Region</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Location]-%20region%200..1&gt;[Region&#124;id(i):string;name(i):string],[NamedThing]^-[Region],[NamedThing],[Location]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Location]-%20region%200..1&gt;[Region&#124;id(i):string;name(i):string],[NamedThing]^-[Region],[NamedThing],[Location]" /></a></p>
-<h2 id="parents">Parents</h2>
-<ul>
-<li>is_a: <a href="../NamedThing/">NamedThing</a> - A generic grouping for any identifiable entity</li>
-</ul>
-<h2 id="referenced-by-class">Referenced by Class</h2>
-<ul>
-<li><strong>None</strong> <em><a href="../location__region/">➞region</a></em>  <sub>0..1</sub>  <strong><a href="./">Region</a></strong></li>
-</ul>
-<h2 id="attributes">Attributes</h2>
-<h3 id="inherited-from-namedthing">Inherited from NamedThing:</h3>
-<ul>
-<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../name/">name</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-</ul>
+                <h1 id="enum-eventmode">Enum: EventMode</h1>
+<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlEventMode">confid:EventMode</a></p>
+<h2 id="other-properties">Other properties</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="permissible-values">Permissible Values</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Text</th>
+<th align="center">Description</th>
+<th align="center">Meaning</th>
+<th align="right">Other Information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">on site</td>
+<td align="center">The event takes place in a physical location.</td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">online</td>
+<td align="center">The event takes place in a virtual location.</td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">hybrid</td>
+<td align="center">The event takes place physically and virtually.</td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>

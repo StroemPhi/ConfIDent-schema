@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-14T15:44:44
+# Generation date: 2022-02-14T15:55:10
 # Schema: ConfIDent-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
@@ -271,6 +271,7 @@ class AcademicEvent(PlannedProcess):
     deadlines: Optional[Union[Union[dict, "Deadline"], List[Union[dict, "Deadline"]]]] = empty_list()
     event_type: Optional[Union[str, "EventType"]] = None
     event_status: Optional[Union[str, "EventStatus"]] = None
+    event_mode: Optional[Union[str, "EventMode"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -302,6 +303,9 @@ class AcademicEvent(PlannedProcess):
 
         if self.event_status is not None and not isinstance(self.event_status, EventStatus):
             self.event_status = EventStatus(self.event_status)
+
+        if self.event_mode is not None and not isinstance(self.event_mode, EventMode):
+            self.event_mode = EventMode(self.event_mode)
 
         super().__post_init__(**kwargs)
 
@@ -392,9 +396,6 @@ class Country(NamedThing):
 
 @dataclass
 class Region(NamedThing):
-    """
-    The
-    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFID.Region
@@ -620,6 +621,23 @@ class EventStatus(EnumDefinitionImpl):
         setattr(cls, "as scheduled",
                 PermissibleValue(text="as scheduled",
                                  description="This should be used as default to indicate that an academic event takes place as planned.") )
+
+class EventMode(EnumDefinitionImpl):
+
+    online = PermissibleValue(text="online",
+                                   description="The event takes place in a virtual location.")
+    hybrid = PermissibleValue(text="hybrid",
+                                   description="The event takes place physically and virtually.")
+
+    _defn = EnumDefinition(
+        name="EventMode",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "on site",
+                PermissibleValue(text="on site",
+                                 description="The event takes place in a physical location.") )
 
 class DeadlineType(EnumDefinitionImpl):
 

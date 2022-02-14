@@ -31,6 +31,9 @@
             "end_date": {
                "type": "string"
             },
+            "event_mode": {
+               "$ref": "#/$defs/EventMode"
+            },
             "event_status": {
                "$ref": "#/$defs/EventStatus"
             },
@@ -278,6 +281,16 @@
          "title": "DeadlineType",
          "type": "string"
       },
+      "EventMode": {
+         "description": "",
+         "enum": [
+            "on site",
+            "online",
+            "hybrid"
+         ],
+         "title": "EventMode",
+         "type": "string"
+      },
       "EventStatus": {
          "description": "",
          "enum": [
@@ -477,7 +490,7 @@
       },
       "Region": {
          "additionalProperties": false,
-         "description": "The",
+         "description": "",
          "properties": {
             "id": {
                "type": "string"

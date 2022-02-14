@@ -78,6 +78,7 @@ classes:
       - deadlines
       - event_type
       - event_status
+      - event_mode
 
   Location:
     attributes:
@@ -103,8 +104,6 @@ classes:
     is_a: NamedThing
   Region:
     is_a: NamedThing
-    description: >-
-      The 
   Venue:
     is_a: NamedThing
     mixins: 
@@ -210,6 +209,8 @@ slots:
     range: EventType
   event_status:
     range: EventStatus
+  event_mode:
+    range: EventMode
 
 
 #####################################
@@ -257,6 +258,15 @@ enums:
       delayed:
       canceled:
       planned:
+
+  EventMode:
+    permissible_values:
+      on site:
+        description: The event takes place in a physical location.
+      online:
+        description: The event takes place in a virtual location.
+      hybrid:
+        description: The event takes place physically and virtually.
 
   DeadlineType:
     permissible_values:
