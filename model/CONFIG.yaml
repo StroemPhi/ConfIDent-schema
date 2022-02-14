@@ -1,7 +1,7 @@
 model_organization: StroemPhi         # Name of github individual / organization where this clone exists (e.g. linkml / mygithub)
 model_name: ConfIDent-schema          # Name of target repository (e.g. my-wonderful-model)
 root_schema: confident_schema         # Name of the base schema file (w/o .yaml)
-model_root_class: AcademicEvent      # Name of the base class in the schema for testing
+model_root_class: PlannedProcess      # Name of the base class in the schema for testing
 
 model_author: Philip Strömert                 
 model_author_email: philip.stroemert@tib.eu          

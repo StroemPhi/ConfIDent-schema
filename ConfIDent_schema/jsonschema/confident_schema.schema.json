@@ -404,7 +404,7 @@
                "type": "boolean"
             },
             "type": {
-               "$ref": "#/$defs/EventType"
+               "$ref": "#/$defs/MetricType"
             }
          },
          "required": [],

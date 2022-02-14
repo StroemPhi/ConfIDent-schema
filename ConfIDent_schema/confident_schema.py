@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-14T18:14:42
+# Generation date: 2022-02-14T18:26:48
 # Schema: ConfIDent-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
@@ -32,7 +32,6 @@ metamodel_version = "1.7.0"
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
-METRICTYPE = CurieNamespace('MetricType', 'http://example.org/UNKNOWN/MetricType/')
 AEON = CurieNamespace('aeon', 'https://github.com/tibonto/aeon#AEON_')
 CONFID = CurieNamespace('confid', 'https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml')
 DBLP_SERIES = CurieNamespace('dblp_series', 'https://dblp.org/db/conf/')
@@ -226,6 +225,10 @@ class AcademicEventSeries(PlannedProcess):
     id: Union[str, AcademicEventSeriesId] = None
     has_name: Union[Union[dict, "Name"], List[Union[dict, "Name"]]] = None
     organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
+    xrefs: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    website: Optional[str] = None
+    logo: Optional[str] = None
+    summary: Optional[str] = None
     series_of: Optional[Union[str, AcademicEventId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -233,6 +236,19 @@ class AcademicEventSeries(PlannedProcess):
             self.MissingRequiredField("id")
         if not isinstance(self.id, AcademicEventSeriesId):
             self.id = AcademicEventSeriesId(self.id)
+
+        if not isinstance(self.xrefs, list):
+            self.xrefs = [self.xrefs] if self.xrefs is not None else []
+        self.xrefs = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.xrefs]
+
+        if self.website is not None and not isinstance(self.website, str):
+            self.website = str(self.website)
+
+        if self.logo is not None and not isinstance(self.logo, str):
+            self.logo = str(self.logo)
+
+        if self.summary is not None and not isinstance(self.summary, str):
+            self.summary = str(self.summary)
 
         if self.series_of is not None and not isinstance(self.series_of, AcademicEventId):
             self.series_of = AcademicEventId(self.series_of)
@@ -254,6 +270,10 @@ class AcademicEvent(PlannedProcess):
     organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
     start_date: Union[str, XSDDateTime] = None
     end_date: Union[str, XSDDateTime] = None
+    xrefs: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    website: Optional[str] = None
+    logo: Optional[str] = None
+    summary: Optional[str] = None
     at_location: Optional[Union[dict, "Location"]] = None
     in_series: Optional[Union[str, AcademicEventSeriesId]] = None
     committees: Optional[str] = None
@@ -279,6 +299,19 @@ class AcademicEvent(PlannedProcess):
             self.MissingRequiredField("end_date")
         if not isinstance(self.end_date, XSDDateTime):
             self.end_date = XSDDateTime(self.end_date)
+
+        if not isinstance(self.xrefs, list):
+            self.xrefs = [self.xrefs] if self.xrefs is not None else []
+        self.xrefs = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.xrefs]
+
+        if self.website is not None and not isinstance(self.website, str):
+            self.website = str(self.website)
+
+        if self.logo is not None and not isinstance(self.logo, str):
+            self.logo = str(self.logo)
+
+        if self.summary is not None and not isinstance(self.summary, str):
+            self.summary = str(self.summary)
 
         if self.at_location is not None and not isinstance(self.at_location, Location):
             self.at_location = Location(**as_dict(self.at_location))
@@ -549,7 +582,7 @@ class Metric(YAMLRoot):
     rate_value: Optional[float] = None
     truth_value: Optional[Union[bool, Bool]] = None
     other_metric: Optional[str] = None
-    type: Optional[Union[str, "EventType"]] = None
+    type: Optional[Union[str, "MetricType"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.int_value is not None and not isinstance(self.int_value, int):
@@ -567,8 +600,8 @@ class Metric(YAMLRoot):
         if self.other_metric is not None and not isinstance(self.other_metric, str):
             self.other_metric = str(self.other_metric)
 
-        if self.type is not None and not isinstance(self.type, EventType):
-            self.type = EventType(self.type)
+        if self.type is not None and not isinstance(self.type, MetricType):
+            self.type = MetricType(self.type)
 
         super().__post_init__(**kwargs)
 

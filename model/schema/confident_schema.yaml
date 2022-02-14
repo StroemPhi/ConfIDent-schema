@@ -59,11 +59,15 @@ classes:
 # AcademicEventSeries
   AcademicEventSeries:
     is_a: PlannedProcess
+    mixins: 
+      - CommonMetadata
     slots:
       - series_of
 # AcademicEvent
   AcademicEvent:
     is_a: PlannedProcess
+    mixins: 
+      - CommonMetadata
     slots:
       - at_location
       - in_series
@@ -142,7 +146,8 @@ classes:
       other_metric:
         range: string
     slot_usage:
-      type: MetricType
+      type:
+        range: MetricType
 # ProcessRelation
   ProcessRelation:
     slot_usage:
