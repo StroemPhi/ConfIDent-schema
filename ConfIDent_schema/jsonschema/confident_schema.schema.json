@@ -37,9 +37,6 @@
             "event_status": {
                "$ref": "#/$defs/EventStatus"
             },
-            "event_type": {
-               "$ref": "#/$defs/EventType"
-            },
             "id": {
                "type": "string"
             },
@@ -93,6 +90,9 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "type": {
+               "$ref": "#/$defs/EventType"
             },
             "website": {
                "type": "string"

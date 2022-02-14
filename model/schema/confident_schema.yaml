@@ -76,9 +76,12 @@ classes:
       - participants
       - ordinal
       - deadlines
-      - event_type
       - event_status
       - event_mode
+    slot_usage:
+      type: 
+        range: EventType
+        recommended: true
 
   Location:
     attributes:
@@ -205,12 +208,12 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  event_type:
-    range: EventType
   event_status:
     range: EventStatus
   event_mode:
     range: EventMode
+  default:
+    range: boolean
 
 
 #####################################
@@ -253,7 +256,8 @@ enums:
   EventStatus:
     permissible_values:
       as scheduled:
-        description: This should be used as default to indicate that an academic event takes place as planned.
+        description: |-
+          Default: used to indicate that the event takes place as planned.
       postponed:
       delayed:
       canceled:

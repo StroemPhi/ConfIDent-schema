@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-14T15:55:10
+# Generation date: 2022-02-14T16:23:39
 # Schema: ConfIDent-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
@@ -23,8 +23,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Datetime, Float, Integer, String, Uriorcurie
-from linkml_runtime.utils.metamodelcore import URIorCURIE, XSDDateTime
+from linkml_runtime.linkml_model.types import Boolean, Datetime, Float, Integer, String, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
 
@@ -269,9 +269,9 @@ class AcademicEvent(PlannedProcess):
     participants: Optional[str] = None
     ordinal: Optional[int] = None
     deadlines: Optional[Union[Union[dict, "Deadline"], List[Union[dict, "Deadline"]]]] = empty_list()
-    event_type: Optional[Union[str, "EventType"]] = None
     event_status: Optional[Union[str, "EventStatus"]] = None
     event_mode: Optional[Union[str, "EventMode"]] = None
+    type: Optional[Union[str, "EventType"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -298,14 +298,14 @@ class AcademicEvent(PlannedProcess):
             self.deadlines = [self.deadlines] if self.deadlines is not None else []
         self.deadlines = [v if isinstance(v, Deadline) else Deadline(**as_dict(v)) for v in self.deadlines]
 
-        if self.event_type is not None and not isinstance(self.event_type, EventType):
-            self.event_type = EventType(self.event_type)
-
         if self.event_status is not None and not isinstance(self.event_status, EventStatus):
             self.event_status = EventStatus(self.event_status)
 
         if self.event_mode is not None and not isinstance(self.event_mode, EventMode):
             self.event_mode = EventMode(self.event_mode)
+
+        if self.type is not None and not isinstance(self.type, EventType):
+            self.type = EventType(self.type)
 
         super().__post_init__(**kwargs)
 
@@ -620,7 +620,7 @@ class EventStatus(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "as scheduled",
                 PermissibleValue(text="as scheduled",
-                                 description="This should be used as default to indicate that an academic event takes place as planned.") )
+                                 description="Default: used to indicate that the event takes place as planned.") )
 
 class EventMode(EnumDefinitionImpl):
 
