@@ -199,6 +199,7 @@ slots:
   committees:
   participants:
   ordinal:
+    range: integer
   deadlines:
     range: Deadline
     recommended: true

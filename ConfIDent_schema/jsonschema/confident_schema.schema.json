@@ -56,7 +56,7 @@
                "type": "string"
             },
             "ordinal": {
-               "type": "string"
+               "type": "integer"
             },
             "organizers": {
                "items": {

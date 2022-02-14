@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-14T15:43:50
+# Generation date: 2022-02-14T15:44:44
 # Schema: ConfIDent-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
@@ -267,7 +267,7 @@ class AcademicEvent(PlannedProcess):
     in_series: Optional[Union[str, AcademicEventSeriesId]] = None
     committees: Optional[str] = None
     participants: Optional[str] = None
-    ordinal: Optional[str] = None
+    ordinal: Optional[int] = None
     deadlines: Optional[Union[Union[dict, "Deadline"], List[Union[dict, "Deadline"]]]] = empty_list()
     event_type: Optional[Union[str, "EventType"]] = None
     event_status: Optional[Union[str, "EventStatus"]] = None
@@ -290,8 +290,8 @@ class AcademicEvent(PlannedProcess):
         if self.participants is not None and not isinstance(self.participants, str):
             self.participants = str(self.participants)
 
-        if self.ordinal is not None and not isinstance(self.ordinal, str):
-            self.ordinal = str(self.ordinal)
+        if self.ordinal is not None and not isinstance(self.ordinal, int):
+            self.ordinal = int(self.ordinal)
 
         if not isinstance(self.deadlines, list):
             self.deadlines = [self.deadlines] if self.deadlines is not None else []
