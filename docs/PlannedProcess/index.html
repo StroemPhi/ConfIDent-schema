@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: event_relation - A model to describe academic events and event series.</title>
+  <title>Class: PlannedProcess - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: event_relation";
-    var mkdocs_page_input_path = "event_relation.md";
+    var mkdocs_page_name = "Class: PlannedProcess";
+    var mkdocs_page_input_path = "PlannedProcess.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: event_relation</li>
+    <li>Class: PlannedProcess</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,21 +91,90 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-event_relation">Slot: event_relation</h1>
-<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlevent_relation">confid:event_relation</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>0..1</sub> <a href="../AcademicEvent/">AcademicEvent</a></p>
+                <h1 id="class-plannedprocess">Class: PlannedProcess</h1>
+<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlPlannedProcess">confid:PlannedProcess</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Metric]&lt;metrics%200..*-++[PlannedProcess&#124;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;outputs:string%20%3F;topics:string%20%3F;academic_fields:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;id(i):string;name(i):string],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[NamedThing]^-[PlannedProcess],[NamedThing],[Metric],[CommonMetadata],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Metric]&lt;metrics%200..*-++[PlannedProcess&#124;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;outputs:string%20%3F;topics:string%20%3F;academic_fields:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;id(i):string;name(i):string],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[NamedThing]^-[PlannedProcess],[NamedThing],[Metric],[CommonMetadata],[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
 <ul>
-<li><a href="../in_series/">in_series</a></li>
-<li><a href="../series_of/">series_of</a></li>
+<li>is_a: <a href="../NamedThing/">NamedThing</a> - A generic grouping for any identifiable entity</li>
 </ul>
-<h2 id="used-by">Used by</h2>
+<h2 id="uses-mixin">Uses Mixin</h2>
+<ul>
+<li>mixin: <a href="../CommonMetadata/">CommonMetadata</a></li>
+</ul>
+<h2 id="children">Children</h2>
 <ul>
 <li><a href="../AcademicEvent/">AcademicEvent</a></li>
 <li><a href="../AcademicEventSeries/">AcademicEventSeries</a></li>
-<li><a href="../CommonMetadata/">CommonMetadata</a></li>
+</ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../acronym/">acronym</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../organizers/">organizers</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../sponsors/">sponsors</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../contact/">contact</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../outputs/">outputs</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../topics/">topics</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../academic_fields/">academic_fields</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../metrics/">metrics</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../Metric/">Metric</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-namedthing">Inherited from NamedThing:</h3>
+<ul>
+<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../name/">name</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-commonmetadata">Mixed in from CommonMetadata:</h3>
+<ul>
+<li><a href="../website/">website</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-commonmetadata_1">Mixed in from CommonMetadata:</h3>
+<ul>
+<li><a href="../logo/">logo</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-commonmetadata_2">Mixed in from CommonMetadata:</h3>
+<ul>
+<li><a href="../summary/">summary</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 </ul>
               
             </div>

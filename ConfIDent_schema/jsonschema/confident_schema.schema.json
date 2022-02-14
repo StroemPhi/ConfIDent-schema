@@ -4,7 +4,7 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "academic_field": {
+            "academic_fields": {
                "type": "string"
             },
             "acronym": {
@@ -26,9 +26,6 @@
                "type": "array"
             },
             "end_date": {
-               "type": "string"
-            },
-            "event_relation": {
                "type": "string"
             },
             "event_status": {
@@ -58,7 +55,7 @@
             "organizers": {
                "type": "string"
             },
-            "output": {
+            "outputs": {
                "type": "string"
             },
             "participants": {
@@ -73,7 +70,7 @@
             "summary": {
                "type": "string"
             },
-            "topic": {
+            "topics": {
                "type": "string"
             },
             "website": {
@@ -81,8 +78,8 @@
             }
          },
          "required": [
-            "name",
             "id",
+            "name",
             "organizers"
          ],
          "title": "AcademicEvent",
@@ -92,16 +89,13 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "academic_field": {
+            "academic_fields": {
                "type": "string"
             },
             "acronym": {
                "type": "string"
             },
             "contact": {
-               "type": "string"
-            },
-            "event_relation": {
                "type": "string"
             },
             "id": {
@@ -122,7 +116,10 @@
             "organizers": {
                "type": "string"
             },
-            "output": {
+            "outputs": {
+               "type": "string"
+            },
+            "series_of": {
                "type": "string"
             },
             "sponsors": {
@@ -131,7 +128,7 @@
             "summary": {
                "type": "string"
             },
-            "topic": {
+            "topics": {
                "type": "string"
             },
             "website": {
@@ -361,6 +358,61 @@
             "name"
          ],
          "title": "NamedThing",
+         "type": "object"
+      },
+      "PlannedProcess": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "academic_fields": {
+               "type": "string"
+            },
+            "acronym": {
+               "type": "string"
+            },
+            "contact": {
+               "type": "string"
+            },
+            "id": {
+               "type": "string"
+            },
+            "logo": {
+               "type": "string"
+            },
+            "metrics": {
+               "items": {
+                  "$ref": "#/$defs/Metric"
+               },
+               "type": "array"
+            },
+            "name": {
+               "type": "string"
+            },
+            "organizers": {
+               "type": "string"
+            },
+            "outputs": {
+               "type": "string"
+            },
+            "sponsors": {
+               "type": "string"
+            },
+            "summary": {
+               "type": "string"
+            },
+            "topics": {
+               "type": "string"
+            },
+            "website": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "name",
+            "organizers"
+         ],
+         "title": "PlannedProcess",
          "type": "object"
       },
       "Region": {

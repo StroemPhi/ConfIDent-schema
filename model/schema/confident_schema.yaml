@@ -33,18 +33,9 @@ classes:
   CommonMetadata:
     mixin: true
     slots:
-      - acronym
-      - organizers
-      - sponsors
-      - contact
-      - event_relation
-      - output
-      - topic
-      - academic_field
       - website
       - logo
       - summary
-      - metrics
 
   NamedThing:
     description: >-
@@ -55,15 +46,28 @@ classes:
     close_mappings:
      - sdo:Thing
 
-  AcademicEventSeries:
+  PlannedProcess:
     is_a: NamedThing
     mixins: 
       - CommonMetadata
+    slots:
+      - acronym
+      - organizers
+      - sponsors
+      - contact
+      - outputs
+      - topics
+      - academic_fields
+      - metrics
+
+  AcademicEventSeries:
+    is_a: PlannedProcess
+    slots:
+      - series_of
+    
 
   AcademicEvent:
-    is_a: NamedThing
-    mixins:
-      - CommonMetadata
+    is_a: PlannedProcess
     slots:
       - at_location
       - start_date
@@ -74,11 +78,6 @@ classes:
       - deadlines
       - event_type
       - event_status
-    slot_usage:
-      id:
-        id_prefixes:
-          - orcid
-          - wikidata
 
   Location:
     is_a: NamedThing
@@ -144,26 +143,23 @@ slots:
   name:
     required: true
 # common metadata properties
+  website:
+  logo:
+  summary:
+
+
+# planned process properties
   acronym:
   organizers:
     required: true
   sponsors:
     recommended: true
   contact:
-  event_relation:
-    range: AcademicEvent
-  in_series:
-    is_a: event_relation
-    range: AcademicEventSeries
   series_of:
-    is_a: event_relation
     range: AcademicEvent
-  output:
-  topic:
-  academic_field:
-  website:
-  logo:
-  summary:
+  outputs:
+  topics:
+  academic_fields:
   metrics:
     multivalued: true
     inlined: true
@@ -174,9 +170,11 @@ slots:
 
 
 # academic event properties
-  at_location:
+  at_location:  
   start_date:
   end_date:
+  in_series:
+    range: AcademicEventSeries
   committees:
   participants:
   ordinal:

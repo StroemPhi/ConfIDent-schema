@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-14T15:14:36\n    Schema: ConfIDent-schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
+   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-14T15:21:35\n    Schema: ConfIDent-schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
    "@context": {
       "aeon": {
          "@id": "https://github.com/tibonto/aeon#AEON_",
@@ -23,7 +23,6 @@
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "wikidata": "https://www.wikidata.org/wiki/",
       "@vocab": "https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml",
-      "id": "@id",
       "lattitude": {
          "@type": "xsd:float"
       },
@@ -34,9 +33,6 @@
          "@type": "xsd:dateTime"
       },
       "deadlines": {
-         "@type": "@id"
-      },
-      "event_relation": {
          "@type": "@id"
       },
       "event_status": {
@@ -55,6 +51,7 @@
             "meaning": "@id"
          }
       },
+      "id": "@id",
       "in_series": {
          "@type": "@id"
       },
