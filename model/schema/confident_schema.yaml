@@ -77,6 +77,11 @@ classes:
       type: 
         range: EventType
         recommended: true
+      start_date:
+        required: true
+      end_date: 
+        required: true
+
 # Location
   Location:
     attributes:
@@ -230,11 +235,6 @@ slots:
     range: EventStatus
   event_mode:
     range: EventMode
-  slot_usage:
-    start_date:
-      required: true
-    end_date: 
-      required: true
 
 #####################################
 #               Enums               #

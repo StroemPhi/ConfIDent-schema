@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-14T17:53:42
+# Generation date: 2022-02-14T18:14:42
 # Schema: ConfIDent-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
@@ -252,6 +252,8 @@ class AcademicEvent(PlannedProcess):
     id: Union[str, AcademicEventId] = None
     has_name: Union[Union[dict, "Name"], List[Union[dict, "Name"]]] = None
     organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
+    start_date: Union[str, XSDDateTime] = None
+    end_date: Union[str, XSDDateTime] = None
     at_location: Optional[Union[dict, "Location"]] = None
     in_series: Optional[Union[str, AcademicEventSeriesId]] = None
     committees: Optional[str] = None
@@ -267,6 +269,16 @@ class AcademicEvent(PlannedProcess):
             self.MissingRequiredField("id")
         if not isinstance(self.id, AcademicEventId):
             self.id = AcademicEventId(self.id)
+
+        if self._is_empty(self.start_date):
+            self.MissingRequiredField("start_date")
+        if not isinstance(self.start_date, XSDDateTime):
+            self.start_date = XSDDateTime(self.start_date)
+
+        if self._is_empty(self.end_date):
+            self.MissingRequiredField("end_date")
+        if not isinstance(self.end_date, XSDDateTime):
+            self.end_date = XSDDateTime(self.end_date)
 
         if self.at_location is not None and not isinstance(self.at_location, Location):
             self.at_location = Location(**as_dict(self.at_location))

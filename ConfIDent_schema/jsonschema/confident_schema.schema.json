@@ -115,7 +115,9 @@
          "required": [
             "has_name",
             "organizers",
-            "id"
+            "id",
+            "start_date",
+            "end_date"
          ],
          "title": "AcademicEvent",
          "type": "object"
