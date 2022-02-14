@@ -30,22 +30,20 @@ imports:
 #####################################
 #             Classes               #
 #####################################
-classes:
-# Mixins
-  CommonMetadata:
-    mixin: true
+classes:  
+
+# Container
+  Container:
     slots:
-      - id
-      - xrefs
-      - website
-      - logo
-      - summary
+      - events
+      - series
+
 # PlannedProcess
   PlannedProcess:
-    mixins: 
-      - CommonMetadata
     slots:
-      - has_name
+      - id
+      - process_name
+      - alternative_ids
       - start_date
       - end_date
       - organizers
@@ -55,28 +53,29 @@ classes:
       - academic_fields
       - metrics
       - contact
+      - website
+      - logo
+      - summary
+      - in_series
+      - series_of   
       - related_to
+
 # AcademicEventSeries
   AcademicEventSeries:
     is_a: PlannedProcess
-    mixins: 
-      - CommonMetadata
-    slots:
-      - series_of
+    slot_usage:
+      series_of:
+        recommended: true
+        range: AcademicEvent
 # AcademicEvent
   AcademicEvent:
     is_a: PlannedProcess
-    mixins: 
-      - CommonMetadata
     slots:
-      - at_location
-      - in_series
-      - committees
-      - participants
-      - ordinal
-      - deadlines
       - event_status
       - event_mode
+      - at_location
+      - ordinal
+      - deadlines
     slot_usage:
       type: 
         range: EventType
@@ -85,53 +84,23 @@ classes:
         required: true
       end_date: 
         required: true
-
-# Location
-  Location:
-    attributes:
-      city:
-        range: City
+      in_series:
         recommended: true
-      country:
-        range: Country
-        recommended: true
-      region:
-        range: Region
-      venue:
-        range: Venue
-      lattitude:
-        range: float
-      longitude:
-        range: float
-      meeting_url:
-        range: uriorcurie
-  City:
-    mixins: 
-      - CommonMetadata
-  Country:
-    mixins: 
-      - CommonMetadata
-  Region:
-    mixins: 
-      - CommonMetadata
-  Venue:
-    mixins: 
-      - CommonMetadata
-    attributes:
-      address:
-        range: string
-# Deadline
-  Deadline:
-    attributes:
-      deadline_date:
-        range: datetime
-        required: true        
-      deadline_other:
-        range: string
-    slot_usage:
-      type: 
-        range: DeadlineType
+        range: AcademicEventSeries
+      organizers:
         required: true
+      sponsors:
+        recommended: true
+      event_status:
+        required: true
+# ProcessName
+  ProcessName:
+    attributes:
+      name:
+        range: string
+        required: true
+      name_type:
+        range: NameType     
 # Metric
   Metric:
     attributes:
@@ -152,63 +121,149 @@ classes:
   ProcessRelation:
     slot_usage:
       type:
-        range: ProcessRelationType
-# Organizer
+        range: RelationType
+# Contributor
   Organizer:
-    mixins: 
-      - CommonMetadata
-# Name
-  Name:
+    slots:
+      - persons
+      - organisations
+  Sponsor:
+    slots:
+      - persons
+      - organisations
+  Contributor:
+    slots:
+      - persons
+    slot_usage:
+      type: 
+        range: ContributorType
+# Location
+  Location:
     attributes:
-      name:
-        required: true
+      city:
+        range: City
+        recommended: true
+      country:
+        range: Country
+        recommended: true
+      region:
+        range: Region
+      venue:
+        range: Venue
+      lattitude:
+        range: float
+      longitude:
+        range: float
+      meeting_url:
+        range: uriorcurie
+  City:
+    slots:
+      - id
+      - name
+  Country:
+    slots:
+      - id
+      - name
+  Region:
+    slots:
+      - id
+      - name
+  Venue:
+    slots:
+      - id
+      - name
+      - address     
+# Deadline
+  Deadline:
+    attributes:
+      deadline_date:
+        range: datetime
+        required: true        
+      deadline_other:
         range: string
     slot_usage:
-      type:
+      type: 
+        range: DeadlineType
         required: true
-        range: NameType
+# Person
+  Person:
+    description: >-
+      A person (alive, dead, undead, or fictional).
+    class_uri: sdo:Person
+    slots:
+      - id
+      - name
+    slot_usage:
+      name:
+        required: true
+      id:
+        recommended: true
+    id_prefixes:
+      - orcid
+      - wikidata
+# Organisation
+  Organisation:
+    description: >-
+      An organization such as a company or university
+    class_uri: sdo:Organization
+    slots:
+      - id
+      - name
+    slot_usage:
+      name:
+        required: true
+      id:
+        recommended: true
+    id_prefixes:
+      - orcid
+      - wikidata
+
 
 #####################################
 #              Slots                #
 #####################################
 slots:
-# CommonMetadata properties
+# Common properties
   id:
     identifier: true
-    required: true
+    slot_uri: sdo:identifier
     range: uriorcurie
-  xrefs:
+  name:
+    range: string
+    slot_uri: sdo:name
+  first_name:
+    is_a: name
+    range: string
+  last_name:
+    is_a: name
+    range: string
+  process_name:
+    range: ProcessName
+  alternative_ids:
     multivalued: true
     inlined_as_list: true
     range: uriorcurie
   website:
   logo:
   summary:
+  address: 
+# Container
+  events:
+    range: AcademicEvent
+    multivalued: true
+    inlined_as_list: true
+  series:
+    range: AcademicEventSeries
+    multivalued: true
+    inlined_as_list: true
 # PlannedProcess properties
   start_date:
     range: datetime
   end_date:
     range: datetime
-  has_name:
-    required: true
-    multivalued: true
-    inlined_as_list: true
-    range: Name
-  organizers:
-    required: true
-    multivalued: true
-    inlined_as_list: true
-    range: Organizer
-  sponsors:
-    recommended: true
-    multivalued: true
-    inlined_as_list: true
   contact:
   outputs:
     multivalued: true
-  related_to:
-    multivalued: true
-    range: ProcessRelation 
   topics:
     multivalued: true
     range: string
@@ -220,15 +275,12 @@ slots:
     range: Metric
 # AcademicEventSeries properties
   series_of:
-    range: AcademicEvent
 # AcademicEvent properties
   at_location:
     range: Location
   in_series:
-    range: AcademicEventSeries
-  committees:
-  participants:
   ordinal:
+    recommended: true
     range: integer
   deadlines:
     range: Deadline
@@ -240,6 +292,25 @@ slots:
     range: EventStatus
   event_mode:
     range: EventMode
+  related_to:
+    multivalued: true
+    range: ProcessRelation 
+# Contributors
+  organizers:
+    multivalued: true
+    inlined_as_list: true
+    range: Organizer
+  sponsors:
+    multivalued: true
+    inlined_as_list: true
+  contributors:
+    multivalued: true
+    inlined_as_list: true
+    range: Contributor
+  persons:
+    range: Person
+  organisations:
+    range: Organisation
 
 #####################################
 #               Enums               #
@@ -313,7 +384,7 @@ enums:
         meaning: aeon:0000068
       workshop deadline:
         meaning: aeon:0000069
-  ProcessRelationType:
+  RelationType:
     permissible_values:
       isUmbrellaEventOf:
       hasUmbrellaEvent:
@@ -321,8 +392,6 @@ enums:
       isColocatedEventOf:
       isSubEventOf:
       hasSubEvent:
-      hasSeries:
-      isSeriesOf:
   MetricType:
     permissible_values:
       submitted papers:
@@ -338,6 +407,12 @@ enums:
       official name:
       acronym:
       alternative name:
+  ContributorType:
+    permissible_values:
+      presenter:
+      keynote speaker:
+      moderator:
+      attendee:
 
 
 

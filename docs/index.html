@@ -116,31 +116,35 @@
 <h3 id="classes">Classes</h3>
 <ul>
 <li><a href="City/">City</a></li>
+<li><a href="Container/">Container</a></li>
+<li><a href="Contributor/">Contributor</a></li>
 <li><a href="Country/">Country</a></li>
 <li><a href="Deadline/">Deadline</a></li>
 <li><a href="Location/">Location</a></li>
 <li><a href="Metric/">Metric</a></li>
-<li><a href="Name/">Name</a></li>
+<li><a href="Organisation/">Organisation</a> - An organization such as a company or university</li>
 <li><a href="Organizer/">Organizer</a></li>
+<li><a href="Person/">Person</a> - A person (alive, dead, undead, or fictional).</li>
 <li><a href="PlannedProcess/">PlannedProcess</a><ul>
 <li><a href="AcademicEvent/">AcademicEvent</a></li>
 <li><a href="AcademicEventSeries/">AcademicEventSeries</a></li>
 </ul>
 </li>
+<li><a href="ProcessName/">ProcessName</a></li>
 <li><a href="ProcessRelation/">ProcessRelation</a></li>
 <li><a href="Region/">Region</a></li>
+<li><a href="Sponsor/">Sponsor</a></li>
 <li><a href="Venue/">Venue</a></li>
 </ul>
 <h3 id="mixins">Mixins</h3>
-<ul>
-<li><a href="CommonMetadata/">CommonMetadata</a></li>
-</ul>
 <h3 id="slots">Slots</h3>
 <ul>
 <li><a href="academic_fields/">academic_fields</a></li>
+<li><a href="address/">address</a></li>
+<li><a href="alternative_ids/">alternative_ids</a></li>
 <li><a href="at_location/">at_location</a></li>
-<li><a href="committees/">committees</a></li>
 <li><a href="contact/">contact</a></li>
+<li><a href="contributors/">contributors</a></li>
 <li><a href="deadline__deadline_date/">➞deadline_date</a></li>
 <li><a href="deadline__deadline_other/">➞deadline_other</a></li>
 <li><a href="deadlines/">deadlines</a></li>
@@ -149,10 +153,20 @@
 </ul>
 </li>
 <li><a href="event_mode/">event_mode</a></li>
-<li><a href="event_status/">event_status</a></li>
-<li><a href="has_name/">has_name</a></li>
-<li><a href="id/">id</a></li>
-<li><a href="in_series/">in_series</a></li>
+<li><a href="event_status/">event_status</a><ul>
+<li><a href="AcademicEvent_event_status/">AcademicEvent➞event_status</a></li>
+</ul>
+</li>
+<li><a href="events/">events</a></li>
+<li><a href="id/">id</a><ul>
+<li><a href="Organisation_id/">Organisation➞id</a></li>
+<li><a href="Person_id/">Person➞id</a></li>
+</ul>
+</li>
+<li><a href="in_series/">in_series</a><ul>
+<li><a href="AcademicEvent_in_series/">AcademicEvent➞in_series</a></li>
+</ul>
+</li>
 <li><a href="location__city/">➞city</a></li>
 <li><a href="location__country/">➞country</a></li>
 <li><a href="location__lattitude/">➞lattitude</a></li>
@@ -167,14 +181,34 @@
 <li><a href="metric__str_value/">➞str_value</a></li>
 <li><a href="metric__truth_value/">➞truth_value</a></li>
 <li><a href="metrics/">metrics</a></li>
-<li><a href="name__name/">➞name</a></li>
+<li><a href="name/">name</a><ul>
+<li><a href="Organisation_name/">Organisation➞name</a></li>
+<li><a href="Person_name/">Person➞name</a></li>
+<li><a href="first_name/">first_name</a></li>
+<li><a href="last_name/">last_name</a></li>
+</ul>
+</li>
 <li><a href="ordinal/">ordinal</a></li>
-<li><a href="organizers/">organizers</a></li>
+<li><a href="organisations/">organisations</a></li>
+<li><a href="organizers/">organizers</a><ul>
+<li><a href="AcademicEvent_organizers/">AcademicEvent➞organizers</a></li>
+</ul>
+</li>
 <li><a href="outputs/">outputs</a></li>
-<li><a href="participants/">participants</a></li>
+<li><a href="persons/">persons</a></li>
+<li><a href="processName__name/">➞name</a></li>
+<li><a href="processName__name_type/">➞name_type</a></li>
+<li><a href="process_name/">process_name</a></li>
 <li><a href="related_to/">related_to</a></li>
-<li><a href="series_of/">series_of</a></li>
-<li><a href="sponsors/">sponsors</a></li>
+<li><a href="series/">series</a></li>
+<li><a href="series_of/">series_of</a><ul>
+<li><a href="AcademicEventSeries_series_of/">AcademicEventSeries➞series_of</a></li>
+</ul>
+</li>
+<li><a href="sponsors/">sponsors</a><ul>
+<li><a href="AcademicEvent_sponsors/">AcademicEvent➞sponsors</a></li>
+</ul>
+</li>
 <li><a href="start_date/">start_date</a><ul>
 <li><a href="AcademicEvent_start_date/">AcademicEvent➞start_date</a></li>
 </ul>
@@ -183,25 +217,24 @@
 <li><a href="topics/">topics</a></li>
 <li><a href="type/">type</a><ul>
 <li><a href="AcademicEvent_type/">AcademicEvent➞type</a></li>
+<li><a href="Contributor_type/">Contributor➞type</a></li>
 <li><a href="Deadline_type/">Deadline➞type</a></li>
 <li><a href="Metric_type/">Metric➞type</a></li>
-<li><a href="Name_type/">Name➞type</a></li>
 <li><a href="ProcessRelation_type/">ProcessRelation➞type</a></li>
 </ul>
 </li>
-<li><a href="venue__address/">➞address</a></li>
 <li><a href="website/">website</a></li>
-<li><a href="xrefs/">xrefs</a></li>
 </ul>
 <h3 id="enums">Enums</h3>
 <ul>
+<li><a href="ContributorType/">ContributorType</a></li>
 <li><a href="DeadlineType/">DeadlineType</a></li>
 <li><a href="EventMode/">EventMode</a></li>
 <li><a href="EventStatus/">EventStatus</a></li>
 <li><a href="EventType/">EventType</a></li>
 <li><a href="MetricType/">MetricType</a></li>
 <li><a href="NameType/">NameType</a></li>
-<li><a href="ProcessRelationType/">ProcessRelationType</a></li>
+<li><a href="RelationType/">RelationType</a></li>
 </ul>
 <h3 id="subsets">Subsets</h3>
 <h3 id="types">Types</h3>
@@ -296,5 +329,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-02-14 17:30:49.515459+00:00
+Build Date UTC : 2022-02-14 21:37:38.165146+00:00
 -->

@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-14T18:26:37\n    Schema: ConfIDent-schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
+   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-14T22:37:53\n    Schema: ConfIDent-schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
    "@context": {
       "aeon": {
          "@id": "https://github.com/tibonto/aeon#AEON_",
@@ -23,7 +23,13 @@
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "wikidata": "https://www.wikidata.org/wiki/",
       "@vocab": "https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml",
+      "alternative_ids": {
+         "@type": "@id"
+      },
       "at_location": {
+         "@type": "@id"
+      },
+      "contributors": {
          "@type": "@id"
       },
       "deadline_date": {
@@ -51,13 +57,10 @@
             "meaning": "@id"
          }
       },
-      "has_name": {
+      "events": {
          "@type": "@id"
       },
       "id": "@id",
-      "in_series": {
-         "@type": "@id"
-      },
       "city": {
          "@type": "@id"
       },
@@ -91,16 +94,36 @@
       "metrics": {
          "@type": "@id"
       },
+      "name": {
+         "@id": "sdo:name"
+      },
       "ordinal": {
          "@type": "xsd:integer"
+      },
+      "organisations": {
+         "@type": "@id"
       },
       "organizers": {
          "@type": "@id"
       },
+      "persons": {
+         "@type": "@id"
+      },
+      "process_name": {
+         "@type": "@id"
+      },
+      "name_type": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
       "related_to": {
          "@type": "@id"
       },
-      "series_of": {
+      "series": {
          "@type": "@id"
       },
       "start_date": {
@@ -114,8 +137,11 @@
             "meaning": "@id"
          }
       },
-      "xrefs": {
-         "@type": "@id"
+      "Organisation": {
+         "@id": "sdo:Organization"
+      },
+      "Person": {
+         "@id": "sdo:Person"
       }
    }
 }

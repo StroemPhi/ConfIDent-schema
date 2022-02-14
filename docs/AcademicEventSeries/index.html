@@ -93,31 +93,36 @@
               
                 <h1 id="class-academiceventseries">Class: AcademicEventSeries</h1>
 <p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlAcademicEventSeries">confid:AcademicEventSeries</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[PlannedProcess],[Organizer],[Name],[Metric],[CommonMetadata],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;start_date(i):datetime%20%3F;end_date(i):datetime%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;id(i):uriorcurie;xrefs(i):uriorcurie%20*;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[AcademicEventSeries]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[PlannedProcess],[Organizer],[Name],[Metric],[CommonMetadata],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;start_date(i):datetime%20%3F;end_date(i):datetime%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;id(i):uriorcurie;xrefs(i):uriorcurie%20*;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[AcademicEventSeries]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;id(i):uriorcurie;alternative_ids(i):uriorcurie%20*;start_date(i):datetime%20%3F;end_date(i):datetime%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;in_series(i):string%20%3F],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[Container]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[Container],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;id(i):uriorcurie;alternative_ids(i):uriorcurie%20*;start_date(i):datetime%20%3F;end_date(i):datetime%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;in_series(i):string%20%3F],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[Container]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[Container],[AcademicEvent]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../PlannedProcess/">PlannedProcess</a></li>
 </ul>
-<h2 id="uses-mixin">Uses Mixin</h2>
-<ul>
-<li>mixin: <a href="../CommonMetadata/">CommonMetadata</a></li>
-</ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li><strong>None</strong> <em><a href="../in_series/">in_series</a></em>  <sub>0..1</sub>  <strong><a href="./">AcademicEventSeries</a></strong></li>
+<li><strong><a href="../AcademicEvent/">AcademicEvent</a></strong> <em><a href="../AcademicEvent_in_series/">AcademicEvent➞in_series</a></em>  <sub>0..1</sub>  <strong><a href="./">AcademicEventSeries</a></strong></li>
+<li><strong>None</strong> <em><a href="../series/">series</a></em>  <sub>0..*</sub>  <strong><a href="./">AcademicEventSeries</a></strong></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../series_of/">series_of</a>  <sub>0..1</sub><ul>
+<li><a href="../AcademicEventSeries_series_of/">AcademicEventSeries➞series_of</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../AcademicEvent/">AcademicEvent</a></li>
 </ul>
 </li>
 </ul>
 <h3 id="inherited-from-plannedprocess">Inherited from PlannedProcess:</h3>
 <ul>
-<li><a href="../has_name/">has_name</a>  <sub>1..*</sub><ul>
-<li>Range: <a href="../Name/">Name</a></li>
+<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../process_name/">process_name</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../ProcessName/">ProcessName</a></li>
+</ul>
+</li>
+<li><a href="../alternative_ids/">alternative_ids</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
 <li><a href="../start_date/">start_date</a>  <sub>0..1</sub><ul>
@@ -128,7 +133,7 @@
 <li>Range: <a href="../Datetime/">Datetime</a></li>
 </ul>
 </li>
-<li><a href="../organizers/">organizers</a>  <sub>1..*</sub><ul>
+<li><a href="../organizers/">organizers</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../Organizer/">Organizer</a></li>
 </ul>
 </li>
@@ -156,43 +161,24 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../related_to/">related_to</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../ProcessRelation/">ProcessRelation</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-commonmetadata">Mixed in from CommonMetadata:</h3>
-<ul>
-<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-commonmetadata_1">Mixed in from CommonMetadata:</h3>
-<ul>
-<li><a href="../xrefs/">xrefs</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-commonmetadata_2">Mixed in from CommonMetadata:</h3>
-<ul>
 <li><a href="../website/">website</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-</ul>
-<h3 id="mixed-in-from-commonmetadata_3">Mixed in from CommonMetadata:</h3>
-<ul>
 <li><a href="../logo/">logo</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-</ul>
-<h3 id="mixed-in-from-commonmetadata_4">Mixed in from CommonMetadata:</h3>
-<ul>
 <li><a href="../summary/">summary</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../in_series/">in_series</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../related_to/">related_to</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../ProcessRelation/">ProcessRelation</a></li>
 </ul>
 </li>
 </ul>

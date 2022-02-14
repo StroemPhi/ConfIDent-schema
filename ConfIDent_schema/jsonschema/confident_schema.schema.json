@@ -10,11 +10,14 @@
                },
                "type": "array"
             },
+            "alternative_ids": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "at_location": {
                "$ref": "#/$defs/Location"
-            },
-            "committees": {
-               "type": "string"
             },
             "contact": {
                "type": "string"
@@ -34,12 +37,6 @@
             },
             "event_status": {
                "$ref": "#/$defs/EventStatus"
-            },
-            "has_name": {
-               "items": {
-                  "$ref": "#/$defs/Name"
-               },
-               "type": "array"
             },
             "id": {
                "type": "string"
@@ -71,14 +68,17 @@
                },
                "type": "array"
             },
-            "participants": {
-               "type": "string"
+            "process_name": {
+               "$ref": "#/$defs/ProcessName"
             },
             "related_to": {
                "items": {
                   "$ref": "#/$defs/ProcessRelation"
                },
                "type": "array"
+            },
+            "series_of": {
+               "type": "string"
             },
             "sponsors": {
                "items": {
@@ -104,20 +104,14 @@
             },
             "website": {
                "type": "string"
-            },
-            "xrefs": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             }
          },
          "required": [
-            "has_name",
-            "organizers",
             "id",
+            "event_status",
             "start_date",
-            "end_date"
+            "end_date",
+            "organizers"
          ],
          "title": "AcademicEvent",
          "type": "object"
@@ -132,6 +126,12 @@
                },
                "type": "array"
             },
+            "alternative_ids": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "contact": {
                "type": "string"
             },
@@ -139,13 +139,10 @@
                "format": "date-time",
                "type": "string"
             },
-            "has_name": {
-               "items": {
-                  "$ref": "#/$defs/Name"
-               },
-               "type": "array"
-            },
             "id": {
+               "type": "string"
+            },
+            "in_series": {
                "type": "string"
             },
             "logo": {
@@ -168,6 +165,9 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "process_name": {
+               "$ref": "#/$defs/ProcessName"
             },
             "related_to": {
                "items": {
@@ -199,17 +199,9 @@
             },
             "website": {
                "type": "string"
-            },
-            "xrefs": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             }
          },
          "required": [
-            "has_name",
-            "organizers",
             "id"
          ],
          "title": "AcademicEventSeries",
@@ -222,20 +214,8 @@
             "id": {
                "type": "string"
             },
-            "logo": {
+            "name": {
                "type": "string"
-            },
-            "summary": {
-               "type": "string"
-            },
-            "website": {
-               "type": "string"
-            },
-            "xrefs": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             }
          },
          "required": [
@@ -244,6 +224,53 @@
          "title": "City",
          "type": "object"
       },
+      "Container": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "events": {
+               "items": {
+                  "$ref": "#/$defs/AcademicEvent"
+               },
+               "type": "array"
+            },
+            "series": {
+               "items": {
+                  "$ref": "#/$defs/AcademicEventSeries"
+               },
+               "type": "array"
+            }
+         },
+         "required": [],
+         "title": "Container",
+         "type": "object"
+      },
+      "Contributor": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "persons": {
+               "type": "string"
+            },
+            "type": {
+               "$ref": "#/$defs/ContributorType"
+            }
+         },
+         "required": [],
+         "title": "Contributor",
+         "type": "object"
+      },
+      "ContributorType": {
+         "description": "",
+         "enum": [
+            "presenter",
+            "keynote speaker",
+            "moderator",
+            "attendee"
+         ],
+         "title": "ContributorType",
+         "type": "string"
+      },
       "Country": {
          "additionalProperties": false,
          "description": "",
@@ -251,20 +278,8 @@
             "id": {
                "type": "string"
             },
-            "logo": {
+            "name": {
                "type": "string"
-            },
-            "summary": {
-               "type": "string"
-            },
-            "website": {
-               "type": "string"
-            },
-            "xrefs": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             }
          },
          "required": [
@@ -425,24 +440,6 @@
          "title": "MetricType",
          "type": "string"
       },
-      "Name": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "name": {
-               "type": "string"
-            },
-            "type": {
-               "$ref": "#/$defs/NameType"
-            }
-         },
-         "required": [
-            "name",
-            "type"
-         ],
-         "title": "Name",
-         "type": "object"
-      },
       "NameType": {
          "description": "",
          "enum": [
@@ -453,33 +450,55 @@
          "title": "NameType",
          "type": "string"
       },
-      "Organizer": {
+      "Organisation": {
          "additionalProperties": false,
-         "description": "",
+         "description": "An organization such as a company or university",
          "properties": {
             "id": {
                "type": "string"
             },
-            "logo": {
+            "name": {
                "type": "string"
-            },
-            "summary": {
-               "type": "string"
-            },
-            "website": {
-               "type": "string"
-            },
-            "xrefs": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             }
          },
          "required": [
-            "id"
+            "id",
+            "name"
          ],
+         "title": "Organisation",
+         "type": "object"
+      },
+      "Organizer": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "organisations": {
+               "type": "string"
+            },
+            "persons": {
+               "type": "string"
+            }
+         },
+         "required": [],
          "title": "Organizer",
+         "type": "object"
+      },
+      "Person": {
+         "additionalProperties": false,
+         "description": "A person (alive, dead, undead, or fictional).",
+         "properties": {
+            "id": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "name"
+         ],
+         "title": "Person",
          "type": "object"
       },
       "PlannedProcess": {
@@ -492,6 +511,12 @@
                },
                "type": "array"
             },
+            "alternative_ids": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "contact": {
                "type": "string"
             },
@@ -499,13 +524,10 @@
                "format": "date-time",
                "type": "string"
             },
-            "has_name": {
-               "items": {
-                  "$ref": "#/$defs/Name"
-               },
-               "type": "array"
-            },
             "id": {
+               "type": "string"
+            },
+            "in_series": {
                "type": "string"
             },
             "logo": {
@@ -529,11 +551,17 @@
                },
                "type": "array"
             },
+            "process_name": {
+               "$ref": "#/$defs/ProcessName"
+            },
             "related_to": {
                "items": {
                   "$ref": "#/$defs/ProcessRelation"
                },
                "type": "array"
+            },
+            "series_of": {
+               "type": "string"
             },
             "sponsors": {
                "items": {
@@ -556,20 +584,29 @@
             },
             "website": {
                "type": "string"
-            },
-            "xrefs": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             }
          },
          "required": [
-            "has_name",
-            "organizers",
             "id"
          ],
          "title": "PlannedProcess",
+         "type": "object"
+      },
+      "ProcessName": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "name": {
+               "type": "string"
+            },
+            "name_type": {
+               "$ref": "#/$defs/NameType"
+            }
+         },
+         "required": [
+            "name"
+         ],
+         "title": "ProcessName",
          "type": "object"
       },
       "ProcessRelation": {
@@ -577,27 +614,12 @@
          "description": "",
          "properties": {
             "type": {
-               "$ref": "#/$defs/ProcessRelationType"
+               "$ref": "#/$defs/RelationType"
             }
          },
          "required": [],
          "title": "ProcessRelation",
          "type": "object"
-      },
-      "ProcessRelationType": {
-         "description": "",
-         "enum": [
-            "isUmbrellaEventOf",
-            "hasUmbrellaEvent",
-            "isJointEventOf",
-            "isColocatedEventOf",
-            "isSubEventOf",
-            "hasSubEvent",
-            "hasSeries",
-            "isSeriesOf"
-         ],
-         "title": "ProcessRelationType",
-         "type": "string"
       },
       "Region": {
          "additionalProperties": false,
@@ -606,26 +628,42 @@
             "id": {
                "type": "string"
             },
-            "logo": {
+            "name": {
                "type": "string"
-            },
-            "summary": {
-               "type": "string"
-            },
-            "website": {
-               "type": "string"
-            },
-            "xrefs": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             }
          },
          "required": [
             "id"
          ],
          "title": "Region",
+         "type": "object"
+      },
+      "RelationType": {
+         "description": "",
+         "enum": [
+            "isUmbrellaEventOf",
+            "hasUmbrellaEvent",
+            "isJointEventOf",
+            "isColocatedEventOf",
+            "isSubEventOf",
+            "hasSubEvent"
+         ],
+         "title": "RelationType",
+         "type": "string"
+      },
+      "Sponsor": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "organisations": {
+               "type": "string"
+            },
+            "persons": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "Sponsor",
          "type": "object"
       },
       "Venue": {
@@ -638,20 +676,8 @@
             "id": {
                "type": "string"
             },
-            "logo": {
+            "name": {
                "type": "string"
-            },
-            "summary": {
-               "type": "string"
-            },
-            "website": {
-               "type": "string"
-            },
-            "xrefs": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             }
          },
          "required": [
