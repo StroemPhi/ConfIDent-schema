@@ -222,21 +222,6 @@
          "title": "City",
          "type": "object"
       },
-      "Coordinates": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "lattitude": {
-               "type": "number"
-            },
-            "longitude": {
-               "type": "number"
-            }
-         },
-         "required": [],
-         "title": "Coordinates",
-         "type": "object"
-      },
       "Country": {
          "additionalProperties": false,
          "description": "",
@@ -333,19 +318,16 @@
             "city": {
                "type": "string"
             },
-            "coordinates": {
-               "$ref": "#/$defs/Coordinates"
-            },
             "country": {
                "type": "string"
             },
-            "id": {
-               "type": "string"
+            "lattitude": {
+               "type": "number"
+            },
+            "longitude": {
+               "type": "number"
             },
             "meeting_url": {
-               "type": "string"
-            },
-            "name": {
                "type": "string"
             },
             "region": {
@@ -355,10 +337,7 @@
                "type": "string"
             }
          },
-         "required": [
-            "id",
-            "name"
-         ],
+         "required": [],
          "title": "Location",
          "type": "object"
       },

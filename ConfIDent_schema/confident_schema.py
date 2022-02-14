@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-14T15:39:02
+# Generation date: 2022-02-14T15:43:50
 # Schema: ConfIDent-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
@@ -62,10 +62,6 @@ class AcademicEventSeriesId(PlannedProcessId):
 
 
 class AcademicEventId(PlannedProcessId):
-    pass
-
-
-class LocationId(NamedThingId):
     pass
 
 
@@ -311,7 +307,7 @@ class AcademicEvent(PlannedProcess):
 
 
 @dataclass
-class Location(NamedThing):
+class Location(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFID.Location
@@ -319,21 +315,15 @@ class Location(NamedThing):
     class_name: ClassVar[str] = "Location"
     class_model_uri: ClassVar[URIRef] = CONFID.Location
 
-    id: Union[str, LocationId] = None
-    name: str = None
     city: Optional[Union[str, CityId]] = None
     country: Optional[Union[str, CountryId]] = None
     region: Optional[Union[str, RegionId]] = None
     venue: Optional[Union[str, VenueId]] = None
-    coordinates: Optional[Union[dict, "Coordinates"]] = None
+    lattitude: Optional[float] = None
+    longitude: Optional[float] = None
     meeting_url: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, LocationId):
-            self.id = LocationId(self.id)
-
         if self.city is not None and not isinstance(self.city, CityId):
             self.city = CityId(self.city)
 
@@ -346,8 +336,11 @@ class Location(NamedThing):
         if self.venue is not None and not isinstance(self.venue, VenueId):
             self.venue = VenueId(self.venue)
 
-        if self.coordinates is not None and not isinstance(self.coordinates, Coordinates):
-            self.coordinates = Coordinates(**as_dict(self.coordinates))
+        if self.lattitude is not None and not isinstance(self.lattitude, float):
+            self.lattitude = float(self.lattitude)
+
+        if self.longitude is not None and not isinstance(self.longitude, float):
+            self.longitude = float(self.longitude)
 
         if self.meeting_url is not None and not isinstance(self.meeting_url, URIorCURIE):
             self.meeting_url = URIorCURIE(self.meeting_url)
@@ -458,28 +451,6 @@ class Venue(NamedThing):
 
         if self.summary is not None and not isinstance(self.summary, str):
             self.summary = str(self.summary)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Coordinates(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = CONFID.Coordinates
-    class_class_curie: ClassVar[str] = "confid:Coordinates"
-    class_name: ClassVar[str] = "Coordinates"
-    class_model_uri: ClassVar[URIRef] = CONFID.Coordinates
-
-    lattitude: Optional[float] = None
-    longitude: Optional[float] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.lattitude is not None and not isinstance(self.lattitude, float):
-            self.lattitude = float(self.lattitude)
-
-        if self.longitude is not None and not isinstance(self.longitude, float):
-            self.longitude = float(self.longitude)
 
         super().__post_init__(**kwargs)
 

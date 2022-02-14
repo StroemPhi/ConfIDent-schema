@@ -80,7 +80,6 @@ classes:
       - event_status
 
   Location:
-    is_a: NamedThing
     attributes:
       city:
         range: City
@@ -92,11 +91,12 @@ classes:
         range: Region
       venue:
         range: Venue
-      coordinates:
-        range: Coordinates
+      lattitude:
+        range: float
+      longitude:
+        range: float
       meeting_url:
         range: uriorcurie
-
   City:
     is_a: NamedThing
   Country:
@@ -113,12 +113,6 @@ classes:
       venue_url:
         range: uriorcurie
       address:
-  Coordinates:
-    attributes:
-      lattitude:
-        range: float
-      longitude:
-        range: float
 
   Deadline:
     attributes:
