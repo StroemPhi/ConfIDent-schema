@@ -93,7 +93,7 @@
               
                 <h1 id="class-academiceventseries">Class: AcademicEventSeries</h1>
 <p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlAcademicEventSeries">confid:AcademicEventSeries</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[Metric],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;acronym(i):string%20%3F;organizers(i):string;sponsors(i):string%20%3F;contact(i):string%20%3F;outputs(i):string%20%3F;topics(i):string%20%3F;academic_fields(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;id(i):string;name(i):string],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[Metric],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;acronym(i):string%20%3F;organizers(i):string;sponsors(i):string%20%3F;contact(i):string%20%3F;outputs(i):string%20%3F;topics(i):string%20%3F;academic_fields(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;id(i):string;name(i):string],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[Organizer],[Metric],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;start_date(i):string%20%3F;end_date(i):string%20%3F;acronym(i):string%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;id(i):string;name(i):string],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[Organizer],[Metric],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;start_date(i):string%20%3F;end_date(i):string%20%3F;acronym(i):string%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;id(i):string;name(i):string],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../PlannedProcess/">PlannedProcess</a></li>
@@ -120,36 +120,44 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
+<li><a href="../start_date/">start_date</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../end_date/">end_date</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 <li><a href="../acronym/">acronym</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../organizers/">organizers</a>  <sub>1..1</sub><ul>
+<li><a href="../organizers/">organizers</a>  <sub>1..*</sub><ul>
+<li>Range: <a href="../Organizer/">Organizer</a></li>
+</ul>
+</li>
+<li><a href="../sponsors/">sponsors</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../sponsors/">sponsors</a>  <sub>0..1</sub><ul>
+<li><a href="../outputs/">outputs</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../contact/">contact</a>  <sub>0..1</sub><ul>
+<li><a href="../topics/">topics</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../outputs/">outputs</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../topics/">topics</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../academic_fields/">academic_fields</a>  <sub>0..1</sub><ul>
+<li><a href="../academic_fields/">academic_fields</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 <li><a href="../metrics/">metrics</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../Metric/">Metric</a></li>
+</ul>
+</li>
+<li><a href="../contact/">contact</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 </ul>

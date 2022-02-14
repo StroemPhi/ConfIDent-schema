@@ -93,7 +93,7 @@
               
                 <h1 id="class-plannedprocess">Class: PlannedProcess</h1>
 <p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlPlannedProcess">confid:PlannedProcess</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Metric]&lt;metrics%200..*-++[PlannedProcess&#124;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;outputs:string%20%3F;topics:string%20%3F;academic_fields:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;id(i):string;name(i):string],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[NamedThing]^-[PlannedProcess],[NamedThing],[Metric],[CommonMetadata],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Metric]&lt;metrics%200..*-++[PlannedProcess&#124;acronym:string%20%3F;organizers:string;sponsors:string%20%3F;contact:string%20%3F;outputs:string%20%3F;topics:string%20%3F;academic_fields:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;id(i):string;name(i):string],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[NamedThing]^-[PlannedProcess],[NamedThing],[Metric],[CommonMetadata],[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Metric]&lt;metrics%200..*-++[PlannedProcess&#124;start_date:string%20%3F;end_date:string%20%3F;acronym:string%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;academic_fields:string%20*;contact:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;id(i):string;name(i):string],[Organizer]&lt;organizers%201..*-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[NamedThing]^-[PlannedProcess],[Organizer],[NamedThing],[Metric],[CommonMetadata],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Metric]&lt;metrics%200..*-++[PlannedProcess&#124;start_date:string%20%3F;end_date:string%20%3F;acronym:string%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;academic_fields:string%20*;contact:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;id(i):string;name(i):string],[Organizer]&lt;organizers%201..*-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[NamedThing]^-[PlannedProcess],[Organizer],[NamedThing],[Metric],[CommonMetadata],[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../NamedThing/">NamedThing</a> - A generic grouping for any identifiable entity</li>
@@ -111,36 +111,44 @@
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
+<li><a href="../start_date/">start_date</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../end_date/">end_date</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 <li><a href="../acronym/">acronym</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../organizers/">organizers</a>  <sub>1..1</sub><ul>
+<li><a href="../organizers/">organizers</a>  <sub>1..*</sub><ul>
+<li>Range: <a href="../Organizer/">Organizer</a></li>
+</ul>
+</li>
+<li><a href="../sponsors/">sponsors</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../sponsors/">sponsors</a>  <sub>0..1</sub><ul>
+<li><a href="../outputs/">outputs</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../contact/">contact</a>  <sub>0..1</sub><ul>
+<li><a href="../topics/">topics</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../outputs/">outputs</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../topics/">topics</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../academic_fields/">academic_fields</a>  <sub>0..1</sub><ul>
+<li><a href="../academic_fields/">academic_fields</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 <li><a href="../metrics/">metrics</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../Metric/">Metric</a></li>
+</ul>
+</li>
+<li><a href="../contact/">contact</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 </ul>

@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: in_series - A model to describe academic events and event series.</title>
+  <title>Class: Organizer - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: in_series";
-    var mkdocs_page_input_path = "in_series.md";
+    var mkdocs_page_name = "Class: Organizer";
+    var mkdocs_page_input_path = "Organizer.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: in_series</li>
+    <li>Class: Organizer</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,15 +91,28 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-in_series">Slot: in_series</h1>
-<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlin_series">confid:in_series</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>0..1</sub> <a href="../AcademicEventSeries/">AcademicEventSeries</a></p>
+                <h1 id="class-organizer">Class: Organizer</h1>
+<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlOrganizer">confid:Organizer</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20organizers%201..*&gt;[Organizer&#124;id(i):string;name(i):string],[NamedThing]^-[Organizer],[PlannedProcess],[NamedThing]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20organizers%201..*&gt;[Organizer&#124;id(i):string;name(i):string],[NamedThing]^-[Organizer],[PlannedProcess],[NamedThing]" /></a></p>
 <h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
-<h2 id="used-by">Used by</h2>
 <ul>
-<li><a href="../AcademicEvent/">AcademicEvent</a></li>
+<li>is_a: <a href="../NamedThing/">NamedThing</a> - A generic grouping for any identifiable entity</li>
+</ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong>None</strong> <em><a href="../organizers/">organizers</a></em>  <sub>1..*</sub>  <strong><a href="./">Organizer</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="inherited-from-namedthing">Inherited from NamedThing:</h3>
+<ul>
+<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../name/">name</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 </ul>
               
             </div>

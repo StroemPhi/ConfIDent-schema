@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-14T15:21:43
+# Generation date: 2022-02-14T15:39:02
 # Schema: ConfIDent-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
@@ -23,8 +23,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Datetime, Float, Integer, String
-from linkml_runtime.utils.metamodelcore import XSDDateTime
+from linkml_runtime.linkml_model.types import Datetime, Float, Integer, String, Uriorcurie
+from linkml_runtime.utils.metamodelcore import URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
 
@@ -90,6 +90,10 @@ class MetricId(NamedThingId):
 
 
 class AcceptedPapersId(MetricId):
+    pass
+
+
+class OrganizerId(NamedThingId):
     pass
 
 
@@ -159,14 +163,16 @@ class PlannedProcess(NamedThing):
 
     id: Union[str, PlannedProcessId] = None
     name: str = None
-    organizers: str = None
+    organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
     acronym: Optional[str] = None
-    sponsors: Optional[str] = None
-    contact: Optional[str] = None
-    outputs: Optional[str] = None
-    topics: Optional[str] = None
-    academic_fields: Optional[str] = None
+    sponsors: Optional[Union[str, List[str]]] = empty_list()
+    outputs: Optional[Union[str, List[str]]] = empty_list()
+    topics: Optional[Union[str, List[str]]] = empty_list()
+    academic_fields: Optional[Union[str, List[str]]] = empty_list()
     metrics: Optional[Union[Dict[Union[str, MetricId], Union[dict, "Metric"]], List[Union[dict, "Metric"]]]] = empty_dict()
+    contact: Optional[str] = None
     website: Optional[str] = None
     logo: Optional[str] = None
     summary: Optional[str] = None
@@ -179,28 +185,37 @@ class PlannedProcess(NamedThing):
 
         if self._is_empty(self.organizers):
             self.MissingRequiredField("organizers")
-        if not isinstance(self.organizers, str):
-            self.organizers = str(self.organizers)
+        self._normalize_inlined_as_list(slot_name="organizers", slot_type=Organizer, key_name="id", keyed=True)
+
+        if self.start_date is not None and not isinstance(self.start_date, str):
+            self.start_date = str(self.start_date)
+
+        if self.end_date is not None and not isinstance(self.end_date, str):
+            self.end_date = str(self.end_date)
 
         if self.acronym is not None and not isinstance(self.acronym, str):
             self.acronym = str(self.acronym)
 
-        if self.sponsors is not None and not isinstance(self.sponsors, str):
-            self.sponsors = str(self.sponsors)
+        if not isinstance(self.sponsors, list):
+            self.sponsors = [self.sponsors] if self.sponsors is not None else []
+        self.sponsors = [v if isinstance(v, str) else str(v) for v in self.sponsors]
+
+        if not isinstance(self.outputs, list):
+            self.outputs = [self.outputs] if self.outputs is not None else []
+        self.outputs = [v if isinstance(v, str) else str(v) for v in self.outputs]
+
+        if not isinstance(self.topics, list):
+            self.topics = [self.topics] if self.topics is not None else []
+        self.topics = [v if isinstance(v, str) else str(v) for v in self.topics]
+
+        if not isinstance(self.academic_fields, list):
+            self.academic_fields = [self.academic_fields] if self.academic_fields is not None else []
+        self.academic_fields = [v if isinstance(v, str) else str(v) for v in self.academic_fields]
+
+        self._normalize_inlined_as_list(slot_name="metrics", slot_type=Metric, key_name="id", keyed=True)
 
         if self.contact is not None and not isinstance(self.contact, str):
             self.contact = str(self.contact)
-
-        if self.outputs is not None and not isinstance(self.outputs, str):
-            self.outputs = str(self.outputs)
-
-        if self.topics is not None and not isinstance(self.topics, str):
-            self.topics = str(self.topics)
-
-        if self.academic_fields is not None and not isinstance(self.academic_fields, str):
-            self.academic_fields = str(self.academic_fields)
-
-        self._normalize_inlined_as_list(slot_name="metrics", slot_type=Metric, key_name="id", keyed=True)
 
         if self.website is not None and not isinstance(self.website, str):
             self.website = str(self.website)
@@ -225,7 +240,7 @@ class AcademicEventSeries(PlannedProcess):
 
     id: Union[str, AcademicEventSeriesId] = None
     name: str = None
-    organizers: str = None
+    organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
     series_of: Optional[Union[str, AcademicEventId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -251,10 +266,9 @@ class AcademicEvent(PlannedProcess):
 
     id: Union[str, AcademicEventId] = None
     name: str = None
-    organizers: str = None
+    organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
     at_location: Optional[str] = None
-    start_date: Optional[str] = None
-    end_date: Optional[str] = None
+    in_series: Optional[Union[str, AcademicEventSeriesId]] = None
     committees: Optional[str] = None
     participants: Optional[str] = None
     ordinal: Optional[str] = None
@@ -271,11 +285,8 @@ class AcademicEvent(PlannedProcess):
         if self.at_location is not None and not isinstance(self.at_location, str):
             self.at_location = str(self.at_location)
 
-        if self.start_date is not None and not isinstance(self.start_date, str):
-            self.start_date = str(self.start_date)
-
-        if self.end_date is not None and not isinstance(self.end_date, str):
-            self.end_date = str(self.end_date)
+        if self.in_series is not None and not isinstance(self.in_series, AcademicEventSeriesId):
+            self.in_series = AcademicEventSeriesId(self.in_series)
 
         if self.committees is not None and not isinstance(self.committees, str):
             self.committees = str(self.committees)
@@ -315,6 +326,7 @@ class Location(NamedThing):
     region: Optional[Union[str, RegionId]] = None
     venue: Optional[Union[str, VenueId]] = None
     coordinates: Optional[Union[dict, "Coordinates"]] = None
+    meeting_url: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -336,6 +348,9 @@ class Location(NamedThing):
 
         if self.coordinates is not None and not isinstance(self.coordinates, Coordinates):
             self.coordinates = Coordinates(**as_dict(self.coordinates))
+
+        if self.meeting_url is not None and not isinstance(self.meeting_url, URIorCURIE):
+            self.meeting_url = URIorCURIE(self.meeting_url)
 
         super().__post_init__(**kwargs)
 
@@ -384,6 +399,9 @@ class Country(NamedThing):
 
 @dataclass
 class Region(NamedThing):
+    """
+    The
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFID.Region
@@ -414,12 +432,32 @@ class Venue(NamedThing):
 
     id: Union[str, VenueId] = None
     name: str = None
+    venue_url: Optional[Union[str, URIorCURIE]] = None
+    address: Optional[str] = None
+    website: Optional[str] = None
+    logo: Optional[str] = None
+    summary: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, VenueId):
             self.id = VenueId(self.id)
+
+        if self.venue_url is not None and not isinstance(self.venue_url, URIorCURIE):
+            self.venue_url = URIorCURIE(self.venue_url)
+
+        if self.address is not None and not isinstance(self.address, str):
+            self.address = str(self.address)
+
+        if self.website is not None and not isinstance(self.website, str):
+            self.website = str(self.website)
+
+        if self.logo is not None and not isinstance(self.logo, str):
+            self.logo = str(self.logo)
+
+        if self.summary is not None and not isinstance(self.summary, str):
+            self.summary = str(self.summary)
 
         super().__post_init__(**kwargs)
 
@@ -526,6 +564,27 @@ class AcceptedPapers(Metric):
             self.MissingRequiredField("value")
         if not isinstance(self.value, int):
             self.value = int(self.value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Organizer(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFID.Organizer
+    class_class_curie: ClassVar[str] = "confid:Organizer"
+    class_name: ClassVar[str] = "Organizer"
+    class_model_uri: ClassVar[URIRef] = CONFID.Organizer
+
+    id: Union[str, OrganizerId] = None
+    name: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, OrganizerId):
+            self.id = OrganizerId(self.id)
 
         super().__post_init__(**kwargs)
 

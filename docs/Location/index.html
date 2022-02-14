@@ -93,7 +93,7 @@
               
                 <h1 id="class-location">Class: Location</h1>
 <p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlLocation">confid:Location</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Venue],[Region],[NamedThing],[Coordinates]&lt;coordinates%200..1-++[Location&#124;id(i):string;name(i):string],[Venue]&lt;venue%200..1-%20[Location],[Region]&lt;region%200..1-%20[Location],[Country]&lt;country%200..1-%20[Location],[City]&lt;city%200..1-%20[Location],[NamedThing]^-[Location],[Country],[Coordinates],[City]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Venue],[Region],[NamedThing],[Coordinates]&lt;coordinates%200..1-++[Location&#124;id(i):string;name(i):string],[Venue]&lt;venue%200..1-%20[Location],[Region]&lt;region%200..1-%20[Location],[Country]&lt;country%200..1-%20[Location],[City]&lt;city%200..1-%20[Location],[NamedThing]^-[Location],[Country],[Coordinates],[City]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Venue],[Region],[NamedThing],[Coordinates]&lt;coordinates%200..1-++[Location&#124;meeting_url:uriorcurie%20%3F;id(i):string;name(i):string],[Venue]&lt;venue%200..1-%20[Location],[Region]&lt;region%200..1-%20[Location],[Country]&lt;country%200..1-%20[Location],[City]&lt;city%200..1-%20[Location],[NamedThing]^-[Location],[Country],[Coordinates],[City]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Venue],[Region],[NamedThing],[Coordinates]&lt;coordinates%200..1-++[Location&#124;meeting_url:uriorcurie%20%3F;id(i):string;name(i):string],[Venue]&lt;venue%200..1-%20[Location],[Region]&lt;region%200..1-%20[Location],[Country]&lt;country%200..1-%20[Location],[City]&lt;city%200..1-%20[Location],[NamedThing]^-[Location],[Country],[Coordinates],[City]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../NamedThing/">NamedThing</a> - A generic grouping for any identifiable entity</li>
@@ -119,6 +119,10 @@
 </li>
 <li><a href="../location__coordinates/">➞coordinates</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../Coordinates/">Coordinates</a></li>
+</ul>
+</li>
+<li><a href="../location__meeting_url/">➞meeting_url</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
 </ul>

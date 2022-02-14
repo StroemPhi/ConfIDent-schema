@@ -5,7 +5,10 @@
          "description": "",
          "properties": {
             "academic_fields": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "acronym": {
                "type": "string"
@@ -37,6 +40,9 @@
             "id": {
                "type": "string"
             },
+            "in_series": {
+               "type": "string"
+            },
             "logo": {
                "type": "string"
             },
@@ -53,16 +59,25 @@
                "type": "string"
             },
             "organizers": {
-               "type": "string"
+               "items": {
+                  "$ref": "#/$defs/Organizer"
+               },
+               "type": "array"
             },
             "outputs": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "participants": {
                "type": "string"
             },
             "sponsors": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "start_date": {
                "type": "string"
@@ -71,7 +86,10 @@
                "type": "string"
             },
             "topics": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "website": {
                "type": "string"
@@ -90,12 +108,18 @@
          "description": "",
          "properties": {
             "academic_fields": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "acronym": {
                "type": "string"
             },
             "contact": {
+               "type": "string"
+            },
+            "end_date": {
                "type": "string"
             },
             "id": {
@@ -114,22 +138,37 @@
                "type": "string"
             },
             "organizers": {
-               "type": "string"
+               "items": {
+                  "$ref": "#/$defs/Organizer"
+               },
+               "type": "array"
             },
             "outputs": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "series_of": {
                "type": "string"
             },
             "sponsors": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "start_date": {
                "type": "string"
             },
             "summary": {
                "type": "string"
             },
             "topics": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "website": {
                "type": "string"
@@ -303,6 +342,9 @@
             "id": {
                "type": "string"
             },
+            "meeting_url": {
+               "type": "string"
+            },
             "name": {
                "type": "string"
             },
@@ -360,17 +402,41 @@
          "title": "NamedThing",
          "type": "object"
       },
+      "Organizer": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "id": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "name"
+         ],
+         "title": "Organizer",
+         "type": "object"
+      },
       "PlannedProcess": {
          "additionalProperties": false,
          "description": "",
          "properties": {
             "academic_fields": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "acronym": {
                "type": "string"
             },
             "contact": {
+               "type": "string"
+            },
+            "end_date": {
                "type": "string"
             },
             "id": {
@@ -389,19 +455,34 @@
                "type": "string"
             },
             "organizers": {
-               "type": "string"
+               "items": {
+                  "$ref": "#/$defs/Organizer"
+               },
+               "type": "array"
             },
             "outputs": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "sponsors": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "start_date": {
                "type": "string"
             },
             "summary": {
                "type": "string"
             },
             "topics": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "website": {
                "type": "string"
@@ -417,7 +498,7 @@
       },
       "Region": {
          "additionalProperties": false,
-         "description": "",
+         "description": "The",
          "properties": {
             "id": {
                "type": "string"
@@ -437,10 +518,25 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "address": {
+               "type": "string"
+            },
             "id": {
                "type": "string"
             },
+            "logo": {
+               "type": "string"
+            },
             "name": {
+               "type": "string"
+            },
+            "summary": {
+               "type": "string"
+            },
+            "venue_url": {
+               "type": "string"
+            },
+            "website": {
                "type": "string"
             }
          },

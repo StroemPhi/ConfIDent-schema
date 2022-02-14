@@ -51,27 +51,27 @@ classes:
     mixins: 
       - CommonMetadata
     slots:
+      - start_date
+      - end_date
       - acronym
       - organizers
       - sponsors
-      - contact
       - outputs
       - topics
       - academic_fields
       - metrics
+      - contact
 
   AcademicEventSeries:
     is_a: PlannedProcess
     slots:
       - series_of
     
-
   AcademicEvent:
     is_a: PlannedProcess
     slots:
       - at_location
-      - start_date
-      - end_date
+      - in_series
       - committees
       - participants
       - ordinal
@@ -94,6 +94,8 @@ classes:
         range: Venue
       coordinates:
         range: Coordinates
+      meeting_url:
+        range: uriorcurie
 
   City:
     is_a: NamedThing
@@ -101,16 +103,22 @@ classes:
     is_a: NamedThing
   Region:
     is_a: NamedThing
+    description: >-
+      The 
   Venue:
     is_a: NamedThing
+    mixins: 
+      - CommonMetadata
+    attributes:
+      venue_url:
+        range: uriorcurie
+      address:
   Coordinates:
     attributes:
       lattitude:
         range: float
       longitude:
         range: float
-
-
 
   Deadline:
     attributes:
@@ -135,6 +143,12 @@ classes:
       value:
         range: integer
 
+  Organizer:
+    is_a: NamedThing
+
+#####################################
+#              Slots                #
+#####################################
 slots:
 # named thing properties
   id:
@@ -142,32 +156,45 @@ slots:
     required: true
   name:
     required: true
+
 # common metadata properties
   website:
   logo:
   summary:
 
-
 # planned process properties
   acronym:
   organizers:
     required: true
+    multivalued: true
+    inlined_as_list: true
+    range: Organizer
   sponsors:
     recommended: true
+    multivalued: true
+    inlined_as_list: true
   contact:
-  series_of:
-    range: AcademicEvent
   outputs:
+    multivalued: true
+
   topics:
+    multivalued: true
+    range: string
+
   academic_fields:
+    multivalued: true
+
   metrics:
     multivalued: true
-    inlined: true
     inlined_as_list: true
     range: Metric
+  
   value:
     required: true
 
+# academic event series properties
+  series_of:
+    range: AcademicEvent
 
 # academic event properties
   at_location:  
