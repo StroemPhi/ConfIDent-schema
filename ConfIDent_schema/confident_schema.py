@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-14T17:21:35
+# Generation date: 2022-02-14T17:53:42
 # Schema: ConfIDent-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
@@ -133,6 +133,7 @@ class PlannedProcess(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = CONFID.PlannedProcess
 
     id: Union[str, PlannedProcessId] = None
+    has_name: Union[Union[dict, "Name"], List[Union[dict, "Name"]]] = None
     organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
     start_date: Optional[Union[str, XSDDateTime]] = None
     end_date: Optional[Union[str, XSDDateTime]] = None
@@ -153,6 +154,12 @@ class PlannedProcess(YAMLRoot):
             self.MissingRequiredField("id")
         if not isinstance(self.id, PlannedProcessId):
             self.id = PlannedProcessId(self.id)
+
+        if self._is_empty(self.has_name):
+            self.MissingRequiredField("has_name")
+        if not isinstance(self.has_name, list):
+            self.has_name = [self.has_name] if self.has_name is not None else []
+        self.has_name = [v if isinstance(v, Name) else Name(**as_dict(v)) for v in self.has_name]
 
         if self._is_empty(self.organizers):
             self.MissingRequiredField("organizers")
@@ -217,6 +224,7 @@ class AcademicEventSeries(PlannedProcess):
     class_model_uri: ClassVar[URIRef] = CONFID.AcademicEventSeries
 
     id: Union[str, AcademicEventSeriesId] = None
+    has_name: Union[Union[dict, "Name"], List[Union[dict, "Name"]]] = None
     organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
     series_of: Optional[Union[str, AcademicEventId]] = None
 
@@ -242,6 +250,7 @@ class AcademicEvent(PlannedProcess):
     class_model_uri: ClassVar[URIRef] = CONFID.AcademicEvent
 
     id: Union[str, AcademicEventId] = None
+    has_name: Union[Union[dict, "Name"], List[Union[dict, "Name"]]] = None
     organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
     at_location: Optional[Union[dict, "Location"]] = None
     in_series: Optional[Union[str, AcademicEventSeriesId]] = None
@@ -617,7 +626,7 @@ class Name(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = CONFID.Name
 
     name: str = None
-    type: Optional[Union[str, "NameType"]] = None
+    type: Union[str, "NameType"] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.name):
@@ -625,7 +634,9 @@ class Name(YAMLRoot):
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.type is not None and not isinstance(self.type, NameType):
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        if not isinstance(self.type, NameType):
             self.type = NameType(self.type)
 
         super().__post_init__(**kwargs)

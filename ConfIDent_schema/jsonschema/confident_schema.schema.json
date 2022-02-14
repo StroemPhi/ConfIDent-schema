@@ -35,6 +35,12 @@
             "event_status": {
                "$ref": "#/$defs/EventStatus"
             },
+            "has_name": {
+               "items": {
+                  "$ref": "#/$defs/Name"
+               },
+               "type": "array"
+            },
             "id": {
                "type": "string"
             },
@@ -107,6 +113,7 @@
             }
          },
          "required": [
+            "has_name",
             "organizers",
             "id"
          ],
@@ -129,6 +136,12 @@
             "end_date": {
                "format": "date-time",
                "type": "string"
+            },
+            "has_name": {
+               "items": {
+                  "$ref": "#/$defs/Name"
+               },
+               "type": "array"
             },
             "id": {
                "type": "string"
@@ -193,6 +206,7 @@
             }
          },
          "required": [
+            "has_name",
             "organizers",
             "id"
          ],
@@ -421,7 +435,8 @@
             }
          },
          "required": [
-            "name"
+            "name",
+            "type"
          ],
          "title": "Name",
          "type": "object"
@@ -481,6 +496,12 @@
             "end_date": {
                "format": "date-time",
                "type": "string"
+            },
+            "has_name": {
+               "items": {
+                  "$ref": "#/$defs/Name"
+               },
+               "type": "array"
             },
             "id": {
                "type": "string"
@@ -542,6 +563,7 @@
             }
          },
          "required": [
+            "has_name",
             "organizers",
             "id"
          ],

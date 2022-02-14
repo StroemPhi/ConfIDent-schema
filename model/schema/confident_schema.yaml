@@ -23,7 +23,6 @@ prefixes:
 default_prefix: confid
 default_range: string
 
-
 imports:
  - linkml:types
 
@@ -46,6 +45,7 @@ classes:
     mixins: 
       - CommonMetadata
     slots:
+      - has_name
       - start_date
       - end_date
       - organizers
@@ -155,6 +155,7 @@ classes:
         range: string
     slot_usage:
       type:
+        required: true
         range: NameType
 
 #####################################
@@ -168,11 +169,17 @@ slots:
     range: uriorcurie
   xrefs:
     multivalued: true
+    inlined_as_list: true
     range: uriorcurie
   website:
   logo:
   summary:
 # PlannedProcess properties
+  has_name:
+    required: true
+    multivalued: true
+    inlined_as_list: true
+    range: Name
   organizers:
     required: true
     multivalued: true

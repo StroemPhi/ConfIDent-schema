@@ -93,7 +93,7 @@
               
                 <h1 id="class-plannedprocess">Class: PlannedProcess</h1>
 <p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlPlannedProcess">confid:PlannedProcess</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessRelation]&lt;related_to%200..*-++[PlannedProcess&#124;start_date:datetime%20%3F;end_date:datetime%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;academic_fields:string%20*;contact:string%20%3F;id:uriorcurie;xrefs:uriorcurie%20*;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[Metric]&lt;metrics%200..*-++[PlannedProcess],[Organizer]&lt;organizers%201..*-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[Metric],[CommonMetadata],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessRelation]&lt;related_to%200..*-++[PlannedProcess&#124;start_date:datetime%20%3F;end_date:datetime%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;academic_fields:string%20*;contact:string%20%3F;id:uriorcurie;xrefs:uriorcurie%20*;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[Metric]&lt;metrics%200..*-++[PlannedProcess],[Organizer]&lt;organizers%201..*-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[Metric],[CommonMetadata],[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessRelation]&lt;related_to%200..*-++[PlannedProcess&#124;start_date:datetime%20%3F;end_date:datetime%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;academic_fields:string%20*;contact:string%20%3F;id:uriorcurie;xrefs:uriorcurie%20*;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[Metric]&lt;metrics%200..*-++[PlannedProcess],[Organizer]&lt;organizers%201..*-++[PlannedProcess],[Name]&lt;has_name%201..*-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[Name],[Metric],[CommonMetadata],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessRelation]&lt;related_to%200..*-++[PlannedProcess&#124;start_date:datetime%20%3F;end_date:datetime%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;academic_fields:string%20*;contact:string%20%3F;id:uriorcurie;xrefs:uriorcurie%20*;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[Metric]&lt;metrics%200..*-++[PlannedProcess],[Organizer]&lt;organizers%201..*-++[PlannedProcess],[Name]&lt;has_name%201..*-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[Name],[Metric],[CommonMetadata],[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../CommonMetadata/">CommonMetadata</a></li>
@@ -107,6 +107,10 @@
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
+<li><a href="../has_name/">has_name</a>  <sub>1..*</sub><ul>
+<li>Range: <a href="../Name/">Name</a></li>
+</ul>
+</li>
 <li><a href="../start_date/">start_date</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../Datetime/">Datetime</a></li>
 </ul>

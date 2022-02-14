@@ -93,8 +93,11 @@
               
                 <h1 id="class-name">Class: Name</h1>
 <p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlName">confid:Name</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Name&#124;name:string;type:NameType%20%3F]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Name&#124;name:string;type:NameType%20%3F]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20has_name%201..*&gt;[Name&#124;name:string;type:NameType],[PlannedProcess]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20has_name%201..*&gt;[Name&#124;name:string;type:NameType],[PlannedProcess]" /></a></p>
 <h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong>None</strong> <em><a href="../has_name/">has_name</a></em>  <sub>1..*</sub>  <strong><a href="./">Name</a></strong></li>
+</ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
@@ -102,7 +105,7 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../Name_type/">Name➞type</a>  <sub>0..1</sub><ul>
+<li><a href="../Name_type/">Name➞type</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../NameType/">NameType</a></li>
 </ul>
 </li>
