@@ -175,6 +175,10 @@ slots:
   logo:
   summary:
 # PlannedProcess properties
+  start_date:
+    range: datetime
+  end_date:
+    range: datetime
   has_name:
     required: true
     multivalued: true
@@ -210,10 +214,6 @@ slots:
 # AcademicEvent properties
   at_location:
     range: Location
-  start_date:
-    range: datetime
-  end_date:
-    range: datetime
   in_series:
     range: AcademicEventSeries
   committees:
@@ -230,8 +230,12 @@ slots:
     range: EventStatus
   event_mode:
     range: EventMode
+  slot_usage:
+    start_date:
+      required: true
+    end_date: 
+      required: true
 
-    
 #####################################
 #               Enums               #
 #####################################
