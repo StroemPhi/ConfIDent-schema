@@ -93,23 +93,47 @@
               
                 <h1 id="class-organizer">Class: Organizer</h1>
 <p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlOrganizer">confid:Organizer</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20organizers%201..*&gt;[Organizer&#124;id(i):string;name(i):string],[NamedThing]^-[Organizer],[PlannedProcess],[NamedThing]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20organizers%201..*&gt;[Organizer&#124;id(i):string;name(i):string],[NamedThing]^-[Organizer],[PlannedProcess],[NamedThing]" /></a></p>
-<h2 id="parents">Parents</h2>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20organizers%201..*&gt;[Organizer&#124;id:uriorcurie;xrefs:uriorcurie%20*;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[Organizer]uses%20-.-&gt;[CommonMetadata],[PlannedProcess],[CommonMetadata]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20organizers%201..*&gt;[Organizer&#124;id:uriorcurie;xrefs:uriorcurie%20*;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[Organizer]uses%20-.-&gt;[CommonMetadata],[PlannedProcess],[CommonMetadata]" /></a></p>
+<h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
-<li>is_a: <a href="../NamedThing/">NamedThing</a> - A generic grouping for any identifiable entity</li>
+<li>mixin: <a href="../CommonMetadata/">CommonMetadata</a></li>
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
 <li><strong>None</strong> <em><a href="../organizers/">organizers</a></em>  <sub>1..*</sub>  <strong><a href="./">Organizer</a></strong></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
-<h3 id="inherited-from-namedthing">Inherited from NamedThing:</h3>
+<h3 id="mixed-in-from-commonmetadata">Mixed in from CommonMetadata:</h3>
 <ul>
 <li><a href="../id/">id</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-commonmetadata_1">Mixed in from CommonMetadata:</h3>
+<ul>
+<li><a href="../xrefs/">xrefs</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-commonmetadata_2">Mixed in from CommonMetadata:</h3>
+<ul>
+<li><a href="../website/">website</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../name/">name</a>  <sub>1..1</sub><ul>
+</ul>
+<h3 id="mixed-in-from-commonmetadata_3">Mixed in from CommonMetadata:</h3>
+<ul>
+<li><a href="../logo/">logo</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-commonmetadata_4">Mixed in from CommonMetadata:</h3>
+<ul>
+<li><a href="../summary/">summary</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>

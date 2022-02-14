@@ -93,16 +93,28 @@
               
                 <h1 id="class-commonmetadata">Class: CommonMetadata</h1>
 <p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlCommonMetadata">confid:CommonMetadata</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Venue]uses%20-.-&gt;[CommonMetadata&#124;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[Venue],[PlannedProcess]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Venue]uses%20-.-&gt;[CommonMetadata&#124;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[Venue],[PlannedProcess]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Venue]uses%20-.-&gt;[CommonMetadata&#124;id:uriorcurie;xrefs:uriorcurie%20*;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[Region]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[Organizer]uses%20-.-&gt;[CommonMetadata],[Country]uses%20-.-&gt;[CommonMetadata],[City]uses%20-.-&gt;[CommonMetadata],[Venue],[Region],[PlannedProcess],[Organizer],[Country],[City]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Venue]uses%20-.-&gt;[CommonMetadata&#124;id:uriorcurie;xrefs:uriorcurie%20*;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[Region]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[Organizer]uses%20-.-&gt;[CommonMetadata],[Country]uses%20-.-&gt;[CommonMetadata],[City]uses%20-.-&gt;[CommonMetadata],[Venue],[Region],[PlannedProcess],[Organizer],[Country],[City]" /></a></p>
 <h2 id="mixin-for">Mixin for</h2>
 <ul>
+<li><a href="../City/">City</a> (mixin) </li>
+<li><a href="../Country/">Country</a> (mixin) </li>
+<li><a href="../Organizer/">Organizer</a> (mixin) </li>
 <li><a href="../PlannedProcess/">PlannedProcess</a> (mixin) </li>
+<li><a href="../Region/">Region</a> (mixin) </li>
 <li><a href="../Venue/">Venue</a> (mixin) </li>
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
+<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../xrefs/">xrefs</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
 <li><a href="../website/">website</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>

@@ -93,15 +93,7 @@
               
                 <h1 id="class-metric">Class: Metric</h1>
 <p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlMetric">confid:Metric</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[PlannedProcess]++-%20metrics%200..*&gt;[Metric&#124;value:string%20%3F;id(i):string;name(i):string],[Metric]^-[AcceptedPapers],[NamedThing]^-[Metric],[PlannedProcess],[AcceptedPapers]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[PlannedProcess]++-%20metrics%200..*&gt;[Metric&#124;value:string%20%3F;id(i):string;name(i):string],[Metric]^-[AcceptedPapers],[NamedThing]^-[Metric],[PlannedProcess],[AcceptedPapers]" /></a></p>
-<h2 id="parents">Parents</h2>
-<ul>
-<li>is_a: <a href="../NamedThing/">NamedThing</a> - A generic grouping for any identifiable entity</li>
-</ul>
-<h2 id="children">Children</h2>
-<ul>
-<li><a href="../AcceptedPapers/">AcceptedPapers</a></li>
-</ul>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20metrics%200..*&gt;[Metric&#124;int_value:integer%20%3F;str_value:string%20%3F;rate_value:float%20%3F;truth_value:boolean%20%3F;other_metric:string%20%3F;type:EventType%20%3F],[PlannedProcess]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20metrics%200..*&gt;[Metric&#124;int_value:integer%20%3F;str_value:string%20%3F;rate_value:float%20%3F;truth_value:boolean%20%3F;other_metric:string%20%3F;type:EventType%20%3F],[PlannedProcess]" /></a></p>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
 <li><strong>None</strong> <em><a href="../metrics/">metrics</a></em>  <sub>0..*</sub>  <strong><a href="./">Metric</a></strong></li>
@@ -109,19 +101,28 @@
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../metric__value/">➞value</a>  <sub>0..1</sub><ul>
+<li><a href="../metric__int_value/">➞int_value</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Integer/">Integer</a></li>
+</ul>
+</li>
+<li><a href="../metric__str_value/">➞str_value</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
+<li><a href="../metric__rate_value/">➞rate_value</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Float/">Float</a></li>
 </ul>
-<h3 id="inherited-from-namedthing">Inherited from NamedThing:</h3>
-<ul>
-<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
+</li>
+<li><a href="../metric__truth_value/">➞truth_value</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Boolean/">Boolean</a></li>
+</ul>
+</li>
+<li><a href="../metric__other_metric/">➞other_metric</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../name/">name</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
+<li><a href="../Metric_type/">Metric➞type</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../EventType/">EventType</a></li>
 </ul>
 </li>
 </ul>

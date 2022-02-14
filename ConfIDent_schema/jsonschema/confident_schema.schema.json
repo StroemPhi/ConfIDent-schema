@@ -10,9 +10,6 @@
                },
                "type": "array"
             },
-            "acronym": {
-               "type": "string"
-            },
             "at_location": {
                "$ref": "#/$defs/Location"
             },
@@ -52,9 +49,6 @@
                   "$ref": "#/$defs/Metric"
                },
                "type": "array"
-            },
-            "name": {
-               "type": "string"
             },
             "ordinal": {
                "type": "integer"
@@ -104,12 +98,17 @@
             },
             "website": {
                "type": "string"
+            },
+            "xrefs": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
-            "id",
-            "name",
-            "organizers"
+            "organizers",
+            "id"
          ],
          "title": "AcademicEvent",
          "type": "object"
@@ -123,9 +122,6 @@
                   "type": "string"
                },
                "type": "array"
-            },
-            "acronym": {
-               "type": "string"
             },
             "contact": {
                "type": "string"
@@ -145,9 +141,6 @@
                   "$ref": "#/$defs/Metric"
                },
                "type": "array"
-            },
-            "name": {
-               "type": "string"
             },
             "organizers": {
                "items": {
@@ -191,35 +184,19 @@
             },
             "website": {
                "type": "string"
+            },
+            "xrefs": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
-            "id",
-            "name",
-            "organizers"
+            "organizers",
+            "id"
          ],
          "title": "AcademicEventSeries",
-         "type": "object"
-      },
-      "AcceptedPapers": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "id": {
-               "type": "string"
-            },
-            "name": {
-               "type": "string"
-            },
-            "value": {
-               "type": "integer"
-            }
-         },
-         "required": [
-            "id",
-            "name"
-         ],
-         "title": "AcceptedPapers",
          "type": "object"
       },
       "City": {
@@ -229,13 +206,24 @@
             "id": {
                "type": "string"
             },
-            "name": {
+            "logo": {
                "type": "string"
+            },
+            "summary": {
+               "type": "string"
+            },
+            "website": {
+               "type": "string"
+            },
+            "xrefs": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
-            "id",
-            "name"
+            "id"
          ],
          "title": "City",
          "type": "object"
@@ -247,13 +235,24 @@
             "id": {
                "type": "string"
             },
-            "name": {
+            "logo": {
                "type": "string"
+            },
+            "summary": {
+               "type": "string"
+            },
+            "website": {
+               "type": "string"
+            },
+            "xrefs": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
-            "id",
-            "name"
+            "id"
          ],
          "title": "Country",
          "type": "object"
@@ -373,40 +372,69 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "id": {
+            "int_value": {
+               "type": "integer"
+            },
+            "other_metric": {
                "type": "string"
             },
-            "name": {
+            "rate_value": {
+               "type": "number"
+            },
+            "str_value": {
                "type": "string"
             },
-            "value": {
-               "type": "string"
+            "truth_value": {
+               "type": "boolean"
+            },
+            "type": {
+               "$ref": "#/$defs/EventType"
             }
          },
-         "required": [
-            "id",
-            "name"
-         ],
+         "required": [],
          "title": "Metric",
          "type": "object"
       },
-      "NamedThing": {
+      "MetricType": {
+         "description": "",
+         "enum": [
+            "submitted papers",
+            "accepted papers",
+            "accepted short papers",
+            "number of attendees",
+            "number of tracks",
+            "has childcare options",
+            "is accessible"
+         ],
+         "title": "MetricType",
+         "type": "string"
+      },
+      "Name": {
          "additionalProperties": false,
-         "description": "A generic grouping for any identifiable entity",
+         "description": "",
          "properties": {
-            "id": {
-               "type": "string"
-            },
             "name": {
                "type": "string"
+            },
+            "type": {
+               "$ref": "#/$defs/NameType"
             }
          },
          "required": [
-            "id",
             "name"
          ],
-         "title": "NamedThing",
+         "title": "Name",
          "type": "object"
+      },
+      "NameType": {
+         "description": "",
+         "enum": [
+            "official name",
+            "acronym",
+            "alternative name"
+         ],
+         "title": "NameType",
+         "type": "string"
       },
       "Organizer": {
          "additionalProperties": false,
@@ -415,13 +443,24 @@
             "id": {
                "type": "string"
             },
-            "name": {
+            "logo": {
                "type": "string"
+            },
+            "summary": {
+               "type": "string"
+            },
+            "website": {
+               "type": "string"
+            },
+            "xrefs": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
-            "id",
-            "name"
+            "id"
          ],
          "title": "Organizer",
          "type": "object"
@@ -435,9 +474,6 @@
                   "type": "string"
                },
                "type": "array"
-            },
-            "acronym": {
-               "type": "string"
             },
             "contact": {
                "type": "string"
@@ -457,9 +493,6 @@
                   "$ref": "#/$defs/Metric"
                },
                "type": "array"
-            },
-            "name": {
-               "type": "string"
             },
             "organizers": {
                "items": {
@@ -500,12 +533,17 @@
             },
             "website": {
                "type": "string"
+            },
+            "xrefs": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
-            "id",
-            "name",
-            "organizers"
+            "organizers",
+            "id"
          ],
          "title": "PlannedProcess",
          "type": "object"
@@ -514,7 +552,7 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "realtion_type": {
+            "type": {
                "$ref": "#/$defs/ProcessRelationType"
             }
          },
@@ -544,13 +582,24 @@
             "id": {
                "type": "string"
             },
-            "name": {
+            "logo": {
                "type": "string"
+            },
+            "summary": {
+               "type": "string"
+            },
+            "website": {
+               "type": "string"
+            },
+            "xrefs": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
-            "id",
-            "name"
+            "id"
          ],
          "title": "Region",
          "type": "object"
@@ -568,22 +617,21 @@
             "logo": {
                "type": "string"
             },
-            "name": {
-               "type": "string"
-            },
             "summary": {
-               "type": "string"
-            },
-            "venue_url": {
                "type": "string"
             },
             "website": {
                "type": "string"
+            },
+            "xrefs": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [
-            "id",
-            "name"
+            "id"
          ],
          "title": "Venue",
          "type": "object"

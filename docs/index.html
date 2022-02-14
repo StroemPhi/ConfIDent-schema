@@ -115,26 +115,21 @@
 <p>This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.</p>
 <h3 id="classes">Classes</h3>
 <ul>
-<li><a href="Deadline/">Deadline</a></li>
-<li><a href="Location/">Location</a></li>
-<li><a href="NamedThing/">NamedThing</a> - A generic grouping for any identifiable entity<ul>
 <li><a href="City/">City</a></li>
 <li><a href="Country/">Country</a></li>
-<li><a href="Metric/">Metric</a><ul>
-<li><a href="AcceptedPapers/">AcceptedPapers</a></li>
-</ul>
-</li>
+<li><a href="Deadline/">Deadline</a></li>
+<li><a href="Location/">Location</a></li>
+<li><a href="Metric/">Metric</a></li>
+<li><a href="Name/">Name</a></li>
 <li><a href="Organizer/">Organizer</a></li>
 <li><a href="PlannedProcess/">PlannedProcess</a><ul>
 <li><a href="AcademicEvent/">AcademicEvent</a></li>
 <li><a href="AcademicEventSeries/">AcademicEventSeries</a></li>
 </ul>
 </li>
+<li><a href="ProcessRelation/">ProcessRelation</a></li>
 <li><a href="Region/">Region</a></li>
 <li><a href="Venue/">Venue</a></li>
-</ul>
-</li>
-<li><a href="ProcessRelation/">ProcessRelation</a></li>
 </ul>
 <h3 id="mixins">Mixins</h3>
 <ul>
@@ -143,7 +138,6 @@
 <h3 id="slots">Slots</h3>
 <ul>
 <li><a href="academic_fields/">academic_fields</a></li>
-<li><a href="acronym/">acronym</a></li>
 <li><a href="at_location/">at_location</a></li>
 <li><a href="committees/">committees</a></li>
 <li><a href="contact/">contact</a></li>
@@ -163,17 +157,17 @@
 <li><a href="location__region/">➞region</a></li>
 <li><a href="location__venue/">➞venue</a></li>
 <li><a href="logo/">logo</a></li>
-<li><a href="metric__value/">➞value</a><ul>
-<li><a href="AcceptedPapers_value/">AcceptedPapers➞value</a></li>
-</ul>
-</li>
+<li><a href="metric__int_value/">➞int_value</a></li>
+<li><a href="metric__other_metric/">➞other_metric</a></li>
+<li><a href="metric__rate_value/">➞rate_value</a></li>
+<li><a href="metric__str_value/">➞str_value</a></li>
+<li><a href="metric__truth_value/">➞truth_value</a></li>
 <li><a href="metrics/">metrics</a></li>
-<li><a href="name/">name</a></li>
+<li><a href="name__name/">➞name</a></li>
 <li><a href="ordinal/">ordinal</a></li>
 <li><a href="organizers/">organizers</a></li>
 <li><a href="outputs/">outputs</a></li>
 <li><a href="participants/">participants</a></li>
-<li><a href="processRelation__realtion_type/">➞realtion_type</a></li>
 <li><a href="related_to/">related_to</a></li>
 <li><a href="series_of/">series_of</a></li>
 <li><a href="sponsors/">sponsors</a></li>
@@ -183,11 +177,14 @@
 <li><a href="type/">type</a><ul>
 <li><a href="AcademicEvent_type/">AcademicEvent➞type</a></li>
 <li><a href="Deadline_type/">Deadline➞type</a></li>
+<li><a href="Metric_type/">Metric➞type</a></li>
+<li><a href="Name_type/">Name➞type</a></li>
+<li><a href="ProcessRelation_type/">ProcessRelation➞type</a></li>
 </ul>
 </li>
 <li><a href="venue__address/">➞address</a></li>
-<li><a href="venue__venue_url/">➞venue_url</a></li>
 <li><a href="website/">website</a></li>
+<li><a href="xrefs/">xrefs</a></li>
 </ul>
 <h3 id="enums">Enums</h3>
 <ul>
@@ -195,6 +192,8 @@
 <li><a href="EventMode/">EventMode</a></li>
 <li><a href="EventStatus/">EventStatus</a></li>
 <li><a href="EventType/">EventType</a></li>
+<li><a href="MetricType/">MetricType</a></li>
+<li><a href="NameType/">NameType</a></li>
 <li><a href="ProcessRelationType/">ProcessRelationType</a></li>
 </ul>
 <h3 id="subsets">Subsets</h3>
@@ -290,5 +289,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-02-14 15:45:46.226043+00:00
+Build Date UTC : 2022-02-14 16:21:20.450670+00:00
 -->

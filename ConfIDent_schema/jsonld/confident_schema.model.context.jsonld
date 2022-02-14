@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-14T16:45:53\n    Schema: ConfIDent-schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
+   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-14T17:21:27\n    Schema: ConfIDent-schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
    "@context": {
       "aeon": {
          "@id": "https://github.com/tibonto/aeon#AEON_",
@@ -76,6 +76,15 @@
       "venue": {
          "@type": "@id"
       },
+      "int_value": {
+         "@type": "xsd:integer"
+      },
+      "rate_value": {
+         "@type": "xsd:float"
+      },
+      "truth_value": {
+         "@type": "xsd:boolean"
+      },
       "metrics": {
          "@type": "@id"
       },
@@ -84,14 +93,6 @@
       },
       "organizers": {
          "@type": "@id"
-      },
-      "realtion_type": {
-         "@context": {
-            "@vocab": "@null",
-            "text": "skos:notation",
-            "description": "skos:prefLabel",
-            "meaning": "@id"
-         }
       },
       "related_to": {
          "@type": "@id"
@@ -110,7 +111,7 @@
             "meaning": "@id"
          }
       },
-      "venue_url": {
+      "xrefs": {
          "@type": "@id"
       }
    }

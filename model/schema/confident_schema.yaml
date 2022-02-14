@@ -32,31 +32,22 @@ imports:
 #             Classes               #
 #####################################
 classes:
-# CommonMetadata
+# Mixins
   CommonMetadata:
     mixin: true
     slots:
+      - id
+      - xrefs
       - website
       - logo
       - summary
-# NamedThing
-  NamedThing:
-    description: >-
-      A generic grouping for any identifiable entity
-    slots:
-      - id
-      - name
-    close_mappings:
-     - sdo:Thing
 # PlannedProcess
   PlannedProcess:
-    is_a: NamedThing
     mixins: 
       - CommonMetadata
     slots:
       - start_date
       - end_date
-      - acronym
       - organizers
       - sponsors
       - outputs
@@ -106,19 +97,20 @@ classes:
       meeting_url:
         range: uriorcurie
   City:
-    is_a: NamedThing
+    mixins: 
+      - CommonMetadata
   Country:
-    is_a: NamedThing
+    mixins: 
+      - CommonMetadata
   Region:
-    is_a: NamedThing
+    mixins: 
+      - CommonMetadata
   Venue:
-    is_a: NamedThing
     mixins: 
       - CommonMetadata
     attributes:
-      venue_url:
-        range: uriorcurie
       address:
+        range: string
 # Deadline
   Deadline:
     attributes:
@@ -133,41 +125,54 @@ classes:
         required: true
 # Metric
   Metric:
-    is_a: NamedThing
     attributes:
-      value:
-# AcceptedPapers
-  AcceptedPapers:
-    is_a: Metric
-    slot_usage:
-      value:
+      int_value:
         range: integer
+      str_value:
+        range: string
+      rate_value:
+        range: float
+      truth_value:
+        range: boolean
+      other_metric:
+        range: string
+    slot_usage:
+      type: MetricType
 # ProcessRelation
   ProcessRelation:
-    attributes:
-      realtion_type:
+    slot_usage:
+      type:
         range: ProcessRelationType
-
-
+# Organizer
   Organizer:
-    is_a: NamedThing
+    mixins: 
+      - CommonMetadata
+# Name
+  Name:
+    attributes:
+      name:
+        required: true
+        range: string
+    slot_usage:
+      type:
+        range: NameType
 
 #####################################
 #              Slots                #
 #####################################
 slots:
 # CommonMetadata properties
-  website:
-  logo:
-  summary:
-# NamedThing properties
   id:
     identifier: true
     required: true
-  name:
-    required: true
+    range: uriorcurie
+  xrefs:
+    multivalued: true
+    range: uriorcurie
+  website:
+  logo:
+  summary:
 # PlannedProcess properties
-  acronym:
   organizers:
     required: true
     multivalued: true
@@ -225,7 +230,6 @@ slots:
 #####################################
 
 enums:
-
   EventType:
     permissible_values:
       colloquium:
@@ -256,7 +260,6 @@ enums:
         meaning: aeon:0010009
       workshop:
         meaning: aeon:0010010
-
   EventStatus:
     permissible_values:
       as scheduled:
@@ -266,7 +269,6 @@ enums:
       delayed:
       canceled:
       planned:
-
   EventMode:
     permissible_values:
       on site:
@@ -275,7 +277,6 @@ enums:
         description: The event takes place in a virtual location.
       hybrid:
         description: The event takes place physically and virtually.
-
   DeadlineType:
     permissible_values:
       submission deadline:
@@ -296,7 +297,6 @@ enums:
         meaning: aeon:0000068
       workshop deadline:
         meaning: aeon:0000069
-
   ProcessRelationType:
     permissible_values:
       isUmbrellaEventOf:
@@ -307,6 +307,24 @@ enums:
       hasSubEvent:
       hasSeries:
       isSeriesOf:
+  MetricType:
+    permissible_values:
+      submitted papers:
+      accepted papers:
+      accepted short papers:
+      number of attendees:
+      number of tracks:
+      has childcare options:
+      is accessible:
+        description: If true then accessible for people with impairments.
+  NameType:
+    permissible_values:
+      official name:
+      acronym:
+      alternative name:
+
+
+
 
 
 

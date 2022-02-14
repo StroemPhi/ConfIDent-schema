@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-14T16:46:01
+# Generation date: 2022-02-14T17:21:35
 # Schema: ConfIDent-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
@@ -23,8 +23,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Datetime, Float, Integer, String, Uriorcurie
-from linkml_runtime.utils.metamodelcore import URIorCURIE, XSDDateTime
+from linkml_runtime.linkml_model.types import Boolean, Datetime, Float, Integer, String, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
 
@@ -32,6 +32,7 @@ metamodel_version = "1.7.0"
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
+METRICTYPE = CurieNamespace('MetricType', 'http://example.org/UNKNOWN/MetricType/')
 AEON = CurieNamespace('aeon', 'https://github.com/tibonto/aeon#AEON_')
 CONFID = CurieNamespace('confid', 'https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml')
 DBLP_SERIES = CurieNamespace('dblp_series', 'https://dblp.org/db/conf/')
@@ -49,11 +50,11 @@ DEFAULT_ = CONFID
 # Types
 
 # Class references
-class NamedThingId(extended_str):
+class CommonMetadataId(URIorCURIE):
     pass
 
 
-class PlannedProcessId(NamedThingId):
+class PlannedProcessId(URIorCURIE):
     pass
 
 
@@ -65,31 +66,23 @@ class AcademicEventId(PlannedProcessId):
     pass
 
 
-class CityId(NamedThingId):
+class CityId(URIorCURIE):
     pass
 
 
-class CountryId(NamedThingId):
+class CountryId(URIorCURIE):
     pass
 
 
-class RegionId(NamedThingId):
+class RegionId(URIorCURIE):
     pass
 
 
-class VenueId(NamedThingId):
+class VenueId(URIorCURIE):
     pass
 
 
-class MetricId(NamedThingId):
-    pass
-
-
-class AcceptedPapersId(MetricId):
-    pass
-
-
-class OrganizerId(NamedThingId):
+class OrganizerId(URIorCURIE):
     pass
 
 
@@ -102,11 +95,22 @@ class CommonMetadata(YAMLRoot):
     class_name: ClassVar[str] = "CommonMetadata"
     class_model_uri: ClassVar[URIRef] = CONFID.CommonMetadata
 
+    id: Union[str, CommonMetadataId] = None
+    xrefs: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     website: Optional[str] = None
     logo: Optional[str] = None
     summary: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CommonMetadataId):
+            self.id = CommonMetadataId(self.id)
+
+        if not isinstance(self.xrefs, list):
+            self.xrefs = [self.xrefs] if self.xrefs is not None else []
+        self.xrefs = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.xrefs]
+
         if self.website is not None and not isinstance(self.website, str):
             self.website = str(self.website)
 
@@ -120,36 +124,7 @@ class CommonMetadata(YAMLRoot):
 
 
 @dataclass
-class NamedThing(YAMLRoot):
-    """
-    A generic grouping for any identifiable entity
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = CONFID.NamedThing
-    class_class_curie: ClassVar[str] = "confid:NamedThing"
-    class_name: ClassVar[str] = "NamedThing"
-    class_model_uri: ClassVar[URIRef] = CONFID.NamedThing
-
-    id: Union[str, NamedThingId] = None
-    name: str = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NamedThingId):
-            self.id = NamedThingId(self.id)
-
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class PlannedProcess(NamedThing):
+class PlannedProcess(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFID.PlannedProcess
@@ -158,18 +133,17 @@ class PlannedProcess(NamedThing):
     class_model_uri: ClassVar[URIRef] = CONFID.PlannedProcess
 
     id: Union[str, PlannedProcessId] = None
-    name: str = None
     organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
     start_date: Optional[Union[str, XSDDateTime]] = None
     end_date: Optional[Union[str, XSDDateTime]] = None
-    acronym: Optional[str] = None
     sponsors: Optional[Union[str, List[str]]] = empty_list()
     outputs: Optional[Union[str, List[str]]] = empty_list()
     topics: Optional[Union[str, List[str]]] = empty_list()
     academic_fields: Optional[Union[str, List[str]]] = empty_list()
-    metrics: Optional[Union[Dict[Union[str, MetricId], Union[dict, "Metric"]], List[Union[dict, "Metric"]]]] = empty_dict()
+    metrics: Optional[Union[Union[dict, "Metric"], List[Union[dict, "Metric"]]]] = empty_list()
     contact: Optional[str] = None
     related_to: Optional[Union[Union[dict, "ProcessRelation"], List[Union[dict, "ProcessRelation"]]]] = empty_list()
+    xrefs: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     website: Optional[str] = None
     logo: Optional[str] = None
     summary: Optional[str] = None
@@ -190,9 +164,6 @@ class PlannedProcess(NamedThing):
         if self.end_date is not None and not isinstance(self.end_date, XSDDateTime):
             self.end_date = XSDDateTime(self.end_date)
 
-        if self.acronym is not None and not isinstance(self.acronym, str):
-            self.acronym = str(self.acronym)
-
         if not isinstance(self.sponsors, list):
             self.sponsors = [self.sponsors] if self.sponsors is not None else []
         self.sponsors = [v if isinstance(v, str) else str(v) for v in self.sponsors]
@@ -209,7 +180,9 @@ class PlannedProcess(NamedThing):
             self.academic_fields = [self.academic_fields] if self.academic_fields is not None else []
         self.academic_fields = [v if isinstance(v, str) else str(v) for v in self.academic_fields]
 
-        self._normalize_inlined_as_list(slot_name="metrics", slot_type=Metric, key_name="id", keyed=True)
+        if not isinstance(self.metrics, list):
+            self.metrics = [self.metrics] if self.metrics is not None else []
+        self.metrics = [v if isinstance(v, Metric) else Metric(**as_dict(v)) for v in self.metrics]
 
         if self.contact is not None and not isinstance(self.contact, str):
             self.contact = str(self.contact)
@@ -217,6 +190,10 @@ class PlannedProcess(NamedThing):
         if not isinstance(self.related_to, list):
             self.related_to = [self.related_to] if self.related_to is not None else []
         self.related_to = [v if isinstance(v, ProcessRelation) else ProcessRelation(**as_dict(v)) for v in self.related_to]
+
+        if not isinstance(self.xrefs, list):
+            self.xrefs = [self.xrefs] if self.xrefs is not None else []
+        self.xrefs = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.xrefs]
 
         if self.website is not None and not isinstance(self.website, str):
             self.website = str(self.website)
@@ -240,7 +217,6 @@ class AcademicEventSeries(PlannedProcess):
     class_model_uri: ClassVar[URIRef] = CONFID.AcademicEventSeries
 
     id: Union[str, AcademicEventSeriesId] = None
-    name: str = None
     organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
     series_of: Optional[Union[str, AcademicEventId]] = None
 
@@ -266,7 +242,6 @@ class AcademicEvent(PlannedProcess):
     class_model_uri: ClassVar[URIRef] = CONFID.AcademicEvent
 
     id: Union[str, AcademicEventId] = None
-    name: str = None
     organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
     at_location: Optional[Union[dict, "Location"]] = None
     in_series: Optional[Union[str, AcademicEventSeriesId]] = None
@@ -358,7 +333,7 @@ class Location(YAMLRoot):
 
 
 @dataclass
-class City(NamedThing):
+class City(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFID.City
@@ -367,7 +342,10 @@ class City(NamedThing):
     class_model_uri: ClassVar[URIRef] = CONFID.City
 
     id: Union[str, CityId] = None
-    name: str = None
+    xrefs: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    website: Optional[str] = None
+    logo: Optional[str] = None
+    summary: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -375,11 +353,24 @@ class City(NamedThing):
         if not isinstance(self.id, CityId):
             self.id = CityId(self.id)
 
+        if not isinstance(self.xrefs, list):
+            self.xrefs = [self.xrefs] if self.xrefs is not None else []
+        self.xrefs = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.xrefs]
+
+        if self.website is not None and not isinstance(self.website, str):
+            self.website = str(self.website)
+
+        if self.logo is not None and not isinstance(self.logo, str):
+            self.logo = str(self.logo)
+
+        if self.summary is not None and not isinstance(self.summary, str):
+            self.summary = str(self.summary)
+
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class Country(NamedThing):
+class Country(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFID.Country
@@ -388,7 +379,10 @@ class Country(NamedThing):
     class_model_uri: ClassVar[URIRef] = CONFID.Country
 
     id: Union[str, CountryId] = None
-    name: str = None
+    xrefs: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    website: Optional[str] = None
+    logo: Optional[str] = None
+    summary: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -396,11 +390,24 @@ class Country(NamedThing):
         if not isinstance(self.id, CountryId):
             self.id = CountryId(self.id)
 
+        if not isinstance(self.xrefs, list):
+            self.xrefs = [self.xrefs] if self.xrefs is not None else []
+        self.xrefs = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.xrefs]
+
+        if self.website is not None and not isinstance(self.website, str):
+            self.website = str(self.website)
+
+        if self.logo is not None and not isinstance(self.logo, str):
+            self.logo = str(self.logo)
+
+        if self.summary is not None and not isinstance(self.summary, str):
+            self.summary = str(self.summary)
+
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class Region(NamedThing):
+class Region(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFID.Region
@@ -409,7 +416,10 @@ class Region(NamedThing):
     class_model_uri: ClassVar[URIRef] = CONFID.Region
 
     id: Union[str, RegionId] = None
-    name: str = None
+    xrefs: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    website: Optional[str] = None
+    logo: Optional[str] = None
+    summary: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -417,11 +427,24 @@ class Region(NamedThing):
         if not isinstance(self.id, RegionId):
             self.id = RegionId(self.id)
 
+        if not isinstance(self.xrefs, list):
+            self.xrefs = [self.xrefs] if self.xrefs is not None else []
+        self.xrefs = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.xrefs]
+
+        if self.website is not None and not isinstance(self.website, str):
+            self.website = str(self.website)
+
+        if self.logo is not None and not isinstance(self.logo, str):
+            self.logo = str(self.logo)
+
+        if self.summary is not None and not isinstance(self.summary, str):
+            self.summary = str(self.summary)
+
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class Venue(NamedThing):
+class Venue(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFID.Venue
@@ -430,9 +453,8 @@ class Venue(NamedThing):
     class_model_uri: ClassVar[URIRef] = CONFID.Venue
 
     id: Union[str, VenueId] = None
-    name: str = None
-    venue_url: Optional[Union[str, URIorCURIE]] = None
     address: Optional[str] = None
+    xrefs: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     website: Optional[str] = None
     logo: Optional[str] = None
     summary: Optional[str] = None
@@ -443,11 +465,12 @@ class Venue(NamedThing):
         if not isinstance(self.id, VenueId):
             self.id = VenueId(self.id)
 
-        if self.venue_url is not None and not isinstance(self.venue_url, URIorCURIE):
-            self.venue_url = URIorCURIE(self.venue_url)
-
         if self.address is not None and not isinstance(self.address, str):
             self.address = str(self.address)
+
+        if not isinstance(self.xrefs, list):
+            self.xrefs = [self.xrefs] if self.xrefs is not None else []
+        self.xrefs = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.xrefs]
 
         if self.website is not None and not isinstance(self.website, str):
             self.website = str(self.website)
@@ -492,7 +515,7 @@ class Deadline(YAMLRoot):
 
 
 @dataclass
-class Metric(NamedThing):
+class Metric(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFID.Metric
@@ -500,43 +523,31 @@ class Metric(NamedThing):
     class_name: ClassVar[str] = "Metric"
     class_model_uri: ClassVar[URIRef] = CONFID.Metric
 
-    id: Union[str, MetricId] = None
-    name: str = None
-    value: Optional[str] = None
+    int_value: Optional[int] = None
+    str_value: Optional[str] = None
+    rate_value: Optional[float] = None
+    truth_value: Optional[Union[bool, Bool]] = None
+    other_metric: Optional[str] = None
+    type: Optional[Union[str, "EventType"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, MetricId):
-            self.id = MetricId(self.id)
+        if self.int_value is not None and not isinstance(self.int_value, int):
+            self.int_value = int(self.int_value)
 
-        if self.value is not None and not isinstance(self.value, str):
-            self.value = str(self.value)
+        if self.str_value is not None and not isinstance(self.str_value, str):
+            self.str_value = str(self.str_value)
 
-        super().__post_init__(**kwargs)
+        if self.rate_value is not None and not isinstance(self.rate_value, float):
+            self.rate_value = float(self.rate_value)
 
+        if self.truth_value is not None and not isinstance(self.truth_value, Bool):
+            self.truth_value = Bool(self.truth_value)
 
-@dataclass
-class AcceptedPapers(Metric):
-    _inherited_slots: ClassVar[List[str]] = []
+        if self.other_metric is not None and not isinstance(self.other_metric, str):
+            self.other_metric = str(self.other_metric)
 
-    class_class_uri: ClassVar[URIRef] = CONFID.AcceptedPapers
-    class_class_curie: ClassVar[str] = "confid:AcceptedPapers"
-    class_name: ClassVar[str] = "AcceptedPapers"
-    class_model_uri: ClassVar[URIRef] = CONFID.AcceptedPapers
-
-    id: Union[str, AcceptedPapersId] = None
-    name: str = None
-    value: Optional[int] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AcceptedPapersId):
-            self.id = AcceptedPapersId(self.id)
-
-        if self.value is not None and not isinstance(self.value, int):
-            self.value = int(self.value)
+        if self.type is not None and not isinstance(self.type, EventType):
+            self.type = EventType(self.type)
 
         super().__post_init__(**kwargs)
 
@@ -550,17 +561,17 @@ class ProcessRelation(YAMLRoot):
     class_name: ClassVar[str] = "ProcessRelation"
     class_model_uri: ClassVar[URIRef] = CONFID.ProcessRelation
 
-    realtion_type: Optional[Union[str, "ProcessRelationType"]] = None
+    type: Optional[Union[str, "ProcessRelationType"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.realtion_type is not None and not isinstance(self.realtion_type, ProcessRelationType):
-            self.realtion_type = ProcessRelationType(self.realtion_type)
+        if self.type is not None and not isinstance(self.type, ProcessRelationType):
+            self.type = ProcessRelationType(self.type)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class Organizer(NamedThing):
+class Organizer(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFID.Organizer
@@ -569,13 +580,53 @@ class Organizer(NamedThing):
     class_model_uri: ClassVar[URIRef] = CONFID.Organizer
 
     id: Union[str, OrganizerId] = None
-    name: str = None
+    xrefs: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    website: Optional[str] = None
+    logo: Optional[str] = None
+    summary: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, OrganizerId):
             self.id = OrganizerId(self.id)
+
+        if not isinstance(self.xrefs, list):
+            self.xrefs = [self.xrefs] if self.xrefs is not None else []
+        self.xrefs = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.xrefs]
+
+        if self.website is not None and not isinstance(self.website, str):
+            self.website = str(self.website)
+
+        if self.logo is not None and not isinstance(self.logo, str):
+            self.logo = str(self.logo)
+
+        if self.summary is not None and not isinstance(self.summary, str):
+            self.summary = str(self.summary)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Name(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFID.Name
+    class_class_curie: ClassVar[str] = "confid:Name"
+    class_name: ClassVar[str] = "Name"
+    class_model_uri: ClassVar[URIRef] = CONFID.Name
+
+    name: str = None
+    type: Optional[Union[str, "NameType"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.type is not None and not isinstance(self.type, NameType):
+            self.type = NameType(self.type)
 
         super().__post_init__(**kwargs)
 
@@ -708,6 +759,45 @@ class ProcessRelationType(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="ProcessRelationType",
     )
+
+class MetricType(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="MetricType",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "submitted papers",
+                PermissibleValue(text="submitted papers") )
+        setattr(cls, "accepted papers",
+                PermissibleValue(text="accepted papers") )
+        setattr(cls, "accepted short papers",
+                PermissibleValue(text="accepted short papers") )
+        setattr(cls, "number of attendees",
+                PermissibleValue(text="number of attendees") )
+        setattr(cls, "number of tracks",
+                PermissibleValue(text="number of tracks") )
+        setattr(cls, "has childcare options",
+                PermissibleValue(text="has childcare options") )
+        setattr(cls, "is accessible",
+                PermissibleValue(text="is accessible",
+                                 description="If true then accessible for people with impairments.") )
+
+class NameType(EnumDefinitionImpl):
+
+    acronym = PermissibleValue(text="acronym")
+
+    _defn = EnumDefinition(
+        name="NameType",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "official name",
+                PermissibleValue(text="official name") )
+        setattr(cls, "alternative name",
+                PermissibleValue(text="alternative name") )
 
 # Slots
 
