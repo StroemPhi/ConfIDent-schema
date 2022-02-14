@@ -127,9 +127,8 @@ classes:
 
   Metric:
     is_a: NamedThing
-    attributes:
-      value:
-        required: true
+    slots:
+      - value
 
   AcceptedPapers:
     is_a: Metric
@@ -170,6 +169,8 @@ slots:
     inlined: true
     inlined_as_list: true
     range: Metric
+  value:
+    required: true
 
 
 # academic event properties
