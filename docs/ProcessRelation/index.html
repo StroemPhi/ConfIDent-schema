@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: end_date - A model to describe academic events and event series.</title>
+  <title>Class: ProcessRelation - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: end_date";
-    var mkdocs_page_input_path = "end_date.md";
+    var mkdocs_page_name = "Class: ProcessRelation";
+    var mkdocs_page_input_path = "ProcessRelation.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: end_date</li>
+    <li>Class: ProcessRelation</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,17 +91,20 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-end_date">Slot: end_date</h1>
-<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlend_date">confid:end_date</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>0..1</sub> <a href="../Datetime/">Datetime</a></p>
-<h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
-<h2 id="used-by">Used by</h2>
+                <h1 id="class-processrelation">Class: ProcessRelation</h1>
+<p>URI: <a href="https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yamlProcessRelation">confid:ProcessRelation</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20related_to%200..*&gt;[ProcessRelation&#124;realtion_type:ProcessRelationType%20%3F],[PlannedProcess]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20related_to%200..*&gt;[ProcessRelation&#124;realtion_type:ProcessRelationType%20%3F],[PlannedProcess]" /></a></p>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li><a href="../AcademicEvent/">AcademicEvent</a></li>
-<li><a href="../AcademicEventSeries/">AcademicEventSeries</a></li>
-<li><a href="../PlannedProcess/">PlannedProcess</a></li>
+<li><strong>None</strong> <em><a href="../related_to/">related_to</a></em>  <sub>0..*</sub>  <strong><a href="./">ProcessRelation</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../processRelation__realtion_type/">➞realtion_type</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../ProcessRelationType/">ProcessRelationType</a></li>
+</ul>
+</li>
 </ul>
               
             </div>

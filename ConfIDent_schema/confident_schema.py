@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-14T16:23:39
+# Generation date: 2022-02-14T16:46:01
 # Schema: ConfIDent-schema
 #
 # id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml
@@ -23,8 +23,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Boolean, Datetime, Float, Integer, String, Uriorcurie
-from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDateTime
+from linkml_runtime.linkml_model.types import Datetime, Float, Integer, String, Uriorcurie
+from linkml_runtime.utils.metamodelcore import URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
 
@@ -160,8 +160,8 @@ class PlannedProcess(NamedThing):
     id: Union[str, PlannedProcessId] = None
     name: str = None
     organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
-    start_date: Optional[str] = None
-    end_date: Optional[str] = None
+    start_date: Optional[Union[str, XSDDateTime]] = None
+    end_date: Optional[Union[str, XSDDateTime]] = None
     acronym: Optional[str] = None
     sponsors: Optional[Union[str, List[str]]] = empty_list()
     outputs: Optional[Union[str, List[str]]] = empty_list()
@@ -169,6 +169,7 @@ class PlannedProcess(NamedThing):
     academic_fields: Optional[Union[str, List[str]]] = empty_list()
     metrics: Optional[Union[Dict[Union[str, MetricId], Union[dict, "Metric"]], List[Union[dict, "Metric"]]]] = empty_dict()
     contact: Optional[str] = None
+    related_to: Optional[Union[Union[dict, "ProcessRelation"], List[Union[dict, "ProcessRelation"]]]] = empty_list()
     website: Optional[str] = None
     logo: Optional[str] = None
     summary: Optional[str] = None
@@ -183,11 +184,11 @@ class PlannedProcess(NamedThing):
             self.MissingRequiredField("organizers")
         self._normalize_inlined_as_list(slot_name="organizers", slot_type=Organizer, key_name="id", keyed=True)
 
-        if self.start_date is not None and not isinstance(self.start_date, str):
-            self.start_date = str(self.start_date)
+        if self.start_date is not None and not isinstance(self.start_date, XSDDateTime):
+            self.start_date = XSDDateTime(self.start_date)
 
-        if self.end_date is not None and not isinstance(self.end_date, str):
-            self.end_date = str(self.end_date)
+        if self.end_date is not None and not isinstance(self.end_date, XSDDateTime):
+            self.end_date = XSDDateTime(self.end_date)
 
         if self.acronym is not None and not isinstance(self.acronym, str):
             self.acronym = str(self.acronym)
@@ -212,6 +213,10 @@ class PlannedProcess(NamedThing):
 
         if self.contact is not None and not isinstance(self.contact, str):
             self.contact = str(self.contact)
+
+        if not isinstance(self.related_to, list):
+            self.related_to = [self.related_to] if self.related_to is not None else []
+        self.related_to = [v if isinstance(v, ProcessRelation) else ProcessRelation(**as_dict(v)) for v in self.related_to]
 
         if self.website is not None and not isinstance(self.website, str):
             self.website = str(self.website)
@@ -263,7 +268,7 @@ class AcademicEvent(PlannedProcess):
     id: Union[str, AcademicEventId] = None
     name: str = None
     organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
-    at_location: Optional[str] = None
+    at_location: Optional[Union[dict, "Location"]] = None
     in_series: Optional[Union[str, AcademicEventSeriesId]] = None
     committees: Optional[str] = None
     participants: Optional[str] = None
@@ -279,8 +284,8 @@ class AcademicEvent(PlannedProcess):
         if not isinstance(self.id, AcademicEventId):
             self.id = AcademicEventId(self.id)
 
-        if self.at_location is not None and not isinstance(self.at_location, str):
-            self.at_location = str(self.at_location)
+        if self.at_location is not None and not isinstance(self.at_location, Location):
+            self.at_location = Location(**as_dict(self.at_location))
 
         if self.in_series is not None and not isinstance(self.in_series, AcademicEventSeriesId):
             self.in_series = AcademicEventSeriesId(self.in_series)
@@ -497,7 +502,7 @@ class Metric(NamedThing):
 
     id: Union[str, MetricId] = None
     name: str = None
-    value: str = None
+    value: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -505,9 +510,7 @@ class Metric(NamedThing):
         if not isinstance(self.id, MetricId):
             self.id = MetricId(self.id)
 
-        if self._is_empty(self.value):
-            self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
+        if self.value is not None and not isinstance(self.value, str):
             self.value = str(self.value)
 
         super().__post_init__(**kwargs)
@@ -524,7 +527,7 @@ class AcceptedPapers(Metric):
 
     id: Union[str, AcceptedPapersId] = None
     name: str = None
-    value: int = None
+    value: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -532,10 +535,26 @@ class AcceptedPapers(Metric):
         if not isinstance(self.id, AcceptedPapersId):
             self.id = AcceptedPapersId(self.id)
 
-        if self._is_empty(self.value):
-            self.MissingRequiredField("value")
-        if not isinstance(self.value, int):
+        if self.value is not None and not isinstance(self.value, int):
             self.value = int(self.value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ProcessRelation(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFID.ProcessRelation
+    class_class_curie: ClassVar[str] = "confid:ProcessRelation"
+    class_name: ClassVar[str] = "ProcessRelation"
+    class_model_uri: ClassVar[URIRef] = CONFID.ProcessRelation
+
+    realtion_type: Optional[Union[str, "ProcessRelationType"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.realtion_type is not None and not isinstance(self.realtion_type, ProcessRelationType):
+            self.realtion_type = ProcessRelationType(self.realtion_type)
 
         super().__post_init__(**kwargs)
 
@@ -674,6 +693,21 @@ class DeadlineType(EnumDefinitionImpl):
         setattr(cls, "workshop deadline",
                 PermissibleValue(text="workshop deadline",
                                  meaning=AEON["0000069"]) )
+
+class ProcessRelationType(EnumDefinitionImpl):
+
+    isUmbrellaEventOf = PermissibleValue(text="isUmbrellaEventOf")
+    hasUmbrellaEvent = PermissibleValue(text="hasUmbrellaEvent")
+    isJointEventOf = PermissibleValue(text="isJointEventOf")
+    isColocatedEventOf = PermissibleValue(text="isColocatedEventOf")
+    isSubEventOf = PermissibleValue(text="isSubEventOf")
+    hasSubEvent = PermissibleValue(text="hasSubEvent")
+    hasSeries = PermissibleValue(text="hasSeries")
+    isSeriesOf = PermissibleValue(text="isSeriesOf")
+
+    _defn = EnumDefinition(
+        name="ProcessRelationType",
+    )
 
 # Slots
 

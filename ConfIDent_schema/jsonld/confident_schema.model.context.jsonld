@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-14T16:24:01\n    Schema: ConfIDent-schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
+   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-14T16:45:53\n    Schema: ConfIDent-schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
    "@context": {
       "aeon": {
          "@id": "https://github.com/tibonto/aeon#AEON_",
@@ -23,14 +23,17 @@
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "wikidata": "https://www.wikidata.org/wiki/",
       "@vocab": "https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml",
+      "at_location": {
+         "@type": "@id"
+      },
       "deadline_date": {
          "@type": "xsd:dateTime"
       },
       "deadlines": {
          "@type": "@id"
       },
-      "default": {
-         "@type": "xsd:boolean"
+      "end_date": {
+         "@type": "xsd:dateTime"
       },
       "event_mode": {
          "@context": {
@@ -82,8 +85,22 @@
       "organizers": {
          "@type": "@id"
       },
+      "realtion_type": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "related_to": {
+         "@type": "@id"
+      },
       "series_of": {
          "@type": "@id"
+      },
+      "start_date": {
+         "@type": "xsd:dateTime"
       },
       "type": {
          "@context": {

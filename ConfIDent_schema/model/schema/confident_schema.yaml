@@ -27,16 +27,19 @@ default_range: string
 imports:
  - linkml:types
 
-classes:
 
-  # Mixins
+#####################################
+#             Classes               #
+#####################################
+classes:
+# CommonMetadata
   CommonMetadata:
     mixin: true
     slots:
       - website
       - logo
       - summary
-
+# NamedThing
   NamedThing:
     description: >-
       A generic grouping for any identifiable entity
@@ -45,7 +48,7 @@ classes:
       - name
     close_mappings:
      - sdo:Thing
-
+# PlannedProcess
   PlannedProcess:
     is_a: NamedThing
     mixins: 
@@ -61,12 +64,13 @@ classes:
       - academic_fields
       - metrics
       - contact
-
+      - related_to
+# AcademicEventSeries
   AcademicEventSeries:
     is_a: PlannedProcess
     slots:
       - series_of
-    
+# AcademicEvent
   AcademicEvent:
     is_a: PlannedProcess
     slots:
@@ -82,7 +86,7 @@ classes:
       type: 
         range: EventType
         recommended: true
-
+# Location
   Location:
     attributes:
       city:
@@ -115,7 +119,7 @@ classes:
       venue_url:
         range: uriorcurie
       address:
-
+# Deadline
   Deadline:
     attributes:
       deadline_date:
@@ -127,17 +131,23 @@ classes:
       type: 
         range: DeadlineType
         required: true
-
+# Metric
   Metric:
     is_a: NamedThing
-    slots:
-      - value
-
+    attributes:
+      value:
+# AcceptedPapers
   AcceptedPapers:
     is_a: Metric
     slot_usage:
       value:
         range: integer
+# ProcessRelation
+  ProcessRelation:
+    attributes:
+      realtion_type:
+        range: ProcessRelationType
+
 
   Organizer:
     is_a: NamedThing
@@ -146,19 +156,17 @@ classes:
 #              Slots                #
 #####################################
 slots:
-# named thing properties
+# CommonMetadata properties
+  website:
+  logo:
+  summary:
+# NamedThing properties
   id:
     identifier: true
     required: true
   name:
     required: true
-
-# common metadata properties
-  website:
-  logo:
-  summary:
-
-# planned process properties
+# PlannedProcess properties
   acronym:
   organizers:
     required: true
@@ -172,30 +180,28 @@ slots:
   contact:
   outputs:
     multivalued: true
-
+  related_to:
+    multivalued: true
+    range: ProcessRelation 
   topics:
     multivalued: true
     range: string
-
   academic_fields:
     multivalued: true
-
   metrics:
     multivalued: true
     inlined_as_list: true
     range: Metric
-  
-  value:
-    required: true
-
-# academic event series properties
+# AcademicEventSeries properties
   series_of:
     range: AcademicEvent
-
-# academic event properties
-  at_location:  
+# AcademicEvent properties
+  at_location:
+    range: Location
   start_date:
+    range: datetime
   end_date:
+    range: datetime
   in_series:
     range: AcademicEventSeries
   committees:
@@ -212,10 +218,8 @@ slots:
     range: EventStatus
   event_mode:
     range: EventMode
-  default:
-    range: boolean
 
-
+    
 #####################################
 #               Enums               #
 #####################################
@@ -292,4 +296,18 @@ enums:
         meaning: aeon:0000068
       workshop deadline:
         meaning: aeon:0000069
+
+  ProcessRelationType:
+    permissible_values:
+      isUmbrellaEventOf:
+      hasUmbrellaEvent:
+      isJointEventOf:
+      isColocatedEventOf:
+      isSubEventOf:
+      hasSubEvent:
+      hasSeries:
+      isSeriesOf:
+
+
+
 

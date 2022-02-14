@@ -14,7 +14,7 @@
                "type": "string"
             },
             "at_location": {
-               "type": "string"
+               "$ref": "#/$defs/Location"
             },
             "committees": {
                "type": "string"
@@ -29,6 +29,7 @@
                "type": "array"
             },
             "end_date": {
+               "format": "date-time",
                "type": "string"
             },
             "event_mode": {
@@ -73,6 +74,12 @@
             "participants": {
                "type": "string"
             },
+            "related_to": {
+               "items": {
+                  "$ref": "#/$defs/ProcessRelation"
+               },
+               "type": "array"
+            },
             "sponsors": {
                "items": {
                   "type": "string"
@@ -80,6 +87,7 @@
                "type": "array"
             },
             "start_date": {
+               "format": "date-time",
                "type": "string"
             },
             "summary": {
@@ -123,6 +131,7 @@
                "type": "string"
             },
             "end_date": {
+               "format": "date-time",
                "type": "string"
             },
             "id": {
@@ -152,6 +161,12 @@
                },
                "type": "array"
             },
+            "related_to": {
+               "items": {
+                  "$ref": "#/$defs/ProcessRelation"
+               },
+               "type": "array"
+            },
             "series_of": {
                "type": "string"
             },
@@ -162,6 +177,7 @@
                "type": "array"
             },
             "start_date": {
+               "format": "date-time",
                "type": "string"
             },
             "summary": {
@@ -201,8 +217,7 @@
          },
          "required": [
             "id",
-            "name",
-            "value"
+            "name"
          ],
          "title": "AcceptedPapers",
          "type": "object"
@@ -370,8 +385,7 @@
          },
          "required": [
             "id",
-            "name",
-            "value"
+            "name"
          ],
          "title": "Metric",
          "type": "object"
@@ -429,6 +443,7 @@
                "type": "string"
             },
             "end_date": {
+               "format": "date-time",
                "type": "string"
             },
             "id": {
@@ -458,6 +473,12 @@
                },
                "type": "array"
             },
+            "related_to": {
+               "items": {
+                  "$ref": "#/$defs/ProcessRelation"
+               },
+               "type": "array"
+            },
             "sponsors": {
                "items": {
                   "type": "string"
@@ -465,6 +486,7 @@
                "type": "array"
             },
             "start_date": {
+               "format": "date-time",
                "type": "string"
             },
             "summary": {
@@ -487,6 +509,33 @@
          ],
          "title": "PlannedProcess",
          "type": "object"
+      },
+      "ProcessRelation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "realtion_type": {
+               "$ref": "#/$defs/ProcessRelationType"
+            }
+         },
+         "required": [],
+         "title": "ProcessRelation",
+         "type": "object"
+      },
+      "ProcessRelationType": {
+         "description": "",
+         "enum": [
+            "isUmbrellaEventOf",
+            "hasUmbrellaEvent",
+            "isJointEventOf",
+            "isColocatedEventOf",
+            "isSubEventOf",
+            "hasSubEvent",
+            "hasSeries",
+            "isSeriesOf"
+         ],
+         "title": "ProcessRelationType",
+         "type": "string"
       },
       "Region": {
          "additionalProperties": false,
