@@ -28,6 +28,9 @@
                },
                "type": "array"
             },
+            "denoted_by": {
+               "$ref": "#/$defs/ProcessName"
+            },
             "end_date": {
                "format": "date-time",
                "type": "string"
@@ -68,9 +71,6 @@
                },
                "type": "array"
             },
-            "process_name": {
-               "$ref": "#/$defs/ProcessName"
-            },
             "related_to": {
                "items": {
                   "$ref": "#/$defs/ProcessRelation"
@@ -108,10 +108,10 @@
          },
          "required": [
             "id",
+            "denoted_by",
             "event_status",
             "start_date",
-            "end_date",
-            "organizers"
+            "end_date"
          ],
          "title": "AcademicEvent",
          "type": "object"
@@ -134,6 +134,9 @@
             },
             "contact": {
                "type": "string"
+            },
+            "denoted_by": {
+               "$ref": "#/$defs/ProcessName"
             },
             "end_date": {
                "format": "date-time",
@@ -165,9 +168,6 @@
                   "type": "string"
                },
                "type": "array"
-            },
-            "process_name": {
-               "$ref": "#/$defs/ProcessName"
             },
             "related_to": {
                "items": {
@@ -202,7 +202,8 @@
             }
          },
          "required": [
-            "id"
+            "id",
+            "denoted_by"
          ],
          "title": "AcademicEventSeries",
          "type": "object"
@@ -224,7 +225,7 @@
          "title": "City",
          "type": "object"
       },
-      "Container": {
+      "ConfIDentRecord": {
          "additionalProperties": false,
          "description": "",
          "properties": {
@@ -242,7 +243,7 @@
             }
          },
          "required": [],
-         "title": "Container",
+         "title": "ConfIDentRecord",
          "type": "object"
       },
       "Contributor": {
@@ -440,16 +441,6 @@
          "title": "MetricType",
          "type": "string"
       },
-      "NameType": {
-         "description": "",
-         "enum": [
-            "official name",
-            "acronym",
-            "alternative name"
-         ],
-         "title": "NameType",
-         "type": "string"
-      },
       "Organisation": {
          "additionalProperties": false,
          "description": "An organization such as a company or university",
@@ -462,8 +453,7 @@
             }
          },
          "required": [
-            "id",
-            "name"
+            "id"
          ],
          "title": "Organisation",
          "type": "object"
@@ -495,8 +485,7 @@
             }
          },
          "required": [
-            "id",
-            "name"
+            "id"
          ],
          "title": "Person",
          "type": "object"
@@ -519,6 +508,9 @@
             },
             "contact": {
                "type": "string"
+            },
+            "denoted_by": {
+               "$ref": "#/$defs/ProcessName"
             },
             "end_date": {
                "format": "date-time",
@@ -550,9 +542,6 @@
                   "type": "string"
                },
                "type": "array"
-            },
-            "process_name": {
-               "$ref": "#/$defs/ProcessName"
             },
             "related_to": {
                "items": {
@@ -587,7 +576,8 @@
             }
          },
          "required": [
-            "id"
+            "id",
+            "denoted_by"
          ],
          "title": "PlannedProcess",
          "type": "object"
@@ -596,15 +586,15 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "name": {
+            "acronym": {
                "type": "string"
             },
-            "name_type": {
-               "$ref": "#/$defs/NameType"
+            "official_name": {
+               "type": "string"
             }
          },
          "required": [
-            "name"
+            "official_name"
          ],
          "title": "ProcessName",
          "type": "object"
@@ -687,12 +677,14 @@
          "type": "object"
       }
    },
-   "$id": "https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml",
+   "$id": "https://github.com/StroemPhi/ConfIDent-schema/",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": true,
+   "metamodel_version": "1.7.0",
    "properties": {},
    "required": [],
    "title": "ConfIDent-schema",
-   "type": "object"
+   "type": "object",
+   "version": "0.0.1"
 }
 

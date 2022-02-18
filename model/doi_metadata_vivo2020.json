@@ -1,0 +1,240 @@
+{
+  "id": "https://doi.org/10.25798/qsdh-en13",
+  "doi": "10.25798/QSDH-EN13",
+  "url": "https://vivoconference.org/vivo2021",
+  "types": {
+    "ris": "GEN",
+    "bibtex": "misc",
+    "citeproc": "article",
+    "schemaOrg": "Event",
+    "resourceType": "Academic Online Conference",
+    "resourceTypeGeneral": "Event"
+  },
+  "creators": [
+    {
+      "name": "Conlon, Michael",
+      "nameType": "Personal",
+      "givenName": "Michael",
+      "familyName": "Conlon",
+      "affiliation": [],
+      "nameIdentifiers": [
+        {
+          "schemeUri": "https://orcid.org",
+          "nameIdentifier": "https://orcid.org/0000-0002-1304-8447",
+          "nameIdentifierScheme": "ORCID"
+        }
+      ]
+    },
+    {
+      "name": "Hauschke, Christian",
+      "nameType": "Personal",
+      "givenName": "Christian",
+      "familyName": "Hauschke",
+      "affiliation": [],
+      "nameIdentifiers": [
+        {
+          "schemeUri": "https://orcid.org",
+          "nameIdentifier": "https://orcid.org/0000-0003-2499-7741",
+          "nameIdentifierScheme": "ORCID"
+        }
+      ]
+    },
+    {
+      "name": "Guillaumet, Anna",
+      "nameType": "Personal",
+      "givenName": "Anna",
+      "familyName": "Guillaumet",
+      "affiliation": [],
+      "nameIdentifiers": [
+        {
+          "schemeUri": "https://orcid.org",
+          "nameIdentifier": "https://orcid.org/0000-0002-1944-5259",
+          "nameIdentifierScheme": "ORCID"
+        }
+      ]
+    },
+    {
+      "name": "O'Flinn, Ralph",
+      "nameType": "Personal",
+      "givenName": "Ralph",
+      "familyName": "O'Flinn",
+      "affiliation": [],
+      "nameIdentifiers": [
+        {
+          "schemeUri": "https://orcid.org",
+          "nameIdentifier": "https://orcid.org/0000-0003-4002-1335",
+          "nameIdentifierScheme": "ORCID"
+        }
+      ]
+    },
+    {
+      "name": "Minielli, Michele",
+      "nameType": "Personal",
+      "givenName": "Michele",
+      "familyName": "Minielli",
+      "affiliation": [],
+      "nameIdentifiers": []
+    }
+  ],
+  "titles": [
+    {
+      "lang": "en",
+      "title": "12th Annual / International VIVO Conference 2021",
+      "titleType": null
+    },
+    {
+      "lang": null,
+      "title": "VIVO 2021",
+      "titleType": "AlternativeTitle"
+    }
+  ],
+  "publisher": "German National Library of Science and Technology (TIB)",
+  "container": {
+    "type": "Series",
+    "identifier": "10.25798/ea2h-xq32",
+    "identifierType": "DOI"
+  },
+  "subjects": [
+    {
+      "subject": "FOS: Computer and information sciences",
+      "subjectScheme": "Fields of Science and Technology (FOS)"
+    },
+    {
+      "subject": "FOS: Computer and information sciences",
+      "schemeUri": "http://www.oecd.org/science/inno/38235147.pdf",
+      "subjectScheme": "Fields of Science and Technology (FOS)"
+    },
+    {
+      "subject": "FOS: Media and communications",
+      "subjectScheme": "Fields of Science and Technology (FOS)"
+    },
+    {
+      "subject": "FOS: Media and communications",
+      "schemeUri": "http://www.oecd.org/science/inno/38235147.pdf",
+      "subjectScheme": "Fields of Science and Technology (FOS)"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "German National Library Of Science And Technology",
+      "nameType": "Organizational",
+      "givenName": null,
+      "familyName": null,
+      "affiliation": [],
+      "contributorType": "Sponsor",
+      "nameIdentifiers": [
+        {
+          "schemeUri": "https://ror.org",
+          "nameIdentifier": "https://ror.orghttps://ror.org/04aj4c181",
+          "nameIdentifierScheme": "ROR"
+        }
+      ]
+    },
+    {
+      "name": "Clarivate (United States)",
+      "nameType": "Organizational",
+      "givenName": null,
+      "familyName": null,
+      "affiliation": [],
+      "contributorType": "Sponsor",
+      "nameIdentifiers": [
+        {
+          "schemeUri": "https://ror.org",
+          "nameIdentifier": "https://ror.orghttps://ror.org/04fce1c40",
+          "nameIdentifierScheme": "ROR"
+        }
+      ]
+    },
+    {
+      "name": "SIGMA, GESTIÓN UNIVERSITARIA, AIE",
+      "nameType": "Organizational",
+      "givenName": null,
+      "familyName": null,
+      "affiliation": [],
+      "contributorType": "Sponsor",
+      "nameIdentifiers": [
+        {
+          "schemeUri": null,
+          "nameIdentifier": null,
+          "nameIdentifierScheme": ""
+        }
+      ]
+    },
+    {
+      "name": "Lowe, Brian",
+      "nameType": "Personal",
+      "givenName": "Brian",
+      "familyName": "Lowe",
+      "affiliation": [],
+      "contributorType": "Other",
+      "nameIdentifiers": [
+        {
+          "schemeUri": "https://orcid.org",
+          "nameIdentifier": "https://orcid.org/0000-0002-8143-6345",
+          "nameIdentifierScheme": "ORCID"
+        }
+      ]
+    }
+  ],
+  "dates": [
+    {
+      "date": "2021-06-23",
+      "dateType": "Valid",
+      "dateInformation": "start date"
+    },
+    {
+      "date": "2021-06-25",
+      "dateType": "Valid",
+      "dateInformation": "end date"
+    },
+    {
+      "date": "2021",
+      "dateType": "Issued",
+      "dateInformation": null
+    }
+  ],
+  "publicationYear": 2021,
+  "language": "en",
+  "identifiers": [],
+  "sizes": [],
+  "formats": [],
+  "rightsList": [],
+  "descriptions": [
+    {
+      "lang": null,
+      "description": "2021 will be our second on-line conference. The VIVO conference has been bringing people together since 2010 to share the latest work in semantic web academic profiles. Whether an experienced user, or just starting out, this is the event to attend.",
+      "descriptionType": "Abstract"
+    }
+  ],
+  "geoLocations": [],
+  "fundingReferences": [],
+  "relatedIdentifiers": [
+    {
+      "schemeUri": null,
+      "schemeType": null,
+      "relationType": "IsPartOf",
+      "relatedIdentifier": "10.25798/ea2h-xq32",
+      "resourceTypeGeneral": "Event",
+      "relatedIdentifierType": "DOI",
+      "relatedMetadataScheme": null
+    },
+    {
+      "schemeUri": null,
+      "schemeType": null,
+      "relationType": "IsDocumentedBy",
+      "relatedIdentifier": "https://av.tib.eu/series/1096/12th+international+vivo+conference+june+23+25+2021",
+      "resourceTypeGeneral": "Audiovisual",
+      "relatedIdentifierType": "URL",
+      "relatedMetadataScheme": null
+    }
+  ],
+  "relatedItems": [],
+  "schemaVersion": "ht
+
+tp://datacite.org/schema/kernel-4",
+  "providerId": "wuua",
+  "clientId": "wuua.confident",
+  "agency": "datacite",
+  "state": "findable"
+}
+      

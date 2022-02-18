@@ -1,16 +1,15 @@
 {
-   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-14T22:38:03\n    Schema: ConfIDent-schema\n    \n    id: https://raw.githubusercontent.com/StroemPhi/ConfIDent-schema/main/model/schema/confident-schema.yaml\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
+   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-18T13:27:28\n    Schema: ConfIDent-schema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/StroemPhi/ConfIDent-schema/\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
    "@context": {
-      "aeon": {
-         "@id": "https://github.com/tibonto/aeon#AEON_",
-         "@prefix": true
-      },
-      "confid": {
-         "@id": "https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml",
-         "@prefix": true
-      },
+      "aeon": "https://github.com/tibonto/aeon#",
+      "confid": "https://github.com/StroemPhi/ConfIDent-schema/",
       "dblp_series": "https://dblp.org/db/conf/",
       "dc": "http://purl.org/dc/terms/",
+      "doi": "https://doi.org/",
+      "iao": {
+         "@id": "http://purl.obolibrary.org/obo/OBI_",
+         "@prefix": true
+      },
       "linkml": "https://w3id.org/linkml/",
       "obi": {
          "@id": "http://purl.obolibrary.org/obo/OBI_",
@@ -22,7 +21,7 @@
       "sdo": "https://schema.org/",
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "wikidata": "https://www.wikidata.org/wiki/",
-      "@vocab": "https://raw.githubusercontent.com/StroemPhi/ConfIDent_schema/main/model/schema/confident_schema.yaml",
+      "@vocab": "https://github.com/StroemPhi/ConfIDent-schema/",
       "alternative_ids": {
          "@type": "@id"
       },
@@ -37,6 +36,9 @@
       },
       "deadlines": {
          "@type": "@id"
+      },
+      "denoted_by": {
+         "@id": "iao:0000235"
       },
       "end_date": {
          "@type": "xsd:dateTime"
@@ -55,7 +57,8 @@
             "text": "skos:notation",
             "description": "skos:prefLabel",
             "meaning": "@id"
-         }
+         },
+         "@id": "aeon:event_status"
       },
       "events": {
          "@type": "@id"
@@ -94,9 +97,6 @@
       "metrics": {
          "@type": "@id"
       },
-      "name": {
-         "@id": "sdo:name"
-      },
       "ordinal": {
          "@type": "xsd:integer"
       },
@@ -109,16 +109,8 @@
       "persons": {
          "@type": "@id"
       },
-      "process_name": {
-         "@type": "@id"
-      },
-      "name_type": {
-         "@context": {
-            "@vocab": "@null",
-            "text": "skos:notation",
-            "description": "skos:prefLabel",
-            "meaning": "@id"
-         }
+      "acronym": {
+         "@id": "aeon:AEON_0000091"
       },
       "related_to": {
          "@type": "@id"
@@ -137,11 +129,20 @@
             "meaning": "@id"
          }
       },
+      "AcademicEvent": {
+         "@id": "aeon:AEON_0000001"
+      },
+      "AcademicEventSeries": {
+         "@id": "aeon:AEON_0000002"
+      },
       "Organisation": {
          "@id": "sdo:Organization"
       },
       "Person": {
          "@id": "sdo:Person"
+      },
+      "ProcessName": {
+         "@id": "aeon:AEON_0000090"
       }
    }
 }
