@@ -33,5 +33,5 @@ keywords: [linkml, LOD, Modeling, Linked open data, model]
 #   shex -- LinkML model definition in ShEx
 #   sqlddl -- SQL ddl of the model
 #   model -- copy model/schema to distribution directory
-generate: [jsonld_context, json_schema, model, rdf, owl, json]
+generate: [jsonld_context, json_schema, model, json]
 

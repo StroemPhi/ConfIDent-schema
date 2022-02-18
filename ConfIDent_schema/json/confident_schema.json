@@ -1,0 +1,1792 @@
+{
+  "name": "ConfIDent-schema",
+  "description": "This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.",
+  "title": "ConfIDent metadata schema - v0.0.1",
+  "id": "https://github.com/StroemPhi/ConfIDent-schema/",
+  "version": "0.0.1",
+  "imports": [
+    "linkml:types"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "prefixes": [
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "sdo",
+      "prefix_reference": "https://schema.org/"
+    },
+    {
+      "prefix_prefix": "confid",
+      "prefix_reference": "https://github.com/StroemPhi/ConfIDent-schema/"
+    },
+    {
+      "prefix_prefix": "aeon",
+      "prefix_reference": "https://github.com/tibonto/aeon#"
+    },
+    {
+      "prefix_prefix": "obi",
+      "prefix_reference": "http://purl.obolibrary.org/obo/OBI_"
+    },
+    {
+      "prefix_prefix": "iao",
+      "prefix_reference": "http://purl.obolibrary.org/obo/OBI_"
+    },
+    {
+      "prefix_prefix": "provo",
+      "prefix_reference": "https://www.w3.org/TR/2013/REC-prov-o-20130430/#"
+    },
+    {
+      "prefix_prefix": "dc",
+      "prefix_reference": "http://purl.org/dc/terms/"
+    },
+    {
+      "prefix_prefix": "orcid",
+      "prefix_reference": "https://orcid.org/"
+    },
+    {
+      "prefix_prefix": "ror",
+      "prefix_reference": "ror.org/"
+    },
+    {
+      "prefix_prefix": "wikidata",
+      "prefix_reference": "https://www.wikidata.org/wiki/"
+    },
+    {
+      "prefix_prefix": "dblp_series",
+      "prefix_reference": "https://dblp.org/db/conf/"
+    },
+    {
+      "prefix_prefix": "doi",
+      "prefix_reference": "https://doi.org/"
+    }
+  ],
+  "emit_prefixes": [
+    "aeon",
+    "doi",
+    "sdo"
+  ],
+  "default_curi_maps": [
+    "semweb_context"
+  ],
+  "default_prefix": "confid",
+  "default_range": "string",
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "https://w3id.org/linkml/String",
+      "description": "A character string",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "integer",
+      "definition_uri": "https://w3id.org/linkml/Integer",
+      "description": "An integer",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "description": "A binary (true or false) value",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "repr": "bool",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "float",
+      "definition_uri": "https://w3id.org/linkml/Float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#float",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "double",
+      "definition_uri": "https://w3id.org/linkml/Double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal",
+      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "time",
+      "definition_uri": "https://w3id.org/linkml/Time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "XSDTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date",
+      "definition_uri": "https://w3id.org/linkml/Date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "XSDDate",
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "datetime",
+      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "description": "The combination of a date and time",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "XSDDateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "description": "a URI or a CURIE",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "description": "a complete URI",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ncname",
+      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "description": "Prefix part of CURIE",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "comments": [
+        "Used for inheritence and type checking"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "ElementIdentifier",
+      "uri": "http://www.w3.org/ns/shex#iri",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NodeIdentifier",
+      "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "enums": [
+    {
+      "name": "EventType",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/EventType",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "permissible_values": [
+        {
+          "text": "colloquium",
+          "meaning": "aeon:0010000"
+        },
+        {
+          "text": "conference",
+          "meaning": "aeon:0010001"
+        },
+        {
+          "text": "congress",
+          "meaning": "aeon:0010011"
+        },
+        {
+          "text": "event session",
+          "meaning": "aeon:0010000"
+        },
+        {
+          "text": "poster session",
+          "meaning": "aeon:0010005"
+        },
+        {
+          "text": "event talk",
+          "meaning": "aeon:0010012"
+        },
+        {
+          "text": "keynote speech",
+          "meaning": "aeon:0010007"
+        },
+        {
+          "text": "event track",
+          "meaning": "aeon:0010008"
+        },
+        {
+          "text": "forum",
+          "meaning": "aeon:0010002"
+        },
+        {
+          "text": "hackathon",
+          "meaning": "aeon:0010003"
+        },
+        {
+          "text": "seminar",
+          "meaning": "aeon:0010004"
+        },
+        {
+          "text": "symposium",
+          "meaning": "aeon:0010006"
+        },
+        {
+          "text": "tutorial",
+          "meaning": "aeon:0010009"
+        },
+        {
+          "text": "workshop",
+          "meaning": "aeon:0010010"
+        }
+      ]
+    },
+    {
+      "name": "EventStatus",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/EventStatus",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "permissible_values": [
+        {
+          "text": "as scheduled",
+          "description": "Default: used to indicate that the event takes place as planned."
+        },
+        {
+          "text": "postponed"
+        },
+        {
+          "text": "delayed"
+        },
+        {
+          "text": "canceled"
+        },
+        {
+          "text": "planned"
+        }
+      ]
+    },
+    {
+      "name": "EventMode",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/EventMode",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "permissible_values": [
+        {
+          "text": "on site",
+          "description": "The event takes place in a physical location."
+        },
+        {
+          "text": "online",
+          "description": "The event takes place in a virtual location."
+        },
+        {
+          "text": "hybrid",
+          "description": "The event takes place physically and virtually."
+        }
+      ]
+    },
+    {
+      "name": "DeadlineType",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/DeadlineType",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "permissible_values": [
+        {
+          "text": "submission deadline",
+          "meaning": "aeon:0000067"
+        },
+        {
+          "text": "notification deadline",
+          "meaning": "aeon:0000064"
+        },
+        {
+          "text": "abstract deadline",
+          "meaning": "aeon:0000061"
+        },
+        {
+          "text": "camera-ready deadline",
+          "meaning": "aeon:0000062"
+        },
+        {
+          "text": "demo deadline",
+          "meaning": "aeon:0000063"
+        },
+        {
+          "text": "paper deadline",
+          "meaning": "aeon:0000065"
+        },
+        {
+          "text": "poster deadline",
+          "meaning": "aeon:0000066"
+        },
+        {
+          "text": "tutorial deadline",
+          "meaning": "aeon:0000068"
+        },
+        {
+          "text": "workshop deadline",
+          "meaning": "aeon:0000069"
+        }
+      ]
+    },
+    {
+      "name": "RelationType",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/RelationType",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "permissible_values": [
+        {
+          "text": "isUmbrellaEventOf"
+        },
+        {
+          "text": "hasUmbrellaEvent"
+        },
+        {
+          "text": "isJointEventOf"
+        },
+        {
+          "text": "isColocatedEventOf"
+        },
+        {
+          "text": "isSubEventOf"
+        },
+        {
+          "text": "hasSubEvent"
+        }
+      ]
+    },
+    {
+      "name": "MetricType",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/MetricType",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "permissible_values": [
+        {
+          "text": "submitted papers"
+        },
+        {
+          "text": "accepted papers"
+        },
+        {
+          "text": "accepted short papers"
+        },
+        {
+          "text": "number of attendees"
+        },
+        {
+          "text": "number of tracks"
+        },
+        {
+          "text": "has childcare options"
+        },
+        {
+          "text": "is accessible",
+          "description": "If true then accessible for people with impairments."
+        }
+      ]
+    },
+    {
+      "name": "ContributorType",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/ContributorType",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "permissible_values": [
+        {
+          "text": "presenter"
+        },
+        {
+          "text": "keynote speaker"
+        },
+        {
+          "text": "moderator"
+        },
+        {
+          "text": "attendee"
+        }
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "name": "id",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/id",
+      "mappings": [
+        "https://schema.org/identifier"
+      ],
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://schema.org/identifier",
+      "identifier": true,
+      "owner": "Organisation",
+      "domain_of": [
+        "PlannedProcess",
+        "City",
+        "Country",
+        "Region",
+        "Venue",
+        "Person",
+        "Organisation"
+      ],
+      "range": "uriorcurie",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "denoted_by",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/denoted_by",
+      "mappings": [
+        "http://purl.obolibrary.org/obo/OBI_0000235"
+      ],
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "http://purl.obolibrary.org/obo/OBI_0000235",
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "alternative_ids",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/alternative_ids",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/alternative_ids",
+      "multivalued": true,
+      "inlined_as_list": true,
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "uriorcurie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "website",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/website",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/website",
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "logo",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/logo",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/logo",
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "summary",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/summary",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/summary",
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "address",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/address",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/address",
+      "owner": "Venue",
+      "domain_of": [
+        "Venue"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/name",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/name",
+      "owner": "Organisation",
+      "domain_of": [
+        "City",
+        "Country",
+        "Region",
+        "Venue",
+        "Person",
+        "Organisation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "events",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/events",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/events",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "owner": "ConfIDentRecord",
+      "domain_of": [
+        "ConfIDentRecord"
+      ],
+      "range": "AcademicEvent",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "series",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/series",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/series",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "owner": "ConfIDentRecord",
+      "domain_of": [
+        "ConfIDentRecord"
+      ],
+      "range": "AcademicEventSeries",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "start_date",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/start_date",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/start_date",
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "datetime",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "end_date",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/end_date",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/end_date",
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "datetime",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contact",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/contact",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/contact",
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "outputs",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/outputs",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/outputs",
+      "multivalued": true,
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "topics",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/topics",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/topics",
+      "multivalued": true,
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "academic_fields",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/academic_fields",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/academic_fields",
+      "multivalued": true,
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "metrics",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/metrics",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/metrics",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "Metric",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "series_of",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/series_of",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/series_of",
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "at_location",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/at_location",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/at_location",
+      "inlined": true,
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "range": "Location",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "in_series",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/in_series",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/in_series",
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ordinal",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/ordinal",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/ordinal",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "range": "integer",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "deadlines",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/deadlines",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/deadlines",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "range": "Deadline",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "event_status",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/event_status",
+      "mappings": [
+        "https://github.com/tibonto/aeon#event_status"
+      ],
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/tibonto/aeon#event_status",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "range": "EventStatus",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "event_mode",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/event_mode",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/event_mode",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "range": "EventMode",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "related_to",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/related_to",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/related_to",
+      "multivalued": true,
+      "inlined": true,
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "ProcessRelation",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "organizers",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/organizers",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/organizers",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "Organizer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sponsors",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/sponsors",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/sponsors",
+      "multivalued": true,
+      "inlined_as_list": true,
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contributors",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/contributors",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/contributors",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "range": "Contributor",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "persons",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/persons",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/persons",
+      "owner": "Contributor",
+      "domain_of": [
+        "Organizer",
+        "Sponsor",
+        "Contributor"
+      ],
+      "range": "Person",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "organisations",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/organisations",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/organisations",
+      "owner": "Sponsor",
+      "domain_of": [
+        "Organizer",
+        "Sponsor"
+      ],
+      "range": "Organisation",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "processName__official_name",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/official_name",
+      "alias": "official_name",
+      "owner": "ProcessName",
+      "domain_of": [
+        "ProcessName"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "processName__acronym",
+      "mappings": [
+        "https://github.com/tibonto/aeon#AEON_0000091"
+      ],
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/tibonto/aeon#AEON_0000091",
+      "alias": "acronym",
+      "owner": "ProcessName",
+      "domain_of": [
+        "ProcessName"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "metric__int_value",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/int_value",
+      "alias": "int_value",
+      "owner": "Metric",
+      "domain_of": [
+        "Metric"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "metric__str_value",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/str_value",
+      "alias": "str_value",
+      "owner": "Metric",
+      "domain_of": [
+        "Metric"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "metric__rate_value",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/rate_value",
+      "alias": "rate_value",
+      "owner": "Metric",
+      "domain_of": [
+        "Metric"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "metric__truth_value",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/truth_value",
+      "alias": "truth_value",
+      "owner": "Metric",
+      "domain_of": [
+        "Metric"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "metric__other_metric",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/other_metric",
+      "alias": "other_metric",
+      "owner": "Metric",
+      "domain_of": [
+        "Metric"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "location__city",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/city",
+      "alias": "city",
+      "owner": "Location",
+      "domain_of": [
+        "Location"
+      ],
+      "range": "City",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "location__country",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/country",
+      "alias": "country",
+      "owner": "Location",
+      "domain_of": [
+        "Location"
+      ],
+      "range": "Country",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "location__region",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/region",
+      "alias": "region",
+      "owner": "Location",
+      "domain_of": [
+        "Location"
+      ],
+      "range": "Region",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "location__venue",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/venue",
+      "alias": "venue",
+      "owner": "Location",
+      "domain_of": [
+        "Location"
+      ],
+      "range": "Venue",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "location__lattitude",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/lattitude",
+      "alias": "lattitude",
+      "owner": "Location",
+      "domain_of": [
+        "Location"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "location__longitude",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/longitude",
+      "alias": "longitude",
+      "owner": "Location",
+      "domain_of": [
+        "Location"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "location__meeting_url",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/meeting_url",
+      "alias": "meeting_url",
+      "owner": "Location",
+      "domain_of": [
+        "Location"
+      ],
+      "range": "uriorcurie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "deadline__deadline_date",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/deadline_date",
+      "alias": "deadline_date",
+      "owner": "Deadline",
+      "domain_of": [
+        "Deadline"
+      ],
+      "range": "datetime",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "deadline__deadline_other",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/deadline_other",
+      "alias": "deadline_other",
+      "owner": "Deadline",
+      "domain_of": [
+        "Deadline"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "type",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/type",
+      "range": "EventType",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "PlannedProcess_denoted_by",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/denoted_by",
+      "mappings": [
+        "http://purl.obolibrary.org/obo/OBI_0000235"
+      ],
+      "close_mappings": [
+        "https://schema.org/name"
+      ],
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "denoted_by",
+      "domain": "PlannedProcess",
+      "slot_uri": "http://purl.obolibrary.org/obo/OBI_0000235",
+      "inlined": true,
+      "alias": "denoted_by",
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "denoted_by",
+      "range": "ProcessName",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcademicEventSeries_series_of",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/series_of",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "series_of",
+      "domain": "AcademicEventSeries",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/series_of",
+      "alias": "series_of",
+      "owner": "AcademicEventSeries",
+      "domain_of": [
+        "AcademicEventSeries"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "series_of",
+      "range": "AcademicEvent",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcademicEvent_type",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "type",
+      "domain": "AcademicEvent",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/type",
+      "alias": "type",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "EventType",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcademicEvent_start_date",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/start_date",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "start_date",
+      "domain": "AcademicEvent",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/start_date",
+      "alias": "start_date",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "start_date",
+      "range": "datetime",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcademicEvent_end_date",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/end_date",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "end_date",
+      "domain": "AcademicEvent",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/end_date",
+      "alias": "end_date",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "end_date",
+      "range": "datetime",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcademicEvent_event_status",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/event_status",
+      "mappings": [
+        "https://github.com/tibonto/aeon#event_status"
+      ],
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "event_status",
+      "domain": "AcademicEvent",
+      "slot_uri": "https://github.com/tibonto/aeon#event_status",
+      "alias": "event_status",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "event_status",
+      "range": "EventStatus",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcademicEvent_in_series",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/in_series",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "in_series",
+      "domain": "AcademicEvent",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/in_series",
+      "alias": "in_series",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "in_series",
+      "range": "AcademicEventSeries",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcademicEvent_organizers",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/organizers",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "organizers",
+      "domain": "AcademicEvent",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/organizers",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "alias": "organizers",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "organizers",
+      "range": "Organizer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcademicEvent_sponsors",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/sponsors",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "sponsors",
+      "domain": "AcademicEvent",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/sponsors",
+      "multivalued": true,
+      "inlined_as_list": true,
+      "alias": "sponsors",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "sponsors",
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Metric_type",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "type",
+      "domain": "Metric",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/type",
+      "alias": "type",
+      "owner": "Metric",
+      "domain_of": [
+        "Metric"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "MetricType",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ProcessRelation_type",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "type",
+      "domain": "ProcessRelation",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/type",
+      "alias": "type",
+      "owner": "ProcessRelation",
+      "domain_of": [
+        "ProcessRelation"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "RelationType",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Contributor_type",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "type",
+      "domain": "Contributor",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/type",
+      "alias": "type",
+      "owner": "Contributor",
+      "domain_of": [
+        "Contributor"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "ContributorType",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Deadline_type",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "type",
+      "domain": "Deadline",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/type",
+      "alias": "type",
+      "owner": "Deadline",
+      "domain_of": [
+        "Deadline"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "DeadlineType",
+      "required": true,
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Person_id",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/id",
+      "mappings": [
+        "https://schema.org/identifier"
+      ],
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "id",
+      "domain": "Person",
+      "slot_uri": "https://schema.org/identifier",
+      "identifier": true,
+      "alias": "id",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "id",
+      "range": "uriorcurie",
+      "required": true,
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Organisation_id",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/id",
+      "mappings": [
+        "https://schema.org/identifier"
+      ],
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "id",
+      "domain": "Organisation",
+      "slot_uri": "https://schema.org/identifier",
+      "identifier": true,
+      "alias": "id",
+      "owner": "Organisation",
+      "domain_of": [
+        "Organisation"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "id",
+      "range": "uriorcurie",
+      "required": true,
+      "recommended": true,
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "ConfIDentRecord",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/ConfIDentRecord",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "events",
+        "series"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/ConfIDentRecord",
+      "tree_root": true,
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PlannedProcess",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/PlannedProcess",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "id",
+        "PlannedProcess_denoted_by",
+        "alternative_ids",
+        "start_date",
+        "end_date",
+        "organizers",
+        "sponsors",
+        "outputs",
+        "topics",
+        "academic_fields",
+        "metrics",
+        "contact",
+        "website",
+        "logo",
+        "summary",
+        "in_series",
+        "series_of",
+        "related_to"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/PlannedProcess",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AcademicEventSeries",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/AcademicEventSeries",
+      "mappings": [
+        "aeon:AEON_0000002"
+      ],
+      "close_mappings": [
+        "sdo:EventSeries"
+      ],
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "PlannedProcess",
+      "slots": [
+        "id",
+        "PlannedProcess_denoted_by",
+        "alternative_ids",
+        "start_date",
+        "end_date",
+        "organizers",
+        "sponsors",
+        "outputs",
+        "topics",
+        "academic_fields",
+        "metrics",
+        "contact",
+        "website",
+        "logo",
+        "summary",
+        "in_series",
+        "related_to",
+        "AcademicEventSeries_series_of"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://github.com/tibonto/aeon#AEON_0000002",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AcademicEvent",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/AcademicEvent",
+      "mappings": [
+        "aeon:AEON_0000001"
+      ],
+      "close_mappings": [
+        "sdo:EventSeries"
+      ],
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "PlannedProcess",
+      "slots": [
+        "id",
+        "PlannedProcess_denoted_by",
+        "alternative_ids",
+        "outputs",
+        "topics",
+        "academic_fields",
+        "metrics",
+        "contact",
+        "website",
+        "logo",
+        "summary",
+        "series_of",
+        "related_to",
+        "AcademicEvent_event_status",
+        "event_mode",
+        "at_location",
+        "ordinal",
+        "deadlines",
+        "AcademicEvent_type",
+        "AcademicEvent_start_date",
+        "AcademicEvent_end_date",
+        "AcademicEvent_in_series",
+        "AcademicEvent_organizers",
+        "AcademicEvent_sponsors"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://github.com/tibonto/aeon#AEON_0000001",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ProcessName",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/ProcessName",
+      "mappings": [
+        "aeon:AEON_0000090"
+      ],
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "processName__official_name",
+        "processName__acronym"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "official_name",
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "acronym",
+          "slot_uri": "aeon:AEON_0000091",
+          "range": "string",
+          "recommended": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://github.com/tibonto/aeon#AEON_0000090",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Metric",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/Metric",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "metric__int_value",
+        "metric__str_value",
+        "metric__rate_value",
+        "metric__truth_value",
+        "metric__other_metric",
+        "Metric_type"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "int_value",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "str_value",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rate_value",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "truth_value",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "other_metric",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/Metric",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ProcessRelation",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/ProcessRelation",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "ProcessRelation_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/ProcessRelation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Organizer",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/Organizer",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "persons",
+        "organisations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/Organizer",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Sponsor",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/Sponsor",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "persons",
+        "organisations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/Sponsor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Contributor",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/Contributor",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "persons",
+        "Contributor_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/Contributor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Location",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/Location",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "location__city",
+        "location__country",
+        "location__region",
+        "location__venue",
+        "location__lattitude",
+        "location__longitude",
+        "location__meeting_url"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "city",
+          "range": "City",
+          "recommended": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "country",
+          "range": "Country",
+          "recommended": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "region",
+          "range": "Region",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "venue",
+          "range": "Venue",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "lattitude",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "longitude",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "meeting_url",
+          "range": "uriorcurie",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/Location",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "City",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/City",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "id",
+        "name"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/City",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Country",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/Country",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "id",
+        "name"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/Country",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Region",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/Region",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "id",
+        "name"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/Region",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Venue",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/Venue",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "id",
+        "name",
+        "address"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/Venue",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Deadline",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/Deadline",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "deadline__deadline_date",
+        "deadline__deadline_other",
+        "Deadline_type"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "deadline_date",
+          "range": "datetime",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "deadline_other",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/Deadline",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Person",
+      "id_prefixes": [
+        "orcid",
+        "wikidata"
+      ],
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/Person",
+      "mappings": [
+        "sdo:Person"
+      ],
+      "description": "A person (alive, dead, undead, or fictional).",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "Person_id",
+        "name"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://schema.org/Person",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Organisation",
+      "id_prefixes": [
+        "orcid",
+        "wikidata"
+      ],
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/Organisation",
+      "mappings": [
+        "sdo:Organization"
+      ],
+      "description": "An organization such as a company or university",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "Organisation_id",
+        "name"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://schema.org/Organization",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "confident_schema.yaml",
+  "source_file_date": "2022-02-18T13:26:01",
+  "source_file_size": 9406,
+  "generation_date": "2022-02-18T13:29:00",
+  "@type": "SchemaDefinition",
+  "@context": [
+    "https://w3id.org/linkml/types.context.jsonld",
+    {
+      "@base": "https://github.com/StroemPhi/ConfIDent-schema/"
+    }
+  ]
+}
+
