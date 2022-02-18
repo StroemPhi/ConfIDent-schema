@@ -141,7 +141,7 @@
 <h3 id="mixins">Mixins</h3>
 <h3 id="slots">Slots</h3>
 <ul>
-<li><a href="academic_fields/">academic_fields</a></li>
+<li><a href="academic_fields/">academic_fields</a> - A relation obtaining between a obi:'planned process' and an academic field descriptor that is used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus.</li>
 <li><a href="address/">address</a></li>
 <li><a href="alternative_ids/">alternative_ids</a></li>
 <li><a href="at_location/">at_location</a></li>
@@ -157,7 +157,7 @@
 </ul>
 </li>
 <li><a href="end_date/">end_date</a> - Similar to the start_date description but only for the end of an academic event or series.<ul>
-<li><a href="AcademicEvent_end_date/">AcademicEvent➞end_date</a></li>
+<li><a href="AcademicEvent_end_date/">AcademicEvent➞end_date</a> - A data property to provide the planned end date of an academic event in the xsd:dateTimeStamp format.</li>
 </ul>
 </li>
 <li><a href="event_mode/">event_mode</a></li>
@@ -165,15 +165,12 @@
 <li><a href="AcademicEvent_event_status/">AcademicEvent➞event_status</a></li>
 </ul>
 </li>
-<li><a href="id/">id</a><ul>
-<li><a href="Organisation_id/">Organisation➞id</a></li>
-<li><a href="Person_id/">Person➞id</a></li>
+<li><a href="event_type/">event_type</a><ul>
+<li><a href="AcademicEvent_event_type/">AcademicEvent➞event_type</a> - The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.</li>
 </ul>
 </li>
-<li><a href="in_series/">in_series</a><ul>
-<li><a href="AcademicEvent_in_series/">AcademicEvent➞in_series</a></li>
-</ul>
-</li>
+<li><a href="id/">id</a></li>
+<li><a href="in_series/">in_series</a> - The relation used to provide the series of which an AcademicEvent is a part.</li>
 <li><a href="location__city/">➞city</a></li>
 <li><a href="location__country/">➞country</a></li>
 <li><a href="location__lattitude/">➞lattitude</a></li>
@@ -188,31 +185,34 @@
 <li><a href="metric__str_value/">➞str_value</a></li>
 <li><a href="metric__truth_value/">➞truth_value</a></li>
 <li><a href="metrics/">metrics</a></li>
-<li><a href="name/">name</a></li>
-<li><a href="ordinal/">ordinal</a></li>
+<li><a href="name/">name</a><ul>
+<li><a href="Organisation_name/">Organisation➞name</a></li>
+<li><a href="Person_name/">Person➞name</a></li>
+</ul>
+</li>
+<li><a href="ordinal/">ordinal</a> - The ordnial number of an academic event within its series.</li>
 <li><a href="organisations/">organisations</a></li>
-<li><a href="organizers/">organizers</a></li>
-<li><a href="outputs/">outputs</a></li>
+<li><a href="organizers/">organizers</a><ul>
+<li><a href="AcademicEvent_organizers/">AcademicEvent➞organizers</a></li>
+</ul>
+</li>
+<li><a href="outputs/">outputs</a> - The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.</li>
 <li><a href="persons/">persons</a></li>
 <li><a href="processName__acronym/">➞acronym</a></li>
 <li><a href="processName__official_name/">➞official_name</a></li>
 <li><a href="related_to/">related_to</a></li>
-<li><a href="series_of/">series_of</a><ul>
-<li><a href="AcademicEventSeries_series_of/">AcademicEventSeries➞series_of</a></li>
-</ul>
-</li>
+<li><a href="series_of/">series_of</a> - The relation used to provide the events belonging to an AcademicEventSeries.</li>
 <li><a href="sponsors/">sponsors</a><ul>
 <li><a href="AcademicEvent_sponsors/">AcademicEvent➞sponsors</a></li>
 </ul>
 </li>
 <li><a href="start_date/">start_date</a> - The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.<ul>
-<li><a href="AcademicEvent_start_date/">AcademicEvent➞start_date</a></li>
+<li><a href="AcademicEvent_start_date/">AcademicEvent➞start_date</a> - A data property to provide the planned end date of  an academic event in the xsd:dateTimeStamp format.</li>
 </ul>
 </li>
 <li><a href="summary/">summary</a></li>
 <li><a href="topics/">topics</a></li>
-<li><a href="type/">type</a> - The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.<ul>
-<li><a href="AcademicEvent_type/">AcademicEvent➞type</a></li>
+<li><a href="type/">type</a><ul>
 <li><a href="Contributor_type/">Contributor➞type</a></li>
 <li><a href="Deadline_type/">Deadline➞type</a></li>
 <li><a href="Metric_type/">Metric➞type</a></li>
@@ -324,5 +324,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-02-18 15:20:00.510653+00:00
+Build Date UTC : 2022-02-18 16:17:59.485284+00:00
 -->

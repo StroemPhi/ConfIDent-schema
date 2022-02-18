@@ -94,7 +94,7 @@
                 <h1 id="class-person">Class: Person</h1>
 <p>A person (alive, dead, undead, or fictional).</p>
 <p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/Person">confid:Person</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer]-%20persons%200..1&gt;[Person&#124;id:uriorcurie;name:string%20%3F],[Sponsor]-%20persons%200..1&gt;[Person],[Contributor]-%20persons%200..1&gt;[Person],[Sponsor],[Organizer],[Contributor]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer]-%20persons%200..1&gt;[Person&#124;id:uriorcurie;name:string%20%3F],[Sponsor]-%20persons%200..1&gt;[Person],[Contributor]-%20persons%200..1&gt;[Person],[Sponsor],[Organizer],[Contributor]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer]++-%20persons%200..*&gt;[Person&#124;name:string],[Sponsor]++-%20persons%200..*&gt;[Person],[Contributor]++-%20persons%200..*&gt;[Person],[Sponsor],[Organizer],[Contributor]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer]++-%20persons%200..*&gt;[Person&#124;name:string],[Sponsor]++-%20persons%200..*&gt;[Person],[Contributor]++-%20persons%200..*&gt;[Person],[Sponsor],[Organizer],[Contributor]" /></a></p>
 <h2 id="identifier-prefixes">Identifier prefixes</h2>
 <ul>
 <li>orcid</li>
@@ -102,16 +102,12 @@
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li><strong>None</strong> <em><a href="../persons/">persons</a></em>  <sub>0..1</sub>  <strong><a href="./">Person</a></strong></li>
+<li><strong>None</strong> <em><a href="../persons/">persons</a></em>  <sub>0..*</sub>  <strong><a href="./">Person</a></strong></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../Person_id/">Person➞id</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
+<li><a href="../Person_name/">Person➞name</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>

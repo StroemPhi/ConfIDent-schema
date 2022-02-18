@@ -93,20 +93,21 @@
               
                 <h1 id="class-academiceventseries">Class: AcademicEventSeries</h1>
 <p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/AcademicEventSeries">confid:AcademicEventSeries</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[ConfIDentRecord],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;id(i):uriorcurie;alternative_ids(i):uriorcurie%20*;start_date(i):datetime%20%3F;end_date(i):datetime%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;in_series(i):string%20%3F],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecord]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[ConfIDentRecord],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;id(i):uriorcurie;alternative_ids(i):uriorcurie%20*;start_date(i):datetime%20%3F;end_date(i):datetime%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;in_series(i):string%20%3F],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecord]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[ConfIDentRecord],[AcademicEvent]&lt;series_of%200..*-++[AcademicEventSeries&#124;id(i):uriorcurie;alternative_ids(i):uriorcurie%20*;start_date(i):datetime%20%3F;end_date(i):datetime%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F],[ConfIDentRecord]++-%20series%200..*&gt;[AcademicEventSeries],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[ConfIDentRecord],[AcademicEvent]&lt;series_of%200..*-++[AcademicEventSeries&#124;id(i):uriorcurie;alternative_ids(i):uriorcurie%20*;start_date(i):datetime%20%3F;end_date(i):datetime%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F],[ConfIDentRecord]++-%20series%200..*&gt;[AcademicEventSeries],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../PlannedProcess/">PlannedProcess</a></li>
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li><strong><a href="../AcademicEvent/">AcademicEvent</a></strong> <em><a href="../AcademicEvent_in_series/">AcademicEvent➞in_series</a></em>  <sub>0..1</sub>  <strong><a href="./">AcademicEventSeries</a></strong></li>
 <li><strong><a href="../ConfIDentRecord/">ConfIDentRecord</a></strong> <em><a href="../confIDentRecord__series/">ConfIDentRecord➞series</a></em>  <sub>0..*</sub>  <strong><a href="./">AcademicEventSeries</a></strong></li>
+<li><strong><a href="../AcademicEvent/">AcademicEvent</a></strong> <em><a href="../in_series/">in_series</a></em>  <sub>0..1</sub>  <strong><a href="./">AcademicEventSeries</a></strong></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../AcademicEventSeries_series_of/">AcademicEventSeries➞series_of</a>  <sub>0..1</sub><ul>
+<li><a href="../series_of/">series_of</a>  <sub>0..*</sub><ul>
+<li>Description: The relation used to provide the events belonging to an AcademicEventSeries.</li>
 <li>Range: <a href="../AcademicEvent/">AcademicEvent</a></li>
 </ul>
 </li>
@@ -144,6 +145,7 @@
 </ul>
 </li>
 <li><a href="../outputs/">outputs</a>  <sub>0..*</sub><ul>
+<li>Description: The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
@@ -152,6 +154,7 @@
 </ul>
 </li>
 <li><a href="../academic_fields/">academic_fields</a>  <sub>0..*</sub><ul>
+<li>Description: A relation obtaining between a obi:'planned process' and an academic field descriptor that is used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus.</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
@@ -172,10 +175,6 @@
 </ul>
 </li>
 <li><a href="../summary/">summary</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../in_series/">in_series</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>

@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-18T16:20:20
+# Generation date: 2022-02-18T17:18:19
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -80,14 +80,6 @@ class VenueId(URIorCURIE):
     pass
 
 
-class PersonId(URIorCURIE):
-    pass
-
-
-class OrganisationId(URIorCURIE):
-    pass
-
-
 @dataclass
 class ConfIDentRecord(YAMLRoot):
     """
@@ -135,8 +127,6 @@ class PlannedProcess(YAMLRoot):
     website: Optional[str] = None
     logo: Optional[str] = None
     summary: Optional[str] = None
-    in_series: Optional[str] = None
-    series_of: Optional[str] = None
     related_to: Optional[Union[Union[dict, "ProcessRelation"], List[Union[dict, "ProcessRelation"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -198,12 +188,6 @@ class PlannedProcess(YAMLRoot):
         if self.summary is not None and not isinstance(self.summary, str):
             self.summary = str(self.summary)
 
-        if self.in_series is not None and not isinstance(self.in_series, str):
-            self.in_series = str(self.in_series)
-
-        if self.series_of is not None and not isinstance(self.series_of, str):
-            self.series_of = str(self.series_of)
-
         if not isinstance(self.related_to, list):
             self.related_to = [self.related_to] if self.related_to is not None else []
         self.related_to = [v if isinstance(v, ProcessRelation) else ProcessRelation(**as_dict(v)) for v in self.related_to]
@@ -223,7 +207,7 @@ class AcademicEventSeries(PlannedProcess):
     id: Union[str, AcademicEventSeriesId] = None
     denoted_by: Union[dict, "ProcessName"] = None
     organizers: Union[Union[dict, "Organizer"], List[Union[dict, "Organizer"]]] = None
-    series_of: Optional[Union[str, AcademicEventId]] = None
+    series_of: Optional[Union[Dict[Union[str, AcademicEventId], Union[dict, "AcademicEvent"]], List[Union[dict, "AcademicEvent"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -231,8 +215,7 @@ class AcademicEventSeries(PlannedProcess):
         if not isinstance(self.id, AcademicEventSeriesId):
             self.id = AcademicEventSeriesId(self.id)
 
-        if self.series_of is not None and not isinstance(self.series_of, AcademicEventId):
-            self.series_of = AcademicEventId(self.series_of)
+        self._normalize_inlined_as_list(slot_name="series_of", slot_type=AcademicEvent, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -248,16 +231,16 @@ class AcademicEvent(PlannedProcess):
 
     id: Union[str, AcademicEventId] = None
     denoted_by: Union[dict, "ProcessName"] = None
-    organizers: Union[Union[dict, "Organizer"], List[Union[dict, "Organizer"]]] = None
     event_status: Union[str, "EventStatus"] = None
     start_date: Union[str, XSDDateTime] = None
     end_date: Union[str, XSDDateTime] = None
+    organizers: Union[Union[dict, "Organizer"], List[Union[dict, "Organizer"]]] = None
     event_mode: Optional[Union[str, "EventMode"]] = None
+    event_type: Optional[Union[str, "EventType"]] = None
     at_location: Optional[Union[dict, "Location"]] = None
+    in_series: Optional[Union[str, AcademicEventSeriesId]] = None
     ordinal: Optional[int] = None
     deadlines: Optional[Union[Union[dict, "Deadline"], List[Union[dict, "Deadline"]]]] = empty_list()
-    type: Optional[Union[str, "EventType"]] = None
-    in_series: Optional[Union[str, AcademicEventSeriesId]] = None
     sponsors: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -281,11 +264,23 @@ class AcademicEvent(PlannedProcess):
         if not isinstance(self.end_date, XSDDateTime):
             self.end_date = XSDDateTime(self.end_date)
 
+        if self._is_empty(self.organizers):
+            self.MissingRequiredField("organizers")
+        if not isinstance(self.organizers, list):
+            self.organizers = [self.organizers] if self.organizers is not None else []
+        self.organizers = [v if isinstance(v, Organizer) else Organizer(**as_dict(v)) for v in self.organizers]
+
         if self.event_mode is not None and not isinstance(self.event_mode, EventMode):
             self.event_mode = EventMode(self.event_mode)
 
+        if self.event_type is not None and not isinstance(self.event_type, EventType):
+            self.event_type = EventType(self.event_type)
+
         if self.at_location is not None and not isinstance(self.at_location, Location):
             self.at_location = Location(**as_dict(self.at_location))
+
+        if self.in_series is not None and not isinstance(self.in_series, AcademicEventSeriesId):
+            self.in_series = AcademicEventSeriesId(self.in_series)
 
         if self.ordinal is not None and not isinstance(self.ordinal, int):
             self.ordinal = int(self.ordinal)
@@ -293,12 +288,6 @@ class AcademicEvent(PlannedProcess):
         if not isinstance(self.deadlines, list):
             self.deadlines = [self.deadlines] if self.deadlines is not None else []
         self.deadlines = [v if isinstance(v, Deadline) else Deadline(**as_dict(v)) for v in self.deadlines]
-
-        if self.type is not None and not isinstance(self.type, EventType):
-            self.type = EventType(self.type)
-
-        if self.in_series is not None and not isinstance(self.in_series, AcademicEventSeriesId):
-            self.in_series = AcademicEventSeriesId(self.in_series)
 
         if not isinstance(self.sponsors, list):
             self.sponsors = [self.sponsors] if self.sponsors is not None else []
@@ -396,15 +385,17 @@ class Organizer(YAMLRoot):
     class_name: ClassVar[str] = "Organizer"
     class_model_uri: ClassVar[URIRef] = CONFID.Organizer
 
-    persons: Optional[Union[str, PersonId]] = None
-    organisations: Optional[Union[str, OrganisationId]] = None
+    persons: Optional[Union[Union[dict, "Person"], List[Union[dict, "Person"]]]] = empty_list()
+    organisations: Optional[Union[Union[dict, "Organisation"], List[Union[dict, "Organisation"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.persons is not None and not isinstance(self.persons, PersonId):
-            self.persons = PersonId(self.persons)
+        if not isinstance(self.persons, list):
+            self.persons = [self.persons] if self.persons is not None else []
+        self.persons = [v if isinstance(v, Person) else Person(**as_dict(v)) for v in self.persons]
 
-        if self.organisations is not None and not isinstance(self.organisations, OrganisationId):
-            self.organisations = OrganisationId(self.organisations)
+        if not isinstance(self.organisations, list):
+            self.organisations = [self.organisations] if self.organisations is not None else []
+        self.organisations = [v if isinstance(v, Organisation) else Organisation(**as_dict(v)) for v in self.organisations]
 
         super().__post_init__(**kwargs)
 
@@ -418,15 +409,17 @@ class Sponsor(YAMLRoot):
     class_name: ClassVar[str] = "Sponsor"
     class_model_uri: ClassVar[URIRef] = CONFID.Sponsor
 
-    persons: Optional[Union[str, PersonId]] = None
-    organisations: Optional[Union[str, OrganisationId]] = None
+    persons: Optional[Union[Union[dict, "Person"], List[Union[dict, "Person"]]]] = empty_list()
+    organisations: Optional[Union[Union[dict, "Organisation"], List[Union[dict, "Organisation"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.persons is not None and not isinstance(self.persons, PersonId):
-            self.persons = PersonId(self.persons)
+        if not isinstance(self.persons, list):
+            self.persons = [self.persons] if self.persons is not None else []
+        self.persons = [v if isinstance(v, Person) else Person(**as_dict(v)) for v in self.persons]
 
-        if self.organisations is not None and not isinstance(self.organisations, OrganisationId):
-            self.organisations = OrganisationId(self.organisations)
+        if not isinstance(self.organisations, list):
+            self.organisations = [self.organisations] if self.organisations is not None else []
+        self.organisations = [v if isinstance(v, Organisation) else Organisation(**as_dict(v)) for v in self.organisations]
 
         super().__post_init__(**kwargs)
 
@@ -440,12 +433,13 @@ class Contributor(YAMLRoot):
     class_name: ClassVar[str] = "Contributor"
     class_model_uri: ClassVar[URIRef] = CONFID.Contributor
 
-    persons: Optional[Union[str, PersonId]] = None
+    persons: Optional[Union[Union[dict, "Person"], List[Union[dict, "Person"]]]] = empty_list()
     type: Optional[Union[str, "ContributorType"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.persons is not None and not isinstance(self.persons, PersonId):
-            self.persons = PersonId(self.persons)
+        if not isinstance(self.persons, list):
+            self.persons = [self.persons] if self.persons is not None else []
+        self.persons = [v if isinstance(v, Person) else Person(**as_dict(v)) for v in self.persons]
 
         if self.type is not None and not isinstance(self.type, ContributorType):
             self.type = ContributorType(self.type)
@@ -637,16 +631,12 @@ class Person(YAMLRoot):
     class_name: ClassVar[str] = "Person"
     class_model_uri: ClassVar[URIRef] = CONFID.Person
 
-    id: Union[str, PersonId] = None
-    name: Optional[str] = None
+    name: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, PersonId):
-            self.id = PersonId(self.id)
-
-        if self.name is not None and not isinstance(self.name, str):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
             self.name = str(self.name)
 
         super().__post_init__(**kwargs)
@@ -664,16 +654,12 @@ class Organisation(YAMLRoot):
     class_name: ClassVar[str] = "Organisation"
     class_model_uri: ClassVar[URIRef] = CONFID.Organisation
 
-    id: Union[str, OrganisationId] = None
-    name: Optional[str] = None
+    name: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, OrganisationId):
-            self.id = OrganisationId(self.id)
-
-        if self.name is not None and not isinstance(self.name, str):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
             self.name = str(self.name)
 
         super().__post_init__(**kwargs)
@@ -683,23 +669,23 @@ class Organisation(YAMLRoot):
 class EventType(EnumDefinitionImpl):
 
     colloquium = PermissibleValue(text="colloquium",
-                                           meaning=AEON["0010000"])
+                                           meaning=AEON.AEON_0010000)
     conference = PermissibleValue(text="conference",
-                                           meaning=AEON["0010001"])
+                                           meaning=AEON.AEON_0010001)
     congress = PermissibleValue(text="congress",
-                                       meaning=AEON["0010011"])
+                                       meaning=AEON.AEON_0010011)
     forum = PermissibleValue(text="forum",
-                                 meaning=AEON["0010002"])
+                                 meaning=AEON.AEON_0010002)
     hackathon = PermissibleValue(text="hackathon",
-                                         meaning=AEON["0010003"])
+                                         meaning=AEON.AEON_0010003)
     seminar = PermissibleValue(text="seminar",
-                                     meaning=AEON["0010004"])
+                                     meaning=AEON.AEON_0010004)
     symposium = PermissibleValue(text="symposium",
-                                         meaning=AEON["0010006"])
+                                         meaning=AEON.AEON_0010006)
     tutorial = PermissibleValue(text="tutorial",
-                                       meaning=AEON["0010009"])
+                                       meaning=AEON.AEON_0010009)
     workshop = PermissibleValue(text="workshop",
-                                       meaning=AEON["0010010"])
+                                       meaning=AEON.AEON_0010010)
 
     _defn = EnumDefinition(
         name="EventType",
@@ -709,19 +695,19 @@ class EventType(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "event session",
                 PermissibleValue(text="event session",
-                                 meaning=AEON["0010000"]) )
+                                 meaning=AEON.AEON_0010000) )
         setattr(cls, "poster session",
                 PermissibleValue(text="poster session",
-                                 meaning=AEON["0010005"]) )
+                                 meaning=AEON.AEON_0010005) )
         setattr(cls, "event talk",
                 PermissibleValue(text="event talk",
-                                 meaning=AEON["0010012"]) )
+                                 meaning=AEON.AEON_0010012) )
         setattr(cls, "keynote speech",
                 PermissibleValue(text="keynote speech",
-                                 meaning=AEON["0010007"]) )
+                                 meaning=AEON.AEON_0010007) )
         setattr(cls, "event track",
                 PermissibleValue(text="event track",
-                                 meaning=AEON["0010008"]) )
+                                 meaning=AEON.AEON_0010008) )
 
 class EventStatus(EnumDefinitionImpl):
 

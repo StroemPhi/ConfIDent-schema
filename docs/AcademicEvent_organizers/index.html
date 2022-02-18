@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: type - A model to describe academic events and event series.</title>
+  <title>Slot: organizers - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: type";
-    var mkdocs_page_input_path = "AcademicEvent_type.md";
+    var mkdocs_page_name = "Slot: organizers";
+    var mkdocs_page_input_path = "AcademicEvent_organizers.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: type</li>
+    <li>Slot: organizers</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,37 +91,19 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-type">Slot: type</h1>
-<p>The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.</p>
-<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/AcademicEvent_type">confid:AcademicEvent_type</a></p>
+                <h1 id="slot-organizers">Slot: organizers</h1>
+<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/AcademicEvent_organizers">confid:AcademicEvent_organizers</a></p>
 <h2 id="domain-and-range">Domain and Range</h2>
-<p><a href="../AcademicEvent/">AcademicEvent</a> &#8594;  <sub>0..1</sub> <a href="../EventType/">EventType</a></p>
+<p><a href="../AcademicEvent/">AcademicEvent</a> &#8594;  <sub>1..*</sub> <a href="../Organizer/">Organizer</a></p>
 <h2 id="parents">Parents</h2>
 <ul>
-<li>is_a: <a href="../type/">type</a></li>
+<li>is_a: <a href="../organizers/">organizers</a></li>
 </ul>
 <h2 id="children">Children</h2>
 <h2 id="used-by">Used by</h2>
 <ul>
 <li><a href="../AcademicEvent/">AcademicEvent</a></li>
 </ul>
-<h2 id="other-properties">Other properties</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Mappings:</strong></td>
-<td></td>
-<td>aeon:AEON_0000032</td>
-</tr>
-</tbody>
-</table>
               
             </div>
           </div>

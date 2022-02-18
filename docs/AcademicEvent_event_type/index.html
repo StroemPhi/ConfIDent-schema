@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: id - A model to describe academic events and event series.</title>
+  <title>Slot: event_type - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: id";
-    var mkdocs_page_input_path = "Person_id.md";
+    var mkdocs_page_name = "Slot: event_type";
+    var mkdocs_page_input_path = "AcademicEvent_event_type.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: id</li>
+    <li>Slot: event_type</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,18 +91,19 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-id">Slot: id</h1>
-<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/Person_id">confid:Person_id</a></p>
+                <h1 id="slot-event_type">Slot: event_type</h1>
+<p>The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.</p>
+<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/AcademicEvent_event_type">confid:AcademicEvent_event_type</a></p>
 <h2 id="domain-and-range">Domain and Range</h2>
-<p><a href="../Person/">Person</a> &#8594;  <sub>1..1</sub> <a href="../Uriorcurie/">Uriorcurie</a></p>
+<p><a href="../AcademicEvent/">AcademicEvent</a> &#8594;  <sub>0..1</sub> <a href="../EventType/">EventType</a></p>
 <h2 id="parents">Parents</h2>
 <ul>
-<li>is_a: <a href="../id/">id</a></li>
+<li>is_a: <a href="../event_type/">event_type</a></li>
 </ul>
 <h2 id="children">Children</h2>
 <h2 id="used-by">Used by</h2>
 <ul>
-<li><a href="../Person/">Person</a></li>
+<li><a href="../AcademicEvent/">AcademicEvent</a></li>
 </ul>
 <h2 id="other-properties">Other properties</h2>
 <table>
@@ -117,7 +118,7 @@
 <tr>
 <td><strong>Mappings:</strong></td>
 <td></td>
-<td>sdo:identifier</td>
+<td>aeon:AEON_0000032</td>
 </tr>
 </tbody>
 </table>

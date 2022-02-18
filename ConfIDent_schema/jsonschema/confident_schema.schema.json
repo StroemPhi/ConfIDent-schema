@@ -5,6 +5,7 @@
          "description": "",
          "properties": {
             "academic_fields": {
+               "description": "A relation obtaining between a obi:'planned process' and an academic field descriptor that is used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus.",
                "items": {
                   "type": "string"
                },
@@ -32,7 +33,7 @@
                "$ref": "#/$defs/ProcessName"
             },
             "end_date": {
-               "description": "Similar to the start_date description but only for the end of an academic event or series.",
+               "description": "A data property to provide the planned end date of an academic event in the xsd:dateTimeStamp format.",
                "format": "date-time",
                "type": "string"
             },
@@ -42,10 +43,15 @@
             "event_status": {
                "$ref": "#/$defs/EventStatus"
             },
+            "event_type": {
+               "$ref": "#/$defs/EventType",
+               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON."
+            },
             "id": {
                "type": "string"
             },
             "in_series": {
+               "description": "The relation used to provide the series of which an AcademicEvent is a part.",
                "type": "string"
             },
             "logo": {
@@ -58,6 +64,7 @@
                "type": "array"
             },
             "ordinal": {
+               "description": "The ordnial number of an academic event within its series.",
                "type": "integer"
             },
             "organizers": {
@@ -67,6 +74,7 @@
                "type": "array"
             },
             "outputs": {
+               "description": "The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.",
                "items": {
                   "type": "string"
                },
@@ -78,9 +86,6 @@
                },
                "type": "array"
             },
-            "series_of": {
-               "type": "string"
-            },
             "sponsors": {
                "items": {
                   "type": "string"
@@ -88,7 +93,7 @@
                "type": "array"
             },
             "start_date": {
-               "description": "The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
+               "description": "A data property to provide the planned end date of  an academic event in the xsd:dateTimeStamp format.",
                "format": "date-time",
                "type": "string"
             },
@@ -101,10 +106,6 @@
                },
                "type": "array"
             },
-            "type": {
-               "$ref": "#/$defs/EventType",
-               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON."
-            },
             "website": {
                "type": "string"
             }
@@ -112,10 +113,10 @@
          "required": [
             "id",
             "denoted_by",
-            "organizers",
             "event_status",
             "start_date",
-            "end_date"
+            "end_date",
+            "organizers"
          ],
          "title": "AcademicEvent",
          "type": "object"
@@ -125,6 +126,7 @@
          "description": "",
          "properties": {
             "academic_fields": {
+               "description": "A relation obtaining between a obi:'planned process' and an academic field descriptor that is used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus.",
                "items": {
                   "type": "string"
                },
@@ -150,9 +152,6 @@
             "id": {
                "type": "string"
             },
-            "in_series": {
-               "type": "string"
-            },
             "logo": {
                "type": "string"
             },
@@ -169,6 +168,7 @@
                "type": "array"
             },
             "outputs": {
+               "description": "The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.",
                "items": {
                   "type": "string"
                },
@@ -181,7 +181,11 @@
                "type": "array"
             },
             "series_of": {
-               "type": "string"
+               "description": "The relation used to provide the events belonging to an AcademicEventSeries.",
+               "items": {
+                  "$ref": "#/$defs/AcademicEvent"
+               },
+               "type": "array"
             },
             "sponsors": {
                "items": {
@@ -260,11 +264,13 @@
          "description": "",
          "properties": {
             "persons": {
-               "type": "string"
+               "items": {
+                  "$ref": "#/$defs/Person"
+               },
+               "type": "array"
             },
             "type": {
-               "$ref": "#/$defs/ContributorType",
-               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON."
+               "$ref": "#/$defs/ContributorType"
             }
          },
          "required": [],
@@ -311,8 +317,7 @@
                "type": "string"
             },
             "type": {
-               "$ref": "#/$defs/DeadlineType",
-               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON."
+               "$ref": "#/$defs/DeadlineType"
             }
          },
          "required": [
@@ -431,8 +436,7 @@
                "type": "boolean"
             },
             "type": {
-               "$ref": "#/$defs/MetricType",
-               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON."
+               "$ref": "#/$defs/MetricType"
             }
          },
          "required": [],
@@ -457,15 +461,12 @@
          "additionalProperties": false,
          "description": "An organization such as a company or university",
          "properties": {
-            "id": {
-               "type": "string"
-            },
             "name": {
                "type": "string"
             }
          },
          "required": [
-            "id"
+            "name"
          ],
          "title": "Organisation",
          "type": "object"
@@ -475,10 +476,16 @@
          "description": "",
          "properties": {
             "organisations": {
-               "type": "string"
+               "items": {
+                  "$ref": "#/$defs/Organisation"
+               },
+               "type": "array"
             },
             "persons": {
-               "type": "string"
+               "items": {
+                  "$ref": "#/$defs/Person"
+               },
+               "type": "array"
             }
          },
          "required": [],
@@ -489,15 +496,12 @@
          "additionalProperties": false,
          "description": "A person (alive, dead, undead, or fictional).",
          "properties": {
-            "id": {
-               "type": "string"
-            },
             "name": {
                "type": "string"
             }
          },
          "required": [
-            "id"
+            "name"
          ],
          "title": "Person",
          "type": "object"
@@ -507,6 +511,7 @@
          "description": "",
          "properties": {
             "academic_fields": {
+               "description": "A relation obtaining between a obi:'planned process' and an academic field descriptor that is used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus.",
                "items": {
                   "type": "string"
                },
@@ -532,9 +537,6 @@
             "id": {
                "type": "string"
             },
-            "in_series": {
-               "type": "string"
-            },
             "logo": {
                "type": "string"
             },
@@ -551,6 +553,7 @@
                "type": "array"
             },
             "outputs": {
+               "description": "The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.",
                "items": {
                   "type": "string"
                },
@@ -561,9 +564,6 @@
                   "$ref": "#/$defs/ProcessRelation"
                },
                "type": "array"
-            },
-            "series_of": {
-               "type": "string"
             },
             "sponsors": {
                "items": {
@@ -619,8 +619,7 @@
          "description": "",
          "properties": {
             "type": {
-               "$ref": "#/$defs/RelationType",
-               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON."
+               "$ref": "#/$defs/RelationType"
             }
          },
          "required": [],
@@ -662,10 +661,16 @@
          "description": "",
          "properties": {
             "organisations": {
-               "type": "string"
+               "items": {
+                  "$ref": "#/$defs/Organisation"
+               },
+               "type": "array"
             },
             "persons": {
-               "type": "string"
+               "items": {
+                  "$ref": "#/$defs/Person"
+               },
+               "type": "array"
             }
          },
          "required": [],

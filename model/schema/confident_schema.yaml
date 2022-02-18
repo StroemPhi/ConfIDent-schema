@@ -76,8 +76,6 @@ classes:
       - website
       - logo
       - summary
-      - in_series
-      - series_of   
       - related_to
     slot_usage:
       denoted_by:
@@ -89,37 +87,44 @@ classes:
   AcademicEventSeries:
     class_uri: aeon:AEON_0000002
     is_a: PlannedProcess
-    slot_usage:
-      series_of:
-        recommended: true
-        range: AcademicEvent
+    slots: 
+      - series_of
     close_mappings:
       - sdo:EventSeries
 # AcademicEvent
   AcademicEvent:
+    tree_root: true
     class_uri: aeon:AEON_0000001
     is_a: PlannedProcess
     slots:
       - event_status
       - event_mode
+      - event_type
       - at_location
+      - in_series
       - ordinal
       - deadlines
     slot_usage:
-      type: 
+      event_type: 
+        description: The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.
+        slot_uri: aeon:AEON_0000032
+        domain: AcademicEvent
         range: EventType
         recommended: true
       start_date:
+        description: A data property to provide the planned end date of  an academic event in the xsd:dateTimeStamp format.
+        slot_uri: aeon:start_date
         required: true
       end_date: 
+        description: A data property to provide the planned end date of an academic event in the xsd:dateTimeStamp format.
+        slot_uri: aeon:end_date
         required: true
       event_status:
         required: true
-      in_series:
-        recommended: true
-        range: AcademicEventSeries
       organizers:
-        #required: true
+        domain: AcademicEvent
+        range: Organizer
+        required: true
       sponsors:
         recommended: true
     close_mappings:
@@ -225,13 +230,13 @@ classes:
       A person (alive, dead, undead, or fictional).
     class_uri: sdo:Person
     slots:
-      - id
+      #- id
       - name
     slot_usage:
-      #name:
-        #required: true
-      id:
-        recommended: true
+      name:
+        required: true
+      #id:
+        #recommended: true
     id_prefixes:
       - orcid
       - wikidata
@@ -241,13 +246,13 @@ classes:
       An organization such as a company or university
     class_uri: sdo:Organization
     slots:
-      - id
+      #- id
       - name
     slot_usage:
-      #name:
-        #required: true
-      id:
-        recommended: true
+      name:
+        required: true
+      #id:
+        #recommended: true
     id_prefixes:
       - orcid
       - wikidata
@@ -276,29 +281,58 @@ slots:
     required: false
 # PlannedProcess properties
   start_date:
+    description: The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.
     range: datetime
   end_date:
+    description: Similar to the start_date description but only for the end of an academic event or series.
     range: datetime
+  organizers:
+    required: true
+    multivalued: true
+    inlined_as_list: true
+    range: Organizer
+  sponsors:
+    multivalued: true
+    inlined_as_list: true
   contact:
   outputs:
+    description: The published works that are related to the academic event or event series, such as proceedings and video recordings of talks. 
     multivalued: true
   topics:
     multivalued: true
     range: string
   academic_fields:
+    slot_uri: aeon:AEON_0000040
+    description: A relation obtaining between a obi:'planned process' and an academic field descriptor that is used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus.
     multivalued: true
+    inlined_as_list: true
   metrics:
     multivalued: true
     inlined_as_list: true
     range: Metric
 # AcademicEventSeries properties
   series_of:
+    description: The relation used to provide the events belonging to an AcademicEventSeries.
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    domain: AcademicEventSeries
+    range: AcademicEvent
 # AcademicEvent properties
+  event_type:
   at_location:
     range: Location
   in_series:
-  ordinal:
+    description: The relation used to provide the series of which an AcademicEvent is a part.
     recommended: true
+    domain: AcademicEvent
+    range: AcademicEventSeries
+  ordinal:
+    slot_uri: aeon:event_number
+    recommended: true
+    description: The ordnial number of an academic event within its series. 
+    domain: AcademicEvent
     range: integer
   deadlines:
     range: Deadline
@@ -315,20 +349,17 @@ slots:
     multivalued: true
     range: ProcessRelation 
 # Contributors
-  organizers:
-    multivalued: true
-    inlined_as_list: true
-    range: Organizer
-  sponsors:
-    multivalued: true
-    inlined_as_list: true
   contributors:
     multivalued: true
     inlined_as_list: true
     range: Contributor
   persons:
     range: Person
+    multivalued: true
+    inlined_as_list: true
   organisations:
+    multivalued: true
+    inlined_as_list: true
     range: Organisation
 
 #####################################
@@ -339,33 +370,33 @@ enums:
   EventType:
     permissible_values:
       colloquium:
-        meaning: aeon:0010000
+        meaning: aeon:AEON_0010000
       conference:
-        meaning: aeon:0010001
+        meaning: aeon:AEON_0010001
       congress:
-        meaning: aeon:0010011
+        meaning: aeon:AEON_0010011
       event session:
-        meaning: aeon:0010000
+        meaning: aeon:AEON_0010000
       poster session:
-        meaning: aeon:0010005
+        meaning: aeon:AEON_0010005
       event talk:
-        meaning: aeon:0010012
+        meaning: aeon:AEON_0010012
       keynote speech:
-        meaning: aeon:0010007
+        meaning: aeon:AEON_0010007
       event track:
-        meaning: aeon:0010008
+        meaning: aeon:AEON_0010008
       forum:
-        meaning: aeon:0010002
+        meaning: aeon:AEON_0010002
       hackathon:
-        meaning: aeon:0010003
+        meaning: aeon:AEON_0010003
       seminar:
-        meaning: aeon:0010004
+        meaning: aeon:AEON_0010004
       symposium:
-        meaning: aeon:0010006
+        meaning: aeon:AEON_0010006
       tutorial:
-        meaning: aeon:0010009
+        meaning: aeon:AEON_0010009
       workshop:
-        meaning: aeon:0010010
+        meaning: aeon:AEON_0010010
   EventStatus:
     permissible_values:
       as scheduled:

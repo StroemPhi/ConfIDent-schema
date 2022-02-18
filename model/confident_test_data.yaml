@@ -1,16 +1,21 @@
-events:
-  - id: doi:10.25798/qsdh-en13
-    type: conference
-    denoted_by: 
-      official_name: 12th Annual / International VIVO Conference 2021
-      acronym: VIVO 2021
-    start_date: "2021-06-23"
-    end_date: "2021-06-25"
-    event_status: as scheduled
 
-  
-
-series:
-  - id: doi:10.25798/ea2h-xq32
-    denoted_by: 
-      official_name: VIVO Conference Series 
+id: doi:10.25798/qsdh-en13
+event_type: conference
+denoted_by: 
+  official_name: 12th Annual / International VIVO Conference 2021
+  acronym: VIVO 2021
+start_date: "2021-06-23"
+end_date: "2021-06-25"
+event_status: as scheduled
+ordinal: 12
+organizers:
+  - organisations:
+      - name: The VIVO Project
+      - name: TIB
+  - persons:
+      - name: Mike Conlon
+      - name: Christian Hauschke
+in_series: doi:10.25798/ea2h-xq32
+academic_field:
+  - social science
+  - ontology

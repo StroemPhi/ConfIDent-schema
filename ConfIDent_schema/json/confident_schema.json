@@ -68,8 +68,7 @@
     "sdo"
   ],
   "default_curi_maps": [
-    "semweb_context",
-    "obo_context"
+    "semweb_context"
   ],
   "default_prefix": "confid",
   "default_range": "string",
@@ -241,59 +240,59 @@
       "permissible_values": [
         {
           "text": "colloquium",
-          "meaning": "aeon:0010000"
+          "meaning": "aeon:AEON_0010000"
         },
         {
           "text": "conference",
-          "meaning": "aeon:0010001"
+          "meaning": "aeon:AEON_0010001"
         },
         {
           "text": "congress",
-          "meaning": "aeon:0010011"
+          "meaning": "aeon:AEON_0010011"
         },
         {
           "text": "event session",
-          "meaning": "aeon:0010000"
+          "meaning": "aeon:AEON_0010000"
         },
         {
           "text": "poster session",
-          "meaning": "aeon:0010005"
+          "meaning": "aeon:AEON_0010005"
         },
         {
           "text": "event talk",
-          "meaning": "aeon:0010012"
+          "meaning": "aeon:AEON_0010012"
         },
         {
           "text": "keynote speech",
-          "meaning": "aeon:0010007"
+          "meaning": "aeon:AEON_0010007"
         },
         {
           "text": "event track",
-          "meaning": "aeon:0010008"
+          "meaning": "aeon:AEON_0010008"
         },
         {
           "text": "forum",
-          "meaning": "aeon:0010002"
+          "meaning": "aeon:AEON_0010002"
         },
         {
           "text": "hackathon",
-          "meaning": "aeon:0010003"
+          "meaning": "aeon:AEON_0010003"
         },
         {
           "text": "seminar",
-          "meaning": "aeon:0010004"
+          "meaning": "aeon:AEON_0010004"
         },
         {
           "text": "symposium",
-          "meaning": "aeon:0010006"
+          "meaning": "aeon:AEON_0010006"
         },
         {
           "text": "tutorial",
-          "meaning": "aeon:0010009"
+          "meaning": "aeon:AEON_0010009"
         },
         {
           "text": "workshop",
-          "meaning": "aeon:0010010"
+          "meaning": "aeon:AEON_0010010"
         }
       ]
     },
@@ -466,15 +465,13 @@
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://schema.org/identifier",
       "identifier": true,
-      "owner": "Organisation",
+      "owner": "Venue",
       "domain_of": [
         "PlannedProcess",
         "City",
         "Country",
         "Region",
-        "Venue",
-        "Person",
-        "Organisation"
+        "Venue"
       ],
       "range": "uriorcurie",
       "required": true,
@@ -645,6 +642,7 @@
     {
       "name": "outputs",
       "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/outputs",
+      "description": "The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/outputs",
       "multivalued": true,
@@ -671,9 +669,14 @@
     {
       "name": "academic_fields",
       "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/academic_fields",
+      "mappings": [
+        "https://github.com/tibonto/aeon#AEON_0000040"
+      ],
+      "description": "A relation obtaining between a obi:'planned process' and an academic field descriptor that is used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/academic_fields",
+      "slot_uri": "https://github.com/tibonto/aeon#AEON_0000040",
       "multivalued": true,
+      "inlined_as_list": true,
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -699,11 +702,29 @@
     {
       "name": "series_of",
       "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/series_of",
+      "description": "The relation used to provide the events belonging to an AcademicEventSeries.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "AcademicEventSeries",
       "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/series_of",
-      "owner": "PlannedProcess",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "owner": "AcademicEventSeries",
       "domain_of": [
-        "PlannedProcess"
+        "AcademicEventSeries"
+      ],
+      "range": "AcademicEvent",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "event_type",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/event_type",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/event_type",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -724,20 +745,28 @@
     {
       "name": "in_series",
       "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/in_series",
+      "description": "The relation used to provide the series of which an AcademicEvent is a part.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "AcademicEvent",
       "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/in_series",
-      "owner": "PlannedProcess",
+      "owner": "AcademicEvent",
       "domain_of": [
-        "PlannedProcess"
+        "AcademicEvent"
       ],
-      "range": "string",
+      "range": "AcademicEventSeries",
+      "recommended": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "ordinal",
       "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/ordinal",
+      "mappings": [
+        "https://github.com/tibonto/aeon#event_number"
+      ],
+      "description": "The ordnial number of an academic event within its series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/ordinal",
+      "domain": "AcademicEvent",
+      "slot_uri": "https://github.com/tibonto/aeon#event_number",
       "owner": "AcademicEvent",
       "domain_of": [
         "AcademicEvent"
@@ -819,6 +848,9 @@
       "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/persons",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/persons",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "owner": "Contributor",
       "domain_of": [
         "Organizer",
@@ -833,6 +865,9 @@
       "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/organisations",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/organisations",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "owner": "Sponsor",
       "domain_of": [
         "Organizer",
@@ -1077,14 +1112,9 @@
     },
     {
       "name": "type",
-      "mappings": [
-        "https://github.com/tibonto/aeon#AEON_0000032"
-      ],
-      "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "slot_uri": "https://github.com/tibonto/aeon#AEON_0000032",
-      "range": "EventType",
-      "recommended": true,
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/type",
+      "range": "MetricType",
       "@type": "SlotDefinition"
     },
     {
@@ -1113,40 +1143,23 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "AcademicEventSeries_series_of",
-      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/series_of",
-      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "is_a": "series_of",
-      "domain": "AcademicEventSeries",
-      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/series_of",
-      "alias": "series_of",
-      "owner": "AcademicEventSeries",
-      "domain_of": [
-        "AcademicEventSeries"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "series_of",
-      "range": "AcademicEvent",
-      "recommended": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "AcademicEvent_type",
+      "name": "AcademicEvent_event_type",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/event_type",
       "mappings": [
         "https://github.com/tibonto/aeon#AEON_0000032"
       ],
       "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "is_a": "type",
+      "is_a": "event_type",
       "domain": "AcademicEvent",
       "slot_uri": "https://github.com/tibonto/aeon#AEON_0000032",
-      "alias": "type",
+      "alias": "event_type",
       "owner": "AcademicEvent",
       "domain_of": [
         "AcademicEvent"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "type",
+      "usage_slot_name": "event_type",
       "range": "EventType",
       "recommended": true,
       "@type": "SlotDefinition"
@@ -1154,11 +1167,14 @@
     {
       "name": "AcademicEvent_start_date",
       "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/start_date",
-      "description": "The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
+      "mappings": [
+        "https://github.com/tibonto/aeon#start_date"
+      ],
+      "description": "A data property to provide the planned end date of  an academic event in the xsd:dateTimeStamp format.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "start_date",
       "domain": "AcademicEvent",
-      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/start_date",
+      "slot_uri": "https://github.com/tibonto/aeon#start_date",
       "alias": "start_date",
       "owner": "AcademicEvent",
       "domain_of": [
@@ -1173,11 +1189,14 @@
     {
       "name": "AcademicEvent_end_date",
       "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/end_date",
-      "description": "Similar to the start_date description but only for the end of an academic event or series.",
+      "mappings": [
+        "https://github.com/tibonto/aeon#end_date"
+      ],
+      "description": "A data property to provide the planned end date of an academic event in the xsd:dateTimeStamp format.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "end_date",
       "domain": "AcademicEvent",
-      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/end_date",
+      "slot_uri": "https://github.com/tibonto/aeon#end_date",
       "alias": "end_date",
       "owner": "AcademicEvent",
       "domain_of": [
@@ -1211,21 +1230,24 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "AcademicEvent_in_series",
-      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/in_series",
+      "name": "AcademicEvent_organizers",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/organizers",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "is_a": "in_series",
+      "is_a": "organizers",
       "domain": "AcademicEvent",
-      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/in_series",
-      "alias": "in_series",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/organizers",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "alias": "organizers",
       "owner": "AcademicEvent",
       "domain_of": [
         "AcademicEvent"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "in_series",
-      "range": "AcademicEventSeries",
-      "recommended": true,
+      "usage_slot_name": "organizers",
+      "range": "Organizer",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1250,14 +1272,10 @@
     },
     {
       "name": "Metric_type",
-      "mappings": [
-        "https://github.com/tibonto/aeon#AEON_0000032"
-      ],
-      "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "type",
       "domain": "Metric",
-      "slot_uri": "https://github.com/tibonto/aeon#AEON_0000032",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/type",
       "alias": "type",
       "owner": "Metric",
       "domain_of": [
@@ -1266,19 +1284,14 @@
       "is_usage_slot": true,
       "usage_slot_name": "type",
       "range": "MetricType",
-      "recommended": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "ProcessRelation_type",
-      "mappings": [
-        "https://github.com/tibonto/aeon#AEON_0000032"
-      ],
-      "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "type",
       "domain": "ProcessRelation",
-      "slot_uri": "https://github.com/tibonto/aeon#AEON_0000032",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/type",
       "alias": "type",
       "owner": "ProcessRelation",
       "domain_of": [
@@ -1287,19 +1300,14 @@
       "is_usage_slot": true,
       "usage_slot_name": "type",
       "range": "RelationType",
-      "recommended": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "Contributor_type",
-      "mappings": [
-        "https://github.com/tibonto/aeon#AEON_0000032"
-      ],
-      "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "type",
       "domain": "Contributor",
-      "slot_uri": "https://github.com/tibonto/aeon#AEON_0000032",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/type",
       "alias": "type",
       "owner": "Contributor",
       "domain_of": [
@@ -1308,19 +1316,14 @@
       "is_usage_slot": true,
       "usage_slot_name": "type",
       "range": "ContributorType",
-      "recommended": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "Deadline_type",
-      "mappings": [
-        "https://github.com/tibonto/aeon#AEON_0000032"
-      ],
-      "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "type",
       "domain": "Deadline",
-      "slot_uri": "https://github.com/tibonto/aeon#AEON_0000032",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/type",
       "alias": "type",
       "owner": "Deadline",
       "domain_of": [
@@ -1330,53 +1333,42 @@
       "usage_slot_name": "type",
       "range": "DeadlineType",
       "required": true,
-      "recommended": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "Person_id",
-      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/id",
-      "mappings": [
-        "https://schema.org/identifier"
-      ],
+      "name": "Person_name",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/name",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "is_a": "id",
+      "is_a": "name",
       "domain": "Person",
-      "slot_uri": "https://schema.org/identifier",
-      "identifier": true,
-      "alias": "id",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/name",
+      "alias": "name",
       "owner": "Person",
       "domain_of": [
         "Person"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "id",
-      "range": "uriorcurie",
+      "usage_slot_name": "name",
+      "range": "string",
       "required": true,
-      "recommended": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "Organisation_id",
-      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/id",
-      "mappings": [
-        "https://schema.org/identifier"
-      ],
+      "name": "Organisation_name",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/name",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "is_a": "id",
+      "is_a": "name",
       "domain": "Organisation",
-      "slot_uri": "https://schema.org/identifier",
-      "identifier": true,
-      "alias": "id",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/name",
+      "alias": "name",
       "owner": "Organisation",
       "domain_of": [
         "Organisation"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "id",
-      "range": "uriorcurie",
+      "usage_slot_name": "name",
+      "range": "string",
       "required": true,
-      "recommended": true,
       "@type": "SlotDefinition"
     }
   ],
@@ -1414,7 +1406,6 @@
         }
       ],
       "class_uri": "https://github.com/StroemPhi/ConfIDent-schema/ConfIDentRecord",
-      "tree_root": true,
       "@type": "ClassDefinition"
     },
     {
@@ -1437,8 +1428,6 @@
         "website",
         "logo",
         "summary",
-        "in_series",
-        "series_of",
         "related_to"
       ],
       "slot_usage": {},
@@ -1472,9 +1461,8 @@
         "website",
         "logo",
         "summary",
-        "in_series",
         "related_to",
-        "AcademicEventSeries_series_of"
+        "series_of"
       ],
       "slot_usage": {},
       "class_uri": "https://github.com/tibonto/aeon#AEON_0000002",
@@ -1495,7 +1483,6 @@
         "id",
         "PlannedProcess_denoted_by",
         "alternative_ids",
-        "organizers",
         "outputs",
         "topics",
         "academic_fields",
@@ -1504,21 +1491,22 @@
         "website",
         "logo",
         "summary",
-        "series_of",
         "related_to",
         "AcademicEvent_event_status",
         "event_mode",
+        "AcademicEvent_event_type",
         "at_location",
+        "in_series",
         "ordinal",
         "deadlines",
-        "AcademicEvent_type",
         "AcademicEvent_start_date",
         "AcademicEvent_end_date",
-        "AcademicEvent_in_series",
+        "AcademicEvent_organizers",
         "AcademicEvent_sponsors"
       ],
       "slot_usage": {},
       "class_uri": "https://github.com/tibonto/aeon#AEON_0000001",
+      "tree_root": true,
       "@type": "ClassDefinition"
     },
     {
@@ -1785,8 +1773,7 @@
       "description": "A person (alive, dead, undead, or fictional).",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slots": [
-        "Person_id",
-        "name"
+        "Person_name"
       ],
       "slot_usage": {},
       "class_uri": "https://schema.org/Person",
@@ -1805,8 +1792,7 @@
       "description": "An organization such as a company or university",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slots": [
-        "Organisation_id",
-        "name"
+        "Organisation_name"
       ],
       "slot_usage": {},
       "class_uri": "https://schema.org/Organization",
@@ -1815,9 +1801,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "confident_schema.yaml",
-  "source_file_date": "2022-02-18T16:19:46",
-  "source_file_size": 10459,
-  "generation_date": "2022-02-18T16:20:16",
+  "source_file_date": "2022-02-18T17:17:45",
+  "source_file_size": 11958,
+  "generation_date": "2022-02-18T17:18:15",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",
