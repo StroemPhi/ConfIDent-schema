@@ -32,6 +32,7 @@
                "$ref": "#/$defs/ProcessName"
             },
             "end_date": {
+               "description": "Similar to the start_date description but only for the end of an academic event or series.",
                "format": "date-time",
                "type": "string"
             },
@@ -87,6 +88,7 @@
                "type": "array"
             },
             "start_date": {
+               "description": "The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
                "format": "date-time",
                "type": "string"
             },
@@ -100,7 +102,8 @@
                "type": "array"
             },
             "type": {
-               "$ref": "#/$defs/EventType"
+               "$ref": "#/$defs/EventType",
+               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON."
             },
             "website": {
                "type": "string"
@@ -109,6 +112,7 @@
          "required": [
             "id",
             "denoted_by",
+            "organizers",
             "event_status",
             "start_date",
             "end_date"
@@ -139,6 +143,7 @@
                "$ref": "#/$defs/ProcessName"
             },
             "end_date": {
+               "description": "Similar to the start_date description but only for the end of an academic event or series.",
                "format": "date-time",
                "type": "string"
             },
@@ -185,6 +190,7 @@
                "type": "array"
             },
             "start_date": {
+               "description": "The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
                "format": "date-time",
                "type": "string"
             },
@@ -203,7 +209,8 @@
          },
          "required": [
             "id",
-            "denoted_by"
+            "denoted_by",
+            "organizers"
          ],
          "title": "AcademicEventSeries",
          "type": "object"
@@ -227,15 +234,17 @@
       },
       "ConfIDentRecord": {
          "additionalProperties": false,
-         "description": "",
+         "description": "This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).",
          "properties": {
             "events": {
+               "description": "An attribute that specifies a list of academic events within this container.",
                "items": {
                   "$ref": "#/$defs/AcademicEvent"
                },
                "type": "array"
             },
             "series": {
+               "description": "An attribute that specifies a list of academic event series within this container.",
                "items": {
                   "$ref": "#/$defs/AcademicEventSeries"
                },
@@ -254,7 +263,8 @@
                "type": "string"
             },
             "type": {
-               "$ref": "#/$defs/ContributorType"
+               "$ref": "#/$defs/ContributorType",
+               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON."
             }
          },
          "required": [],
@@ -301,7 +311,8 @@
                "type": "string"
             },
             "type": {
-               "$ref": "#/$defs/DeadlineType"
+               "$ref": "#/$defs/DeadlineType",
+               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON."
             }
          },
          "required": [
@@ -420,7 +431,8 @@
                "type": "boolean"
             },
             "type": {
-               "$ref": "#/$defs/MetricType"
+               "$ref": "#/$defs/MetricType",
+               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON."
             }
          },
          "required": [],
@@ -513,6 +525,7 @@
                "$ref": "#/$defs/ProcessName"
             },
             "end_date": {
+               "description": "Similar to the start_date description but only for the end of an academic event or series.",
                "format": "date-time",
                "type": "string"
             },
@@ -559,6 +572,7 @@
                "type": "array"
             },
             "start_date": {
+               "description": "The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
                "format": "date-time",
                "type": "string"
             },
@@ -577,7 +591,8 @@
          },
          "required": [
             "id",
-            "denoted_by"
+            "denoted_by",
+            "organizers"
          ],
          "title": "PlannedProcess",
          "type": "object"
@@ -604,7 +619,8 @@
          "description": "",
          "properties": {
             "type": {
-               "$ref": "#/$defs/RelationType"
+               "$ref": "#/$defs/RelationType",
+               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON."
             }
          },
          "required": [],

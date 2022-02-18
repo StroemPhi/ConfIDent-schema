@@ -1,5 +1,6 @@
 events:
   - id: doi:10.25798/qsdh-en13
+    type: conference
     denoted_by: 
       official_name: 12th Annual / International VIVO Conference 2021
       acronym: VIVO 2021

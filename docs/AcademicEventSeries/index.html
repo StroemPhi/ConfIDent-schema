@@ -93,7 +93,7 @@
               
                 <h1 id="class-academiceventseries">Class: AcademicEventSeries</h1>
 <p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/AcademicEventSeries">confid:AcademicEventSeries</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;id(i):uriorcurie;alternative_ids(i):uriorcurie%20*;start_date(i):datetime%20%3F;end_date(i):datetime%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;in_series(i):string%20%3F],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecord]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[ConfIDentRecord],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;id(i):uriorcurie;alternative_ids(i):uriorcurie%20*;start_date(i):datetime%20%3F;end_date(i):datetime%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;in_series(i):string%20%3F],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecord]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[ConfIDentRecord],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[ConfIDentRecord],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;id(i):uriorcurie;alternative_ids(i):uriorcurie%20*;start_date(i):datetime%20%3F;end_date(i):datetime%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;in_series(i):string%20%3F],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecord]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[ConfIDentRecord],[AcademicEvent]&lt;series_of%200..1-%20[AcademicEventSeries&#124;id(i):uriorcurie;alternative_ids(i):uriorcurie%20*;start_date(i):datetime%20%3F;end_date(i):datetime%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;academic_fields(i):string%20*;contact(i):string%20%3F;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;in_series(i):string%20%3F],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecord]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../PlannedProcess/">PlannedProcess</a></li>
@@ -101,7 +101,7 @@
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
 <li><strong><a href="../AcademicEvent/">AcademicEvent</a></strong> <em><a href="../AcademicEvent_in_series/">AcademicEvent➞in_series</a></em>  <sub>0..1</sub>  <strong><a href="./">AcademicEventSeries</a></strong></li>
-<li><strong>None</strong> <em><a href="../series/">series</a></em>  <sub>0..*</sub>  <strong><a href="./">AcademicEventSeries</a></strong></li>
+<li><strong><a href="../ConfIDentRecord/">ConfIDentRecord</a></strong> <em><a href="../confIDentRecord__series/">ConfIDentRecord➞series</a></em>  <sub>0..*</sub>  <strong><a href="./">AcademicEventSeries</a></strong></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
@@ -126,14 +126,16 @@
 </ul>
 </li>
 <li><a href="../start_date/">start_date</a>  <sub>0..1</sub><ul>
+<li>Description: The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.</li>
 <li>Range: <a href="../Datetime/">Datetime</a></li>
 </ul>
 </li>
 <li><a href="../end_date/">end_date</a>  <sub>0..1</sub><ul>
+<li>Description: Similar to the start_date description but only for the end of an academic event or series.</li>
 <li>Range: <a href="../Datetime/">Datetime</a></li>
 </ul>
 </li>
-<li><a href="../organizers/">organizers</a>  <sub>0..*</sub><ul>
+<li><a href="../organizers/">organizers</a>  <sub>1..*</sub><ul>
 <li>Range: <a href="../Organizer/">Organizer</a></li>
 </ul>
 </li>

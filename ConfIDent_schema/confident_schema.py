@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-18T13:27:20
+# Generation date: 2022-02-18T16:20:20
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -90,6 +90,9 @@ class OrganisationId(URIorCURIE):
 
 @dataclass
 class ConfIDentRecord(YAMLRoot):
+    """
+    This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFID.ConfIDentRecord
@@ -119,10 +122,10 @@ class PlannedProcess(YAMLRoot):
 
     id: Union[str, PlannedProcessId] = None
     denoted_by: Union[dict, "ProcessName"] = None
+    organizers: Union[Union[dict, "Organizer"], List[Union[dict, "Organizer"]]] = None
     alternative_ids: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     start_date: Optional[Union[str, XSDDateTime]] = None
     end_date: Optional[Union[str, XSDDateTime]] = None
-    organizers: Optional[Union[Union[dict, "Organizer"], List[Union[dict, "Organizer"]]]] = empty_list()
     sponsors: Optional[Union[str, List[str]]] = empty_list()
     outputs: Optional[Union[str, List[str]]] = empty_list()
     topics: Optional[Union[str, List[str]]] = empty_list()
@@ -147,6 +150,12 @@ class PlannedProcess(YAMLRoot):
         if not isinstance(self.denoted_by, ProcessName):
             self.denoted_by = ProcessName(**as_dict(self.denoted_by))
 
+        if self._is_empty(self.organizers):
+            self.MissingRequiredField("organizers")
+        if not isinstance(self.organizers, list):
+            self.organizers = [self.organizers] if self.organizers is not None else []
+        self.organizers = [v if isinstance(v, Organizer) else Organizer(**as_dict(v)) for v in self.organizers]
+
         if not isinstance(self.alternative_ids, list):
             self.alternative_ids = [self.alternative_ids] if self.alternative_ids is not None else []
         self.alternative_ids = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.alternative_ids]
@@ -156,10 +165,6 @@ class PlannedProcess(YAMLRoot):
 
         if self.end_date is not None and not isinstance(self.end_date, XSDDateTime):
             self.end_date = XSDDateTime(self.end_date)
-
-        if not isinstance(self.organizers, list):
-            self.organizers = [self.organizers] if self.organizers is not None else []
-        self.organizers = [v if isinstance(v, Organizer) else Organizer(**as_dict(v)) for v in self.organizers]
 
         if not isinstance(self.sponsors, list):
             self.sponsors = [self.sponsors] if self.sponsors is not None else []
@@ -217,6 +222,7 @@ class AcademicEventSeries(PlannedProcess):
 
     id: Union[str, AcademicEventSeriesId] = None
     denoted_by: Union[dict, "ProcessName"] = None
+    organizers: Union[Union[dict, "Organizer"], List[Union[dict, "Organizer"]]] = None
     series_of: Optional[Union[str, AcademicEventId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -242,6 +248,7 @@ class AcademicEvent(PlannedProcess):
 
     id: Union[str, AcademicEventId] = None
     denoted_by: Union[dict, "ProcessName"] = None
+    organizers: Union[Union[dict, "Organizer"], List[Union[dict, "Organizer"]]] = None
     event_status: Union[str, "EventStatus"] = None
     start_date: Union[str, XSDDateTime] = None
     end_date: Union[str, XSDDateTime] = None
@@ -251,7 +258,6 @@ class AcademicEvent(PlannedProcess):
     deadlines: Optional[Union[Union[dict, "Deadline"], List[Union[dict, "Deadline"]]]] = empty_list()
     type: Optional[Union[str, "EventType"]] = None
     in_series: Optional[Union[str, AcademicEventSeriesId]] = None
-    organizers: Optional[Union[Union[dict, "Organizer"], List[Union[dict, "Organizer"]]]] = empty_list()
     sponsors: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -293,10 +299,6 @@ class AcademicEvent(PlannedProcess):
 
         if self.in_series is not None and not isinstance(self.in_series, AcademicEventSeriesId):
             self.in_series = AcademicEventSeriesId(self.in_series)
-
-        if not isinstance(self.organizers, list):
-            self.organizers = [self.organizers] if self.organizers is not None else []
-        self.organizers = [v if isinstance(v, Organizer) else Organizer(**as_dict(v)) for v in self.organizers]
 
         if not isinstance(self.sponsors, list):
             self.sponsors = [self.sponsors] if self.sponsors is not None else []

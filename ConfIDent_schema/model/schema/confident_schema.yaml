@@ -4,9 +4,6 @@ title: ConfIDent metadata schema - v0.0.1
 description: |-
   This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.
 license: https://creativecommons.org/licenses/by/4.0/
-default_curi_maps:
-  - semweb_context
-
 version: 0.0.1
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -22,7 +19,9 @@ prefixes:
   wikidata: https://www.wikidata.org/wiki/
   dblp_series: https://dblp.org/db/conf/
   doi: https://doi.org/
-
+default_curi_maps:
+  - semweb_context
+  - obo_context
 default_prefix: confid
 default_range: string
 
@@ -42,9 +41,22 @@ classes:
 # Container
   ConfIDentRecord:
     tree_root: true
-    slots:
-      - events
-      - series
+    description: This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).
+    attributes:
+      events:
+        description: An attribute that specifies a list of academic events within this container.
+        domain: ConfIDentRecord
+        range: AcademicEvent
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      series:
+        description: An attribute that specifies a list of academic event series within this container.
+        domain: ConfIDentRecord
+        range: AcademicEventSeries
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
 # PlannedProcess
   PlannedProcess:
     slots:
@@ -94,6 +106,8 @@ classes:
       - deadlines
     slot_usage:
       type: 
+        description: The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.
+        slot_uri: aeon:AEON_0000032
         range: EventType
         recommended: true
       start_date:
@@ -105,8 +119,6 @@ classes:
       in_series:
         recommended: true
         range: AcademicEventSeries
-      organizers:
-        #required: true
       sponsors:
         recommended: true
     close_mappings:
@@ -261,22 +273,21 @@ slots:
   address:
   name:
     required: false
-# Container
-  events:
-    range: AcademicEvent
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  series:
-    range: AcademicEventSeries
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 # PlannedProcess properties
   start_date:
+    description: The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.
     range: datetime
   end_date:
+    description: Similar to the start_date description but only for the end of an academic event or series.
     range: datetime
+  organizers:
+    required: true
+    multivalued: true
+    inlined_as_list: true
+    range: Organizer
+  sponsors:
+    multivalued: true
+    inlined_as_list: true
   contact:
   outputs:
     multivalued: true
@@ -313,13 +324,6 @@ slots:
     multivalued: true
     range: ProcessRelation 
 # Contributors
-  organizers:
-    multivalued: true
-    inlined_as_list: true
-    range: Organizer
-  sponsors:
-    multivalued: true
-    inlined_as_list: true
   contributors:
     multivalued: true
     inlined_as_list: true

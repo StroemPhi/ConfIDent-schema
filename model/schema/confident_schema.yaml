@@ -42,9 +42,22 @@ classes:
 # Container
   ConfIDentRecord:
     tree_root: true
-    slots:
-      - events
-      - series
+    description: This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).
+    attributes:
+      events:
+        description: An attribute that specifies a list of academic events within this container.
+        domain: ConfIDentRecord
+        range: AcademicEvent
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      series:
+        description: An attribute that specifies a list of academic event series within this container.
+        domain: ConfIDentRecord
+        range: AcademicEventSeries
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
 # PlannedProcess
   PlannedProcess:
     slots:
@@ -261,17 +274,6 @@ slots:
   address:
   name:
     required: false
-# Container
-  events:
-    range: AcademicEvent
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  series:
-    range: AcademicEventSeries
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 # PlannedProcess properties
   start_date:
     range: datetime

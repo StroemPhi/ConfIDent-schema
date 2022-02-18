@@ -93,7 +93,7 @@
               
                 <h1 id="class-plannedprocess">Class: PlannedProcess</h1>
 <p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/PlannedProcess">confid:PlannedProcess</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[ProcessRelation]&lt;related_to%200..*-++[PlannedProcess&#124;id:uriorcurie;alternative_ids:uriorcurie%20*;start_date:datetime%20%3F;end_date:datetime%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;academic_fields:string%20*;contact:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;in_series:string%20%3F;series_of:string%20%3F],[Metric]&lt;metrics%200..*-++[PlannedProcess],[Organizer]&lt;organizers%200..*-++[PlannedProcess],[ProcessName]&lt;denoted_by%201..1-++[PlannedProcess],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[Metric],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[ProcessRelation]&lt;related_to%200..*-++[PlannedProcess&#124;id:uriorcurie;alternative_ids:uriorcurie%20*;start_date:datetime%20%3F;end_date:datetime%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;academic_fields:string%20*;contact:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;in_series:string%20%3F;series_of:string%20%3F],[Metric]&lt;metrics%200..*-++[PlannedProcess],[Organizer]&lt;organizers%200..*-++[PlannedProcess],[ProcessName]&lt;denoted_by%201..1-++[PlannedProcess],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[Metric],[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[ProcessRelation]&lt;related_to%200..*-++[PlannedProcess&#124;id:uriorcurie;alternative_ids:uriorcurie%20*;start_date:datetime%20%3F;end_date:datetime%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;academic_fields:string%20*;contact:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;in_series:string%20%3F;series_of:string%20%3F],[Metric]&lt;metrics%200..*-++[PlannedProcess],[Organizer]&lt;organizers%201..*-++[PlannedProcess],[ProcessName]&lt;denoted_by%201..1-++[PlannedProcess],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[Metric],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[ProcessRelation]&lt;related_to%200..*-++[PlannedProcess&#124;id:uriorcurie;alternative_ids:uriorcurie%20*;start_date:datetime%20%3F;end_date:datetime%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;academic_fields:string%20*;contact:string%20%3F;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;in_series:string%20%3F;series_of:string%20%3F],[Metric]&lt;metrics%200..*-++[PlannedProcess],[Organizer]&lt;organizers%201..*-++[PlannedProcess],[ProcessName]&lt;denoted_by%201..1-++[PlannedProcess],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[Metric],[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="children">Children</h2>
 <ul>
 <li><a href="../AcademicEvent/">AcademicEvent</a></li>
@@ -116,14 +116,16 @@
 </ul>
 </li>
 <li><a href="../start_date/">start_date</a>  <sub>0..1</sub><ul>
+<li>Description: The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.</li>
 <li>Range: <a href="../Datetime/">Datetime</a></li>
 </ul>
 </li>
 <li><a href="../end_date/">end_date</a>  <sub>0..1</sub><ul>
+<li>Description: Similar to the start_date description but only for the end of an academic event or series.</li>
 <li>Range: <a href="../Datetime/">Datetime</a></li>
 </ul>
 </li>
-<li><a href="../organizers/">organizers</a>  <sub>0..*</sub><ul>
+<li><a href="../organizers/">organizers</a>  <sub>1..*</sub><ul>
 <li>Range: <a href="../Organizer/">Organizer</a></li>
 </ul>
 </li>
