@@ -234,20 +234,24 @@
   ],
   "enums": [
     {
-      "name": "EventType",
-      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/EventType",
+      "name": "EventTypeValue",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/EventTypeValue",
+      "description": "The following definitions attempt to provide descriptions to distinguish different academic event formats, even though the definitions are not always clearly distinguishable in their everyday use and are often used synonymously. According to the mapping to [AEON](https://github.com/tibonto/aeon), each permissible value on this list represents an AEON named individual",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "permissible_values": [
         {
           "text": "colloquium",
+          "description": "A colloquium is an academic meeting that usually lasts only a few hours and serves to discuss a specific topic. Colloquia are usually part of the academic exchange in everyday university life with only one speaker, but can also take place on special occasions (anniversaries, start or end of the lecture phase, etc.) and can have more than one speaker.",
           "meaning": "aeon:AEON_0010000"
         },
         {
           "text": "conference",
+          "description": "A conference is an academic event that lasts up to several days and serves as a forum for presentations on a specific topic or subject area. In addition to subject-specific conferences, there are also interdisciplinary conferences which allow both a broader focus and more specific questions on a particular (academic) problem. Conferences often have a highly formalized structure of parallel, clearly defined sessions with several short presentations and plenary sessions with invited (keynote) speakers who are considered multipliers in their (research) field. Ideally, the selection of the speakers and their contributions is subject to a review process.",
           "meaning": "aeon:AEON_0010001"
         },
         {
           "text": "congress",
+          "description": "A congress is a certain type of conference which is characterised by a larger number of participants (often several hundred) and is oftentimes organised jointly by large, established (e.g. specialised societies) and/or several institutions. Congresses have a broader thematic focus than simple conferences, take place in certain cycles, but can still target an exclusive group of participants (e.g. representatives of a single discipline).",
           "meaning": "aeon:AEON_0010011"
         },
         {
@@ -293,6 +297,10 @@
         {
           "text": "workshop",
           "meaning": "aeon:AEON_0010010"
+        },
+        {
+          "text": "other event type",
+          "description": "This event type is only to be used, when the sociocultural format of the academic event you want to describe has an official label that is not on this list. If you use event type *other* then you must provide an event type description using the event_type_other property."
         }
       ]
     },
@@ -809,6 +817,7 @@
     {
       "name": "event_mode",
       "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/event_mode",
+      "description": "The event mode describes whether the event is a physical, virtual or hybrid event.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/event_mode",
       "owner": "AcademicEvent",
@@ -908,6 +917,32 @@
         "ConfIDentRecord"
       ],
       "range": "AcademicEventSeries",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "eventType__event_type_iri",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/event_type_iri",
+      "identifier": true,
+      "alias": "event_type_iri",
+      "owner": "EventType",
+      "domain_of": [
+        "EventType"
+      ],
+      "range": "EventTypeValue",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "eventType__event_type_other",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slot_uri": "https://github.com/StroemPhi/ConfIDent-schema/event_type_other",
+      "alias": "event_type_other",
+      "owner": "EventType",
+      "domain_of": [
+        "EventType"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -1153,6 +1188,7 @@
       "is_a": "event_type",
       "domain": "AcademicEvent",
       "slot_uri": "https://github.com/tibonto/aeon#AEON_0000032",
+      "inlined": true,
       "alias": "event_type",
       "owner": "AcademicEvent",
       "domain_of": [
@@ -1510,6 +1546,35 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "EventType",
+      "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/EventType",
+      "mappings": [
+        "aeon:AEON_0000004"
+      ],
+      "description": "An event type is a plan specification that specifies the sociocultural format or type of the academic event by providing details on the objectives, conditions and actions needed in its realization.",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "eventType__event_type_iri",
+        "eventType__event_type_other"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "event_type_iri",
+          "identifier": true,
+          "range": "EventTypeValue",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "event_type_other",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://github.com/tibonto/aeon#AEON_0000004",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "ProcessName",
       "definition_uri": "https://github.com/StroemPhi/ConfIDent-schema/ProcessName",
       "mappings": [
@@ -1801,9 +1866,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "confident_schema.yaml",
-  "source_file_date": "2022-02-18T17:17:45",
-  "source_file_size": 11958,
-  "generation_date": "2022-02-18T17:18:15",
+  "source_file_date": "2022-02-21T14:46:21",
+  "source_file_size": 14805,
+  "generation_date": "2022-02-21T14:47:24",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

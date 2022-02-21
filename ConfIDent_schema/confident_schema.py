@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-18T17:18:19
+# Generation date: 2022-02-21T14:47:28
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -61,6 +61,10 @@ class AcademicEventSeriesId(PlannedProcessId):
 
 
 class AcademicEventId(PlannedProcessId):
+    pass
+
+
+class EventTypeEventTypeIri(EventTypeValue):
     pass
 
 
@@ -236,7 +240,7 @@ class AcademicEvent(PlannedProcess):
     end_date: Union[str, XSDDateTime] = None
     organizers: Union[Union[dict, "Organizer"], List[Union[dict, "Organizer"]]] = None
     event_mode: Optional[Union[str, "EventMode"]] = None
-    event_type: Optional[Union[str, "EventType"]] = None
+    event_type: Optional[Union[dict, "EventType"]] = None
     at_location: Optional[Union[dict, "Location"]] = None
     in_series: Optional[Union[str, AcademicEventSeriesId]] = None
     ordinal: Optional[int] = None
@@ -274,7 +278,7 @@ class AcademicEvent(PlannedProcess):
             self.event_mode = EventMode(self.event_mode)
 
         if self.event_type is not None and not isinstance(self.event_type, EventType):
-            self.event_type = EventType(self.event_type)
+            self.event_type = EventType(**as_dict(self.event_type))
 
         if self.at_location is not None and not isinstance(self.at_location, Location):
             self.at_location = Location(**as_dict(self.at_location))
@@ -292,6 +296,34 @@ class AcademicEvent(PlannedProcess):
         if not isinstance(self.sponsors, list):
             self.sponsors = [self.sponsors] if self.sponsors is not None else []
         self.sponsors = [v if isinstance(v, str) else str(v) for v in self.sponsors]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class EventType(YAMLRoot):
+    """
+    An event type is a plan specification that specifies the sociocultural format or type of the academic event by
+    providing details on the objectives, conditions and actions needed in its realization.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = AEON.AEON_0000004
+    class_class_curie: ClassVar[str] = "aeon:AEON_0000004"
+    class_name: ClassVar[str] = "EventType"
+    class_model_uri: ClassVar[URIRef] = CONFID.EventType
+
+    event_type_iri: Union[str, "EventTypeEventTypeIri"] = None
+    event_type_other: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.event_type_iri):
+            self.MissingRequiredField("event_type_iri")
+        if not isinstance(self.event_type_iri, EventTypeEventTypeIri):
+            self.event_type_iri = EventTypeEventTypeIri(self.event_type_iri)
+
+        if self.event_type_other is not None and not isinstance(self.event_type_other, str):
+            self.event_type_other = str(self.event_type_other)
 
         super().__post_init__(**kwargs)
 
@@ -666,13 +698,21 @@ class Organisation(YAMLRoot):
 
 
 # Enumerations
-class EventType(EnumDefinitionImpl):
-
+class EventTypeValue(EnumDefinitionImpl):
+    """
+    The following definitions attempt to provide descriptions to distinguish different academic event formats, even
+    though the definitions are not always clearly distinguishable in their everyday use and are often used
+    synonymously. According to the mapping to [AEON](https://github.com/tibonto/aeon), each permissible value on this
+    list represents an AEON named individual
+    """
     colloquium = PermissibleValue(text="colloquium",
+                                           description="A colloquium is an academic meeting that usually lasts only a few hours and serves to discuss a specific topic. Colloquia are usually part of the academic exchange in everyday university life with only one speaker, but can also take place on special occasions (anniversaries, start or end of the lecture phase, etc.) and can have more than one speaker.",
                                            meaning=AEON.AEON_0010000)
     conference = PermissibleValue(text="conference",
+                                           description="A conference is an academic event that lasts up to several days and serves as a forum for presentations on a specific topic or subject area. In addition to subject-specific conferences, there are also interdisciplinary conferences which allow both a broader focus and more specific questions on a particular (academic) problem. Conferences often have a highly formalized structure of parallel, clearly defined sessions with several short presentations and plenary sessions with invited (keynote) speakers who are considered multipliers in their (research) field. Ideally, the selection of the speakers and their contributions is subject to a review process.",
                                            meaning=AEON.AEON_0010001)
     congress = PermissibleValue(text="congress",
+                                       description="A congress is a certain type of conference which is characterised by a larger number of participants (often several hundred) and is oftentimes organised jointly by large, established (e.g. specialised societies) and/or several institutions. Congresses have a broader thematic focus than simple conferences, take place in certain cycles, but can still target an exclusive group of participants (e.g. representatives of a single discipline).",
                                        meaning=AEON.AEON_0010011)
     forum = PermissibleValue(text="forum",
                                  meaning=AEON.AEON_0010002)
@@ -688,7 +728,8 @@ class EventType(EnumDefinitionImpl):
                                        meaning=AEON.AEON_0010010)
 
     _defn = EnumDefinition(
-        name="EventType",
+        name="EventTypeValue",
+        description="The following definitions attempt to provide descriptions to distinguish different academic event formats, even though the definitions are not always clearly distinguishable in their everyday use and are often used synonymously. According to the mapping to [AEON](https://github.com/tibonto/aeon), each permissible value on this list represents an AEON named individual",
     )
 
     @classmethod
@@ -708,6 +749,9 @@ class EventType(EnumDefinitionImpl):
         setattr(cls, "event track",
                 PermissibleValue(text="event track",
                                  meaning=AEON.AEON_0010008) )
+        setattr(cls, "other event type",
+                PermissibleValue(text="other event type",
+                                 description="This event type is only to be used, when the sociocultural format of the academic event you want to describe has an official label that is not on this list. If you use event type *other* then you must provide an event type description using the event_type_other property.") )
 
 class EventStatus(EnumDefinitionImpl):
 

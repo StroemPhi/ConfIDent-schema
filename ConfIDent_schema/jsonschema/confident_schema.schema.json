@@ -38,7 +38,8 @@
                "type": "string"
             },
             "event_mode": {
-               "$ref": "#/$defs/EventMode"
+               "$ref": "#/$defs/EventMode",
+               "description": "The event mode describes whether the event is a physical, virtual or hybrid event."
             },
             "event_status": {
                "$ref": "#/$defs/EventStatus"
@@ -366,7 +367,24 @@
          "type": "string"
       },
       "EventType": {
-         "description": "",
+         "additionalProperties": false,
+         "description": "An event type is a plan specification that specifies the sociocultural format or type of the academic event by providing details on the objectives, conditions and actions needed in its realization.",
+         "properties": {
+            "event_type_iri": {
+               "$ref": "#/$defs/EventTypeValue"
+            },
+            "event_type_other": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "event_type_iri"
+         ],
+         "title": "EventType",
+         "type": "object"
+      },
+      "EventTypeValue": {
+         "description": "The following definitions attempt to provide descriptions to distinguish different academic event formats, even though the definitions are not always clearly distinguishable in their everyday use and are often used synonymously. According to the mapping to [AEON](https://github.com/tibonto/aeon), each permissible value on this list represents an AEON named individual",
          "enum": [
             "colloquium",
             "conference",
@@ -381,9 +399,10 @@
             "seminar",
             "symposium",
             "tutorial",
-            "workshop"
+            "workshop",
+            "other event type"
          ],
-         "title": "EventType",
+         "title": "EventTypeValue",
          "type": "string"
       },
       "Location": {

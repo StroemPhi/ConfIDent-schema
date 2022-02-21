@@ -1,12 +1,18 @@
 
 id: doi:10.25798/qsdh-en13
-event_type: conference
-denoted_by: 
-  official_name: 12th Annual / International VIVO Conference 2021
-  acronym: VIVO 2021
+event_format: conference
+event_format_other: Academic Conference
 start_date: "2021-06-23"
 end_date: "2021-06-25"
 event_status: as scheduled
+event_mode: hybrid
+denoted_by: 
+  official_name: 12th Annual / International VIVO Conference 2021
+  acronym: VIVO 2021
+  aliases: 
+    - VIVO Conference 2021
+    - 12th International VIVO Conference 2021
+    - 12th VIVO Conference 2021
 ordinal: 12
 organizers:
   - organisations:
@@ -16,6 +22,9 @@ organizers:
       - name: Mike Conlon
       - name: Christian Hauschke
 in_series: doi:10.25798/ea2h-xq32
-academic_field:
-  - social science
-  - ontology
+academic_fields:
+  value:
+    - social science
+    - ontology
+  scheme_name: ConfIDent's core classification scheme
+  scheme_uri: confid:classification
