@@ -94,7 +94,7 @@
                 <h1 id="class-person">Class: Person</h1>
 <p>A person (alive, dead, undead, or fictional).</p>
 <p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/Person">confid:Person</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer]++-%20persons%200..*&gt;[Person&#124;name:string],[Sponsor]++-%20persons%200..*&gt;[Person],[Contributor]++-%20persons%200..*&gt;[Person],[Sponsor],[Organizer],[Contributor]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer]++-%20persons%200..*&gt;[Person&#124;name:string],[Sponsor]++-%20persons%200..*&gt;[Person],[Contributor]++-%20persons%200..*&gt;[Person],[Sponsor],[Organizer],[Contributor]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer]++-%20persons%200..*&gt;[Person&#124;pid:string%20%3F;name:string],[Sponsor]++-%20persons%200..*&gt;[Person],[Contributor]++-%20persons%200..*&gt;[Person],[Sponsor],[Organizer],[Contributor]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer]++-%20persons%200..*&gt;[Person&#124;pid:string%20%3F;name:string],[Sponsor]++-%20persons%200..*&gt;[Person],[Contributor]++-%20persons%200..*&gt;[Person],[Sponsor],[Organizer],[Contributor]" /></a></p>
 <h2 id="identifier-prefixes">Identifier prefixes</h2>
 <ul>
 <li>orcid</li>
@@ -107,6 +107,10 @@
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
+<li><a href="../pid/">pid</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 <li><a href="../Person_name/">Person➞name</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>

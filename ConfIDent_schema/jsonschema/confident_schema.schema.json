@@ -2,18 +2,18 @@
    "$defs": {
       "AcademicEvent": {
          "additionalProperties": false,
-         "description": "",
+         "description": "An academic event is part of the established instruments of science communication as a format for conveying the latest scientific outputs. It is defined by the meeting of researchers at a specific time and place (virtual or physical) and with a specific thematic focus to present, hear and discuss these outputs. In contrast to other forms of events, academic events should primarily serve the exchange of results and methods of scientific research and their didactic mediation.  Furthermore, a significant participation of scientific organizations in the realization of an academic event is constitutive for this type of event; for example, to distinguish it from events in which researchers mainly act as external experts or with a purely legitimising function.",
          "properties": {
             "academic_fields": {
-               "description": "A relation obtaining between a obi:'planned process' and an academic field descriptor that is used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus.",
+               "description": "A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.",
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/AcademicField"
                },
                "type": "array"
             },
             "alternative_ids": {
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Identifier"
                },
                "type": "array"
             },
@@ -30,12 +30,21 @@
                "type": "array"
             },
             "denoted_by": {
-               "$ref": "#/$defs/ProcessName"
+               "$ref": "#/$defs/ProcessName",
+               "description": "'denoted_by' used to refer to the name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc)."
             },
             "end_date": {
-               "description": "A data property to provide the planned end date of an academic event in the xsd:dateTimeStamp format.",
+               "description": "Similar to start_date but only for the end of an academic event or event series.",
                "format": "date-time",
                "type": "string"
+            },
+            "event_format": {
+               "$ref": "#/$defs/EventFormat",
+               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventFormat enum, which uses the named individuals defined in AEON."
+            },
+            "event_format_other": {
+               "$ref": "#/$defs/EventFormatSpecification",
+               "description": "If event_format is set to 'other' then this property must be used to provide a label of the event type."
             },
             "event_mode": {
                "$ref": "#/$defs/EventMode",
@@ -44,15 +53,15 @@
             "event_status": {
                "$ref": "#/$defs/EventStatus"
             },
-            "event_type": {
-               "$ref": "#/$defs/EventType",
-               "description": "The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON."
-            },
             "id": {
                "type": "string"
             },
             "in_series": {
                "description": "The relation used to provide the series of which an AcademicEvent is a part.",
+               "type": "string"
+            },
+            "landing_page": {
+               "description": "The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.",
                "type": "string"
             },
             "logo": {
@@ -63,6 +72,10 @@
                   "$ref": "#/$defs/Metric"
                },
                "type": "array"
+            },
+            "multiple_days": {
+               "description": "A boolean property that if true means that the academic event spans multiple days.",
+               "type": "boolean"
             },
             "ordinal": {
                "description": "The ordnial number of an academic event within its series.",
@@ -94,7 +107,7 @@
                "type": "array"
             },
             "start_date": {
-               "description": "A data property to provide the planned end date of  an academic event in the xsd:dateTimeStamp format.",
+               "description": "The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
                "format": "date-time",
                "type": "string"
             },
@@ -114,28 +127,28 @@
          "required": [
             "id",
             "denoted_by",
-            "event_status",
             "start_date",
             "end_date",
-            "organizers"
+            "organizers",
+            "event_status"
          ],
          "title": "AcademicEvent",
          "type": "object"
       },
       "AcademicEventSeries": {
          "additionalProperties": false,
-         "description": "",
+         "description": "An academic event series describes the set of academic events which take place on a regular basis and thus have an established common identity. This identity is constituted, for example, through institutional continuity in the hosting of a series (e.g. by a specialised society), thematic focuses and/or a common label under which a series is defined (particularly name and acronym). Nevertheless, it is possible that each of these criteria may change over time.",
          "properties": {
             "academic_fields": {
-               "description": "A relation obtaining between a obi:'planned process' and an academic field descriptor that is used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus.",
+               "description": "A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.",
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/AcademicField"
                },
                "type": "array"
             },
             "alternative_ids": {
                "items": {
-                  "type": "string"
+                  "$ref": "#/$defs/Identifier"
                },
                "type": "array"
             },
@@ -143,14 +156,19 @@
                "type": "string"
             },
             "denoted_by": {
-               "$ref": "#/$defs/ProcessName"
+               "$ref": "#/$defs/ProcessName",
+               "description": "'denoted_by' used to refer to the name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc)."
             },
             "end_date": {
-               "description": "Similar to the start_date description but only for the end of an academic event or series.",
+               "description": "Similar to start_date but only for the end of an academic event or event series.",
                "format": "date-time",
                "type": "string"
             },
             "id": {
+               "type": "string"
+            },
+            "landing_page": {
+               "description": "The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.",
                "type": "string"
             },
             "logo": {
@@ -175,12 +193,6 @@
                },
                "type": "array"
             },
-            "related_to": {
-               "items": {
-                  "$ref": "#/$defs/ProcessRelation"
-               },
-               "type": "array"
-            },
             "series_of": {
                "description": "The relation used to provide the events belonging to an AcademicEventSeries.",
                "items": {
@@ -195,7 +207,7 @@
                "type": "array"
             },
             "start_date": {
-               "description": "The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
+               "description": "The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
                "format": "date-time",
                "type": "string"
             },
@@ -215,9 +227,31 @@
          "required": [
             "id",
             "denoted_by",
+            "start_date",
+            "end_date",
             "organizers"
          ],
          "title": "AcademicEventSeries",
+         "type": "object"
+      },
+      "AcademicField": {
+         "additionalProperties": false,
+         "description": "An academic field is the scientific subject of the planned process according to some controlled vocabulary or thesaurus and as such requires the scheme URI.",
+         "properties": {
+            "scheme_name": {
+               "type": "string"
+            },
+            "scheme_uri": {
+               "type": "string"
+            },
+            "value": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "scheme_name"
+         ],
+         "title": "AcademicField",
          "type": "object"
       },
       "City": {
@@ -237,7 +271,7 @@
          "title": "City",
          "type": "object"
       },
-      "ConfIDentRecord": {
+      "ConfIDentRecords": {
          "additionalProperties": false,
          "description": "This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).",
          "properties": {
@@ -257,7 +291,7 @@
             }
          },
          "required": [],
-         "title": "ConfIDentRecord",
+         "title": "ConfIDentRecords",
          "type": "object"
       },
       "Contributor": {
@@ -344,6 +378,39 @@
          "title": "DeadlineType",
          "type": "string"
       },
+      "EventFormat": {
+         "description": "The following definitions attempt to provide descriptions to distinguish different academic event formats, even though the definitions are not always clearly distinguishable in their everyday use and are often used synonymously. An event type should be understood, according to AEON, as a plan specification that specifies the sociocultural format or type of the academic event by providing details on the objectives, conditions and actions needed in its realization.",
+         "enum": [
+            "colloquium",
+            "conference",
+            "congress",
+            "session",
+            "poster session",
+            "talk",
+            "keynote speech",
+            "event track",
+            "forum",
+            "hackathon",
+            "seminar",
+            "symposium",
+            "tutorial",
+            "workshop"
+         ],
+         "title": "EventFormat",
+         "type": "string"
+      },
+      "EventFormatSpecification": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "other": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "EventFormatSpecification",
+         "type": "object"
+      },
       "EventMode": {
          "description": "",
          "enum": [
@@ -366,44 +433,25 @@
          "title": "EventStatus",
          "type": "string"
       },
-      "EventType": {
+      "Identifier": {
          "additionalProperties": false,
-         "description": "An event type is a plan specification that specifies the sociocultural format or type of the academic event by providing details on the objectives, conditions and actions needed in its realization.",
+         "description": "",
          "properties": {
-            "event_type_iri": {
-               "$ref": "#/$defs/EventTypeValue"
+            "scheme_name": {
+               "type": "string"
             },
-            "event_type_other": {
+            "scheme_uri": {
+               "type": "string"
+            },
+            "value": {
                "type": "string"
             }
          },
          "required": [
-            "event_type_iri"
+            "scheme_name"
          ],
-         "title": "EventType",
+         "title": "Identifier",
          "type": "object"
-      },
-      "EventTypeValue": {
-         "description": "The following definitions attempt to provide descriptions to distinguish different academic event formats, even though the definitions are not always clearly distinguishable in their everyday use and are often used synonymously. According to the mapping to [AEON](https://github.com/tibonto/aeon), each permissible value on this list represents an AEON named individual",
-         "enum": [
-            "colloquium",
-            "conference",
-            "congress",
-            "event session",
-            "poster session",
-            "event talk",
-            "keynote speech",
-            "event track",
-            "forum",
-            "hackathon",
-            "seminar",
-            "symposium",
-            "tutorial",
-            "workshop",
-            "other event type"
-         ],
-         "title": "EventTypeValue",
-         "type": "string"
       },
       "Location": {
          "additionalProperties": false,
@@ -517,6 +565,9 @@
          "properties": {
             "name": {
                "type": "string"
+            },
+            "pid": {
+               "type": "string"
             }
          },
          "required": [
@@ -525,105 +576,34 @@
          "title": "Person",
          "type": "object"
       },
-      "PlannedProcess": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "academic_fields": {
-               "description": "A relation obtaining between a obi:'planned process' and an academic field descriptor that is used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "alternative_ids": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "contact": {
-               "type": "string"
-            },
-            "denoted_by": {
-               "$ref": "#/$defs/ProcessName"
-            },
-            "end_date": {
-               "description": "Similar to the start_date description but only for the end of an academic event or series.",
-               "format": "date-time",
-               "type": "string"
-            },
-            "id": {
-               "type": "string"
-            },
-            "logo": {
-               "type": "string"
-            },
-            "metrics": {
-               "items": {
-                  "$ref": "#/$defs/Metric"
-               },
-               "type": "array"
-            },
-            "organizers": {
-               "items": {
-                  "$ref": "#/$defs/Organizer"
-               },
-               "type": "array"
-            },
-            "outputs": {
-               "description": "The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "related_to": {
-               "items": {
-                  "$ref": "#/$defs/ProcessRelation"
-               },
-               "type": "array"
-            },
-            "sponsors": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "start_date": {
-               "description": "The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
-               "format": "date-time",
-               "type": "string"
-            },
-            "summary": {
-               "type": "string"
-            },
-            "topics": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "website": {
-               "type": "string"
-            }
-         },
-         "required": [
-            "id",
-            "denoted_by",
-            "organizers"
-         ],
-         "title": "PlannedProcess",
-         "type": "object"
-      },
       "ProcessName": {
          "additionalProperties": false,
          "description": "",
          "properties": {
             "acronym": {
+               "description": "The official acronym of an academic event or series.",
+               "type": "string"
+            },
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "former_name": {
+               "description": "The former official name of an academic event or series. Usually this will only be needed in case an academic event series has undergone a name change.",
+               "type": "string"
+            },
+            "name": {
                "type": "string"
             },
             "official_name": {
+               "description": "The official name of an academic event or series.",
+               "type": "string"
+            },
+            "translated_name": {
+               "description": "A translation of the official name to be used in different language contexts.",
                "type": "string"
             }
          },

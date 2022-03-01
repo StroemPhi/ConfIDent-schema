@@ -117,20 +117,22 @@
 <p>This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.</p>
 <h3 id="classes">Classes</h3>
 <ul>
+<li><a href="AcademicField/">AcademicField</a> - An academic field is the scientific subject of the planned process according to some controlled vocabulary or thesaurus and as such requires the scheme URI.</li>
 <li><a href="City/">City</a></li>
-<li><a href="ConfIDentRecord/">ConfIDentRecord</a> - This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).</li>
+<li><a href="ConfIDentRecords/">ConfIDentRecords</a> - This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).</li>
 <li><a href="Contributor/">Contributor</a></li>
 <li><a href="Country/">Country</a></li>
 <li><a href="Deadline/">Deadline</a></li>
-<li><a href="EventType/">EventType</a> - An event type is a plan specification that specifies the sociocultural format or type of the academic event by providing details on the objectives, conditions and actions needed in its realization.</li>
+<li><a href="EventFormatSpecification/">EventFormatSpecification</a></li>
+<li><a href="Identifier/">Identifier</a></li>
 <li><a href="Location/">Location</a></li>
 <li><a href="Metric/">Metric</a></li>
 <li><a href="Organisation/">Organisation</a> - An organization such as a company or university</li>
 <li><a href="Organizer/">Organizer</a></li>
 <li><a href="Person/">Person</a> - A person (alive, dead, undead, or fictional).</li>
 <li><a href="PlannedProcess/">PlannedProcess</a><ul>
-<li><a href="AcademicEvent/">AcademicEvent</a></li>
-<li><a href="AcademicEventSeries/">AcademicEventSeries</a></li>
+<li><a href="AcademicEvent/">AcademicEvent</a> - An academic event is part of the established instruments of science communication as a format for conveying the latest scientific outputs. It is defined by the meeting of researchers at a specific time and place (virtual or physical) and with a specific thematic focus to present, hear and discuss these outputs. In contrast to other forms of events, academic events should primarily serve the exchange of results and methods of scientific research and their didactic mediation.  Furthermore, a significant participation of scientific organizations in the realization of an academic event is constitutive for this type of event; for example, to distinguish it from events in which researchers mainly act as external experts or with a purely legitimising function.</li>
+<li><a href="AcademicEventSeries/">AcademicEventSeries</a> - An academic event series describes the set of academic events which take place on a regular basis and thus have an established common identity. This identity is constituted, for example, through institutional continuity in the hosting of a series (e.g. by a specialised society), thematic focuses and/or a common label under which a series is defined (particularly name and acronym). Nevertheless, it is possible that each of these criteria may change over time.</li>
 </ul>
 </li>
 <li><a href="ProcessName/">ProcessName</a></li>
@@ -140,40 +142,33 @@
 <li><a href="Venue/">Venue</a></li>
 </ul>
 <h3 id="mixins">Mixins</h3>
+<ul>
+<li><a href="CommonMetadata/">CommonMetadata</a></li>
+<li><a href="SchemaBasedValue/">SchemaBasedValue</a></li>
+</ul>
 <h3 id="slots">Slots</h3>
 <ul>
-<li><a href="academic_fields/">academic_fields</a> - A relation obtaining between a obi:'planned process' and an academic field descriptor that is used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus.</li>
-<li><a href="address/">address</a></li>
-<li><a href="alternative_ids/">alternative_ids</a></li>
-<li><a href="at_location/">at_location</a></li>
-<li><a href="confIDentRecord__events/">ConfIDentRecord➞events</a> - An attribute that specifies a list of academic events within this container.</li>
-<li><a href="confIDentRecord__series/">ConfIDentRecord➞series</a> - An attribute that specifies a list of academic event series within this container.</li>
-<li><a href="contact/">contact</a></li>
+<li><a href="academicEventSeries__series_of/">AcademicEventSeries➞series_of</a> - The relation used to provide the events belonging to an AcademicEventSeries.</li>
+<li><a href="academicEvent__at_location/">➞at_location</a></li>
+<li><a href="academicEvent__deadlines/">➞deadlines</a></li>
+<li><a href="academicEvent__event_format/">AcademicEvent➞event_format</a> - The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventFormat enum, which uses the named individuals defined in AEON.</li>
+<li><a href="academicEvent__event_format_other/">AcademicEvent➞event_format_other</a> - If event_format is set to 'other' then this property must be used to provide a label of the event type.</li>
+<li><a href="academicEvent__event_mode/">➞event_mode</a> - The event mode describes whether the event is a physical, virtual or hybrid event.</li>
+<li><a href="academicEvent__event_status/">➞event_status</a></li>
+<li><a href="academicEvent__in_series/">AcademicEvent➞in_series</a> - The relation used to provide the series of which an AcademicEvent is a part.</li>
+<li><a href="academicEvent__multiple_days/">➞multiple_days</a> - A boolean property that if true means that the academic event spans multiple days.</li>
+<li><a href="academicEvent__ordinal/">AcademicEvent➞ordinal</a> - The ordnial number of an academic event within its series.</li>
+<li><a href="academicEvent__related_to/">➞related_to</a></li>
+<li><a href="commonMetadata__logo/">➞logo</a></li>
+<li><a href="commonMetadata__summary/">➞summary</a></li>
+<li><a href="commonMetadata__website/">➞website</a></li>
+<li><a href="confIDentRecords__events/">ConfIDentRecords➞events</a> - An attribute that specifies a list of academic events within this container.</li>
+<li><a href="confIDentRecords__series/">ConfIDentRecords➞series</a> - An attribute that specifies a list of academic event series within this container.</li>
 <li><a href="contributors/">contributors</a></li>
 <li><a href="deadline__deadline_date/">➞deadline_date</a></li>
 <li><a href="deadline__deadline_other/">➞deadline_other</a></li>
-<li><a href="deadlines/">deadlines</a></li>
-<li><a href="denoted_by/">denoted_by</a><ul>
-<li><a href="PlannedProcess_denoted_by/">PlannedProcess➞denoted_by</a></li>
-</ul>
-</li>
-<li><a href="end_date/">end_date</a> - Similar to the start_date description but only for the end of an academic event or series.<ul>
-<li><a href="AcademicEvent_end_date/">AcademicEvent➞end_date</a> - A data property to provide the planned end date of an academic event in the xsd:dateTimeStamp format.</li>
-</ul>
-</li>
-<li><a href="eventType__event_type_iri/">➞event_type_iri</a></li>
-<li><a href="eventType__event_type_other/">➞event_type_other</a></li>
-<li><a href="event_mode/">event_mode</a> - The event mode describes whether the event is a physical, virtual or hybrid event.</li>
-<li><a href="event_status/">event_status</a><ul>
-<li><a href="AcademicEvent_event_status/">AcademicEvent➞event_status</a></li>
-</ul>
-</li>
-<li><a href="event_type/">event_type</a><ul>
-<li><a href="AcademicEvent_event_type/">AcademicEvent➞event_type</a> - The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.</li>
-</ul>
-</li>
+<li><a href="eventFormatSpecification__other/">EventFormatSpecification➞other</a></li>
 <li><a href="id/">id</a></li>
-<li><a href="in_series/">in_series</a> - The relation used to provide the series of which an AcademicEvent is a part.</li>
 <li><a href="location__city/">➞city</a></li>
 <li><a href="location__country/">➞country</a></li>
 <li><a href="location__lattitude/">➞lattitude</a></li>
@@ -181,40 +176,39 @@
 <li><a href="location__meeting_url/">➞meeting_url</a></li>
 <li><a href="location__region/">➞region</a></li>
 <li><a href="location__venue/">➞venue</a></li>
-<li><a href="logo/">logo</a></li>
 <li><a href="metric__int_value/">➞int_value</a></li>
 <li><a href="metric__other_metric/">➞other_metric</a></li>
 <li><a href="metric__rate_value/">➞rate_value</a></li>
 <li><a href="metric__str_value/">➞str_value</a></li>
 <li><a href="metric__truth_value/">➞truth_value</a></li>
-<li><a href="metrics/">metrics</a></li>
 <li><a href="name/">name</a><ul>
 <li><a href="Organisation_name/">Organisation➞name</a></li>
 <li><a href="Person_name/">Person➞name</a></li>
+<li><a href="aliases/">aliases</a> - A property to be used to provide alternative names as strings.</li>
+<li><a href="processName__acronym/">➞acronym</a> - The official acronym of an academic event or series.</li>
+<li><a href="processName__former_name/">ProcessName➞former_name</a> - The former official name of an academic event or series. Usually this will only be needed in case an academic event series has undergone a name change.</li>
+<li><a href="processName__official_name/">➞official_name</a> - The official name of an academic event or series.</li>
+<li><a href="processName__translated_name/">ProcessName➞translated_name</a> - A translation of the official name to be used in different language contexts.</li>
 </ul>
 </li>
-<li><a href="ordinal/">ordinal</a> - The ordnial number of an academic event within its series.</li>
 <li><a href="organisations/">organisations</a></li>
-<li><a href="organizers/">organizers</a><ul>
-<li><a href="AcademicEvent_organizers/">AcademicEvent➞organizers</a></li>
-</ul>
-</li>
-<li><a href="outputs/">outputs</a> - The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.</li>
 <li><a href="persons/">persons</a></li>
-<li><a href="processName__acronym/">➞acronym</a></li>
-<li><a href="processName__official_name/">➞official_name</a></li>
-<li><a href="related_to/">related_to</a></li>
-<li><a href="series_of/">series_of</a> - The relation used to provide the events belonging to an AcademicEventSeries.</li>
-<li><a href="sponsors/">sponsors</a><ul>
-<li><a href="AcademicEvent_sponsors/">AcademicEvent➞sponsors</a></li>
-</ul>
-</li>
-<li><a href="start_date/">start_date</a> - The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.<ul>
-<li><a href="AcademicEvent_start_date/">AcademicEvent➞start_date</a> - A data property to provide the planned end date of  an academic event in the xsd:dateTimeStamp format.</li>
-</ul>
-</li>
-<li><a href="summary/">summary</a></li>
-<li><a href="topics/">topics</a></li>
+<li><a href="pid/">pid</a></li>
+<li><a href="plannedProcess__academic_fields/">PlannedProcess➞academic_fields</a> - A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.</li>
+<li><a href="plannedProcess__alternative_ids/">➞alternative_ids</a></li>
+<li><a href="plannedProcess__contact/">➞contact</a></li>
+<li><a href="plannedProcess__denoted_by/">➞denoted_by</a> - 'denoted_by' used to refer to the name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc).</li>
+<li><a href="plannedProcess__end_date/">➞end_date</a> - Similar to start_date but only for the end of an academic event or event series.</li>
+<li><a href="plannedProcess__landing_page/">PlannedProcess➞landing_page</a> - The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.</li>
+<li><a href="plannedProcess__metrics/">➞metrics</a></li>
+<li><a href="plannedProcess__organizers/">➞organizers</a></li>
+<li><a href="plannedProcess__outputs/">➞outputs</a> - The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.</li>
+<li><a href="plannedProcess__sponsors/">➞sponsors</a></li>
+<li><a href="plannedProcess__start_date/">➞start_date</a> - The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.</li>
+<li><a href="plannedProcess__topics/">➞topics</a></li>
+<li><a href="schemaBasedValue__scheme_name/">➞scheme_name</a></li>
+<li><a href="schemaBasedValue__scheme_uri/">➞scheme_uri</a></li>
+<li><a href="schemaBasedValue__value/">➞value</a></li>
 <li><a href="type/">type</a><ul>
 <li><a href="Contributor_type/">Contributor➞type</a></li>
 <li><a href="Deadline_type/">Deadline➞type</a></li>
@@ -222,15 +216,15 @@
 <li><a href="ProcessRelation_type/">ProcessRelation➞type</a></li>
 </ul>
 </li>
-<li><a href="website/">website</a></li>
+<li><a href="venue__address/">➞address</a></li>
 </ul>
 <h3 id="enums">Enums</h3>
 <ul>
 <li><a href="ContributorType/">ContributorType</a></li>
 <li><a href="DeadlineType/">DeadlineType</a></li>
+<li><a href="EventFormat/">EventFormat</a> - The following definitions attempt to provide descriptions to distinguish different academic event formats, even though the definitions are not always clearly distinguishable in their everyday use and are often used synonymously. An event type should be understood, according to AEON, as a plan specification that specifies the sociocultural format or type of the academic event by providing details on the objectives, conditions and actions needed in its realization.</li>
 <li><a href="EventMode/">EventMode</a></li>
 <li><a href="EventStatus/">EventStatus</a></li>
-<li><a href="EventTypeValue/">EventTypeValue</a> - The following definitions attempt to provide descriptions to distinguish different academic event formats, even though the definitions are not always clearly distinguishable in their everyday use and are often used synonymously. According to the mapping to <a href="https://github.com/tibonto/aeon">AEON</a>, each permissible value on this list represents an AEON named individual</li>
 <li><a href="MetricType/">MetricType</a></li>
 <li><a href="RelationType/">RelationType</a></li>
 </ul>
@@ -327,5 +321,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-02-21 13:47:09.893641+00:00
+Build Date UTC : 2022-03-01 07:45:01.097657+00:00
 -->

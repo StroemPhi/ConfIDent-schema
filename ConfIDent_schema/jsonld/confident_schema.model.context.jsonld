@@ -1,13 +1,20 @@
 {
-   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-21T14:47:17\n    Schema: ConfIDent-schema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/StroemPhi/ConfIDent-schema/\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
+   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-03-01T08:45:13\n    Schema: ConfIDent-schema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/StroemPhi/ConfIDent-schema/\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
    "@context": {
-      "aeon": "https://github.com/tibonto/aeon#",
+      "aeon": {
+         "@id": "https://github.com/tibonto/aeon#AEON_",
+         "@prefix": true
+      },
+      "bfo": {
+         "@id": "http://purl.obolibrary.org/obo/BFO_",
+         "@prefix": true
+      },
       "confid": "https://github.com/StroemPhi/ConfIDent-schema/",
       "dblp_series": "https://dblp.org/db/conf/",
       "dc": "http://purl.org/dc/terms/",
       "doi": "https://doi.org/",
       "iao": {
-         "@id": "http://purl.obolibrary.org/obo/OBI_",
+         "@id": "http://purl.obolibrary.org/obo/IAO_",
          "@prefix": true
       },
       "linkml": "https://w3id.org/linkml/",
@@ -17,40 +24,30 @@
       },
       "orcid": "https://orcid.org/",
       "provo": "https://www.w3.org/TR/2013/REC-prov-o-20130430/#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
       "ror": "ror.org/",
       "sdo": "https://schema.org/",
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "wikidata": "https://www.wikidata.org/wiki/",
       "@vocab": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "academic_fields": {
-         "@id": "aeon:AEON_0000040"
-      },
-      "alternative_ids": {
-         "@type": "@id"
-      },
       "at_location": {
          "@type": "@id"
-      },
-      "events": {
-         "@type": "@id"
-      },
-      "series": {
-         "@type": "@id"
-      },
-      "contributors": {
-         "@type": "@id"
-      },
-      "deadline_date": {
-         "@type": "xsd:dateTime"
       },
       "deadlines": {
          "@type": "@id"
       },
-      "denoted_by": {
-         "@id": "iao:0000235"
+      "event_format": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "aeon:0000032"
       },
-      "end_date": {
-         "@type": "xsd:dateTime"
+      "event_format_other": {
+         "@type": "@id",
+         "@id": "aeon:0000032"
       },
       "event_mode": {
          "@context": {
@@ -69,11 +66,41 @@
          },
          "@id": "aeon:event_status"
       },
-      "event_type_iri": "@id",
-      "id": "@id",
       "in_series": {
          "@type": "@id"
       },
+      "multiple_days": {
+         "@type": "xsd:boolean"
+      },
+      "ordinal": {
+         "@type": "xsd:integer",
+         "@id": "aeon:event_number"
+      },
+      "related_to": {
+         "@type": "@id"
+      },
+      "series_of": {
+         "@type": "@id"
+      },
+      "aliases": {
+         "@id": "skos:altLabel"
+      },
+      "events": {
+         "@type": "@id"
+      },
+      "series": {
+         "@type": "@id"
+      },
+      "contributors": {
+         "@type": "@id"
+      },
+      "deadline_date": {
+         "@type": "xsd:dateTime"
+      },
+      "other": {
+         "@id": "aeon:event_type_other"
+      },
+      "id": "@id",
       "city": {
          "@type": "@id"
       },
@@ -104,33 +131,51 @@
       "truth_value": {
          "@type": "xsd:boolean"
       },
-      "metrics": {
-         "@type": "@id"
-      },
-      "ordinal": {
-         "@type": "xsd:integer",
-         "@id": "aeon:event_number"
+      "name": {
+         "@id": "rdfs:label"
       },
       "organisations": {
-         "@type": "@id"
-      },
-      "organizers": {
          "@type": "@id"
       },
       "persons": {
          "@type": "@id"
       },
-      "acronym": {
-         "@id": "aeon:AEON_0000091"
+      "academic_fields": {
+         "@type": "@id",
+         "@id": "aeon:0000040"
       },
-      "related_to": {
+      "alternative_ids": {
          "@type": "@id"
       },
-      "series_of": {
+      "denoted_by": {
+         "@type": "@id",
+         "@id": "iao:0000235"
+      },
+      "end_date": {
+         "@type": "xsd:dateTime",
+         "@id": "aeon:end_date"
+      },
+      "landing_page": {
+         "@type": "@id"
+      },
+      "metrics": {
+         "@type": "@id"
+      },
+      "organizers": {
          "@type": "@id"
       },
       "start_date": {
-         "@type": "xsd:dateTime"
+         "@type": "xsd:dateTime",
+         "@id": "aeon:start_date"
+      },
+      "acronym": {
+         "@id": "aeon:0000091"
+      },
+      "official_name": {
+         "@id": "skos:perfLabel"
+      },
+      "scheme_uri": {
+         "@type": "@id"
       },
       "type": {
          "@context": {
@@ -141,13 +186,13 @@
          }
       },
       "AcademicEvent": {
-         "@id": "aeon:AEON_0000001"
+         "@id": "aeon:0000001"
       },
       "AcademicEventSeries": {
-         "@id": "aeon:AEON_0000002"
+         "@id": "aeon:0000002"
       },
-      "EventType": {
-         "@id": "aeon:AEON_0000004"
+      "EventFormatSpecification": {
+         "@id": "aeon:0000004"
       },
       "Organisation": {
          "@id": "sdo:Organization"
@@ -155,8 +200,11 @@
       "Person": {
          "@id": "sdo:Person"
       },
+      "PlannedProcess": {
+         "@id": "obi:0000011"
+      },
       "ProcessName": {
-         "@id": "aeon:AEON_0000090"
+         "@id": "aeon:0000090"
       }
    }
 }

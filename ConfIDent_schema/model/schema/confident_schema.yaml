@@ -7,13 +7,16 @@ license: https://creativecommons.org/licenses/by/4.0/
 version: 0.0.1
 default_curi_maps:
   - semweb_context
+
 prefixes:
   linkml: https://w3id.org/linkml/
+  skos: http://www.w3.org/2004/02/skos/core#
   sdo: https://schema.org/
   confid: https://github.com/StroemPhi/ConfIDent-schema/
-  aeon: https://github.com/tibonto/aeon#
+  aeon: https://github.com/tibonto/aeon#AEON_
   obi: http://purl.obolibrary.org/obo/OBI_
-  iao: http://purl.obolibrary.org/obo/OBI_
+  iao: http://purl.obolibrary.org/obo/IAO_
+  bfo: http://purl.obolibrary.org/obo/BFO_
   provo: https://www.w3.org/TR/2013/REC-prov-o-20130430/#
   dc: http://purl.org/dc/terms/
   orcid: https://orcid.org/
@@ -29,129 +32,202 @@ imports:
 
 emit_prefixes:
   - aeon
-  - doi
-  - sdo
 
 
 #####################################
 #             Classes               #
 #####################################
 classes:  
-# Container
-  ConfIDentRecord:
-    #tree_root: true
-    description: This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).
+  SchemaBasedValue:
+    mixin: true
     attributes:
-      events:
-        description: An attribute that specifies a list of academic events within this container.
-        domain: ConfIDentRecord
-        range: AcademicEvent
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      series:
-        description: An attribute that specifies a list of academic event series within this container.
-        domain: ConfIDentRecord
-        range: AcademicEventSeries
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-# PlannedProcess
+      value:
+        range: string
+      scheme_name:
+        range: string
+        required: true
+      scheme_uri:
+        range: uriorcurie
+  CommonMetadata:
+    mixin: true
+    attributes:
+        website:
+        logo:
+        summary:
+    
   PlannedProcess:
+    class_uri: obi:0000011
+    abstract: true
+    mixins:
+      - CommonMetadata
     slots:
       - id
-      - denoted_by
-      - alternative_ids
-      - start_date
-      - end_date
-      - organizers
-      - sponsors
-      - outputs
-      - topics
-      - academic_fields
-      - metrics
-      - contact
-      - website
-      - logo
-      - summary
-      - related_to
-    slot_usage:
+    attributes:
+      landing_page:
+        description: The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.
+        domain: PlannedProcess
+        range: uriorcurie
       denoted_by:
+        description: >-
+          'denoted_by' used to refer to the name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc).
+        slot_uri: iao:0000235
         range: ProcessName
         required: true
         close_mappings:
           - sdo:name
-# AcademicEventSeries
-  AcademicEventSeries:
-    class_uri: aeon:AEON_0000002
-    is_a: PlannedProcess
-    slots: 
-      - series_of
-    close_mappings:
-      - sdo:EventSeries
-# AcademicEvent
-  AcademicEvent:
-    tree_root: true
-    class_uri: aeon:AEON_0000001
-    is_a: PlannedProcess
-    slots:
-      - event_status
-      - event_mode
-      - event_type
-      - at_location
-      - in_series
-      - ordinal
-      - deadlines
-    slot_usage:
-      event_type: 
-        description: The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventType enum, which uses the named individuals defined in AEON.
-        slot_uri: aeon:AEON_0000032
-        domain: AcademicEvent
-        range: EventType
-        inlined: true
-        recommended: true
       start_date:
-        description: A data property to provide the planned end date of  an academic event in the xsd:dateTimeStamp format.
+        description: The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.
+        range: datetime
         slot_uri: aeon:start_date
         required: true
-      end_date: 
-        description: A data property to provide the planned end date of an academic event in the xsd:dateTimeStamp format.
+      end_date:
+        description: Similar to start_date but only for the end of an academic event or event series.
+        range: datetime
         slot_uri: aeon:end_date
         required: true
-      event_status:
-        required: true
+      alternative_ids:
+        multivalued: true
+        inlined_as_list: true
+        range: Identifier
       organizers:
-        domain: AcademicEvent
-        range: Organizer
         required: true
+        multivalued: true
+        inlined_as_list: true
+        range: Organizer
       sponsors:
         recommended: true
+        multivalued: true
+        inlined_as_list: true
+      contact:
+      outputs:
+        description: The published works that are related to the academic event or event series, such as proceedings and video recordings of talks. 
+        multivalued: true
+      topics:
+        multivalued: true
+        range: string
+      academic_fields:
+        slot_uri: aeon:0000040
+        description: A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.
+        multivalued: true
+        inlined_as_list: true
+        recommended: true
+        domain: PlannedProcess
+        range: AcademicField
+      metrics:
+        multivalued: true
+        inlined_as_list: true
+        range: Metric
+
+  AcademicEventSeries:
+    description: |-
+      An academic event series describes the set of academic events which take place on a regular basis and thus have an established common identity. This identity is constituted, for example, through institutional continuity in the hosting of a series (e.g. by a specialised society), thematic focuses and/or a common label under which a series is defined (particularly name and acronym). Nevertheless, it is possible that each of these criteria may change over time.
+    class_uri: aeon:0000002
+    is_a: PlannedProcess
+    attributes: 
+      series_of:
+        description: The relation used to provide the events belonging to an AcademicEventSeries.
+        recommended: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+        domain: AcademicEventSeries
+        range: AcademicEvent
     close_mappings:
       - sdo:EventSeries
-# EventType
-  EventType:
-    class_uri: aeon:AEON_0000004
-    description: >-
-      An event type is a plan specification that specifies the sociocultural format or type of the academic event by providing details on the objectives, conditions and actions needed in its realization.
+  AcademicEvent:
+    description: |-
+      An academic event is part of the established instruments of science communication as a format for conveying the latest scientific outputs. It is defined by the meeting of researchers at a specific time and place (virtual or physical) and with a specific thematic focus to present, hear and discuss these outputs. In contrast to other forms of events, academic events should primarily serve the exchange of results and methods of scientific research and their didactic mediation.  Furthermore, a significant participation of scientific organizations in the realization of an academic event is constitutive for this type of event; for example, to distinguish it from events in which researchers mainly act as external experts or with a purely legitimising function.
+    tree_root: true
+    class_uri: aeon:0000001
+    is_a: PlannedProcess
     attributes:
-      event_type_iri:
-        identifier: true
-        range: EventTypeValue
-      event_type_other:
-        range: string
-    
-# ProcessName
+      event_format: 
+        description: The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventFormat enum, which uses the named individuals defined in AEON.
+        slot_uri: aeon:0000032
+        domain: AcademicEvent
+        range: EventFormat
+        recommended: true
+      event_format_other: 
+        slot_uri: aeon:0000032
+        description: If event_format is set to 'other' then this property must be used to provide a label of the event type.
+        domain: AcademicEvent
+        range: EventFormatSpecification
+        recommended: true
+      multiple_days:
+        description: A boolean property that if true means that the academic event spans multiple days.
+        recommended: true
+        range: boolean
+      event_status:
+        required: true
+        slot_uri: aeon:event_status
+        range: EventStatus
+      event_mode:
+        description: The event mode describes whether the event is a physical, virtual or hybrid event.
+        range: EventMode
+      at_location:
+        range: Location
+      in_series:
+        description: The relation used to provide the series of which an AcademicEvent is a part.
+        recommended: true
+        domain: AcademicEvent
+        range: AcademicEventSeries
+      ordinal:
+        slot_uri: aeon:event_number
+        recommended: true
+        description: The ordnial number of an academic event within its series. 
+        domain: AcademicEvent
+        range: integer
+      deadlines:
+        range: Deadline
+        recommended: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      related_to:
+        multivalued: true
+        range: ProcessRelation       
+    close_mappings:
+      - sdo:Event
+
   ProcessName:
-    class_uri: aeon:AEON_0000090
+    class_uri: aeon:0000090
+    slots:
+      - name
+      - aliases
     attributes:
       official_name:
+        description: The official name of an academic event or series.
+        is_a: name
+        slot_uri: skos:perfLabel
         range: string
         required: true
       acronym:
-        slot_uri: aeon:AEON_0000091
+        description: The official acronym of an academic event or series.
+        is_a: name
+        slot_uri: aeon:0000091
         range: string
-        recommended: true    
-# Metric
+        recommended: true
+      former_name:
+        description: The former official name of an academic event or series. Usually this will only be needed in case an academic event series has undergone a name change. 
+        is_a: name
+        domain: ProcessName
+        range: string
+      translated_name:
+        description: A translation of the official name to be used in different language contexts. 
+        is_a: name
+        domain: ProcessName
+        range: string
+  Identifier: 
+    mixins:
+      - SchemaBasedValue
+
+  EventFormatSpecification:
+    class_uri: aeon:0000004
+    attributes:
+      other:
+        slot_uri: aeon:event_type_other
+        domain: EventFormatSpecification
+        range: string
   Metric:
     attributes:
       int_value:
@@ -167,27 +243,10 @@ classes:
     slot_usage:
       type:
         range: MetricType
-# ProcessRelation
   ProcessRelation:
     slot_usage:
       type:
         range: RelationType
-# Contributor
-  Organizer:
-    slots:
-      - persons
-      - organisations
-  Sponsor:
-    slots:
-      - persons
-      - organisations
-  Contributor:
-    slots:
-      - persons
-    slot_usage:
-      type: 
-        range: ContributorType
-# Location
   Location:
     attributes:
       city:
@@ -222,8 +281,8 @@ classes:
     slots:
       - id
       - name
-      - address     
-# Deadline
+    attributes:
+      address:   
   Deadline:
     attributes:
       deadline_date:
@@ -235,23 +294,24 @@ classes:
       type: 
         range: DeadlineType
         required: true
-# Person
+  AcademicField:
+    mixins:
+      - SchemaBasedValue
+    description: An academic field is the scientific subject of the planned process according to some controlled vocabulary or thesaurus and as such requires the scheme URI.
+
   Person:
     description: >-
       A person (alive, dead, undead, or fictional).
     class_uri: sdo:Person
     slots:
-      #- id
+      - pid
       - name
     slot_usage:
       name:
         required: true
-      #id:
-        #recommended: true
     id_prefixes:
       - orcid
       - wikidata
-# Organisation
   Organisation:
     description: >-
       An organization such as a company or university
@@ -268,99 +328,61 @@ classes:
       - orcid
       - wikidata
 
+  ConfIDentRecords:
+    #tree_root: true
+    description: This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).
+    attributes:
+      events:
+        description: An attribute that specifies a list of academic events within this container.
+        domain: ConfIDentRecords
+        range: AcademicEvent
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      series:
+        description: An attribute that specifies a list of academic event series within this container.
+        domain: ConfIDentRecords
+        range: AcademicEventSeries
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+  Organizer:
+    slots:
+      - persons
+      - organisations
+  Sponsor:
+    slots:
+      - persons
+      - organisations
+  Contributor:
+    slots:
+      - persons
+    slot_usage:
+      type: 
+          range: ContributorType
+
 #####################################
 #              Slots                #
 #####################################
 slots:
-# Common properties
   id:
-    identifier: true
-    slot_uri: sdo:identifier
-    range: uriorcurie
-  denoted_by:
     slot_uri: iao:0000235
-    range: string
-  alternative_ids:
-    multivalued: true
-    inlined_as_list: true
+    identifier: true
     range: uriorcurie
-  website:
-  logo:
-  summary:
-  address:
-  name:
-    required: false
-# PlannedProcess properties
-  start_date:
-    description: The start date of an academic event or the start date of an academic event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.
-    range: datetime
-  end_date:
-    description: Similar to the start_date description but only for the end of an academic event or series.
-    range: datetime
-  organizers:
-    required: true
-    multivalued: true
-    inlined_as_list: true
-    range: Organizer
-  sponsors:
-    multivalued: true
-    inlined_as_list: true
-  contact:
-  outputs:
-    description: The published works that are related to the academic event or event series, such as proceedings and video recordings of talks. 
-    multivalued: true
-  topics:
-    multivalued: true
+  pid:
+    recommended: true
     range: string
-  academic_fields:
-    slot_uri: aeon:AEON_0000040
-    description: A relation obtaining between a obi:'planned process' and an academic field descriptor that is used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus.
+  name:
+    slot_uri: rdfs:label
+    required: false
+  aliases:
+    is_a: name
+    slot_uri: skos:altLabel
+    description: A property to be used to provide alternative names as strings.
+    range: string
     multivalued: true
-    inlined_as_list: true
-  metrics:
-    multivalued: true
-    inlined_as_list: true
-    range: Metric
-# AcademicEventSeries properties
-  series_of:
-    description: The relation used to provide the events belonging to an AcademicEventSeries.
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-    domain: AcademicEventSeries
-    range: AcademicEvent
-# AcademicEvent properties
-  event_type:
-  at_location:
-    range: Location
-  in_series:
-    description: The relation used to provide the series of which an AcademicEvent is a part.
-    recommended: true
-    domain: AcademicEvent
-    range: AcademicEventSeries
-  ordinal:
-    slot_uri: aeon:event_number
-    recommended: true
-    description: The ordnial number of an academic event within its series. 
-    domain: AcademicEvent
-    range: integer
-  deadlines:
-    range: Deadline
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  event_status:
-    slot_uri: aeon:event_status
-    range: EventStatus
-  event_mode:
-    description: The event mode describes whether the event is a physical, virtual or hybrid event.
-    range: EventMode
-  related_to:
-    multivalued: true
-    range: ProcessRelation 
-# Contributors
+    required: false
+  
   contributors:
     multivalued: true
     inlined_as_list: true
@@ -379,46 +401,56 @@ slots:
 #####################################
 
 enums:
-  EventTypeValue:
-    description: The following definitions attempt to provide descriptions to distinguish different academic event formats, even though the definitions are not always clearly distinguishable in their everyday use and are often used synonymously. According to the mapping to [AEON](https://github.com/tibonto/aeon), each permissible value on this list represents an AEON named individual
+  EventFormat:
+    description: >-
+      The following definitions attempt to provide descriptions to distinguish different academic event formats, even though the definitions are not always clearly distinguishable in their everyday use and are often used synonymously. An event type should be understood, according to AEON, as a plan specification that specifies the sociocultural format or type of the academic event by providing details on the objectives, conditions and actions needed in its realization.
     permissible_values:
       colloquium:
         description: >-
           A colloquium is an academic meeting that usually lasts only a few hours and serves to discuss a specific topic. Colloquia are usually part of the academic exchange in everyday university life with only one speaker, but can also take place on special occasions (anniversaries, start or end of the lecture phase, etc.) and can have more than one speaker.
-        meaning: aeon:AEON_0010000
+        meaning: aeon:0010000
       conference:
         description: >-
           A conference is an academic event that lasts up to several days and serves as a forum for presentations on a specific topic or subject area. In addition to subject-specific conferences, there are also interdisciplinary conferences which allow both a broader focus and more specific questions on a particular (academic) problem. Conferences often have a highly formalized structure of parallel, clearly defined sessions with several short presentations and plenary sessions with invited (keynote) speakers who are considered multipliers in their (research) field. Ideally, the selection of the speakers and their contributions is subject to a review process.
-        meaning: aeon:AEON_0010001
+        meaning: aeon:0010001
+        is_a: EventFormatSpecification
       congress:
         description: >-
           A congress is a certain type of conference which is characterised by a larger number of participants (often several hundred) and is oftentimes organised jointly by large, established (e.g. specialised societies) and/or several institutions. Congresses have a broader thematic focus than simple conferences, take place in certain cycles, but can still target an exclusive group of participants (e.g. representatives of a single discipline).
-        meaning: aeon:AEON_0010011
-      event session:
-        meaning: aeon:AEON_0010000
+        meaning: aeon:0010011
+      session:
+        description: A session is a clearly defined part of a academic event in which a small number of speakers (usually 2-5) focus on a specific topic. A session is usually formally accompanied by a session chair, who assumes the function of a moderator. 
+        meaning: aeon:0010000
       poster session:
-        meaning: aeon:AEON_0010005
-      event talk:
-        meaning: aeon:AEON_0010012
-      keynote speech:
-        meaning: aeon:AEON_0010007
+        description: A poster session is a session at which poster papers are presented.
+        meaning: aeon:0010005
+      talk:
+        description: A talk is a central part of a larger academic event, at which a specific topic is being presented in a rather short way.
+        meaning: aeon:0010012
+      keynote speech: 
+        description: A keynote speech is a special talk that has the function to set the underlying tone and summarize the core message or most important revelation of the academic event at which it is given. 
+        meaning: aeon:0010007
       event track:
-        meaning: aeon:AEON_0010008
+        description: An academic event that, as a part of a larger academic event, has the function to group even smaller parts of the academic event, like sessions and talks, according to a shared theme or topic. It usually has dedicated chairs and program committees.
+        meaning: aeon:0010008
       forum:
-        meaning: aeon:AEON_0010002
+        description: An academic event whose sociocultural format is determined in an academic event type specification that classifies the academic event as a forum.
+        meaning: aeon:0010002
       hackathon:
-        meaning: aeon:AEON_0010003
+        description: A hackathon is a gathering of software developers with the goal to develop software collaboratively in a short timeframe.
+        meaning: aeon:0010003
       seminar:
-        meaning: aeon:AEON_0010004
+        description: A seminar can serve as a term for older conference series, but in current usage the term mainly describes a specific teaching format that serves to develop content and provides space for discussion. Participation from the audience is usually encouraged.
+        meaning: aeon:0010004
       symposium:
-        meaning: aeon:AEON_0010006
+        description: A symposium is a specific type of conference with a narrower thematic focus, with fewer participants and of shorter duration. The degree of structuring lies between a classic conference and a workshop, allows more discussion than the larger conference, but is usually more formalized than the workshop.
+        meaning: aeon:0010006
       tutorial:
-        meaning: aeon:AEON_0010009
+        description: An academic event that has the function to educate the audience on a certain topic. A tutorial is often realized as an academic event talk or academic event session.
+        meaning: aeon:0010009
       workshop:
-        meaning: aeon:AEON_0010010
-      other event type:
-        description: >-
-          This event type is only to be used, when the sociocultural format of the academic event you want to describe has an official label that is not on this list. If you use event type *other* then you must provide an event type description using the event_type_other property.
+        description: Workshops are smaller academic events that serve to exchange information on a specific topic or problem. They usually last one or two days and offer space for discussion and the development of content and solutions. Group work is often part of the event concept.
+        meaning: aeon:0010010
   EventStatus:
     permissible_values:
       as scheduled:
