@@ -1,19 +1,27 @@
 
 id: doi:10.25798/qsdh-en13
-event_format: conference
-event_format_other: Academic Conference
-start_date: "2021-06-23"
-end_date: "2021-06-25"
-event_status: as scheduled
-event_mode: hybrid
+landing_page: https://vivoconference.org/vivo2021
 denoted_by: 
   official_name: 12th Annual / International VIVO Conference 2021
   acronym: VIVO 2021
   aliases: 
     - VIVO Conference 2021
-    - 12th International VIVO Conference 2021
     - 12th VIVO Conference 2021
+event_format: conference
+event_format_other:
+  other: some other event format
+start_date: "2021-06-23"
+end_date: "2021-06-25"
+event_status: as scheduled
+event_mode: hybrid
 ordinal: 12
+alternative_ids:
+  - value: Q108430463
+    scheme_uri: https://www.wikidata.org/wiki/
+    scheme_name: WikiData
+  - value: e1234
+    scheme_uri: https://www.confident.org/events/
+    scheme_name: ConfIDent
 organizers:
   - organisations:
       - name: The VIVO Project
@@ -23,8 +31,9 @@ organizers:
       - name: Christian Hauschke
 in_series: doi:10.25798/ea2h-xq32
 academic_fields:
-  value:
-    - social science
-    - ontology
-  scheme_name: ConfIDent's core classification scheme
-  scheme_uri: confid:classification
+  - value: ontology
+    scheme_name: ConfIDent's core classification scheme
+    scheme_uri: confid:classification
+  - value: social science
+    scheme_name: ConfIDent's core classification scheme
+    scheme_uri: confid:classification
