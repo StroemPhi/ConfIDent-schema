@@ -39,6 +39,7 @@ emit_prefixes:
 #             Classes               #
 #####################################
 classes:  
+# mixins
   SchemaBasedValue:
     mixin: true
     attributes:
@@ -55,7 +56,7 @@ classes:
         website:
         logo:
         summary:
-    
+# processes
   PlannedProcess:
     class_uri: obi:0000011
     abstract: true
@@ -118,7 +119,6 @@ classes:
         multivalued: true
         inlined_as_list: true
         range: Metric
-
   AcademicEventSeries:
     description: |-
       An academic event series describes the set of academic events which take place on a regular basis and thus have an established common identity. This identity is constituted, for example, through institutional continuity in the hosting of a series (e.g. by a specialised society), thematic focuses and/or a common label under which a series is defined (particularly name and acronym). Nevertheless, it is possible that each of these criteria may change over time.
@@ -189,7 +189,7 @@ classes:
         range: ProcessRelation       
     close_mappings:
       - sdo:Event
-
+# identifiers
   ProcessName:
     class_uri: aeon:0000090
     slots:
@@ -221,7 +221,7 @@ classes:
   Identifier: 
     mixins:
       - SchemaBasedValue
-
+# plan specs
   EventFormatSpecification:
     class_uri: aeon:0000004
     attributes:
@@ -248,6 +248,7 @@ classes:
     slot_usage:
       type:
         range: RelationType
+# location
   Location:
     attributes:
       city:
@@ -295,15 +296,16 @@ classes:
       type: 
         range: DeadlineType
         required: true
+# descriptors
   AcademicField:
     mixins:
       - SchemaBasedValue
     description: An academic field is the scientific subject of the planned process according to some controlled vocabulary or thesaurus and as such requires the scheme URI.
-
   Person:
     description: >-
       A person (alive, dead, undead, or fictional).
     class_uri: sdo:Person
+# contributors
     slots:
       - pid
       - name
@@ -329,6 +331,7 @@ classes:
       - orcid
       - wikidata
 
+# record collection
   ConfIDentRecords:
     #tree_root: true
     description: This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).
@@ -366,6 +369,7 @@ classes:
 #              Slots                #
 #####################################
 slots:
+# common slots
   id:
     slot_uri: iao:0000235
     identifier: true
@@ -383,7 +387,6 @@ slots:
     range: string
     multivalued: true
     required: false
-  
   contributors:
     multivalued: true
     inlined_as_list: true
@@ -396,6 +399,7 @@ slots:
     multivalued: true
     inlined_as_list: true
     range: Organisation
+
 
 #####################################
 #               Enums               #
