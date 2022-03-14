@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-14T15:26:49
+# Generation date: 2022-03-14T16:13:47
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -470,6 +470,16 @@ class Identifier(YAMLRoot):
 
 @dataclass
 class EventFormatSpecification(YAMLRoot):
+    """
+    An academic event format specification is a plan specification that classifies a planned gathering of people in an
+    academic context according to some sociocultural format, which provides implicit and explicit details on how this
+    gathing is to be carried out by its participants in terms of achieving certain objectives, fulfiling certain
+    conditions and performing certain actions. It thus concretizes the expectations of the contributers of an academic
+    event. While the explicit details are often provied as concrete parts (e.g. deadline or attendance fee
+    specifications), the implicit details depend on the semantics encoded in the words used for the classification of
+    academic events (e.g. "conference" or "workshop"). Depending on the sociocultural background these classifications
+    can overlap or vary to a certain degree.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = AEON["0000004"]
@@ -1024,14 +1034,9 @@ class ConfIDentRecords(YAMLRoot):
 # Enumerations
 class EventFormat(EnumDefinitionImpl):
     """
-    The following definitions attempt to provide descriptions to distinguish different academic event formats, even
-    though the definitions are not always clearly distinguishable in their everyday use and are often used
-    synonymously. An academic event format specification should be understood, according to AEON, as a plan
-    specification that determines the sociocultural format or type of the academic event by providing details on the
-    objectives, conditions and actions needed in its realization. The permissible values defined in this enum class
-    represent the most common minimal event format specifications. For event formats that are not in this list, you
-    can use "other" and provide the label of this other event format as strind using
-    [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/)
+    The permissible values defined in this enum class represent the most common minimal event format specifications.
+    For event formats that are not in this list, you can use "other" and provide the label of this other event format
+    as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).
     """
     colloquium = PermissibleValue(text="colloquium",
                                            description="A colloquium is an academic meeting that usually lasts only a few hours and serves to discuss a specific topic. Colloquia are usually part of the academic exchange in everyday university life with only one speaker, but can also take place on special occasions (anniversaries, start or end of the lecture phase, etc.) and can have more than one speaker.")
@@ -1055,11 +1060,12 @@ class EventFormat(EnumDefinitionImpl):
                                        description="An academic event that has the function to educate the audience on a certain topic. A tutorial is often realized as an academic event talk or academic event session.")
     workshop = PermissibleValue(text="workshop",
                                        description="Workshops are smaller academic events that serve to exchange information on a specific topic or problem. They usually last one or two days and offer space for discussion and the development of content and solutions. Group work is often part of the event concept.")
-    other = PermissibleValue(text="other")
+    other = PermissibleValue(text="other",
+                                 description="This value is to be used if the event format cannot be represented using one of the other permissible values defined in the [EventFormat](https://stroemphi.github.io/ConfIDent-schema/EventFormat/) enum. If this value is chosen the use of [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/) is mandatory. ")
 
     _defn = EnumDefinition(
         name="EventFormat",
-        description="The following definitions attempt to provide descriptions to distinguish different academic event formats, even though the definitions are not always clearly distinguishable in their everyday use and are often used synonymously. An academic event format specification should be understood, according to AEON, as a plan specification that determines the sociocultural format or type of the academic event by providing details on the objectives, conditions and actions needed in its realization.  The permissible values defined in this enum class represent the most common minimal event format specifications. For event formats that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/)",
+        description="The permissible values defined in this enum class represent the most common minimal event format specifications. For event formats that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).",
     )
 
     @classmethod

@@ -461,7 +461,7 @@
          "type": "string"
       },
       "EventFormat": {
-         "description": "The following definitions attempt to provide descriptions to distinguish different academic event formats, even though the definitions are not always clearly distinguishable in their everyday use and are often used synonymously. An academic event format specification should be understood, according to AEON, as a plan specification that determines the sociocultural format or type of the academic event by providing details on the objectives, conditions and actions needed in its realization.  The permissible values defined in this enum class represent the most common minimal event format specifications. For event formats that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/)",
+         "description": "The permissible values defined in this enum class represent the most common minimal event format specifications. For event formats that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).",
          "enum": [
             "colloquium",
             "conference",
@@ -484,7 +484,7 @@
       },
       "EventFormatSpecification": {
          "additionalProperties": false,
-         "description": "",
+         "description": "An academic event format specification is a plan specification that classifies a planned gathering of people in an academic context according to some sociocultural format, which provides implicit and explicit details on how this gathing is to be carried out by its participants in terms of achieving certain objectives, fulfiling certain conditions and performing certain actions. It thus concretizes the expectations of the contributers of an academic event. While the explicit details are often provied as concrete parts (e.g. deadline or attendance fee specifications), the implicit details depend on the semantics encoded in the words used for the classification of academic events (e.g. \"conference\" or \"workshop\"). Depending on the sociocultural background these classifications can overlap or vary to a certain degree.",
          "properties": {
             "id": {
                "type": "string"
