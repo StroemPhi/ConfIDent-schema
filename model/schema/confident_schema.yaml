@@ -229,6 +229,17 @@ classes:
         slot_uri: aeon:event_type_other
         domain: EventFormatSpecification
         range: string
+  Deadline:
+    attributes:
+      deadline_date:
+        range: datetime
+        required: true        
+      deadline_other:
+        range: string
+    slot_usage:
+      type: 
+        range: DeadlineType
+        required: true
   Metric:
     attributes:
       int_value:
@@ -285,17 +296,6 @@ classes:
       - name
     attributes:
       address:   
-  Deadline:
-    attributes:
-      deadline_date:
-        range: datetime
-        required: true        
-      deadline_other:
-        range: string
-    slot_usage:
-      type: 
-        range: DeadlineType
-        required: true
 # descriptors
   AcademicField:
     mixins:
