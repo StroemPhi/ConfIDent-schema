@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: name - A model to describe academic events and event series.</title>
+  <title>Class: Reviewer - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: name";
-    var mkdocs_page_input_path = "Organisation_name.md";
+    var mkdocs_page_name = "Class: Reviewer";
+    var mkdocs_page_input_path = "Reviewer.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: name</li>
+    <li>Class: Reviewer</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,36 +91,29 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-name">Slot: name</h1>
-<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/Organisation_name">confid:Organisation_name</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p><a href="../Organisation/">Organisation</a> &#8594;  <sub>1..1</sub> <a href="../String/">String</a></p>
+                <h1 id="class-reviewer">Class: Reviewer</h1>
+<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/Reviewer">confid:Reviewer</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Contributor]^-[Reviewer&#124;name(i):string%20%3F;id(i):uriorcurie],[Identifier],[Contributor]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Contributor]^-[Reviewer&#124;name(i):string%20%3F;id(i):uriorcurie],[Identifier],[Contributor]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
-<li>is_a: <a href="../name/">name</a></li>
+<li>is_a: <a href="../Contributor/">Contributor</a></li>
 </ul>
-<h2 id="children">Children</h2>
-<h2 id="used-by">Used by</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="inherited-from-contributor">Inherited from Contributor:</h3>
 <ul>
-<li><a href="../Organisation/">Organisation</a></li>
+<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
-<h2 id="other-properties">Other properties</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Mappings:</strong></td>
-<td></td>
-<td>rdfs:label</td>
-</tr>
-</tbody>
-</table>
+</li>
+<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../contributor__identifier/">➞identifier</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Identifier/">Identifier</a></li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>

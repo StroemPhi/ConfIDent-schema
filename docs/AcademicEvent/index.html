@@ -94,7 +94,7 @@
                 <h1 id="class-academicevent">Class: AcademicEvent</h1>
 <p>An academic event is part of the established instruments of science communication as a format for conveying the latest scientific outputs. It is defined by the meeting of researchers at a specific time and place (virtual or physical) and with a specific thematic focus to present, hear and discuss these outputs. In contrast to other forms of events, academic events should primarily serve the exchange of results and methods of scientific research and their didactic mediation.  Furthermore, a significant participation of scientific organizations in the realization of an academic event is constitutive for this type of event; for example, to distinguish it from events in which researchers mainly act as external experts or with a purely legitimising function.</p>
 <p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/AcademicEvent">confid:AcademicEvent</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[Location],[Identifier],[EventFormatSpecification],[Deadline],[ConfIDentRecords],[AcademicField],[AcademicEventSeries],[ProcessRelation]&lt;related_to%200..*-++[AcademicEvent&#124;event_format:EventFormat%20%3F;multiple_days:boolean%20%3F;event_status:EventStatus;event_mode:EventMode%20%3F;ordinal:integer%20%3F;id(i):uriorcurie;landing_page(i):uriorcurie%20%3F;start_date(i):datetime;end_date(i):datetime;sponsors(i):string%20*;contact(i):string%20%3F;outputs(i):string%20*;topics(i):string%20*;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F],[Deadline]&lt;deadlines%200..*-++[AcademicEvent],[AcademicEventSeries]&lt;in_series%200..1-%20[AcademicEvent],[Location]&lt;at_location%200..1-++[AcademicEvent],[EventFormatSpecification]&lt;event_format_other%200..1-++[AcademicEvent],[AcademicEventSeries]++-%20series_of%200..*&gt;[AcademicEvent],[ConfIDentRecords]++-%20events%200..*&gt;[AcademicEvent],[PlannedProcess]^-[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[Location],[Identifier],[EventFormatSpecification],[Deadline],[ConfIDentRecords],[AcademicField],[AcademicEventSeries],[ProcessRelation]&lt;related_to%200..*-++[AcademicEvent&#124;event_format:EventFormat%20%3F;multiple_days:boolean%20%3F;event_status:EventStatus;event_mode:EventMode%20%3F;ordinal:integer%20%3F;id(i):uriorcurie;landing_page(i):uriorcurie%20%3F;start_date(i):datetime;end_date(i):datetime;sponsors(i):string%20*;contact(i):string%20%3F;outputs(i):string%20*;topics(i):string%20*;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F],[Deadline]&lt;deadlines%200..*-++[AcademicEvent],[AcademicEventSeries]&lt;in_series%200..1-%20[AcademicEvent],[Location]&lt;at_location%200..1-++[AcademicEvent],[EventFormatSpecification]&lt;event_format_other%200..1-++[AcademicEvent],[AcademicEventSeries]++-%20series_of%200..*&gt;[AcademicEvent],[ConfIDentRecords]++-%20events%200..*&gt;[AcademicEvent],[PlannedProcess]^-[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Sponsor],[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[Location],[Identifier],[EventFormatSpecification],[Deadline],[ContactPerson],[ConfIDentRecords],[AcademicField],[AcademicEventSeries],[ProcessRelation]&lt;related_to%200..*-++[AcademicEvent&#124;multiple_days:boolean%20%3F;event_status:EventStatus;event_mode:EventMode%20%3F;ordinal:integer%20%3F;id(i):uriorcurie;landing_page(i):uriorcurie%20%3F;start_date(i):datetime;end_date(i):datetime;outputs(i):string%20*;topics(i):string%20*;website(i):uri%20%3F;logo(i):string%20%3F;summary(i):string%20%3F],[Deadline]&lt;deadlines%200..*-++[AcademicEvent],[AcademicEventSeries]&lt;in_series%200..1-%20[AcademicEvent],[Location]&lt;at_location%200..1-++[AcademicEvent],[EventFormatSpecification]&lt;event_format%200..1-++[AcademicEvent],[AcademicEventSeries]++-%20series_of%200..*&gt;[AcademicEvent],[ConfIDentRecords]++-%20events%200..*&gt;[AcademicEvent],[PlannedProcess]^-[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Sponsor],[ProcessRelation],[ProcessName],[PlannedProcess],[Organizer],[Metric],[Location],[Identifier],[EventFormatSpecification],[Deadline],[ContactPerson],[ConfIDentRecords],[AcademicField],[AcademicEventSeries],[ProcessRelation]&lt;related_to%200..*-++[AcademicEvent&#124;multiple_days:boolean%20%3F;event_status:EventStatus;event_mode:EventMode%20%3F;ordinal:integer%20%3F;id(i):uriorcurie;landing_page(i):uriorcurie%20%3F;start_date(i):datetime;end_date(i):datetime;outputs(i):string%20*;topics(i):string%20*;website(i):uri%20%3F;logo(i):string%20%3F;summary(i):string%20%3F],[Deadline]&lt;deadlines%200..*-++[AcademicEvent],[AcademicEventSeries]&lt;in_series%200..1-%20[AcademicEvent],[Location]&lt;at_location%200..1-++[AcademicEvent],[EventFormatSpecification]&lt;event_format%200..1-++[AcademicEvent],[AcademicEventSeries]++-%20series_of%200..*&gt;[AcademicEvent],[ConfIDentRecords]++-%20events%200..*&gt;[AcademicEvent],[PlannedProcess]^-[AcademicEvent]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../PlannedProcess/">PlannedProcess</a></li>
@@ -109,11 +109,6 @@
 <ul>
 <li><a href="../academicEvent__event_format/">AcademicEvent➞event_format</a>  <sub>0..1</sub><ul>
 <li>Description: The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventFormat enum, which uses the named individuals defined in AEON.</li>
-<li>Range: <a href="../EventFormat/">EventFormat</a></li>
-</ul>
-</li>
-<li><a href="../academicEvent__event_format_other/">AcademicEvent➞event_format_other</a>  <sub>0..1</sub><ul>
-<li>Description: If event_format is set to 'other' then this property must be used to provide a label of the event type.</li>
 <li>Range: <a href="../EventFormatSpecification/">EventFormatSpecification</a></li>
 </ul>
 </li>
@@ -188,12 +183,13 @@
 <li>Range: <a href="../Organizer/">Organizer</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__sponsors/">➞sponsors</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
+<li><a href="../plannedProcess__contact/">➞contact</a>  <sub>0..1</sub><ul>
+<li>Description: The contact person of an academic event or event series.</li>
+<li>Range: <a href="../ContactPerson/">ContactPerson</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__contact/">➞contact</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
+<li><a href="../plannedProcess__sponsors/">➞sponsors</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../Sponsor/">Sponsor</a></li>
 </ul>
 </li>
 <li><a href="../plannedProcess__outputs/">➞outputs</a>  <sub>0..*</sub><ul>

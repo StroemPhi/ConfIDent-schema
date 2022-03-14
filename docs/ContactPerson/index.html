@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: persons - A model to describe academic events and event series.</title>
+  <title>Class: ContactPerson - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: persons";
-    var mkdocs_page_input_path = "persons.md";
+    var mkdocs_page_name = "Class: ContactPerson";
+    var mkdocs_page_input_path = "ContactPerson.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: persons</li>
+    <li>Class: ContactPerson</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,17 +91,45 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-persons">Slot: persons</h1>
-<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/persons">confid:persons</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>0..*</sub> <a href="../Person/">Person</a></p>
+                <h1 id="class-contactperson">Class: ContactPerson</h1>
+<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/ContactPerson">confid:ContactPerson</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer],[Identifier],[PlannedProcess]++-%20contact%200..1&gt;[ContactPerson&#124;id:uriorcurie;email:string%20%3F;telephone:string%20%3F;name(i):string%20%3F],[Organizer]^-[ContactPerson],[PlannedProcess]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer],[Identifier],[PlannedProcess]++-%20contact%200..1&gt;[ContactPerson&#124;id:uriorcurie;email:string%20%3F;telephone:string%20%3F;name(i):string%20%3F],[Organizer]^-[ContactPerson],[PlannedProcess]" /></a></p>
 <h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
-<h2 id="used-by">Used by</h2>
 <ul>
-<li><a href="../Contributor/">Contributor</a></li>
-<li><a href="../Organizer/">Organizer</a></li>
-<li><a href="../Sponsor/">Sponsor</a></li>
+<li>is_a: <a href="../Organizer/">Organizer</a></li>
+</ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong>None</strong> <em><a href="../plannedProcess__contact/">➞contact</a></em>  <sub>0..1</sub>  <strong><a href="./">ContactPerson</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../ContactPerson_id/">ContactPerson➞id</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../contactPerson__email/">➞email</a>  <sub>0..1</sub><ul>
+<li>Description: The email address of the contact person.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../contactPerson__telephone/">➞telephone</a>  <sub>0..1</sub><ul>
+<li>Description: The telephone number of the contact person.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-organizer">Inherited from Organizer:</h3>
+<ul>
+<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../contributor__identifier/">➞identifier</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Identifier/">Identifier</a></li>
+</ul>
+</li>
 </ul>
               
             </div>

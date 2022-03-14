@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Class: Identifier - A model to describe academic events and event series.</title>
+  <title>Class: Moderator - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Class: Identifier";
-    var mkdocs_page_input_path = "Identifier.md";
+    var mkdocs_page_name = "Class: Moderator";
+    var mkdocs_page_input_path = "Moderator.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Class: Identifier</li>
+    <li>Class: Moderator</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,44 +91,26 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="class-identifier">Class: Identifier</h1>
-<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/Identifier">confid:Identifier</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[SchemaBasedValue],[Contributor]++-%20identifier%200..1&gt;[Identifier&#124;id:uriorcurie;value:string%20%3F;scheme_name:string;scheme_uri:uriorcurie%20%3F],[PlannedProcess]++-%20alternative_ids%200..*&gt;[Identifier],[Identifier]uses%20-.-&gt;[SchemaBasedValue],[PlannedProcess],[Contributor]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[SchemaBasedValue],[Contributor]++-%20identifier%200..1&gt;[Identifier&#124;id:uriorcurie;value:string%20%3F;scheme_name:string;scheme_uri:uriorcurie%20%3F],[PlannedProcess]++-%20alternative_ids%200..*&gt;[Identifier],[Identifier]uses%20-.-&gt;[SchemaBasedValue],[PlannedProcess],[Contributor]" /></a></p>
-<h2 id="uses-mixin">Uses Mixin</h2>
+                <h1 id="class-moderator">Class: Moderator</h1>
+<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/Moderator">confid:Moderator</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Contributor]^-[Moderator&#124;name(i):string%20%3F;id(i):uriorcurie],[Identifier],[Contributor]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Contributor]^-[Moderator&#124;name(i):string%20%3F;id(i):uriorcurie],[Identifier],[Contributor]" /></a></p>
+<h2 id="parents">Parents</h2>
 <ul>
-<li>mixin: <a href="../SchemaBasedValue/">SchemaBasedValue</a></li>
-</ul>
-<h2 id="referenced-by-class">Referenced by Class</h2>
-<ul>
-<li><strong>None</strong> <em><a href="../contributor__identifier/">➞identifier</a></em>  <sub>0..1</sub>  <strong><a href="./">Identifier</a></strong></li>
-<li><strong>None</strong> <em><a href="../plannedProcess__alternative_ids/">➞alternative_ids</a></em>  <sub>0..*</sub>  <strong><a href="./">Identifier</a></strong></li>
+<li>is_a: <a href="../Contributor/">Contributor</a></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
-<h3 id="own">Own</h3>
+<h3 id="inherited-from-contributor">Inherited from Contributor:</h3>
 <ul>
+<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 <li><a href="../id/">id</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-</ul>
-<h3 id="mixed-in-from-schemabasedvalue">Mixed in from SchemaBasedValue:</h3>
-<ul>
-<li><a href="../schemaBasedValue__value/">➞value</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-schemabasedvalue_1">Mixed in from SchemaBasedValue:</h3>
-<ul>
-<li><a href="../schemaBasedValue__scheme_name/">➞scheme_name</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-schemabasedvalue_2">Mixed in from SchemaBasedValue:</h3>
-<ul>
-<li><a href="../schemaBasedValue__scheme_uri/">➞scheme_uri</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+<li><a href="../contributor__identifier/">➞identifier</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Identifier/">Identifier</a></li>
 </ul>
 </li>
 </ul>

@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-03-01T08:45:13\n    Schema: ConfIDent-schema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/StroemPhi/ConfIDent-schema/\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
+   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-03-14T15:26:37\n    Schema: ConfIDent-schema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/StroemPhi/ConfIDent-schema/\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
    "@context": {
       "aeon": {
          "@id": "https://github.com/tibonto/aeon#AEON_",
@@ -13,6 +13,7 @@
       "dblp_series": "https://dblp.org/db/conf/",
       "dc": "http://purl.org/dc/terms/",
       "doi": "https://doi.org/",
+      "ex": "https://example.com/",
       "iao": {
          "@id": "http://purl.obolibrary.org/obo/IAO_",
          "@prefix": true
@@ -24,8 +25,7 @@
       },
       "orcid": "https://orcid.org/",
       "provo": "https://www.w3.org/TR/2013/REC-prov-o-20130430/#",
-      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-      "ror": "ror.org/",
+      "ror": "https://ror.org/",
       "sdo": "https://schema.org/",
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "wikidata": "https://www.wikidata.org/wiki/",
@@ -37,15 +37,6 @@
          "@type": "@id"
       },
       "event_format": {
-         "@context": {
-            "@vocab": "@null",
-            "text": "skos:notation",
-            "description": "skos:prefLabel",
-            "meaning": "@id"
-         },
-         "@id": "aeon:0000032"
-      },
-      "event_format_other": {
          "@type": "@id",
          "@id": "aeon:0000032"
       },
@@ -85,14 +76,25 @@
       "aliases": {
          "@id": "skos:altLabel"
       },
+      "website": {
+         "@type": "@id"
+      },
       "events": {
          "@type": "@id"
       },
       "series": {
          "@type": "@id"
       },
-      "contributors": {
-         "@type": "@id"
+      "email": {
+         "@id": "sdo:email"
+      },
+      "telephone": {
+         "@id": "sdo:telephone"
+      },
+      "id": "@id",
+      "identifier": {
+         "@type": "@id",
+         "@id": "sdo:identifier"
       },
       "deadline_date": {
          "@type": "xsd:dateTime"
@@ -100,7 +102,15 @@
       "other": {
          "@id": "aeon:event_type_other"
       },
-      "id": "@id",
+      "specified_as": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "obi:0002815"
+      },
       "city": {
          "@type": "@id"
       },
@@ -132,13 +142,7 @@
          "@type": "xsd:boolean"
       },
       "name": {
-         "@id": "rdfs:label"
-      },
-      "organisations": {
-         "@type": "@id"
-      },
-      "persons": {
-         "@type": "@id"
+         "@id": "sdo:name"
       },
       "academic_fields": {
          "@type": "@id",
@@ -147,13 +151,16 @@
       "alternative_ids": {
          "@type": "@id"
       },
+      "contact": {
+         "@type": "@id"
+      },
       "denoted_by": {
          "@type": "@id",
          "@id": "iao:0000235"
       },
       "end_date": {
          "@type": "xsd:dateTime",
-         "@id": "aeon:end_date"
+         "@id": "sdo:endDate"
       },
       "landing_page": {
          "@type": "@id"
@@ -164,9 +171,12 @@
       "organizers": {
          "@type": "@id"
       },
+      "sponsors": {
+         "@type": "@id"
+      },
       "start_date": {
          "@type": "xsd:dateTime",
-         "@id": "aeon:start_date"
+         "@id": "sdo:startDate"
       },
       "acronym": {
          "@id": "aeon:0000091"
@@ -193,12 +203,6 @@
       },
       "EventFormatSpecification": {
          "@id": "aeon:0000004"
-      },
-      "Organisation": {
-         "@id": "sdo:Organization"
-      },
-      "Person": {
-         "@id": "sdo:Person"
       },
       "PlannedProcess": {
          "@id": "obi:0000011"

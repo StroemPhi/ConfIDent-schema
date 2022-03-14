@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: contributors - A model to describe academic events and event series.</title>
+  <title>Class: Presenter - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: contributors";
-    var mkdocs_page_input_path = "contributors.md";
+    var mkdocs_page_name = "Class: Presenter";
+    var mkdocs_page_input_path = "Presenter.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: contributors</li>
+    <li>Class: Presenter</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,13 +91,34 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-contributors">Slot: contributors</h1>
-<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/contributors">confid:contributors</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>0..*</sub> <a href="../Contributor/">Contributor</a></p>
+                <h1 id="class-presenter">Class: Presenter</h1>
+<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/Presenter">confid:Presenter</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Presenter&#124;name(i):string%20%3F;id(i):uriorcurie]^-[KeynoteSpeaker],[Contributor]^-[Presenter],[KeynoteSpeaker],[Identifier],[Contributor]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Presenter&#124;name(i):string%20%3F;id(i):uriorcurie]^-[KeynoteSpeaker],[Contributor]^-[Presenter],[KeynoteSpeaker],[Identifier],[Contributor]" /></a></p>
 <h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="../Contributor/">Contributor</a></li>
+</ul>
 <h2 id="children">Children</h2>
-<h2 id="used-by">Used by</h2>
+<ul>
+<li><a href="../KeynoteSpeaker/">KeynoteSpeaker</a></li>
+</ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="inherited-from-contributor">Inherited from Contributor:</h3>
+<ul>
+<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../contributor__identifier/">➞identifier</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Identifier/">Identifier</a></li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>

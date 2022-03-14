@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: name - A model to describe academic events and event series.</title>
+  <title>Slot: identifier - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: name";
-    var mkdocs_page_input_path = "Person_name.md";
+    var mkdocs_page_name = "Slot: identifier";
+    var mkdocs_page_input_path = "contributor__identifier.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: name</li>
+    <li>Slot: identifier</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,18 +91,25 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-name">Slot: name</h1>
-<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/Person_name">confid:Person_name</a></p>
+                <h1 id="slot-identifier">Slot: identifier</h1>
+<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/contributor__identifier">confid:contributor__identifier</a></p>
 <h2 id="domain-and-range">Domain and Range</h2>
-<p><a href="../Person/">Person</a> &#8594;  <sub>1..1</sub> <a href="../String/">String</a></p>
+<p>None &#8594;  <sub>0..1</sub> <a href="../Identifier/">Identifier</a></p>
 <h2 id="parents">Parents</h2>
-<ul>
-<li>is_a: <a href="../name/">name</a></li>
-</ul>
 <h2 id="children">Children</h2>
 <h2 id="used-by">Used by</h2>
 <ul>
-<li><a href="../Person/">Person</a></li>
+<li><a href="../Attendee/">Attendee</a></li>
+<li><a href="../CommitteeChair/">CommitteeChair</a></li>
+<li><a href="../CommitteeMember/">CommitteeMember</a></li>
+<li><a href="../ContactPerson/">ContactPerson</a></li>
+<li><a href="../Contributor/">Contributor</a></li>
+<li><a href="../KeynoteSpeaker/">KeynoteSpeaker</a></li>
+<li><a href="../Moderator/">Moderator</a></li>
+<li><a href="../Organizer/">Organizer</a></li>
+<li><a href="../Presenter/">Presenter</a></li>
+<li><a href="../Reviewer/">Reviewer</a></li>
+<li><a href="../Sponsor/">Sponsor</a></li>
 </ul>
 <h2 id="other-properties">Other properties</h2>
 <table>
@@ -117,7 +124,7 @@
 <tr>
 <td><strong>Mappings:</strong></td>
 <td></td>
-<td>rdfs:label</td>
+<td>sdo:identifier</td>
 </tr>
 </tbody>
 </table>

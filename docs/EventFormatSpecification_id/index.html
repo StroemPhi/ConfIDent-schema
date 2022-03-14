@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Class: Person - A model to describe academic events and event series.</title>
+  <title>Slot: id - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Class: Person";
-    var mkdocs_page_input_path = "Person.md";
+    var mkdocs_page_name = "Slot: id";
+    var mkdocs_page_input_path = "EventFormatSpecification_id.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Class: Person</li>
+    <li>Slot: id</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,30 +91,18 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="class-person">Class: Person</h1>
-<p>A person (alive, dead, undead, or fictional).</p>
-<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/Person">confid:Person</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer]++-%20persons%200..*&gt;[Person&#124;pid:string%20%3F;name:string],[Sponsor]++-%20persons%200..*&gt;[Person],[Contributor]++-%20persons%200..*&gt;[Person],[Sponsor],[Organizer],[Contributor]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer]++-%20persons%200..*&gt;[Person&#124;pid:string%20%3F;name:string],[Sponsor]++-%20persons%200..*&gt;[Person],[Contributor]++-%20persons%200..*&gt;[Person],[Sponsor],[Organizer],[Contributor]" /></a></p>
-<h2 id="identifier-prefixes">Identifier prefixes</h2>
+                <h1 id="slot-id">Slot: id</h1>
+<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/EventFormatSpecification_id">confid:EventFormatSpecification_id</a></p>
+<h2 id="domain-and-range">Domain and Range</h2>
+<p><a href="../EventFormatSpecification/">EventFormatSpecification</a> &#8594;  <sub>1..1</sub> <a href="../Uriorcurie/">Uriorcurie</a></p>
+<h2 id="parents">Parents</h2>
 <ul>
-<li>orcid</li>
-<li>wikidata</li>
+<li>is_a: <a href="../id/">id</a></li>
 </ul>
-<h2 id="referenced-by-class">Referenced by Class</h2>
+<h2 id="children">Children</h2>
+<h2 id="used-by">Used by</h2>
 <ul>
-<li><strong>None</strong> <em><a href="../persons/">persons</a></em>  <sub>0..*</sub>  <strong><a href="./">Person</a></strong></li>
-</ul>
-<h2 id="attributes">Attributes</h2>
-<h3 id="own">Own</h3>
-<ul>
-<li><a href="../pid/">pid</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../Person_name/">Person➞name</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
+<li><a href="../EventFormatSpecification/">EventFormatSpecification</a></li>
 </ul>
 <h2 id="other-properties">Other properties</h2>
 <table>
@@ -129,7 +117,7 @@
 <tr>
 <td><strong>Mappings:</strong></td>
 <td></td>
-<td>sdo:Person</td>
+<td>iao:0000235</td>
 </tr>
 </tbody>
 </table>

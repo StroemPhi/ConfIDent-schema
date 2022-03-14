@@ -93,7 +93,7 @@
               
                 <h1 id="class-plannedprocess">Class: PlannedProcess</h1>
 <p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/PlannedProcess">confid:PlannedProcess</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessName],[Metric]&lt;metrics%200..*-++[PlannedProcess&#124;id:uriorcurie;landing_page:uriorcurie%20%3F;start_date:datetime;end_date:datetime;sponsors:string%20*;contact:string%20%3F;outputs:string%20*;topics:string%20*;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[AcademicField]&lt;academic_fields%200..*-++[PlannedProcess],[Organizer]&lt;organizers%201..*-++[PlannedProcess],[Identifier]&lt;alternative_ids%200..*-++[PlannedProcess],[ProcessName]&lt;denoted_by%201..1-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[Metric],[Identifier],[CommonMetadata],[AcademicField],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ProcessName],[Metric]&lt;metrics%200..*-++[PlannedProcess&#124;id:uriorcurie;landing_page:uriorcurie%20%3F;start_date:datetime;end_date:datetime;sponsors:string%20*;contact:string%20%3F;outputs:string%20*;topics:string%20*;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[AcademicField]&lt;academic_fields%200..*-++[PlannedProcess],[Organizer]&lt;organizers%201..*-++[PlannedProcess],[Identifier]&lt;alternative_ids%200..*-++[PlannedProcess],[ProcessName]&lt;denoted_by%201..1-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[Metric],[Identifier],[CommonMetadata],[AcademicField],[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Sponsor],[ProcessName],[Metric]&lt;metrics%200..*-++[PlannedProcess&#124;id:uriorcurie;landing_page:uriorcurie%20%3F;start_date:datetime;end_date:datetime;outputs:string%20*;topics:string%20*;website:uri%20%3F;logo:string%20%3F;summary:string%20%3F],[AcademicField]&lt;academic_fields%200..*-++[PlannedProcess],[Sponsor]&lt;sponsors%200..*-++[PlannedProcess],[ContactPerson]&lt;contact%200..1-++[PlannedProcess],[Organizer]&lt;organizers%201..*-++[PlannedProcess],[Identifier]&lt;alternative_ids%200..*-++[PlannedProcess],[ProcessName]&lt;denoted_by%201..1-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[Metric],[Identifier],[ContactPerson],[CommonMetadata],[AcademicField],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Sponsor],[ProcessName],[Metric]&lt;metrics%200..*-++[PlannedProcess&#124;id:uriorcurie;landing_page:uriorcurie%20%3F;start_date:datetime;end_date:datetime;outputs:string%20*;topics:string%20*;website:uri%20%3F;logo:string%20%3F;summary:string%20%3F],[AcademicField]&lt;academic_fields%200..*-++[PlannedProcess],[Sponsor]&lt;sponsors%200..*-++[PlannedProcess],[ContactPerson]&lt;contact%200..1-++[PlannedProcess],[Organizer]&lt;organizers%201..*-++[PlannedProcess],[Identifier]&lt;alternative_ids%200..*-++[PlannedProcess],[ProcessName]&lt;denoted_by%201..1-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[CommonMetadata],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[Metric],[Identifier],[ContactPerson],[CommonMetadata],[AcademicField],[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../CommonMetadata/">CommonMetadata</a></li>
@@ -139,12 +139,13 @@
 <li>Range: <a href="../Organizer/">Organizer</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__sponsors/">➞sponsors</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
+<li><a href="../plannedProcess__contact/">➞contact</a>  <sub>0..1</sub><ul>
+<li>Description: The contact person of an academic event or event series.</li>
+<li>Range: <a href="../ContactPerson/">ContactPerson</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__contact/">➞contact</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
+<li><a href="../plannedProcess__sponsors/">➞sponsors</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../Sponsor/">Sponsor</a></li>
 </ul>
 </li>
 <li><a href="../plannedProcess__outputs/">➞outputs</a>  <sub>0..*</sub><ul>
@@ -169,13 +170,15 @@
 <h3 id="mixed-in-from-commonmetadata">Mixed in from CommonMetadata:</h3>
 <ul>
 <li><a href="../commonMetadata__website/">➞website</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Description: The website of an academic event or series.</li>
+<li>Range: <a href="../Uri/">Uri</a></li>
 </ul>
 </li>
 </ul>
 <h3 id="mixed-in-from-commonmetadata_1">Mixed in from CommonMetadata:</h3>
 <ul>
 <li><a href="../commonMetadata__logo/">➞logo</a>  <sub>0..1</sub><ul>
+<li>Description: The official logo of an academic event or series.</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
