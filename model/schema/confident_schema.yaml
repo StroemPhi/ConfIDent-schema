@@ -146,13 +146,8 @@ classes:
         description: The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventFormat enum, which uses the named individuals defined in AEON.
         slot_uri: aeon:0000032
         domain: AcademicEvent
-        range: EventFormat
-        recommended: true
-      event_format_other: 
-        slot_uri: aeon:0000032
-        description: If event_format is set to 'other' then this property must be used to provide a label of the event type.
-        domain: AcademicEvent
         range: EventFormatSpecification
+        inlined: true
         recommended: true
       multiple_days:
         description: A boolean property that if true means that the academic event spans multiple days.
@@ -224,11 +219,24 @@ classes:
 # plan specs
   EventFormatSpecification:
     class_uri: aeon:0000004
+    description: >-
+      An academic event format specification is a plan specification that classifies a planned gathering of people in an academic context according to some sociocultural format, which provides implicit and explicit details on how this gathing is to be carried out by its participants in terms of achieving certain objectives, fulfiling certain conditions and performing certain actions. It thus concretizes the expectations of the contributers of an academic event.
+      While the explicit details are often provied as concrete parts (e.g. deadline or attendance fee specifications), the implicit details depend on the semantics encoded in the words used for the classification of academic events (e.g. "conference" or "workshop"). Depending on the sociocultural background these classifications can overlap or vary to a certain degree.
+    slots:
+      - id
+    slot_usage:
+      id:
+        ifabsent: uri(ex:EventType)
     attributes:
-      other:
+      other_format:
         slot_uri: aeon:event_type_other
         domain: EventFormatSpecification
         range: string
+      specified_as: 
+        slot_uri: obi:0002815
+        required: true
+        domain: EventFormatSpecification
+        range: EventFormat
   Deadline:
     attributes:
       deadline_date:
@@ -396,56 +404,57 @@ slots:
 #####################################
 
 enums:
+# event enums  
   EventFormat:
     description: >-
-      The following definitions attempt to provide descriptions to distinguish different academic event formats, even though the definitions are not always clearly distinguishable in their everyday use and are often used synonymously. An event type should be understood, according to AEON, as a plan specification that specifies the sociocultural format or type of the academic event by providing details on the objectives, conditions and actions needed in its realization.
+      The permissible values defined in this enum class represent the most common minimal event format specifications. For event formats that are not in this list, you can use "other" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).
     permissible_values:
       colloquium:
         description: >-
           A colloquium is an academic meeting that usually lasts only a few hours and serves to discuss a specific topic. Colloquia are usually part of the academic exchange in everyday university life with only one speaker, but can also take place on special occasions (anniversaries, start or end of the lecture phase, etc.) and can have more than one speaker.
-        meaning: aeon:0010000
       conference:
         description: >-
           A conference is an academic event that lasts up to several days and serves as a forum for presentations on a specific topic or subject area. In addition to subject-specific conferences, there are also interdisciplinary conferences which allow both a broader focus and more specific questions on a particular (academic) problem. Conferences often have a highly formalized structure of parallel, clearly defined sessions with several short presentations and plenary sessions with invited (keynote) speakers who are considered multipliers in their (research) field. Ideally, the selection of the speakers and their contributions is subject to a review process.
-        meaning: aeon:0010001
         is_a: EventFormatSpecification
       congress:
         description: >-
           A congress is a certain type of conference which is characterised by a larger number of participants (often several hundred) and is oftentimes organised jointly by large, established (e.g. specialised societies) and/or several institutions. Congresses have a broader thematic focus than simple conferences, take place in certain cycles, but can still target an exclusive group of participants (e.g. representatives of a single discipline).
-        meaning: aeon:0010011
       session:
-        description: A session is a clearly defined part of a academic event in which a small number of speakers (usually 2-5) focus on a specific topic. A session is usually formally accompanied by a session chair, who assumes the function of a moderator. 
-        meaning: aeon:0010000
+        description: >-
+          A session is a clearly defined part of a academic event in which a small number of speakers (usually 2-5) focus on a specific topic. A session is usually formally accompanied by a session chair, who assumes the function of a moderator. 
       poster session:
-        description: A poster session is a session at which poster papers are presented.
-        meaning: aeon:0010005
+        description: >-
+          A poster session is a session at which poster papers are presented.
       talk:
-        description: A talk is a central part of a larger academic event, at which a specific topic is being presented in a rather short way.
-        meaning: aeon:0010012
+        description: >-
+          A talk is a central part of a larger academic event, at which a specific topic is being presented in a rather short way.
       keynote speech: 
-        description: A keynote speech is a special talk that has the function to set the underlying tone and summarize the core message or most important revelation of the academic event at which it is given. 
-        meaning: aeon:0010007
+        description: >-
+          A keynote speech is a special talk that has the function to set the underlying tone and summarize the core message or most important revelation of the academic event at which it is given. 
       event track:
-        description: An academic event that, as a part of a larger academic event, has the function to group even smaller parts of the academic event, like sessions and talks, according to a shared theme or topic. It usually has dedicated chairs and program committees.
-        meaning: aeon:0010008
+        description: >-
+          An academic event that, as a part of a larger academic event, has the function to group even smaller parts of the academic event, like sessions and talks, according to a shared theme or topic. It usually has dedicated chairs and program committees.
       forum:
-        description: An academic event whose sociocultural format is determined in an academic event type specification that classifies the academic event as a forum.
-        meaning: aeon:0010002
+        description: >-
+          An academic event whose sociocultural format is determined in an academic event type specification that classifies the academic event as a forum.
       hackathon:
-        description: A hackathon is a gathering of software developers with the goal to develop software collaboratively in a short timeframe.
-        meaning: aeon:0010003
+        description: >-
+          A hackathon is a gathering of software developers with the goal to develop software collaboratively in a short timeframe.
       seminar:
-        description: A seminar can serve as a term for older conference series, but in current usage the term mainly describes a specific teaching format that serves to develop content and provides space for discussion. Participation from the audience is usually encouraged.
-        meaning: aeon:0010004
+        description: >-
+          A seminar can serve as a term for older conference series, but in current usage the term mainly describes a specific teaching format that serves to develop content and provides space for discussion. Participation from the audience is usually encouraged.
       symposium:
-        description: A symposium is a specific type of conference with a narrower thematic focus, with fewer participants and of shorter duration. The degree of structuring lies between a classic conference and a workshop, allows more discussion than the larger conference, but is usually more formalized than the workshop.
-        meaning: aeon:0010006
+        description: >-
+          A symposium is a specific type of conference with a narrower thematic focus, with fewer participants and of shorter duration. The degree of structuring lies between a classic conference and a workshop, allows more discussion than the larger conference, but is usually more formalized than the workshop.
       tutorial:
-        description: An academic event that has the function to educate the audience on a certain topic. A tutorial is often realized as an academic event talk or academic event session.
-        meaning: aeon:0010009
+        description: >-
+          An academic event that has the function to educate the audience on a certain topic. A tutorial is often realized as an academic event talk or academic event session.
       workshop:
-        description: Workshops are smaller academic events that serve to exchange information on a specific topic or problem. They usually last one or two days and offer space for discussion and the development of content and solutions. Group work is often part of the event concept.
-        meaning: aeon:0010010
+        description: >-
+          Workshops are smaller academic events that serve to exchange information on a specific topic or problem. They usually last one or two days and offer space for discussion and the development of content and solutions. Group work is often part of the event concept.
+      other: 
+        description: >-
+          This value is to be used if the event format cannot be represented using one of the other permissible values defined in the [EventFormat](https://stroemphi.github.io/ConfIDent-schema/EventFormat/) enum. If this value is chosen the use of [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/) is mandatory. 
   EventStatus:
     permissible_values:
       as scheduled:
