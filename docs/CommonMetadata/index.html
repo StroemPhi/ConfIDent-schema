@@ -93,7 +93,7 @@
               
                 <h1 id="class-commonmetadata">Class: CommonMetadata</h1>
 <p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/CommonMetadata">confid:CommonMetadata</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]uses%20-.-&gt;[CommonMetadata&#124;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[PlannedProcess]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]uses%20-.-&gt;[CommonMetadata&#124;website:string%20%3F;logo:string%20%3F;summary:string%20%3F],[PlannedProcess]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]uses%20-.-&gt;[CommonMetadata&#124;website:uri%20%3F;logo:string%20%3F;summary:string%20%3F],[PlannedProcess]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]uses%20-.-&gt;[CommonMetadata&#124;website:uri%20%3F;logo:string%20%3F;summary:string%20%3F],[PlannedProcess]" /></a></p>
 <h2 id="mixin-for">Mixin for</h2>
 <ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a> (mixin) </li>
@@ -103,10 +103,12 @@
 <h3 id="own">Own</h3>
 <ul>
 <li><a href="../commonMetadata__website/">➞website</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Description: The website of an academic event or series.</li>
+<li>Range: <a href="../Uri/">Uri</a></li>
 </ul>
 </li>
 <li><a href="../commonMetadata__logo/">➞logo</a>  <sub>0..1</sub><ul>
+<li>Description: The official logo of an academic event or series.</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
