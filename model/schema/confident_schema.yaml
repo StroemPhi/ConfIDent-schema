@@ -20,10 +20,11 @@ prefixes:
   provo: https://www.w3.org/TR/2013/REC-prov-o-20130430/#
   dc: http://purl.org/dc/terms/
   orcid: https://orcid.org/
-  ror: ror.org/
+  ror: https://ror.org/
   wikidata: https://www.wikidata.org/wiki/
   dblp_series: https://dblp.org/db/conf/
   doi: https://doi.org/
+  ex: https://example.com/
 default_prefix: confid
 default_range: string
 
