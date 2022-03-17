@@ -96,11 +96,14 @@ classes:
         multivalued: true
         inlined_as_list: true
         range: Organizer
+      contact:
+        description: The contact person of an academic event or event series.
+        range: ContactPerson
+        inlined: true 
       sponsors:
         recommended: true
         multivalued: true
         inlined_as_list: true
-      contact:
       outputs:
         description: The published works that are related to the academic event or event series, such as proceedings and video recordings of talks. 
         multivalued: true
