@@ -12,7 +12,7 @@ prefixes:
   linkml: https://w3id.org/linkml/
   skos: http://www.w3.org/2004/02/skos/core#
   sdo: https://schema.org/
-  confid: https://github.com/StroemPhi/ConfIDent-schema/
+  confident: https://confident.org/
   aeon: https://github.com/tibonto/aeon#AEON_
   obi: http://purl.obolibrary.org/obo/OBI_
   iao: http://purl.obolibrary.org/obo/IAO_
@@ -25,7 +25,7 @@ prefixes:
   dblp_series: https://dblp.org/db/conf/
   doi: https://doi.org/
   ex: https://example.com/
-default_prefix: confid
+default_prefix: confident
 default_range: string
 
 imports:
@@ -40,59 +40,41 @@ emit_prefixes:
 #####################################
 classes:  
 # mixins
-  SchemaBasedValue:
+  SchemaBasedThing:
     mixin: true
-    attributes:
-      value:
-        range: string
-      scheme_name:
-        range: string
-        required: true
-      scheme_uri:
-        range: uriorcurie
-  CommonMetadata:
+    slots:
+      - value
+      - schema_name
+      - schema_base_uri
+  NamedThing:
     mixin: true
-    attributes:
-        website:
-        logo:
-        summary:
+    slots:
+      - id
+      - external_id
+      - name
+      - aliases
 # processes
   PlannedProcess:
     class_uri: obi:0000011
     abstract: true
     mixins:
-      - CommonMetadata
+      - NamedThing
     slots:
-      - id
+      - doi
     attributes:
       landing_page:
         description: The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.
         domain: PlannedProcess
         range: uriorcurie
-      denoted_by:
-        description: >-
-          'denoted_by' used to refer to the name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc).
+      name:
+        description: This property is used to provide a name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc).
         slot_uri: iao:0000235
         range: ProcessName
-        required: true
-        close_mappings:
-          - sdo:name
-      start_date:
-        description: The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.
-        range: datetime
-        slot_uri: aeon:start_date
-        required: true
-      end_date:
-        description: Similar to start_date but only for the end of an academic event or event series.
-        range: datetime
-        slot_uri: aeon:end_date
-        required: true
-      alternative_ids:
-        multivalued: true
-        inlined_as_list: true
-        range: Identifier
+      date:
+        description: A subproperty refering to a date container that contains the start date, end date and status of a planned process.
+        inlined: true
+        range: Date
       organizers:
-        required: true
         multivalued: true
         inlined_as_list: true
         range: Organizer
@@ -101,7 +83,6 @@ classes:
         range: ContactPerson
         inlined: true 
       sponsors:
-        recommended: true
         multivalued: true
         inlined_as_list: true
       outputs:
@@ -122,6 +103,18 @@ classes:
         multivalued: true
         inlined_as_list: true
         range: Metric
+      website:
+      logo:
+      summary:
+      wikidata_id:
+        slot_uri: iao:0000235
+        range: WikidataId
+      wikicfp_id:
+        slot_uri: iao:0000235
+        range: WikiCfpId
+      dpbl_id:
+        slot_uri: iao:0000235
+        range: DblpId
   AcademicEventSeries:
     description: |-
       An academic event series describes the set of academic events which take place on a regular basis and thus have an established common identity. This identity is constituted, for example, through institutional continuity in the hosting of a series (e.g. by a specialised society), thematic focuses and/or a common label under which a series is defined (particularly name and acronym). Nevertheless, it is possible that each of these criteria may change over time.
@@ -152,14 +145,6 @@ classes:
         range: EventFormatSpecification
         inlined: true
         recommended: true
-      multiple_days:
-        description: A boolean property that if true means that the academic event spans multiple days.
-        recommended: true
-        range: boolean
-      event_status:
-        required: true
-        slot_uri: aeon:event_status
-        range: EventStatus
       event_mode:
         description: The event mode describes whether the event is a physical, virtual or hybrid event.
         range: EventMode
@@ -187,6 +172,25 @@ classes:
         range: ProcessRelation       
     close_mappings:
       - sdo:Event
+  Date:
+    attributes:
+      start_date:
+        description: The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.
+        range: datetime
+        required: true
+        slot_uri: aeon:start_date
+      end_date:
+        description: Similar to start_date but only for the end of an academic event or event series.
+        range: datetime
+        slot_uri: aeon:end_date
+      event_status:
+        required: true
+        slot_uri: aeon:event_status
+        range: EventStatus
+        ifabsent: string(as scheduled)
+      duration:
+        description: The duration of an event or series which gets automatically derived, if a stard_date and end_date have been provided.
+        range: datetime
 # identifiers
   ProcessName:
     class_uri: aeon:0000090
@@ -216,9 +220,50 @@ classes:
         is_a: name
         domain: ProcessName
         range: string
-  Identifier: 
+  ExternalIdentifier:
     mixins:
-      - SchemaBasedValue
+      - SchemaBasedThing
+  WikidataId:
+    is_a: ExternalIdentifier
+    class_uri: https://www.wikidata.org/wiki/Q43649390
+    description: The identifier of a thing (item) in Wikidata.
+    slot_usage:
+      schema_name:
+        ifabsent: string(Wikidata)
+      schema_base_uri:
+        ifabsent: uri(https://www.wikidata.org/entity/)
+  GndId:
+    is_a: ExternalIdentifier
+    description: The identifier of a thing (item) in the German National authority file.
+    slot_usage:
+      schema_name:
+        ifabsent: string(GND)
+      schema_base_uri:
+        ifabsent: uri(http://d-nb.info/gnd/)
+  TibkatId:
+    is_a: ExternalIdentifier
+    description: The identifier of a publication in the TIB catalog.
+    slot_usage:
+      schema_name:
+        ifabsent: string(TIBKAT)
+      schema_base_uri:
+        ifabsent: uri(https://www.tib.eu/en/search/id/TIBKAT:)
+  DblpId:
+    is_a: ExternalIdentifier
+    description: The identifier of an academic event or series in dblp.
+    slot_usage:
+      schema_name:
+        ifabsent: string(dblp)
+      schema_base_uri:
+        ifabsent: uri(https://dblp.org/db/conf/)  
+  WikiCfpId:
+    is_a: ExternalIdentifier
+    description: The identifier of an academic event or series in WikiCFP.
+    slot_usage:
+      schema_name:
+        ifabsent: string(WikiCFP)
+      schema_base_uri:
+        ifabsent: uri(http://www.wikicfp.com/cfp/program?id=) 
 # plan specs
   EventFormatSpecification:
     class_uri: aeon:0000004
@@ -310,18 +355,12 @@ classes:
 # descriptors
   AcademicField:
     mixins:
-      - SchemaBasedValue
+      - SchemaBasedThing
     description: An academic field is the scientific subject of the planned process according to some controlled vocabulary or thesaurus and as such requires the scheme URI.
 # contributors
   Contributor:
-    slots:
-      - name
-      - id
-    attributes:
-      identifier:
-        slot_uri: sdo:identifier
-        range: Identifier
-        inlined: true
+    mixins:
+      - NamedThing
   Sponsor:
     is_a: Contributor
   Attendee:
@@ -358,6 +397,7 @@ classes:
   KeynoteSpeaker:
     is_a: Presenter
 
+
 # record collection
   ConfIDentRecords:
     #tree_root: true
@@ -384,14 +424,21 @@ classes:
 slots:
 # common slots
   id:
-    slot_uri: iao:0000235
     identifier: true
     range: uriorcurie
-  pid:
-    recommended: true
-    range: string
+  external_id:
+    slot_uri: iao:0000235
+    multivalued: true
+    inlined_as_list: true
+    range: ExternalIdentifier
+  doi:
+    description: A digital object identifier (DOI) according to https://doi.org/.
+    range: uriorcurie
+  gnd_id:
+    slot_uri: iao:0000235
+    range: GndId
   name:
-    slot_uri: rdfs:label
+    slot_uri: sdo:name
     required: false
   aliases:
     is_a: name
@@ -400,6 +447,12 @@ slots:
     range: string
     multivalued: true
     required: false
+  value:
+    range: string
+  schema_name:
+    range: string
+  schema_base_uri:
+    range: uriorcurie
 
 
 #####################################

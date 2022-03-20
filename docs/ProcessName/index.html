@@ -92,11 +92,11 @@
             <div class="section">
               
                 <h1 id="class-processname">Class: ProcessName</h1>
-<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/ProcessName">confid:ProcessName</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20denoted_by%201..1&gt;[ProcessName&#124;name:string%20%3F;aliases:string%20*;id:uriorcurie;official_name:string;acronym:string%20%3F;former_name:string%20%3F;translated_name:string%20%3F],[PlannedProcess]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20denoted_by%201..1&gt;[ProcessName&#124;name:string%20%3F;aliases:string%20*;id:uriorcurie;official_name:string;acronym:string%20%3F;former_name:string%20%3F;translated_name:string%20%3F],[PlannedProcess]" /></a></p>
+<p>URI: <a href="https://confident.org/ProcessName">confident:ProcessName</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20name%200..1&gt;[ProcessName&#124;name:string%20%3F;aliases:string%20*;official_name:string;acronym:string%20%3F;former_name:string%20%3F;translated_name:string%20%3F],[PlannedProcess]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20name%200..1&gt;[ProcessName&#124;name:string%20%3F;aliases:string%20*;official_name:string;acronym:string%20%3F;former_name:string%20%3F;translated_name:string%20%3F],[PlannedProcess]" /></a></p>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li><strong>None</strong> <em><a href="../plannedProcess__denoted_by/">➞denoted_by</a></em>  <sub>1..1</sub>  <strong><a href="./">ProcessName</a></strong></li>
+<li><strong>None</strong> <em><a href="../plannedProcess__name/">➞name</a></em>  <sub>0..1</sub>  <strong><a href="./">ProcessName</a></strong></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
@@ -108,10 +108,6 @@
 <li><a href="../aliases/">aliases</a>  <sub>0..*</sub><ul>
 <li>Description: A property to be used to provide alternative names as strings.</li>
 <li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../ProcessName_id/">ProcessName➞id</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
 <li><a href="../processName__official_name/">➞official_name</a>  <sub>1..1</sub><ul>

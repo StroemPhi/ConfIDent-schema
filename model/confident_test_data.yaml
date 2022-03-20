@@ -1,7 +1,10 @@
-
-id: doi:10.25798/qsdh-en13
+##############################
+### Academic Event Example ###
+##############################
+id: confident:event/qsdh-en13
+doi: doi:10.25798/qsdh-en13
 landing_page: https://vivoconference.org/vivo2021
-denoted_by: 
+name: 
   official_name: 12th Annual / International VIVO Conference 2021
   acronym: VIVO 2021
   aliases: 
@@ -10,31 +13,32 @@ denoted_by:
 event_format:
   specified_as: other
   other_format: breakout session
-start_date: "2021-06-23"
-end_date: "2021-06-25"
-event_status: as scheduled
+date:
+  start_date: "2021-06-23"
+  end_date: "2021-06-25"
+  event_status: as scheduled
 event_mode: hybrid
 ordinal: 12
-alternative_ids:
-  - id: wikidata:Q108430463
-    scheme_uri: https://www.wikidata.org/wiki/
-    scheme_name: WikiData
-  - id: https://www.confident.org/events/e1234
-    scheme_uri: https://www.confident.org/events/
-    scheme_name: ConfIDent
+external_id:
+  - value: vivo2020
+    schema_base_uri: https://www.dblp.org/events/
+    schema_name: dblp
+wikidata_id: 
+  value: Q108430463
+
+dpbl_id:
+  value: vivo/vivo2020
+wikicfp_id:
+  value: "12345"
 organizers:
   - name: The VIVO Project
-    id: confid:organizer1
-    identifier: 
-      id: ror:1234_vivo
-      scheme_uri: https://www.ror.org/
-      scheme_name: ROR
+    id: confident:organizer1
   - name: TIB
-    id: confid:organizer2
-    identifier: 
-      id: ror:04aj4c181
-      scheme_uri: https://ror.org/
-      scheme_name: ROR
+    id: confident:organizer2
+    external_id:
+      value: 04aj4c181
+      schema_base_uri: https://ror.org/
+      schema_name: ROR
 contact:
   name: Christian Hauschke
   email: hauschke@tib.eu
@@ -42,12 +46,14 @@ contact:
 in_series: doi:10.25798/ea2h-xq32
 academic_fields:
   - value: ontology
-    scheme_name: ConfIDent's core classification scheme
-    scheme_uri: confid:classification
+    schema_name: ConfIDent's core classification scheme
+    schema_base_uri: confident:classification
   - value: social science
-    scheme_name: ConfIDent's core classification scheme
-    scheme_uri: confid:classification
+    schema_name: ConfIDent's core classification scheme
+    schema_base_uri: confident:classification
 topics: 
   - reseach information systems
   - open research
 website: https://vivoconference.org/vivo2020/
+summary: some summary
+

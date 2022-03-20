@@ -140,9 +140,17 @@
 </ul>
 </li>
 <li><a href="Country/">Country</a></li>
+<li><a href="Date/">Date</a></li>
 <li><a href="Deadline/">Deadline</a></li>
 <li><a href="EventFormatSpecification/">EventFormatSpecification</a> - An academic event format specification is a plan specification that classifies a planned gathering of people in an academic context according to some sociocultural format, which provides implicit and explicit details on how this gathing is to be carried out by its participants in terms of achieving certain objectives, fulfiling certain conditions and performing certain actions. It thus concretizes the expectations of the contributers of an academic event. While the explicit details are often provied as concrete parts (e.g. deadline or attendance fee specifications), the implicit details depend on the semantics encoded in the words used for the classification of academic events (e.g. "conference" or "workshop"). Depending on the sociocultural background these classifications can overlap or vary to a certain degree.</li>
-<li><a href="Identifier/">Identifier</a></li>
+<li><a href="ExternalIdentifier/">ExternalIdentifier</a><ul>
+<li><a href="DblpId/">DblpId</a> - The identifier of an academic event or series in dblp.</li>
+<li><a href="GndId/">GndId</a> - The identifier of a thing (item) in the German National authority file.</li>
+<li><a href="TibkatId/">TibkatId</a> - The identifier of a publication in the TIB catalog.</li>
+<li><a href="WikiCfpId/">WikiCfpId</a> - The identifier of an academic event or series in WikiCFP.</li>
+<li><a href="WikidataId/">WikidataId</a> - The identifier of a thing (item) in Wikidata.</li>
+</ul>
+</li>
 <li><a href="Location/">Location</a></li>
 <li><a href="Metric/">Metric</a></li>
 <li><a href="PlannedProcess/">PlannedProcess</a><ul>
@@ -157,8 +165,8 @@
 </ul>
 <h3 id="mixins">Mixins</h3>
 <ul>
-<li><a href="CommonMetadata/">CommonMetadata</a></li>
-<li><a href="SchemaBasedValue/">SchemaBasedValue</a></li>
+<li><a href="NamedThing/">NamedThing</a></li>
+<li><a href="SchemaBasedThing/">SchemaBasedThing</a></li>
 </ul>
 <h3 id="slots">Slots</h3>
 <ul>
@@ -167,27 +175,27 @@
 <li><a href="academicEvent__deadlines/">➞deadlines</a></li>
 <li><a href="academicEvent__event_format/">AcademicEvent➞event_format</a> - The sociocultural event format which is specified by the organizers, e.g. conference. Possible values are defined in the EventFormat enum, which uses the named individuals defined in AEON.</li>
 <li><a href="academicEvent__event_mode/">➞event_mode</a> - The event mode describes whether the event is a physical, virtual or hybrid event.</li>
-<li><a href="academicEvent__event_status/">➞event_status</a></li>
 <li><a href="academicEvent__in_series/">AcademicEvent➞in_series</a> - The relation used to provide the series of which an AcademicEvent is a part.</li>
-<li><a href="academicEvent__multiple_days/">➞multiple_days</a> - A boolean property that if true means that the academic event spans multiple days.</li>
 <li><a href="academicEvent__ordinal/">AcademicEvent➞ordinal</a> - The ordnial number of an academic event within its series.</li>
 <li><a href="academicEvent__related_to/">➞related_to</a></li>
-<li><a href="commonMetadata__logo/">➞logo</a> - The official logo of an academic event or series.</li>
-<li><a href="commonMetadata__summary/">➞summary</a></li>
-<li><a href="commonMetadata__website/">➞website</a> - The website of an academic event or series.</li>
 <li><a href="confIDentRecords__events/">ConfIDentRecords➞events</a> - An attribute that specifies a list of academic events within this container.</li>
 <li><a href="confIDentRecords__series/">ConfIDentRecords➞series</a> - An attribute that specifies a list of academic event series within this container.</li>
 <li><a href="contactPerson__email/">➞email</a> - The email address of the contact person.</li>
 <li><a href="contactPerson__telephone/">➞telephone</a> - The telephone number of the contact person.</li>
-<li><a href="contributor__identifier/">➞identifier</a></li>
+<li><a href="date__duration/">➞duration</a> - The duration of an event or series which gets automatically derived, if a stard_date and end_date have been provided.</li>
+<li><a href="date__end_date/">➞end_date</a> - Similar to start_date but only for the end of an academic event or event series.</li>
+<li><a href="date__event_status/">➞event_status</a></li>
+<li><a href="date__start_date/">➞start_date</a> - The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.</li>
 <li><a href="deadline__deadline_date/">➞deadline_date</a></li>
 <li><a href="deadline__deadline_other/">➞deadline_other</a></li>
-<li><a href="eventFormatSpecification__other/">EventFormatSpecification➞other</a></li>
+<li><a href="doi/">doi</a> - A digital object identifier (DOI) according to https://doi.org/.</li>
+<li><a href="eventFormatSpecification__other_format/">EventFormatSpecification➞other_format</a></li>
 <li><a href="eventFormatSpecification__specified_as/">EventFormatSpecification➞specified_as</a></li>
+<li><a href="external_id/">external_id</a></li>
+<li><a href="gnd_id/">gnd_id</a></li>
 <li><a href="id/">id</a><ul>
 <li><a href="ContactPerson_id/">ContactPerson➞id</a></li>
 <li><a href="EventFormatSpecification_id/">EventFormatSpecification➞id</a></li>
-<li><a href="ProcessName_id/">ProcessName➞id</a></li>
 </ul>
 </li>
 <li><a href="location__city/">➞city</a></li>
@@ -210,28 +218,45 @@
 <li><a href="processName__translated_name/">ProcessName➞translated_name</a> - A translation of the official name to be used in different language contexts.</li>
 </ul>
 </li>
-<li><a href="pid/">pid</a></li>
 <li><a href="plannedProcess__academic_fields/">PlannedProcess➞academic_fields</a> - A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.</li>
-<li><a href="plannedProcess__alternative_ids/">➞alternative_ids</a></li>
 <li><a href="plannedProcess__contact/">➞contact</a> - The contact person of an academic event or event series.</li>
-<li><a href="plannedProcess__denoted_by/">➞denoted_by</a> - 'denoted_by' used to refer to the name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc).</li>
-<li><a href="plannedProcess__end_date/">➞end_date</a> - Similar to start_date but only for the end of an academic event or event series.</li>
+<li><a href="plannedProcess__date/">➞date</a> - A subproperty refering to a date container that contains the start date, end date and status of a planned process.</li>
+<li><a href="plannedProcess__dpbl_id/">➞dpbl_id</a></li>
 <li><a href="plannedProcess__landing_page/">PlannedProcess➞landing_page</a> - The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.</li>
+<li><a href="plannedProcess__logo/">➞logo</a></li>
 <li><a href="plannedProcess__metrics/">➞metrics</a></li>
+<li><a href="plannedProcess__name/">➞name</a> - This property is used to provide a name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc).</li>
 <li><a href="plannedProcess__organizers/">➞organizers</a></li>
 <li><a href="plannedProcess__outputs/">➞outputs</a> - The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.</li>
 <li><a href="plannedProcess__sponsors/">➞sponsors</a></li>
-<li><a href="plannedProcess__start_date/">➞start_date</a> - The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.</li>
+<li><a href="plannedProcess__summary/">➞summary</a></li>
 <li><a href="plannedProcess__topics/">➞topics</a></li>
-<li><a href="schemaBasedValue__scheme_name/">➞scheme_name</a></li>
-<li><a href="schemaBasedValue__scheme_uri/">➞scheme_uri</a></li>
-<li><a href="schemaBasedValue__value/">➞value</a></li>
+<li><a href="plannedProcess__website/">➞website</a></li>
+<li><a href="plannedProcess__wikicfp_id/">➞wikicfp_id</a></li>
+<li><a href="plannedProcess__wikidata_id/">➞wikidata_id</a></li>
+<li><a href="schema_base_uri/">schema_base_uri</a><ul>
+<li><a href="DblpId_schema_base_uri/">DblpId➞schema_base_uri</a></li>
+<li><a href="GndId_schema_base_uri/">GndId➞schema_base_uri</a></li>
+<li><a href="TibkatId_schema_base_uri/">TibkatId➞schema_base_uri</a></li>
+<li><a href="WikiCfpId_schema_base_uri/">WikiCfpId➞schema_base_uri</a></li>
+<li><a href="WikidataId_schema_base_uri/">WikidataId➞schema_base_uri</a></li>
+</ul>
+</li>
+<li><a href="schema_name/">schema_name</a><ul>
+<li><a href="DblpId_schema_name/">DblpId➞schema_name</a></li>
+<li><a href="GndId_schema_name/">GndId➞schema_name</a></li>
+<li><a href="TibkatId_schema_name/">TibkatId➞schema_name</a></li>
+<li><a href="WikiCfpId_schema_name/">WikiCfpId➞schema_name</a></li>
+<li><a href="WikidataId_schema_name/">WikidataId➞schema_name</a></li>
+</ul>
+</li>
 <li><a href="type/">type</a><ul>
 <li><a href="Deadline_type/">Deadline➞type</a></li>
 <li><a href="Metric_type/">Metric➞type</a></li>
 <li><a href="ProcessRelation_type/">ProcessRelation➞type</a></li>
 </ul>
 </li>
+<li><a href="value/">value</a></li>
 <li><a href="venue__address/">➞address</a></li>
 </ul>
 <h3 id="enums">Enums</h3>
@@ -336,5 +361,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-03-14 15:13:25.061562+00:00
+Build Date UTC : 2022-03-20 20:24:54.496291+00:00
 -->

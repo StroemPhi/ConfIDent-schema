@@ -11,9 +11,10 @@
                },
                "type": "array"
             },
-            "alternative_ids": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
                "items": {
-                  "$ref": "#/$defs/Identifier"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -24,20 +25,22 @@
                "$ref": "#/$defs/ContactPerson",
                "description": "The contact person of an academic event or event series."
             },
+            "date": {
+               "$ref": "#/$defs/Date",
+               "description": "A subproperty refering to a date container that contains the start date, end date and status of a planned process."
+            },
             "deadlines": {
                "items": {
                   "$ref": "#/$defs/Deadline"
                },
                "type": "array"
             },
-            "denoted_by": {
-               "$ref": "#/$defs/ProcessName",
-               "description": "'denoted_by' used to refer to the name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc)."
-            },
-            "end_date": {
-               "description": "Similar to start_date but only for the end of an academic event or event series.",
-               "format": "date-time",
+            "doi": {
+               "description": "A digital object identifier (DOI) according to https://doi.org/.",
                "type": "string"
+            },
+            "dpbl_id": {
+               "$ref": "#/$defs/DblpId"
             },
             "event_format": {
                "$ref": "#/$defs/EventFormatSpecification",
@@ -47,8 +50,11 @@
                "$ref": "#/$defs/EventMode",
                "description": "The event mode describes whether the event is a physical, virtual or hybrid event."
             },
-            "event_status": {
-               "$ref": "#/$defs/EventStatus"
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
             },
             "id": {
                "type": "string"
@@ -62,7 +68,6 @@
                "type": "string"
             },
             "logo": {
-               "description": "The official logo of an academic event or series.",
                "type": "string"
             },
             "metrics": {
@@ -71,9 +76,9 @@
                },
                "type": "array"
             },
-            "multiple_days": {
-               "description": "A boolean property that if true means that the academic event spans multiple days.",
-               "type": "boolean"
+            "name": {
+               "$ref": "#/$defs/ProcessName",
+               "description": "This property is used to provide a name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc)."
             },
             "ordinal": {
                "description": "The ordnial number of an academic event within its series.",
@@ -100,14 +105,9 @@
             },
             "sponsors": {
                "items": {
-                  "$ref": "#/$defs/Sponsor"
+                  "type": "string"
                },
                "type": "array"
-            },
-            "start_date": {
-               "description": "The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
-               "format": "date-time",
-               "type": "string"
             },
             "summary": {
                "type": "string"
@@ -119,17 +119,17 @@
                "type": "array"
             },
             "website": {
-               "description": "The website of an academic event or series.",
                "type": "string"
+            },
+            "wikicfp_id": {
+               "$ref": "#/$defs/WikiCfpId"
+            },
+            "wikidata_id": {
+               "$ref": "#/$defs/WikidataId"
             }
          },
          "required": [
-            "id",
-            "denoted_by",
-            "start_date",
-            "end_date",
-            "organizers",
-            "event_status"
+            "id"
          ],
          "title": "AcademicEvent",
          "type": "object"
@@ -145,9 +145,10 @@
                },
                "type": "array"
             },
-            "alternative_ids": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
                "items": {
-                  "$ref": "#/$defs/Identifier"
+                  "type": "string"
                },
                "type": "array"
             },
@@ -155,14 +156,22 @@
                "$ref": "#/$defs/ContactPerson",
                "description": "The contact person of an academic event or event series."
             },
-            "denoted_by": {
-               "$ref": "#/$defs/ProcessName",
-               "description": "'denoted_by' used to refer to the name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc)."
+            "date": {
+               "$ref": "#/$defs/Date",
+               "description": "A subproperty refering to a date container that contains the start date, end date and status of a planned process."
             },
-            "end_date": {
-               "description": "Similar to start_date but only for the end of an academic event or event series.",
-               "format": "date-time",
+            "doi": {
+               "description": "A digital object identifier (DOI) according to https://doi.org/.",
                "type": "string"
+            },
+            "dpbl_id": {
+               "$ref": "#/$defs/DblpId"
+            },
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
             },
             "id": {
                "type": "string"
@@ -172,7 +181,6 @@
                "type": "string"
             },
             "logo": {
-               "description": "The official logo of an academic event or series.",
                "type": "string"
             },
             "metrics": {
@@ -180,6 +188,10 @@
                   "$ref": "#/$defs/Metric"
                },
                "type": "array"
+            },
+            "name": {
+               "$ref": "#/$defs/ProcessName",
+               "description": "This property is used to provide a name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc)."
             },
             "organizers": {
                "items": {
@@ -203,14 +215,9 @@
             },
             "sponsors": {
                "items": {
-                  "$ref": "#/$defs/Sponsor"
+                  "type": "string"
                },
                "type": "array"
-            },
-            "start_date": {
-               "description": "The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
-               "format": "date-time",
-               "type": "string"
             },
             "summary": {
                "type": "string"
@@ -222,16 +229,17 @@
                "type": "array"
             },
             "website": {
-               "description": "The website of an academic event or series.",
                "type": "string"
+            },
+            "wikicfp_id": {
+               "$ref": "#/$defs/WikiCfpId"
+            },
+            "wikidata_id": {
+               "$ref": "#/$defs/WikidataId"
             }
          },
          "required": [
-            "id",
-            "denoted_by",
-            "start_date",
-            "end_date",
-            "organizers"
+            "id"
          ],
          "title": "AcademicEventSeries",
          "type": "object"
@@ -240,19 +248,17 @@
          "additionalProperties": false,
          "description": "An academic field is the scientific subject of the planned process according to some controlled vocabulary or thesaurus and as such requires the scheme URI.",
          "properties": {
-            "scheme_name": {
+            "schema_base_uri": {
                "type": "string"
             },
-            "scheme_uri": {
+            "schema_name": {
                "type": "string"
             },
             "value": {
                "type": "string"
             }
          },
-         "required": [
-            "scheme_name"
-         ],
+         "required": [],
          "title": "AcademicField",
          "type": "object"
       },
@@ -260,11 +266,21 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
+            },
             "id": {
                "type": "string"
-            },
-            "identifier": {
-               "$ref": "#/$defs/Identifier"
             },
             "name": {
                "type": "string"
@@ -297,11 +313,21 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
+            },
             "id": {
                "type": "string"
-            },
-            "identifier": {
-               "$ref": "#/$defs/Identifier"
             },
             "name": {
                "type": "string"
@@ -317,11 +343,21 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
+            },
             "id": {
                "type": "string"
-            },
-            "identifier": {
-               "$ref": "#/$defs/Identifier"
             },
             "name": {
                "type": "string"
@@ -360,16 +396,26 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "email": {
                "description": "The email address of the contact person.",
                "pattern": "\\b[-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
                "type": "string"
             },
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
+            },
             "id": {
                "type": "string"
-            },
-            "identifier": {
-               "$ref": "#/$defs/Identifier"
             },
             "name": {
                "type": "string"
@@ -389,11 +435,21 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
+            },
             "id": {
                "type": "string"
-            },
-            "identifier": {
-               "$ref": "#/$defs/Identifier"
             },
             "name": {
                "type": "string"
@@ -420,6 +476,54 @@
             "id"
          ],
          "title": "Country",
+         "type": "object"
+      },
+      "Date": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "duration": {
+               "description": "The duration of an event or series which gets automatically derived, if a stard_date and end_date have been provided.",
+               "format": "date-time",
+               "type": "string"
+            },
+            "end_date": {
+               "description": "Similar to start_date but only for the end of an academic event or event series.",
+               "format": "date-time",
+               "type": "string"
+            },
+            "event_status": {
+               "$ref": "#/$defs/EventStatus"
+            },
+            "start_date": {
+               "description": "The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
+               "format": "date-time",
+               "type": "string"
+            }
+         },
+         "required": [
+            "start_date",
+            "event_status"
+         ],
+         "title": "Date",
+         "type": "object"
+      },
+      "DblpId": {
+         "additionalProperties": false,
+         "description": "The identifier of an academic event or series in dblp.",
+         "properties": {
+            "schema_base_uri": {
+               "type": "string"
+            },
+            "schema_name": {
+               "type": "string"
+            },
+            "value": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "DblpId",
          "type": "object"
       },
       "Deadline": {
@@ -489,7 +593,7 @@
             "id": {
                "type": "string"
             },
-            "other": {
+            "other_format": {
                "type": "string"
             },
             "specified_as": {
@@ -525,39 +629,61 @@
          "title": "EventStatus",
          "type": "string"
       },
-      "Identifier": {
+      "ExternalIdentifier": {
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "id": {
+            "schema_base_uri": {
                "type": "string"
             },
-            "scheme_name": {
-               "type": "string"
-            },
-            "scheme_uri": {
+            "schema_name": {
                "type": "string"
             },
             "value": {
                "type": "string"
             }
          },
-         "required": [
-            "id",
-            "scheme_name"
-         ],
-         "title": "Identifier",
+         "required": [],
+         "title": "ExternalIdentifier",
+         "type": "object"
+      },
+      "GndId": {
+         "additionalProperties": false,
+         "description": "The identifier of a thing (item) in the German National authority file.",
+         "properties": {
+            "schema_base_uri": {
+               "type": "string"
+            },
+            "schema_name": {
+               "type": "string"
+            },
+            "value": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "GndId",
          "type": "object"
       },
       "KeynoteSpeaker": {
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
+            },
             "id": {
                "type": "string"
-            },
-            "identifier": {
-               "$ref": "#/$defs/Identifier"
             },
             "name": {
                "type": "string"
@@ -646,11 +772,21 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
+            },
             "id": {
                "type": "string"
-            },
-            "identifier": {
-               "$ref": "#/$defs/Identifier"
             },
             "name": {
                "type": "string"
@@ -666,11 +802,21 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
+            },
             "id": {
                "type": "string"
-            },
-            "identifier": {
-               "$ref": "#/$defs/Identifier"
             },
             "name": {
                "type": "string"
@@ -686,11 +832,21 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
+            },
             "id": {
                "type": "string"
-            },
-            "identifier": {
-               "$ref": "#/$defs/Identifier"
             },
             "name": {
                "type": "string"
@@ -721,9 +877,6 @@
                "description": "The former official name of an academic event or series. Usually this will only be needed in case an academic event series has undergone a name change.",
                "type": "string"
             },
-            "id": {
-               "type": "string"
-            },
             "name": {
                "type": "string"
             },
@@ -737,7 +890,6 @@
             }
          },
          "required": [
-            "id",
             "official_name"
          ],
          "title": "ProcessName",
@@ -791,11 +943,21 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
+            },
             "id": {
                "type": "string"
-            },
-            "identifier": {
-               "$ref": "#/$defs/Identifier"
             },
             "name": {
                "type": "string"
@@ -811,11 +973,21 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "aliases": {
+               "description": "A property to be used to provide alternative names as strings.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "external_id": {
+               "items": {
+                  "$ref": "#/$defs/ExternalIdentifier"
+               },
+               "type": "array"
+            },
             "id": {
                "type": "string"
-            },
-            "identifier": {
-               "$ref": "#/$defs/Identifier"
             },
             "name": {
                "type": "string"
@@ -825,6 +997,24 @@
             "id"
          ],
          "title": "Sponsor",
+         "type": "object"
+      },
+      "TibkatId": {
+         "additionalProperties": false,
+         "description": "The identifier of a publication in the TIB catalog.",
+         "properties": {
+            "schema_base_uri": {
+               "type": "string"
+            },
+            "schema_name": {
+               "type": "string"
+            },
+            "value": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "TibkatId",
          "type": "object"
       },
       "Venue": {
@@ -845,6 +1035,42 @@
             "id"
          ],
          "title": "Venue",
+         "type": "object"
+      },
+      "WikiCfpId": {
+         "additionalProperties": false,
+         "description": "The identifier of an academic event or series in WikiCFP.",
+         "properties": {
+            "schema_base_uri": {
+               "type": "string"
+            },
+            "schema_name": {
+               "type": "string"
+            },
+            "value": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "WikiCfpId",
+         "type": "object"
+      },
+      "WikidataId": {
+         "additionalProperties": false,
+         "description": "The identifier of a thing (item) in Wikidata.",
+         "properties": {
+            "schema_base_uri": {
+               "type": "string"
+            },
+            "schema_name": {
+               "type": "string"
+            },
+            "value": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "WikidataId",
          "type": "object"
       }
    },

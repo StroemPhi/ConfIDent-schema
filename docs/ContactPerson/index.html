@@ -92,8 +92,8 @@
             <div class="section">
               
                 <h1 id="class-contactperson">Class: ContactPerson</h1>
-<p>URI: <a href="https://github.com/StroemPhi/ConfIDent-schema/ContactPerson">confid:ContactPerson</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer],[Identifier],[PlannedProcess]++-%20contact%200..1&gt;[ContactPerson&#124;id:uriorcurie;email:string%20%3F;telephone:string%20%3F;name(i):string%20%3F],[Organizer]^-[ContactPerson],[PlannedProcess]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer],[Identifier],[PlannedProcess]++-%20contact%200..1&gt;[ContactPerson&#124;id:uriorcurie;email:string%20%3F;telephone:string%20%3F;name(i):string%20%3F],[Organizer]^-[ContactPerson],[PlannedProcess]" /></a></p>
+<p>URI: <a href="https://confident.org/ContactPerson">confident:ContactPerson</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer],[ExternalIdentifier],[PlannedProcess]++-%20contact%200..1&gt;[ContactPerson&#124;id:uriorcurie;email:string%20%3F;telephone:string%20%3F;name(i):string%20%3F;aliases(i):string%20*],[Organizer]^-[ContactPerson],[PlannedProcess]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Organizer],[ExternalIdentifier],[PlannedProcess]++-%20contact%200..1&gt;[ContactPerson&#124;id:uriorcurie;email:string%20%3F;telephone:string%20%3F;name(i):string%20%3F;aliases(i):string%20*],[Organizer]^-[ContactPerson],[PlannedProcess]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../Organizer/">Organizer</a></li>
@@ -117,17 +117,6 @@
 <li><a href="../contactPerson__telephone/">➞telephone</a>  <sub>0..1</sub><ul>
 <li>Description: The telephone number of the contact person.</li>
 <li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="inherited-from-organizer">Inherited from Organizer:</h3>
-<ul>
-<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../contributor__identifier/">➞identifier</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../Identifier/">Identifier</a></li>
 </ul>
 </li>
 </ul>

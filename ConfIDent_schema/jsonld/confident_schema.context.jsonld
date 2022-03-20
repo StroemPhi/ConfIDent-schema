@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-03-14T15:26:34\n    Schema: ConfIDent-schema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/StroemPhi/ConfIDent-schema/\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
+   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-03-20T21:25:04\n    Schema: ConfIDent-schema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/StroemPhi/ConfIDent-schema/\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
    "@context": {
       "aeon": {
          "@id": "https://github.com/tibonto/aeon#AEON_",
@@ -9,10 +9,12 @@
          "@id": "http://purl.obolibrary.org/obo/BFO_",
          "@prefix": true
       },
-      "confid": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "confident": "https://confident.org/",
       "dblp_series": "https://dblp.org/db/conf/",
       "dc": "http://purl.org/dc/terms/",
-      "doi": "https://doi.org/",
+      "doi": {
+         "@type": "@id"
+      },
       "ex": "https://example.com/",
       "iao": {
          "@id": "http://purl.obolibrary.org/obo/IAO_",
@@ -29,7 +31,7 @@
       "sdo": "https://schema.org/",
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "wikidata": "https://www.wikidata.org/wiki/",
-      "@vocab": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "@vocab": "https://confident.org/",
       "at_location": {
          "@type": "@id"
       },
@@ -48,20 +50,8 @@
             "meaning": "@id"
          }
       },
-      "event_status": {
-         "@context": {
-            "@vocab": "@null",
-            "text": "skos:notation",
-            "description": "skos:prefLabel",
-            "meaning": "@id"
-         },
-         "@id": "aeon:event_status"
-      },
       "in_series": {
          "@type": "@id"
-      },
-      "multiple_days": {
-         "@type": "xsd:boolean"
       },
       "ordinal": {
          "@type": "xsd:integer",
@@ -76,9 +66,6 @@
       "aliases": {
          "@id": "skos:altLabel"
       },
-      "website": {
-         "@type": "@id"
-      },
       "events": {
          "@type": "@id"
       },
@@ -92,14 +79,30 @@
          "@id": "sdo:telephone"
       },
       "id": "@id",
-      "identifier": {
-         "@type": "@id",
-         "@id": "sdo:identifier"
+      "duration": {
+         "@type": "xsd:dateTime"
+      },
+      "end_date": {
+         "@type": "xsd:dateTime",
+         "@id": "aeon:end_date"
+      },
+      "event_status": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "aeon:event_status"
+      },
+      "start_date": {
+         "@type": "xsd:dateTime",
+         "@id": "aeon:start_date"
       },
       "deadline_date": {
          "@type": "xsd:dateTime"
       },
-      "other": {
+      "other_format": {
          "@id": "aeon:event_type_other"
       },
       "specified_as": {
@@ -110,6 +113,14 @@
             "meaning": "@id"
          },
          "@id": "obi:0002815"
+      },
+      "external_id": {
+         "@type": "@id",
+         "@id": "iao:0000235"
+      },
+      "gnd_id": {
+         "@type": "@id",
+         "@id": "iao:0000235"
       },
       "city": {
          "@type": "@id"
@@ -142,25 +153,22 @@
          "@type": "xsd:boolean"
       },
       "name": {
-         "@id": "sdo:name"
+         "@type": "@id",
+         "@id": "iao:0000235"
       },
       "academic_fields": {
          "@type": "@id",
          "@id": "aeon:0000040"
       },
-      "alternative_ids": {
-         "@type": "@id"
-      },
       "contact": {
          "@type": "@id"
       },
-      "denoted_by": {
+      "date": {
+         "@type": "@id"
+      },
+      "dpbl_id": {
          "@type": "@id",
          "@id": "iao:0000235"
-      },
-      "end_date": {
-         "@type": "xsd:dateTime",
-         "@id": "sdo:endDate"
       },
       "landing_page": {
          "@type": "@id"
@@ -171,12 +179,13 @@
       "organizers": {
          "@type": "@id"
       },
-      "sponsors": {
-         "@type": "@id"
+      "wikicfp_id": {
+         "@type": "@id",
+         "@id": "iao:0000235"
       },
-      "start_date": {
-         "@type": "xsd:dateTime",
-         "@id": "sdo:startDate"
+      "wikidata_id": {
+         "@type": "@id",
+         "@id": "iao:0000235"
       },
       "acronym": {
          "@id": "aeon:0000091"
@@ -184,7 +193,7 @@
       "official_name": {
          "@id": "skos:perfLabel"
       },
-      "scheme_uri": {
+      "schema_base_uri": {
          "@type": "@id"
       },
       "type": {
@@ -209,6 +218,9 @@
       },
       "ProcessName": {
          "@id": "aeon:0000090"
+      },
+      "WikidataId": {
+         "@id": "wikidata:Q43649390"
       }
    }
 }

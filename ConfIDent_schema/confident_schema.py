@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-14T16:13:47
+# Generation date: 2022-03-20T21:26:07
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -23,8 +23,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Boolean, Datetime, Float, Integer, String, Uri, Uriorcurie
-from linkml_runtime.utils.metamodelcore import Bool, URI, URIorCURIE, XSDDateTime
+from linkml_runtime.linkml_model.types import Boolean, Datetime, Float, Integer, String, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
 version = "0.0.1"
@@ -35,7 +35,7 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 # Namespaces
 AEON = CurieNamespace('aeon', 'https://github.com/tibonto/aeon#AEON_')
 BFO = CurieNamespace('bfo', 'http://purl.obolibrary.org/obo/BFO_')
-CONFID = CurieNamespace('confid', 'https://github.com/StroemPhi/ConfIDent-schema/')
+CONFIDENT = CurieNamespace('confident', 'https://confident.org/')
 DBLP_SERIES = CurieNamespace('dblp_series', 'https://dblp.org/db/conf/')
 DC = CurieNamespace('dc', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://doi.org/')
@@ -49,12 +49,16 @@ ROR = CurieNamespace('ror', 'https://ror.org/')
 SDO = CurieNamespace('sdo', 'https://schema.org/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 WIKIDATA = CurieNamespace('wikidata', 'https://www.wikidata.org/wiki/')
-DEFAULT_ = CONFID
+DEFAULT_ = CONFIDENT
 
 
 # Types
 
 # Class references
+class NamedThingId(URIorCURIE):
+    pass
+
+
 class PlannedProcessId(URIorCURIE):
     pass
 
@@ -64,14 +68,6 @@ class AcademicEventSeriesId(PlannedProcessId):
 
 
 class AcademicEventId(PlannedProcessId):
-    pass
-
-
-class ProcessNameId(URIorCURIE):
-    pass
-
-
-class IdentifierId(URIorCURIE):
     pass
 
 
@@ -140,55 +136,61 @@ class KeynoteSpeakerId(PresenterId):
 
 
 @dataclass
-class SchemaBasedValue(YAMLRoot):
+class SchemaBasedThing(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.SchemaBasedValue
-    class_class_curie: ClassVar[str] = "confid:SchemaBasedValue"
-    class_name: ClassVar[str] = "SchemaBasedValue"
-    class_model_uri: ClassVar[URIRef] = CONFID.SchemaBasedValue
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.SchemaBasedThing
+    class_class_curie: ClassVar[str] = "confident:SchemaBasedThing"
+    class_name: ClassVar[str] = "SchemaBasedThing"
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.SchemaBasedThing
 
-    scheme_name: str = None
     value: Optional[str] = None
-    scheme_uri: Optional[Union[str, URIorCURIE]] = None
+    schema_name: Optional[str] = None
+    schema_base_uri: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.scheme_name):
-            self.MissingRequiredField("scheme_name")
-        if not isinstance(self.scheme_name, str):
-            self.scheme_name = str(self.scheme_name)
-
         if self.value is not None and not isinstance(self.value, str):
             self.value = str(self.value)
 
-        if self.scheme_uri is not None and not isinstance(self.scheme_uri, URIorCURIE):
-            self.scheme_uri = URIorCURIE(self.scheme_uri)
+        if self.schema_name is not None and not isinstance(self.schema_name, str):
+            self.schema_name = str(self.schema_name)
+
+        if self.schema_base_uri is not None and not isinstance(self.schema_base_uri, URIorCURIE):
+            self.schema_base_uri = URIorCURIE(self.schema_base_uri)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class CommonMetadata(YAMLRoot):
+class NamedThing(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.CommonMetadata
-    class_class_curie: ClassVar[str] = "confid:CommonMetadata"
-    class_name: ClassVar[str] = "CommonMetadata"
-    class_model_uri: ClassVar[URIRef] = CONFID.CommonMetadata
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.NamedThing
+    class_class_curie: ClassVar[str] = "confident:NamedThing"
+    class_name: ClassVar[str] = "NamedThing"
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.NamedThing
 
-    website: Optional[Union[str, URI]] = None
-    logo: Optional[str] = None
-    summary: Optional[str] = None
+    id: Union[str, NamedThingId] = None
+    external_id: Optional[Union[Union[dict, "ExternalIdentifier"], List[Union[dict, "ExternalIdentifier"]]]] = empty_list()
+    name: Optional[str] = None
+    aliases: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.website is not None and not isinstance(self.website, URI):
-            self.website = URI(self.website)
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, NamedThingId):
+            self.id = NamedThingId(self.id)
 
-        if self.logo is not None and not isinstance(self.logo, str):
-            self.logo = str(self.logo)
+        if not isinstance(self.external_id, list):
+            self.external_id = [self.external_id] if self.external_id is not None else []
+        self.external_id = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(**as_dict(v)) for v in self.external_id]
 
-        if self.summary is not None and not isinstance(self.summary, str):
-            self.summary = str(self.summary)
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if not isinstance(self.aliases, list):
+            self.aliases = [self.aliases] if self.aliases is not None else []
+        self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
         super().__post_init__(**kwargs)
 
@@ -200,24 +202,28 @@ class PlannedProcess(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = OBI["0000011"]
     class_class_curie: ClassVar[str] = "obi:0000011"
     class_name: ClassVar[str] = "PlannedProcess"
-    class_model_uri: ClassVar[URIRef] = CONFID.PlannedProcess
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.PlannedProcess
 
     id: Union[str, PlannedProcessId] = None
-    denoted_by: Union[dict, "ProcessName"] = None
-    start_date: Union[str, XSDDateTime] = None
-    end_date: Union[str, XSDDateTime] = None
-    organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
+    doi: Optional[Union[str, URIorCURIE]] = None
     landing_page: Optional[Union[str, URIorCURIE]] = None
-    alternative_ids: Optional[Union[Dict[Union[str, IdentifierId], Union[dict, "Identifier"]], List[Union[dict, "Identifier"]]]] = empty_dict()
+    name: Optional[Union[dict, "ProcessName"]] = None
+    date: Optional[Union[dict, "Date"]] = None
+    organizers: Optional[Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]]] = empty_dict()
     contact: Optional[Union[dict, "ContactPerson"]] = None
-    sponsors: Optional[Union[Dict[Union[str, SponsorId], Union[dict, "Sponsor"]], List[Union[dict, "Sponsor"]]]] = empty_dict()
+    sponsors: Optional[Union[str, List[str]]] = empty_list()
     outputs: Optional[Union[str, List[str]]] = empty_list()
     topics: Optional[Union[str, List[str]]] = empty_list()
     academic_fields: Optional[Union[Union[dict, "AcademicField"], List[Union[dict, "AcademicField"]]]] = empty_list()
     metrics: Optional[Union[Union[dict, "Metric"], List[Union[dict, "Metric"]]]] = empty_list()
-    website: Optional[Union[str, URI]] = None
+    website: Optional[str] = None
     logo: Optional[str] = None
     summary: Optional[str] = None
+    wikidata_id: Optional[Union[dict, "WikidataId"]] = None
+    wikicfp_id: Optional[Union[dict, "WikiCfpId"]] = None
+    dpbl_id: Optional[Union[dict, "DblpId"]] = None
+    external_id: Optional[Union[Union[dict, "ExternalIdentifier"], List[Union[dict, "ExternalIdentifier"]]]] = empty_list()
+    aliases: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -225,34 +231,26 @@ class PlannedProcess(YAMLRoot):
         if not isinstance(self.id, PlannedProcessId):
             self.id = PlannedProcessId(self.id)
 
-        if self._is_empty(self.denoted_by):
-            self.MissingRequiredField("denoted_by")
-        if not isinstance(self.denoted_by, ProcessName):
-            self.denoted_by = ProcessName(**as_dict(self.denoted_by))
-
-        if self._is_empty(self.start_date):
-            self.MissingRequiredField("start_date")
-        if not isinstance(self.start_date, XSDDateTime):
-            self.start_date = XSDDateTime(self.start_date)
-
-        if self._is_empty(self.end_date):
-            self.MissingRequiredField("end_date")
-        if not isinstance(self.end_date, XSDDateTime):
-            self.end_date = XSDDateTime(self.end_date)
-
-        if self._is_empty(self.organizers):
-            self.MissingRequiredField("organizers")
-        self._normalize_inlined_as_list(slot_name="organizers", slot_type=Organizer, key_name="id", keyed=True)
+        if self.doi is not None and not isinstance(self.doi, URIorCURIE):
+            self.doi = URIorCURIE(self.doi)
 
         if self.landing_page is not None and not isinstance(self.landing_page, URIorCURIE):
             self.landing_page = URIorCURIE(self.landing_page)
 
-        self._normalize_inlined_as_list(slot_name="alternative_ids", slot_type=Identifier, key_name="id", keyed=True)
+        if self.name is not None and not isinstance(self.name, ProcessName):
+            self.name = ProcessName(**as_dict(self.name))
+
+        if self.date is not None and not isinstance(self.date, Date):
+            self.date = Date(**as_dict(self.date))
+
+        self._normalize_inlined_as_list(slot_name="organizers", slot_type=Organizer, key_name="id", keyed=True)
 
         if self.contact is not None and not isinstance(self.contact, ContactPerson):
             self.contact = ContactPerson(**as_dict(self.contact))
 
-        self._normalize_inlined_as_list(slot_name="sponsors", slot_type=Sponsor, key_name="id", keyed=True)
+        if not isinstance(self.sponsors, list):
+            self.sponsors = [self.sponsors] if self.sponsors is not None else []
+        self.sponsors = [v if isinstance(v, str) else str(v) for v in self.sponsors]
 
         if not isinstance(self.outputs, list):
             self.outputs = [self.outputs] if self.outputs is not None else []
@@ -270,14 +268,31 @@ class PlannedProcess(YAMLRoot):
             self.metrics = [self.metrics] if self.metrics is not None else []
         self.metrics = [v if isinstance(v, Metric) else Metric(**as_dict(v)) for v in self.metrics]
 
-        if self.website is not None and not isinstance(self.website, URI):
-            self.website = URI(self.website)
+        if self.website is not None and not isinstance(self.website, str):
+            self.website = str(self.website)
 
         if self.logo is not None and not isinstance(self.logo, str):
             self.logo = str(self.logo)
 
         if self.summary is not None and not isinstance(self.summary, str):
             self.summary = str(self.summary)
+
+        if self.wikidata_id is not None and not isinstance(self.wikidata_id, WikidataId):
+            self.wikidata_id = WikidataId(**as_dict(self.wikidata_id))
+
+        if self.wikicfp_id is not None and not isinstance(self.wikicfp_id, WikiCfpId):
+            self.wikicfp_id = WikiCfpId(**as_dict(self.wikicfp_id))
+
+        if self.dpbl_id is not None and not isinstance(self.dpbl_id, DblpId):
+            self.dpbl_id = DblpId(**as_dict(self.dpbl_id))
+
+        if not isinstance(self.external_id, list):
+            self.external_id = [self.external_id] if self.external_id is not None else []
+        self.external_id = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(**as_dict(v)) for v in self.external_id]
+
+        if not isinstance(self.aliases, list):
+            self.aliases = [self.aliases] if self.aliases is not None else []
+        self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
         super().__post_init__(**kwargs)
 
@@ -296,13 +311,9 @@ class AcademicEventSeries(PlannedProcess):
     class_class_uri: ClassVar[URIRef] = AEON["0000002"]
     class_class_curie: ClassVar[str] = "aeon:0000002"
     class_name: ClassVar[str] = "AcademicEventSeries"
-    class_model_uri: ClassVar[URIRef] = CONFID.AcademicEventSeries
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.AcademicEventSeries
 
     id: Union[str, AcademicEventSeriesId] = None
-    denoted_by: Union[dict, "ProcessName"] = None
-    start_date: Union[str, XSDDateTime] = None
-    end_date: Union[str, XSDDateTime] = None
-    organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
     series_of: Optional[Union[Dict[Union[str, AcademicEventId], Union[dict, "AcademicEvent"]], List[Union[dict, "AcademicEvent"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -332,16 +343,10 @@ class AcademicEvent(PlannedProcess):
     class_class_uri: ClassVar[URIRef] = AEON["0000001"]
     class_class_curie: ClassVar[str] = "aeon:0000001"
     class_name: ClassVar[str] = "AcademicEvent"
-    class_model_uri: ClassVar[URIRef] = CONFID.AcademicEvent
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.AcademicEvent
 
     id: Union[str, AcademicEventId] = None
-    denoted_by: Union[dict, "ProcessName"] = None
-    start_date: Union[str, XSDDateTime] = None
-    end_date: Union[str, XSDDateTime] = None
-    organizers: Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]] = empty_dict()
-    event_status: Union[str, "EventStatus"] = None
     event_format: Optional[Union[dict, "EventFormatSpecification"]] = None
-    multiple_days: Optional[Union[bool, Bool]] = None
     event_mode: Optional[Union[str, "EventMode"]] = None
     at_location: Optional[Union[dict, "Location"]] = None
     in_series: Optional[Union[str, AcademicEventSeriesId]] = None
@@ -355,16 +360,8 @@ class AcademicEvent(PlannedProcess):
         if not isinstance(self.id, AcademicEventId):
             self.id = AcademicEventId(self.id)
 
-        if self._is_empty(self.event_status):
-            self.MissingRequiredField("event_status")
-        if not isinstance(self.event_status, EventStatus):
-            self.event_status = EventStatus(self.event_status)
-
         if self.event_format is not None and not isinstance(self.event_format, EventFormatSpecification):
             self.event_format = EventFormatSpecification(**as_dict(self.event_format))
-
-        if self.multiple_days is not None and not isinstance(self.multiple_days, Bool):
-            self.multiple_days = Bool(self.multiple_days)
 
         if self.event_mode is not None and not isinstance(self.event_mode, EventMode):
             self.event_mode = EventMode(self.event_mode)
@@ -388,16 +385,49 @@ class AcademicEvent(PlannedProcess):
 
 
 @dataclass
+class Date(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Date
+    class_class_curie: ClassVar[str] = "confident:Date"
+    class_name: ClassVar[str] = "Date"
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Date
+
+    start_date: Union[str, XSDDateTime] = None
+    event_status: Union[str, "EventStatus"] = "as scheduled"
+    end_date: Optional[Union[str, XSDDateTime]] = None
+    duration: Optional[Union[str, XSDDateTime]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.start_date):
+            self.MissingRequiredField("start_date")
+        if not isinstance(self.start_date, XSDDateTime):
+            self.start_date = XSDDateTime(self.start_date)
+
+        if self._is_empty(self.event_status):
+            self.MissingRequiredField("event_status")
+        if not isinstance(self.event_status, EventStatus):
+            self.event_status = EventStatus(self.event_status)
+
+        if self.end_date is not None and not isinstance(self.end_date, XSDDateTime):
+            self.end_date = XSDDateTime(self.end_date)
+
+        if self.duration is not None and not isinstance(self.duration, XSDDateTime):
+            self.duration = XSDDateTime(self.duration)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class ProcessName(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = AEON["0000090"]
     class_class_curie: ClassVar[str] = "aeon:0000090"
     class_name: ClassVar[str] = "ProcessName"
-    class_model_uri: ClassVar[URIRef] = CONFID.ProcessName
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.ProcessName
 
     official_name: str = None
-    id: Union[str, ProcessNameId] = EX.ProcessName
     name: Optional[str] = None
     aliases: Optional[Union[str, List[str]]] = empty_list()
     acronym: Optional[str] = None
@@ -405,11 +435,6 @@ class ProcessName(YAMLRoot):
     translated_name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ProcessNameId):
-            self.id = ProcessNameId(self.id)
-
         if self._is_empty(self.official_name):
             self.MissingRequiredField("official_name")
         if not isinstance(self.official_name, str):
@@ -435,35 +460,152 @@ class ProcessName(YAMLRoot):
 
 
 @dataclass
-class Identifier(YAMLRoot):
+class ExternalIdentifier(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Identifier
-    class_class_curie: ClassVar[str] = "confid:Identifier"
-    class_name: ClassVar[str] = "Identifier"
-    class_model_uri: ClassVar[URIRef] = CONFID.Identifier
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.ExternalIdentifier
+    class_class_curie: ClassVar[str] = "confident:ExternalIdentifier"
+    class_name: ClassVar[str] = "ExternalIdentifier"
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.ExternalIdentifier
 
-    id: Union[str, IdentifierId] = None
-    scheme_name: str = None
     value: Optional[str] = None
-    scheme_uri: Optional[Union[str, URIorCURIE]] = None
+    schema_name: Optional[str] = None
+    schema_base_uri: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, IdentifierId):
-            self.id = IdentifierId(self.id)
-
-        if self._is_empty(self.scheme_name):
-            self.MissingRequiredField("scheme_name")
-        if not isinstance(self.scheme_name, str):
-            self.scheme_name = str(self.scheme_name)
-
         if self.value is not None and not isinstance(self.value, str):
             self.value = str(self.value)
 
-        if self.scheme_uri is not None and not isinstance(self.scheme_uri, URIorCURIE):
-            self.scheme_uri = URIorCURIE(self.scheme_uri)
+        if self.schema_name is not None and not isinstance(self.schema_name, str):
+            self.schema_name = str(self.schema_name)
+
+        if self.schema_base_uri is not None and not isinstance(self.schema_base_uri, URIorCURIE):
+            self.schema_base_uri = URIorCURIE(self.schema_base_uri)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class WikidataId(ExternalIdentifier):
+    """
+    The identifier of a thing (item) in Wikidata.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = WIKIDATA.Q43649390
+    class_class_curie: ClassVar[str] = "wikidata:Q43649390"
+    class_name: ClassVar[str] = "WikidataId"
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.WikidataId
+
+    schema_name: Optional[str] = "Wikidata"
+    schema_base_uri: Optional[Union[str, URIorCURIE]] = "https://www.wikidata.org/entity/"
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.schema_name is not None and not isinstance(self.schema_name, str):
+            self.schema_name = str(self.schema_name)
+
+        if self.schema_base_uri is not None and not isinstance(self.schema_base_uri, URIorCURIE):
+            self.schema_base_uri = URIorCURIE(self.schema_base_uri)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class GndId(ExternalIdentifier):
+    """
+    The identifier of a thing (item) in the German National authority file.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.GndId
+    class_class_curie: ClassVar[str] = "confident:GndId"
+    class_name: ClassVar[str] = "GndId"
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.GndId
+
+    schema_name: Optional[str] = "GND"
+    schema_base_uri: Optional[Union[str, URIorCURIE]] = "http://d-nb.info/gnd/"
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.schema_name is not None and not isinstance(self.schema_name, str):
+            self.schema_name = str(self.schema_name)
+
+        if self.schema_base_uri is not None and not isinstance(self.schema_base_uri, URIorCURIE):
+            self.schema_base_uri = URIorCURIE(self.schema_base_uri)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class TibkatId(ExternalIdentifier):
+    """
+    The identifier of a publication in the TIB catalog.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.TibkatId
+    class_class_curie: ClassVar[str] = "confident:TibkatId"
+    class_name: ClassVar[str] = "TibkatId"
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.TibkatId
+
+    schema_name: Optional[str] = "TIBKAT"
+    schema_base_uri: Optional[Union[str, URIorCURIE]] = "https://www.tib.eu/en/search/id/TIBKAT:"
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.schema_name is not None and not isinstance(self.schema_name, str):
+            self.schema_name = str(self.schema_name)
+
+        if self.schema_base_uri is not None and not isinstance(self.schema_base_uri, URIorCURIE):
+            self.schema_base_uri = URIorCURIE(self.schema_base_uri)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class DblpId(ExternalIdentifier):
+    """
+    The identifier of an academic event or series in dblp.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.DblpId
+    class_class_curie: ClassVar[str] = "confident:DblpId"
+    class_name: ClassVar[str] = "DblpId"
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.DblpId
+
+    schema_name: Optional[str] = "dblp"
+    schema_base_uri: Optional[Union[str, URIorCURIE]] = URIRef(str(DBLP_SERIES))
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.schema_name is not None and not isinstance(self.schema_name, str):
+            self.schema_name = str(self.schema_name)
+
+        if self.schema_base_uri is not None and not isinstance(self.schema_base_uri, URIorCURIE):
+            self.schema_base_uri = URIorCURIE(self.schema_base_uri)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class WikiCfpId(ExternalIdentifier):
+    """
+    The identifier of an academic event or series in WikiCFP.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.WikiCfpId
+    class_class_curie: ClassVar[str] = "confident:WikiCfpId"
+    class_name: ClassVar[str] = "WikiCfpId"
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.WikiCfpId
+
+    schema_name: Optional[str] = "WikiCFP"
+    schema_base_uri: Optional[Union[str, URIorCURIE]] = "http://www.wikicfp.com/cfp/program?id="
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.schema_name is not None and not isinstance(self.schema_name, str):
+            self.schema_name = str(self.schema_name)
+
+        if self.schema_base_uri is not None and not isinstance(self.schema_base_uri, URIorCURIE):
+            self.schema_base_uri = URIorCURIE(self.schema_base_uri)
 
         super().__post_init__(**kwargs)
 
@@ -485,11 +627,11 @@ class EventFormatSpecification(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = AEON["0000004"]
     class_class_curie: ClassVar[str] = "aeon:0000004"
     class_name: ClassVar[str] = "EventFormatSpecification"
-    class_model_uri: ClassVar[URIRef] = CONFID.EventFormatSpecification
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.EventFormatSpecification
 
     specified_as: Union[str, "EventFormat"] = None
     id: Union[str, EventFormatSpecificationId] = EX.EventType
-    other: Optional[str] = None
+    other_format: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -502,8 +644,8 @@ class EventFormatSpecification(YAMLRoot):
         if not isinstance(self.specified_as, EventFormat):
             self.specified_as = EventFormat(self.specified_as)
 
-        if self.other is not None and not isinstance(self.other, str):
-            self.other = str(self.other)
+        if self.other_format is not None and not isinstance(self.other_format, str):
+            self.other_format = str(self.other_format)
 
         super().__post_init__(**kwargs)
 
@@ -512,10 +654,10 @@ class EventFormatSpecification(YAMLRoot):
 class Deadline(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Deadline
-    class_class_curie: ClassVar[str] = "confid:Deadline"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Deadline
+    class_class_curie: ClassVar[str] = "confident:Deadline"
     class_name: ClassVar[str] = "Deadline"
-    class_model_uri: ClassVar[URIRef] = CONFID.Deadline
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Deadline
 
     deadline_date: Union[str, XSDDateTime] = None
     type: Union[str, "DeadlineType"] = None
@@ -542,10 +684,10 @@ class Deadline(YAMLRoot):
 class Metric(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Metric
-    class_class_curie: ClassVar[str] = "confid:Metric"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Metric
+    class_class_curie: ClassVar[str] = "confident:Metric"
     class_name: ClassVar[str] = "Metric"
-    class_model_uri: ClassVar[URIRef] = CONFID.Metric
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Metric
 
     type: Union[str, "MetricType"] = None
     int_value: Optional[int] = None
@@ -582,10 +724,10 @@ class Metric(YAMLRoot):
 class ProcessRelation(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.ProcessRelation
-    class_class_curie: ClassVar[str] = "confid:ProcessRelation"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.ProcessRelation
+    class_class_curie: ClassVar[str] = "confident:ProcessRelation"
     class_name: ClassVar[str] = "ProcessRelation"
-    class_model_uri: ClassVar[URIRef] = CONFID.ProcessRelation
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.ProcessRelation
 
     type: Union[str, "RelationType"] = None
 
@@ -602,10 +744,10 @@ class ProcessRelation(YAMLRoot):
 class Location(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Location
-    class_class_curie: ClassVar[str] = "confid:Location"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Location
+    class_class_curie: ClassVar[str] = "confident:Location"
     class_name: ClassVar[str] = "Location"
-    class_model_uri: ClassVar[URIRef] = CONFID.Location
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Location
 
     city: Optional[Union[str, CityId]] = None
     country: Optional[Union[str, CountryId]] = None
@@ -644,10 +786,10 @@ class Location(YAMLRoot):
 class City(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.City
-    class_class_curie: ClassVar[str] = "confid:City"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.City
+    class_class_curie: ClassVar[str] = "confident:City"
     class_name: ClassVar[str] = "City"
-    class_model_uri: ClassVar[URIRef] = CONFID.City
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.City
 
     id: Union[str, CityId] = None
     name: Optional[str] = None
@@ -668,10 +810,10 @@ class City(YAMLRoot):
 class Country(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Country
-    class_class_curie: ClassVar[str] = "confid:Country"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Country
+    class_class_curie: ClassVar[str] = "confident:Country"
     class_name: ClassVar[str] = "Country"
-    class_model_uri: ClassVar[URIRef] = CONFID.Country
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Country
 
     id: Union[str, CountryId] = None
     name: Optional[str] = None
@@ -692,10 +834,10 @@ class Country(YAMLRoot):
 class Region(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Region
-    class_class_curie: ClassVar[str] = "confid:Region"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Region
+    class_class_curie: ClassVar[str] = "confident:Region"
     class_name: ClassVar[str] = "Region"
-    class_model_uri: ClassVar[URIRef] = CONFID.Region
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Region
 
     id: Union[str, RegionId] = None
     name: Optional[str] = None
@@ -716,10 +858,10 @@ class Region(YAMLRoot):
 class Venue(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Venue
-    class_class_curie: ClassVar[str] = "confid:Venue"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Venue
+    class_class_curie: ClassVar[str] = "confident:Venue"
     class_name: ClassVar[str] = "Venue"
-    class_model_uri: ClassVar[URIRef] = CONFID.Venue
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Venue
 
     id: Union[str, VenueId] = None
     name: Optional[str] = None
@@ -748,26 +890,24 @@ class AcademicField(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.AcademicField
-    class_class_curie: ClassVar[str] = "confid:AcademicField"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.AcademicField
+    class_class_curie: ClassVar[str] = "confident:AcademicField"
     class_name: ClassVar[str] = "AcademicField"
-    class_model_uri: ClassVar[URIRef] = CONFID.AcademicField
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.AcademicField
 
-    scheme_name: str = None
     value: Optional[str] = None
-    scheme_uri: Optional[Union[str, URIorCURIE]] = None
+    schema_name: Optional[str] = None
+    schema_base_uri: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.scheme_name):
-            self.MissingRequiredField("scheme_name")
-        if not isinstance(self.scheme_name, str):
-            self.scheme_name = str(self.scheme_name)
-
         if self.value is not None and not isinstance(self.value, str):
             self.value = str(self.value)
 
-        if self.scheme_uri is not None and not isinstance(self.scheme_uri, URIorCURIE):
-            self.scheme_uri = URIorCURIE(self.scheme_uri)
+        if self.schema_name is not None and not isinstance(self.schema_name, str):
+            self.schema_name = str(self.schema_name)
+
+        if self.schema_base_uri is not None and not isinstance(self.schema_base_uri, URIorCURIE):
+            self.schema_base_uri = URIorCURIE(self.schema_base_uri)
 
         super().__post_init__(**kwargs)
 
@@ -776,14 +916,15 @@ class AcademicField(YAMLRoot):
 class Contributor(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Contributor
-    class_class_curie: ClassVar[str] = "confid:Contributor"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Contributor
+    class_class_curie: ClassVar[str] = "confident:Contributor"
     class_name: ClassVar[str] = "Contributor"
-    class_model_uri: ClassVar[URIRef] = CONFID.Contributor
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Contributor
 
     id: Union[str, ContributorId] = None
+    external_id: Optional[Union[Union[dict, ExternalIdentifier], List[Union[dict, ExternalIdentifier]]]] = empty_list()
     name: Optional[str] = None
-    identifier: Optional[Union[dict, Identifier]] = None
+    aliases: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -791,11 +932,16 @@ class Contributor(YAMLRoot):
         if not isinstance(self.id, ContributorId):
             self.id = ContributorId(self.id)
 
+        if not isinstance(self.external_id, list):
+            self.external_id = [self.external_id] if self.external_id is not None else []
+        self.external_id = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(**as_dict(v)) for v in self.external_id]
+
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.identifier is not None and not isinstance(self.identifier, Identifier):
-            self.identifier = Identifier(**as_dict(self.identifier))
+        if not isinstance(self.aliases, list):
+            self.aliases = [self.aliases] if self.aliases is not None else []
+        self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
         super().__post_init__(**kwargs)
 
@@ -804,10 +950,10 @@ class Contributor(YAMLRoot):
 class Sponsor(Contributor):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Sponsor
-    class_class_curie: ClassVar[str] = "confid:Sponsor"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Sponsor
+    class_class_curie: ClassVar[str] = "confident:Sponsor"
     class_name: ClassVar[str] = "Sponsor"
-    class_model_uri: ClassVar[URIRef] = CONFID.Sponsor
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Sponsor
 
     id: Union[str, SponsorId] = None
 
@@ -824,10 +970,10 @@ class Sponsor(Contributor):
 class Attendee(Contributor):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Attendee
-    class_class_curie: ClassVar[str] = "confid:Attendee"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Attendee
+    class_class_curie: ClassVar[str] = "confident:Attendee"
     class_name: ClassVar[str] = "Attendee"
-    class_model_uri: ClassVar[URIRef] = CONFID.Attendee
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Attendee
 
     id: Union[str, AttendeeId] = None
 
@@ -844,10 +990,10 @@ class Attendee(Contributor):
 class Moderator(Contributor):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Moderator
-    class_class_curie: ClassVar[str] = "confid:Moderator"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Moderator
+    class_class_curie: ClassVar[str] = "confident:Moderator"
     class_name: ClassVar[str] = "Moderator"
-    class_model_uri: ClassVar[URIRef] = CONFID.Moderator
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Moderator
 
     id: Union[str, ModeratorId] = None
 
@@ -864,10 +1010,10 @@ class Moderator(Contributor):
 class Reviewer(Contributor):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Reviewer
-    class_class_curie: ClassVar[str] = "confid:Reviewer"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Reviewer
+    class_class_curie: ClassVar[str] = "confident:Reviewer"
     class_name: ClassVar[str] = "Reviewer"
-    class_model_uri: ClassVar[URIRef] = CONFID.Reviewer
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Reviewer
 
     id: Union[str, ReviewerId] = None
 
@@ -884,10 +1030,10 @@ class Reviewer(Contributor):
 class Organizer(Contributor):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Organizer
-    class_class_curie: ClassVar[str] = "confid:Organizer"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Organizer
+    class_class_curie: ClassVar[str] = "confident:Organizer"
     class_name: ClassVar[str] = "Organizer"
-    class_model_uri: ClassVar[URIRef] = CONFID.Organizer
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Organizer
 
     id: Union[str, OrganizerId] = None
 
@@ -904,10 +1050,10 @@ class Organizer(Contributor):
 class ContactPerson(Organizer):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.ContactPerson
-    class_class_curie: ClassVar[str] = "confid:ContactPerson"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.ContactPerson
+    class_class_curie: ClassVar[str] = "confident:ContactPerson"
     class_name: ClassVar[str] = "ContactPerson"
-    class_model_uri: ClassVar[URIRef] = CONFID.ContactPerson
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.ContactPerson
 
     id: Union[str, ContactPersonId] = EX.ContactPerson
     email: Optional[str] = None
@@ -932,10 +1078,10 @@ class ContactPerson(Organizer):
 class CommitteeMember(Organizer):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.CommitteeMember
-    class_class_curie: ClassVar[str] = "confid:CommitteeMember"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.CommitteeMember
+    class_class_curie: ClassVar[str] = "confident:CommitteeMember"
     class_name: ClassVar[str] = "CommitteeMember"
-    class_model_uri: ClassVar[URIRef] = CONFID.CommitteeMember
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.CommitteeMember
 
     id: Union[str, CommitteeMemberId] = None
 
@@ -952,10 +1098,10 @@ class CommitteeMember(Organizer):
 class CommitteeChair(CommitteeMember):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.CommitteeChair
-    class_class_curie: ClassVar[str] = "confid:CommitteeChair"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.CommitteeChair
+    class_class_curie: ClassVar[str] = "confident:CommitteeChair"
     class_name: ClassVar[str] = "CommitteeChair"
-    class_model_uri: ClassVar[URIRef] = CONFID.CommitteeChair
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.CommitteeChair
 
     id: Union[str, CommitteeChairId] = None
 
@@ -972,10 +1118,10 @@ class CommitteeChair(CommitteeMember):
 class Presenter(Contributor):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.Presenter
-    class_class_curie: ClassVar[str] = "confid:Presenter"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Presenter
+    class_class_curie: ClassVar[str] = "confident:Presenter"
     class_name: ClassVar[str] = "Presenter"
-    class_model_uri: ClassVar[URIRef] = CONFID.Presenter
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Presenter
 
     id: Union[str, PresenterId] = None
 
@@ -992,10 +1138,10 @@ class Presenter(Contributor):
 class KeynoteSpeaker(Presenter):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.KeynoteSpeaker
-    class_class_curie: ClassVar[str] = "confid:KeynoteSpeaker"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.KeynoteSpeaker
+    class_class_curie: ClassVar[str] = "confident:KeynoteSpeaker"
     class_name: ClassVar[str] = "KeynoteSpeaker"
-    class_model_uri: ClassVar[URIRef] = CONFID.KeynoteSpeaker
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.KeynoteSpeaker
 
     id: Union[str, KeynoteSpeakerId] = None
 
@@ -1015,10 +1161,10 @@ class ConfIDentRecords(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CONFID.ConfIDentRecords
-    class_class_curie: ClassVar[str] = "confid:ConfIDentRecords"
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.ConfIDentRecords
+    class_class_curie: ClassVar[str] = "confident:ConfIDentRecords"
     class_name: ClassVar[str] = "ConfIDentRecords"
-    class_model_uri: ClassVar[URIRef] = CONFID.ConfIDentRecords
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.ConfIDentRecords
 
     events: Optional[Union[Dict[Union[str, AcademicEventId], Union[dict, AcademicEvent]], List[Union[dict, AcademicEvent]]]] = empty_dict()
     series: Optional[Union[Dict[Union[str, AcademicEventSeriesId], Union[dict, AcademicEventSeries]], List[Union[dict, AcademicEventSeries]]]] = empty_dict()
