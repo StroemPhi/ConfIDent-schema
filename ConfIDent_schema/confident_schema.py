@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-20T22:41:23
+# Generation date: 2022-03-21T08:59:19
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -210,8 +210,7 @@ class PlannedProcess(YAMLRoot):
     id: Union[str, PlannedProcessId] = None
     doi: Optional[Union[str, URIorCURIE]] = None
     landing_page: Optional[Union[str, URIorCURIE]] = None
-    name: Optional[Union[dict, "ProcessName"]] = None
-    date: Optional[Union[dict, "Date"]] = None
+    dates: Optional[Union[dict, "Date"]] = None
     organizers: Optional[Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]]] = empty_dict()
     contact: Optional[Union[dict, "ContactPerson"]] = None
     sponsors: Optional[Union[str, List[str]]] = empty_list()
@@ -224,6 +223,8 @@ class PlannedProcess(YAMLRoot):
     wikidata_id: Optional[Union[dict, "WikidataId"]] = None
     wikicfp_id: Optional[Union[dict, "WikiCfpId"]] = None
     dpbl_id: Optional[Union[dict, "DblpId"]] = None
+    gnd_id: Optional[Union[dict, "GndId"]] = None
+    name: Optional[Union[dict, "ProcessName"]] = None
     external_id: Optional[Union[Union[dict, "ExternalIdentifier"], List[Union[dict, "ExternalIdentifier"]]]] = empty_list()
     aliases: Optional[Union[str, List[str]]] = empty_list()
 
@@ -239,11 +240,11 @@ class PlannedProcess(YAMLRoot):
         if self.landing_page is not None and not isinstance(self.landing_page, URIorCURIE):
             self.landing_page = URIorCURIE(self.landing_page)
 
-        if self.name is not None and not isinstance(self.name, ProcessName):
-            self.name = ProcessName(**as_dict(self.name))
+        if self.landing_page is not None and not isinstance(self.landing_page, URIorCURIE):
+            self.landing_page = URIorCURIE(self.landing_page)
 
-        if self.date is not None and not isinstance(self.date, Date):
-            self.date = Date(**as_dict(self.date))
+        if self.dates is not None and not isinstance(self.dates, Date):
+            self.dates = Date(**as_dict(self.dates))
 
         self._normalize_inlined_as_list(slot_name="organizers", slot_type=Organizer, key_name="id", keyed=True)
 
@@ -284,6 +285,12 @@ class PlannedProcess(YAMLRoot):
 
         if self.dpbl_id is not None and not isinstance(self.dpbl_id, DblpId):
             self.dpbl_id = DblpId(**as_dict(self.dpbl_id))
+
+        if self.gnd_id is not None and not isinstance(self.gnd_id, GndId):
+            self.gnd_id = GndId(**as_dict(self.gnd_id))
+
+        if self.name is not None and not isinstance(self.name, ProcessName):
+            self.name = ProcessName(**as_dict(self.name))
 
         if not isinstance(self.external_id, list):
             self.external_id = [self.external_id] if self.external_id is not None else []
@@ -391,6 +398,9 @@ class AcademicEvent(PlannedProcess):
 
 @dataclass
 class Date(YAMLRoot):
+    """
+    A container for the start and end date, the date status as well as the duration of a planned process.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFIDENT.Date
@@ -1266,6 +1276,9 @@ class EventMode(EnumDefinitionImpl):
 
 class DeadlineType(EnumDefinitionImpl):
 
+    other = PermissibleValue(text="other",
+                                 description="This value is to be used, if the other allowed values are not applicable.")
+
     _defn = EnumDefinition(
         name="DeadlineType",
     )
@@ -1335,7 +1348,7 @@ class MetricType(EnumDefinitionImpl):
                 PermissibleValue(text="has childcare options") )
         setattr(cls, "is accessible",
                 PermissibleValue(text="is accessible",
-                                 description="If true then accessible for people with impairments.") )
+                                 description="If true then the event is accessible for people with impairments.") )
 
 # Slots
 

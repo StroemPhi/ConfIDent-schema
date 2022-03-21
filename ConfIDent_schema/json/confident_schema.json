@@ -394,6 +394,10 @@
         {
           "text": "workshop deadline",
           "meaning": "aeon:0000069"
+        },
+        {
+          "text": "other",
+          "description": "This value is to be used, if the other allowed values are not applicable."
         }
       ]
     },
@@ -447,7 +451,7 @@
         },
         {
           "text": "is accessible",
-          "description": "If true then accessible for people with impairments."
+          "description": "If true then the event is accessible for people with impairments."
         }
       ]
     }
@@ -515,6 +519,10 @@
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
       "inlined": true,
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
       "range": "GndId",
       "@type": "SlotDefinition"
     },
@@ -609,12 +617,12 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__landing_page",
+      "name": "landing_page",
+      "definition_uri": "https://confident.org/landing_page",
       "description": "The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "https://confident.org/landing_page",
-      "alias": "landing_page",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -623,29 +631,12 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__name",
-      "mappings": [
-        "http://purl.obolibrary.org/obo/IAO_0000235"
-      ],
-      "description": "This property is used to provide a name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc).",
-      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
-      "inlined": true,
-      "alias": "name",
-      "owner": "PlannedProcess",
-      "domain_of": [
-        "PlannedProcess"
-      ],
-      "range": "ProcessName",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "plannedProcess__date",
+      "name": "dates",
+      "definition_uri": "https://confident.org/dates",
       "description": "A property refering to a date container that holds the start date, end date and status of a planned process.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "slot_uri": "https://confident.org/date",
+      "slot_uri": "https://confident.org/dates",
       "inlined": true,
-      "alias": "date",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -654,13 +645,13 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__organizers",
+      "name": "organizers",
+      "definition_uri": "https://confident.org/organizers",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/organizers",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
-      "alias": "organizers",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -669,12 +660,12 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__contact",
+      "name": "contact",
+      "definition_uri": "https://confident.org/contact",
       "description": "The contact person of an academic event or event series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/contact",
       "inlined": true,
-      "alias": "contact",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -683,12 +674,12 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__sponsors",
+      "name": "sponsors",
+      "definition_uri": "https://confident.org/sponsors",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/sponsors",
       "multivalued": true,
       "inlined_as_list": true,
-      "alias": "sponsors",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -697,12 +688,12 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__outputs",
+      "name": "outputs",
+      "definition_uri": "https://confident.org/outputs",
       "description": "The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/outputs",
       "multivalued": true,
-      "alias": "outputs",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -711,11 +702,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__topics",
+      "name": "topics",
+      "definition_uri": "https://confident.org/topics",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/topics",
       "multivalued": true,
-      "alias": "topics",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -724,7 +715,8 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__academic_fields",
+      "name": "academic_fields",
+      "definition_uri": "https://confident.org/academic_fields",
       "mappings": [
         "https://github.com/tibonto/aeon#AEON_0000040"
       ],
@@ -735,7 +727,6 @@
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
-      "alias": "academic_fields",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -745,13 +736,13 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__metrics",
+      "name": "metrics",
+      "definition_uri": "https://confident.org/metrics",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/metrics",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
-      "alias": "metrics",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -760,10 +751,10 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__website",
+      "name": "website",
+      "definition_uri": "https://confident.org/website",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/website",
-      "alias": "website",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -772,10 +763,10 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__summary",
+      "name": "summary",
+      "definition_uri": "https://confident.org/summary",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/summary",
-      "alias": "summary",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -784,14 +775,14 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__wikidata_id",
+      "name": "wikidata_id",
+      "definition_uri": "https://confident.org/wikidata_id",
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
       "inlined": true,
-      "alias": "wikidata_id",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -800,14 +791,14 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__wikicfp_id",
+      "name": "wikicfp_id",
+      "definition_uri": "https://confident.org/wikicfp_id",
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
       "inlined": true,
-      "alias": "wikicfp_id",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -816,14 +807,14 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "plannedProcess__dpbl_id",
+      "name": "dpbl_id",
+      "definition_uri": "https://confident.org/dpbl_id",
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
       "inlined": true,
-      "alias": "dpbl_id",
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
@@ -872,6 +863,7 @@
       "name": "academicEvent__event_mode",
       "description": "The event mode describes whether the event is a physical, virtual or hybrid event.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "AcademicEvent",
       "slot_uri": "https://confident.org/event_mode",
       "alias": "event_mode",
       "owner": "AcademicEvent",
@@ -969,6 +961,7 @@
       ],
       "description": "The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Date",
       "slot_uri": "https://github.com/tibonto/aeon#AEON_start_date",
       "alias": "start_date",
       "owner": "Date",
@@ -986,6 +979,7 @@
       ],
       "description": "Similar to start_date but only for the end of an academic event or event series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Date",
       "slot_uri": "https://github.com/tibonto/aeon#AEON_end_date",
       "alias": "end_date",
       "owner": "Date",
@@ -1001,6 +995,7 @@
         "https://github.com/tibonto/aeon#AEON_event_status"
       ],
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Date",
       "slot_uri": "https://github.com/tibonto/aeon#AEON_event_status",
       "ifabsent": "string(as scheduled)",
       "alias": "event_status",
@@ -1016,6 +1011,7 @@
       "name": "date__duration",
       "description": "The duration of an event or series which gets automatically derived, if a stard_date and end_date have been provided.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Date",
       "slot_uri": "https://confident.org/duration",
       "alias": "duration",
       "owner": "Date",
@@ -1128,7 +1124,9 @@
     },
     {
       "name": "deadline__deadline_date",
+      "description": "The date of a deadline.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Deadline",
       "slot_uri": "https://confident.org/deadline_date",
       "alias": "deadline_date",
       "owner": "Deadline",
@@ -1141,7 +1139,9 @@
     },
     {
       "name": "deadline__deadline_other",
+      "description": "This property can be used to specify another kind of deadline, if this type of deadline is not within the allowed values of DeadlineType.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Deadline",
       "slot_uri": "https://confident.org/deadline_other",
       "alias": "deadline_other",
       "owner": "Deadline",
@@ -1316,6 +1316,7 @@
       ],
       "description": "The email address of the contact person.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "ContactPerson",
       "slot_uri": "https://schema.org/email",
       "alias": "email",
       "owner": "ContactPerson",
@@ -1333,6 +1334,7 @@
       ],
       "description": "The telephone number of the contact person.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "ContactPerson",
       "slot_uri": "https://schema.org/telephone",
       "alias": "telephone",
       "owner": "ContactPerson",
@@ -1377,10 +1379,33 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "PlannedProcess_name",
+      "definition_uri": "https://confident.org/name",
+      "mappings": [
+        "http://purl.obolibrary.org/obo/IAO_0000235"
+      ],
+      "description": "This property is used to provide a name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc).",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "name",
+      "domain": "PlannedProcess",
+      "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
+      "inlined": true,
+      "alias": "name",
+      "owner": "PlannedProcess",
+      "domain_of": [
+        "PlannedProcess"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "name",
+      "range": "ProcessName",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "AcademicEvent_website",
+      "definition_uri": "https://confident.org/website",
       "description": "the official website of an academic event",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "is_a": "plannedProcess__website",
+      "is_a": "website",
       "domain": "AcademicEvent",
       "slot_uri": "https://confident.org/website",
       "alias": "website",
@@ -1723,126 +1748,28 @@
       ],
       "slots": [
         "doi",
-        "plannedProcess__landing_page",
-        "plannedProcess__name",
-        "plannedProcess__date",
-        "plannedProcess__organizers",
-        "plannedProcess__contact",
-        "plannedProcess__sponsors",
-        "plannedProcess__outputs",
-        "plannedProcess__topics",
-        "plannedProcess__academic_fields",
-        "plannedProcess__metrics",
-        "plannedProcess__website",
-        "plannedProcess__summary",
-        "plannedProcess__wikidata_id",
-        "plannedProcess__wikicfp_id",
-        "plannedProcess__dpbl_id",
+        "landing_page",
+        "landing_page",
+        "dates",
+        "organizers",
+        "contact",
+        "sponsors",
+        "outputs",
+        "topics",
+        "academic_fields",
+        "metrics",
+        "website",
+        "summary",
+        "wikidata_id",
+        "wikicfp_id",
+        "dpbl_id",
+        "gnd_id",
+        "PlannedProcess_name",
         "id",
         "external_id",
         "aliases"
       ],
       "slot_usage": {},
-      "attributes": [
-        {
-          "name": "landing_page",
-          "description": "The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.",
-          "domain": "PlannedProcess",
-          "range": "uriorcurie",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "name",
-          "description": "This property is used to provide a name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc).",
-          "slot_uri": "iao:0000235",
-          "range": "ProcessName",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "date",
-          "description": "A property refering to a date container that holds the start date, end date and status of a planned process.",
-          "inlined": true,
-          "range": "Date",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "organizers",
-          "multivalued": true,
-          "inlined_as_list": true,
-          "range": "Organizer",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "contact",
-          "description": "The contact person of an academic event or event series.",
-          "inlined": true,
-          "range": "ContactPerson",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "sponsors",
-          "multivalued": true,
-          "inlined_as_list": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "outputs",
-          "description": "The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.",
-          "multivalued": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "topics",
-          "multivalued": true,
-          "range": "string",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "academic_fields",
-          "description": "A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.",
-          "domain": "PlannedProcess",
-          "slot_uri": "aeon:0000040",
-          "multivalued": true,
-          "inlined_as_list": true,
-          "range": "AcademicField",
-          "recommended": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "metrics",
-          "multivalued": true,
-          "inlined_as_list": true,
-          "range": "Metric",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "website",
-          "range": "uri",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "summary",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "wikidata_id",
-          "slot_uri": "iao:0000235",
-          "range": "WikidataId",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "wikicfp_id",
-          "slot_uri": "iao:0000235",
-          "range": "WikiCfpId",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "dpbl_id",
-          "slot_uri": "iao:0000235",
-          "range": "DblpId",
-          "@type": "SlotDefinition"
-        }
-      ],
       "class_uri": "http://purl.obolibrary.org/obo/OBI_0000011",
       "@type": "ClassDefinition"
     },
@@ -1860,21 +1787,22 @@
       "is_a": "PlannedProcess",
       "slots": [
         "doi",
-        "plannedProcess__landing_page",
-        "plannedProcess__name",
-        "plannedProcess__date",
-        "plannedProcess__organizers",
-        "plannedProcess__contact",
-        "plannedProcess__sponsors",
-        "plannedProcess__outputs",
-        "plannedProcess__topics",
-        "plannedProcess__academic_fields",
-        "plannedProcess__metrics",
-        "plannedProcess__website",
-        "plannedProcess__summary",
-        "plannedProcess__wikidata_id",
-        "plannedProcess__wikicfp_id",
-        "plannedProcess__dpbl_id",
+        "landing_page",
+        "dates",
+        "organizers",
+        "contact",
+        "sponsors",
+        "outputs",
+        "topics",
+        "academic_fields",
+        "metrics",
+        "website",
+        "summary",
+        "wikidata_id",
+        "wikicfp_id",
+        "dpbl_id",
+        "gnd_id",
+        "PlannedProcess_name",
         "id",
         "external_id",
         "aliases",
@@ -1911,20 +1839,21 @@
       "is_a": "PlannedProcess",
       "slots": [
         "doi",
-        "plannedProcess__landing_page",
-        "plannedProcess__name",
-        "plannedProcess__date",
-        "plannedProcess__organizers",
-        "plannedProcess__contact",
-        "plannedProcess__sponsors",
-        "plannedProcess__outputs",
-        "plannedProcess__topics",
-        "plannedProcess__academic_fields",
-        "plannedProcess__metrics",
-        "plannedProcess__summary",
-        "plannedProcess__wikidata_id",
-        "plannedProcess__wikicfp_id",
-        "plannedProcess__dpbl_id",
+        "landing_page",
+        "dates",
+        "organizers",
+        "contact",
+        "sponsors",
+        "outputs",
+        "topics",
+        "academic_fields",
+        "metrics",
+        "summary",
+        "wikidata_id",
+        "wikicfp_id",
+        "dpbl_id",
+        "gnd_id",
+        "PlannedProcess_name",
         "id",
         "external_id",
         "aliases",
@@ -1952,6 +1881,7 @@
         {
           "name": "event_mode",
           "description": "The event mode describes whether the event is a physical, virtual or hybrid event.",
+          "domain": "AcademicEvent",
           "range": "EventMode",
           "@type": "SlotDefinition"
         },
@@ -2005,6 +1935,7 @@
     {
       "name": "Date",
       "definition_uri": "https://confident.org/Date",
+      "description": "A container for the start and end date, the date status as well as the duration of a planned process.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slots": [
         "date__start_date",
@@ -2017,6 +1948,7 @@
         {
           "name": "start_date",
           "description": "The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.",
+          "domain": "Date",
           "slot_uri": "aeon:start_date",
           "range": "datetime",
           "required": true,
@@ -2025,12 +1957,14 @@
         {
           "name": "end_date",
           "description": "Similar to start_date but only for the end of an academic event or event series.",
+          "domain": "Date",
           "slot_uri": "aeon:end_date",
           "range": "datetime",
           "@type": "SlotDefinition"
         },
         {
           "name": "event_status",
+          "domain": "Date",
           "slot_uri": "aeon:event_status",
           "ifabsent": "string(as scheduled)",
           "range": "EventStatus",
@@ -2040,6 +1974,7 @@
         {
           "name": "duration",
           "description": "The duration of an event or series which gets automatically derived, if a stard_date and end_date have been provided.",
+          "domain": "Date",
           "range": "datetime",
           "@type": "SlotDefinition"
         }
@@ -2246,12 +2181,16 @@
       "attributes": [
         {
           "name": "deadline_date",
+          "description": "The date of a deadline.",
+          "domain": "Deadline",
           "range": "datetime",
           "required": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "deadline_other",
+          "description": "This property can be used to specify another kind of deadline, if this type of deadline is not within the allowed values of DeadlineType.",
+          "domain": "Deadline",
           "range": "string",
           "@type": "SlotDefinition"
         }
@@ -2551,6 +2490,7 @@
         {
           "name": "email",
           "description": "The email address of the contact person.",
+          "domain": "ContactPerson",
           "slot_uri": "sdo:email",
           "range": "string",
           "pattern": "\\b[-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
@@ -2559,6 +2499,7 @@
         {
           "name": "telephone",
           "description": "The telephone number of the contact person.",
+          "domain": "ContactPerson",
           "slot_uri": "sdo:telephone",
           "range": "string",
           "@type": "SlotDefinition"
@@ -2665,9 +2606,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "confident_schema.yaml",
-  "source_file_date": "2022-03-20T22:40:04",
-  "source_file_size": 23199,
-  "generation_date": "2022-03-20T22:41:13",
+  "source_file_date": "2022-03-21T08:41:47",
+  "source_file_size": 24032,
+  "generation_date": "2022-03-21T08:59:14",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

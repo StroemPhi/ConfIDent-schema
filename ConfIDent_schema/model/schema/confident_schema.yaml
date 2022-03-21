@@ -62,61 +62,28 @@ classes:
       - NamedThing
     slots:
       - doi
-    attributes:
-      landing_page:
-        description: The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.
-        domain: PlannedProcess
-        range: uriorcurie
+      - landing_page
+      - landing_page
+      - dates
+      - organizers
+      - contact
+      - sponsors
+      - outputs
+      - topics
+      - academic_fields
+      - metrics
+      - website
+      - summary
+      - wikidata_id
+      - wikicfp_id
+      - dpbl_id
+      - gnd_id
+    slot_usage:
       name:
         description: This property is used to provide a name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc).
         slot_uri: iao:0000235
-        range: ProcessName
-      date:
-        description: A property refering to a date container that holds the start date, end date and status of a planned process.
-        inlined: true
-        range: Date
-      organizers:
-        description:
-        multivalued: true
-        inlined_as_list: true
-        range: Organizer
-      contact:
-        description: The contact person of an academic event or event series.
-        range: ContactPerson
-        inlined: true 
-      sponsors:
-        multivalued: true
-        inlined_as_list: true
-      outputs:
-        description: The published works that are related to the academic event or event series, such as proceedings and video recordings of talks. 
-        multivalued: true
-      topics:
-        multivalued: true
-        range: string
-      academic_fields:
-        slot_uri: aeon:0000040
-        description: A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.
-        multivalued: true
-        inlined_as_list: true
-        recommended: true
         domain: PlannedProcess
-        range: AcademicField
-      metrics:
-        multivalued: true
-        inlined_as_list: true
-        range: Metric
-      website:
-        range: uri
-      summary:
-      wikidata_id:
-        slot_uri: iao:0000235
-        range: WikidataId
-      wikicfp_id:
-        slot_uri: iao:0000235
-        range: WikiCfpId
-      dpbl_id:
-        slot_uri: iao:0000235
-        range: DblpId
+        range: ProcessName
   AcademicEventSeries:
     description: |-
       An academic event series describes the set of academic events which take place on a regular basis and thus have an established common identity. This identity is constituted, for example, through institutional continuity in the hosting of a series (e.g. by a specialised society), thematic focuses and/or a common label under which a series is defined (particularly name and acronym). Nevertheless, it is possible that each of these criteria may change over time.
@@ -149,6 +116,7 @@ classes:
         recommended: true
       event_mode:
         description: The event mode describes whether the event is a physical, virtual or hybrid event.
+        domain: AcademicEvent
         range: EventMode
       at_location:
         description: The location of the academic event.
@@ -183,23 +151,28 @@ classes:
     close_mappings:
       - sdo:Event
   Date:
+    description: A container for the start and end date, the date status as well as the duration of a planned process.
     attributes:
       start_date:
         description: The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.
         range: datetime
+        domain: Date
         required: true
         slot_uri: aeon:start_date
       end_date:
         description: Similar to start_date but only for the end of an academic event or event series.
+        domain: Date
         range: datetime
         slot_uri: aeon:end_date
       event_status:
         required: true
         slot_uri: aeon:event_status
+        domain: Date
         range: EventStatus
         ifabsent: string(as scheduled)
       duration:
         description: The duration of an event or series which gets automatically derived, if a stard_date and end_date have been provided.
+        domain: Date
         range: datetime
 # identifiers
   ProcessName:
@@ -303,9 +276,13 @@ classes:
       - type
     attributes:
       deadline_date:
+        description: The date of a deadline.
+        domain: Deadline
         range: datetime
         required: true        
       deadline_other:
+        description: This property can be used to specify another kind of deadline, if this type of deadline is not within the allowed values of DeadlineType.
+        domain: Deadline
         range: string
     slot_usage:
       type: 
@@ -399,10 +376,12 @@ classes:
         slot_uri: sdo:email
         description: The email address of the contact person.
         pattern: \b[-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b
+        domain: ContactPerson
         range: string
       telephone:
         slot_uri: sdo:telephone
         description: The telephone number of the contact person.
+        domain: ContactPerson
         range: string
   CommitteeMember:
     is_a: Organizer
@@ -412,7 +391,6 @@ classes:
     is_a: Contributor
   KeynoteSpeaker:
     is_a: Presenter
-
 
 # record collection
   ConfIDentRecords:
@@ -475,7 +453,57 @@ slots:
   type:
     abstract: true
     description: an abstract property used to specify the type of a thing
-
+# planned process slots
+  landing_page:
+    description: The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.
+    domain: PlannedProcess
+    range: uriorcurie
+  dates:
+    description: A property refering to a date container that holds the start date, end date and status of a planned process.
+    inlined: true
+    range: Date
+  organizers:
+    description:
+    multivalued: true
+    inlined_as_list: true
+    range: Organizer
+  contact:
+    description: The contact person of an academic event or event series.
+    range: ContactPerson
+    inlined: true 
+  sponsors:
+    multivalued: true
+    inlined_as_list: true
+  outputs:
+    description: The published works that are related to the academic event or event series, such as proceedings and video recordings of talks. 
+    multivalued: true
+  topics:
+    multivalued: true
+    range: string
+  academic_fields:
+    slot_uri: aeon:0000040
+    description: A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+    domain: PlannedProcess
+    range: AcademicField
+  metrics:
+    multivalued: true
+    inlined_as_list: true
+    range: Metric
+  website:
+    range: uri
+  summary:
+  wikidata_id:
+    slot_uri: iao:0000235
+    range: WikidataId
+  wikicfp_id:
+    slot_uri: iao:0000235
+    range: WikiCfpId
+  dpbl_id:
+    slot_uri: iao:0000235
+    range: DblpId
 
 #####################################
 #               Enums               #
@@ -570,6 +598,8 @@ enums:
         meaning: aeon:0000068
       workshop deadline:
         meaning: aeon:0000069
+      other:
+        description: This value is to be used, if the other allowed values are not applicable.
   RelationType:
     permissible_values:
       isUmbrellaEventOf:
@@ -587,4 +617,4 @@ enums:
       number of tracks:
       has childcare options:
       is accessible:
-        description: If true then accessible for people with impairments.
+        description: If true then the event is accessible for people with impairments.

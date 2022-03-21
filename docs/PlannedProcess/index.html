@@ -94,7 +94,7 @@
                 <h1 id="class-plannedprocess">Class: PlannedProcess</h1>
 <p>Abstract base class for academic events and event series.</p>
 <p>URI: <a href="https://confident.org/PlannedProcess">confident:PlannedProcess</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[DblpId]&lt;dpbl_id%200..1-++[PlannedProcess&#124;doi:uriorcurie%20%3F;landing_page:uriorcurie%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;website:uri%20%3F;summary:string%20%3F;id:uriorcurie;aliases:string%20*],[WikiCfpId]&lt;wikicfp_id%200..1-++[PlannedProcess],[WikidataId]&lt;wikidata_id%200..1-++[PlannedProcess],[Metric]&lt;metrics%200..*-++[PlannedProcess],[AcademicField]&lt;academic_fields%200..*-++[PlannedProcess],[ContactPerson]&lt;contact%200..1-++[PlannedProcess],[Organizer]&lt;organizers%200..*-++[PlannedProcess],[Date]&lt;date%200..1-++[PlannedProcess],[ProcessName]&lt;name%200..1-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[NamedThing],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[NamedThing],[Metric],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[AcademicField],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[DblpId]&lt;dpbl_id%200..1-++[PlannedProcess&#124;doi:uriorcurie%20%3F;landing_page:uriorcurie%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;website:uri%20%3F;summary:string%20%3F;id:uriorcurie;aliases:string%20*],[WikiCfpId]&lt;wikicfp_id%200..1-++[PlannedProcess],[WikidataId]&lt;wikidata_id%200..1-++[PlannedProcess],[Metric]&lt;metrics%200..*-++[PlannedProcess],[AcademicField]&lt;academic_fields%200..*-++[PlannedProcess],[ContactPerson]&lt;contact%200..1-++[PlannedProcess],[Organizer]&lt;organizers%200..*-++[PlannedProcess],[Date]&lt;date%200..1-++[PlannedProcess],[ProcessName]&lt;name%200..1-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[NamedThing],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[NamedThing],[Metric],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[AcademicField],[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[ProcessName]&lt;name%200..1-++[PlannedProcess&#124;doi:uriorcurie%20%3F;landing_page:uriorcurie%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;website:uri%20%3F;summary:string%20%3F;id:uriorcurie;aliases:string%20*],[GndId]&lt;gnd_id%200..1-++[PlannedProcess],[DblpId]&lt;dpbl_id%200..1-++[PlannedProcess],[WikiCfpId]&lt;wikicfp_id%200..1-++[PlannedProcess],[WikidataId]&lt;wikidata_id%200..1-++[PlannedProcess],[Metric]&lt;metrics%200..*-++[PlannedProcess],[AcademicField]&lt;academic_fields%200..*-++[PlannedProcess],[ContactPerson]&lt;contact%200..1-++[PlannedProcess],[Organizer]&lt;organizers%200..*-++[PlannedProcess],[Date]&lt;dates%200..1-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[NamedThing],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[NamedThing],[Metric],[GndId],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[AcademicField],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[ProcessName]&lt;name%200..1-++[PlannedProcess&#124;doi:uriorcurie%20%3F;landing_page:uriorcurie%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;website:uri%20%3F;summary:string%20%3F;id:uriorcurie;aliases:string%20*],[GndId]&lt;gnd_id%200..1-++[PlannedProcess],[DblpId]&lt;dpbl_id%200..1-++[PlannedProcess],[WikiCfpId]&lt;wikicfp_id%200..1-++[PlannedProcess],[WikidataId]&lt;wikidata_id%200..1-++[PlannedProcess],[Metric]&lt;metrics%200..*-++[PlannedProcess],[AcademicField]&lt;academic_fields%200..*-++[PlannedProcess],[ContactPerson]&lt;contact%200..1-++[PlannedProcess],[Organizer]&lt;organizers%200..*-++[PlannedProcess],[Date]&lt;dates%200..1-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[NamedThing],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[NamedThing],[Metric],[GndId],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[AcademicField],[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../NamedThing/">NamedThing</a></li>
@@ -113,70 +113,79 @@
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__landing_page/">PlannedProcess➞landing_page</a>  <sub>0..1</sub><ul>
+<li><a href="../landing_page/">landing_page</a>  <sub>0..1</sub><ul>
 <li>Description: The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.</li>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__name/">➞name</a>  <sub>0..1</sub><ul>
-<li>Description: This property is used to provide a name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc).</li>
-<li>Range: <a href="../ProcessName/">ProcessName</a></li>
+<li><a href="../landing_page/">landing_page</a>  <sub>0..1</sub><ul>
+<li>Description: The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__date/">➞date</a>  <sub>0..1</sub><ul>
+<li><a href="../dates/">dates</a>  <sub>0..1</sub><ul>
 <li>Description: A property refering to a date container that holds the start date, end date and status of a planned process.</li>
 <li>Range: <a href="../Date/">Date</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__organizers/">➞organizers</a>  <sub>0..*</sub><ul>
+<li><a href="../organizers/">organizers</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../Organizer/">Organizer</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__contact/">➞contact</a>  <sub>0..1</sub><ul>
+<li><a href="../contact/">contact</a>  <sub>0..1</sub><ul>
 <li>Description: The contact person of an academic event or event series.</li>
 <li>Range: <a href="../ContactPerson/">ContactPerson</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__sponsors/">➞sponsors</a>  <sub>0..*</sub><ul>
+<li><a href="../sponsors/">sponsors</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__outputs/">➞outputs</a>  <sub>0..*</sub><ul>
+<li><a href="../outputs/">outputs</a>  <sub>0..*</sub><ul>
 <li>Description: The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__topics/">➞topics</a>  <sub>0..*</sub><ul>
+<li><a href="../topics/">topics</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__academic_fields/">PlannedProcess➞academic_fields</a>  <sub>0..*</sub><ul>
+<li><a href="../academic_fields/">academic_fields</a>  <sub>0..*</sub><ul>
 <li>Description: A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.</li>
 <li>Range: <a href="../AcademicField/">AcademicField</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__metrics/">➞metrics</a>  <sub>0..*</sub><ul>
+<li><a href="../metrics/">metrics</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../Metric/">Metric</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__website/">➞website</a>  <sub>0..1</sub><ul>
+<li><a href="../website/">website</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../Uri/">Uri</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__summary/">➞summary</a>  <sub>0..1</sub><ul>
+<li><a href="../summary/">summary</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__wikidata_id/">➞wikidata_id</a>  <sub>0..1</sub><ul>
+<li><a href="../wikidata_id/">wikidata_id</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../WikidataId/">WikidataId</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__wikicfp_id/">➞wikicfp_id</a>  <sub>0..1</sub><ul>
+<li><a href="../wikicfp_id/">wikicfp_id</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../WikiCfpId/">WikiCfpId</a></li>
 </ul>
 </li>
-<li><a href="../plannedProcess__dpbl_id/">➞dpbl_id</a>  <sub>0..1</sub><ul>
+<li><a href="../dpbl_id/">dpbl_id</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../DblpId/">DblpId</a></li>
+</ul>
+</li>
+<li><a href="../gnd_id/">gnd_id</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../GndId/">GndId</a></li>
+</ul>
+</li>
+<li><a href="../PlannedProcess_name/">PlannedProcess➞name</a>  <sub>0..1</sub><ul>
+<li>Description: This property is used to provide a name of the academic event or series, which itself has further properties to specify its type (e.g. official name, acronym, etc).</li>
+<li>Range: <a href="../ProcessName/">ProcessName</a></li>
 </ul>
 </li>
 </ul>

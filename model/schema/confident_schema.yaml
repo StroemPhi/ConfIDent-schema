@@ -116,6 +116,7 @@ classes:
         recommended: true
       event_mode:
         description: The event mode describes whether the event is a physical, virtual or hybrid event.
+        domain: AcademicEvent
         range: EventMode
       at_location:
         description: The location of the academic event.
@@ -150,23 +151,28 @@ classes:
     close_mappings:
       - sdo:Event
   Date:
+    description: A container for the start and end date, the date status as well as the duration of a planned process.
     attributes:
       start_date:
         description: The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.
         range: datetime
+        domain: Date
         required: true
         slot_uri: aeon:start_date
       end_date:
         description: Similar to start_date but only for the end of an academic event or event series.
+        domain: Date
         range: datetime
         slot_uri: aeon:end_date
       event_status:
         required: true
         slot_uri: aeon:event_status
+        domain: Date
         range: EventStatus
         ifabsent: string(as scheduled)
       duration:
         description: The duration of an event or series which gets automatically derived, if a stard_date and end_date have been provided.
+        domain: Date
         range: datetime
 # identifiers
   ProcessName:
@@ -270,9 +276,13 @@ classes:
       - type
     attributes:
       deadline_date:
+        description: The date of a deadline.
+        domain: Deadline
         range: datetime
         required: true        
       deadline_other:
+        description: This property can be used to specify another kind of deadline, if this type of deadline is not within the allowed values of DeadlineType.
+        domain: Deadline
         range: string
     slot_usage:
       type: 
@@ -366,10 +376,12 @@ classes:
         slot_uri: sdo:email
         description: The email address of the contact person.
         pattern: \b[-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b
+        domain: ContactPerson
         range: string
       telephone:
         slot_uri: sdo:telephone
         description: The telephone number of the contact person.
+        domain: ContactPerson
         range: string
   CommitteeMember:
     is_a: Organizer
@@ -586,6 +598,8 @@ enums:
         meaning: aeon:0000068
       workshop deadline:
         meaning: aeon:0000069
+      other:
+        description: This value is to be used, if the other allowed values are not applicable.
   RelationType:
     permissible_values:
       isUmbrellaEventOf:

@@ -26,7 +26,7 @@
                "$ref": "#/$defs/ContactPerson",
                "description": "The contact person of an academic event or event series."
             },
-            "date": {
+            "dates": {
                "$ref": "#/$defs/Date",
                "description": "A property refering to a date container that holds the start date, end date and status of a planned process."
             },
@@ -58,6 +58,9 @@
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
+            },
+            "gnd_id": {
+               "$ref": "#/$defs/GndId"
             },
             "id": {
                "description": "a property to provide the internal id of a schema entity",
@@ -158,7 +161,7 @@
                "$ref": "#/$defs/ContactPerson",
                "description": "The contact person of an academic event or event series."
             },
-            "date": {
+            "dates": {
                "$ref": "#/$defs/Date",
                "description": "A property refering to a date container that holds the start date, end date and status of a planned process."
             },
@@ -175,6 +178,9 @@
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
+            },
+            "gnd_id": {
+               "$ref": "#/$defs/GndId"
             },
             "id": {
                "description": "a property to provide the internal id of a schema entity",
@@ -494,7 +500,7 @@
       },
       "Date": {
          "additionalProperties": false,
-         "description": "",
+         "description": "A container for the start and end date, the date status as well as the duration of a planned process.",
          "properties": {
             "duration": {
                "description": "The duration of an event or series which gets automatically derived, if a stard_date and end_date have been provided.",
@@ -546,10 +552,12 @@
          "description": "A container for event deadlines.",
          "properties": {
             "deadline_date": {
+               "description": "The date of a deadline.",
                "format": "date-time",
                "type": "string"
             },
             "deadline_other": {
+               "description": "This property can be used to specify another kind of deadline, if this type of deadline is not within the allowed values of DeadlineType.",
                "type": "string"
             },
             "type": {
@@ -575,7 +583,8 @@
             "paper deadline",
             "poster deadline",
             "tutorial deadline",
-            "workshop deadline"
+            "workshop deadline",
+            "other"
          ],
          "title": "DeadlineType",
          "type": "string"
