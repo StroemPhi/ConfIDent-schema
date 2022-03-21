@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-22T00:08:49
+# Generation date: 2022-03-22T00:34:56
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -27,7 +27,7 @@ from linkml_runtime.linkml_model.types import Boolean, Datetime, Float, Integer,
 from linkml_runtime.utils.metamodelcore import Bool, URI, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
-version = "0.1.0"
+version = "0.3.3"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -533,7 +533,7 @@ class AcademicEvent(PlannedProcess):
 @dataclass
 class ProcessName(YAMLRoot):
     """
-    The container for the various names denoting a [PlannedProcess](PlannedProcess)
+    The container for the various names denoting a planned process
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -816,7 +816,7 @@ class Deadline(YAMLRoot):
 @dataclass
 class Metric(YAMLRoot):
     """
-    A container for statistical information about a [PlannedProcess](PlannedProcess).
+    A container for statistical information about a planned process.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1059,8 +1059,8 @@ class Venue(YAMLRoot):
 @dataclass
 class AcademicField(YAMLRoot):
     """
-    An academic field is the scientific subject of the [PlannedProcess](PlannedProcess) according to some controlled
-    vocabulary or thesaurus and as such requires the scheme URI.
+    An academic field is the scientific subject of a planned process according to some controlled vocabulary or
+    thesaurus and as such requires the scheme URI.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1069,12 +1069,14 @@ class AcademicField(YAMLRoot):
     class_name: ClassVar[str] = "AcademicField"
     class_model_uri: ClassVar[URIRef] = CONFIDENT.AcademicField
 
-    value: Optional[str] = None
+    value: str = None
     schema_name: Optional[str] = None
     schema_base_uri: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.value is not None and not isinstance(self.value, str):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
             self.value = str(self.value)
 
         if self.schema_name is not None and not isinstance(self.schema_name, str):
@@ -1431,7 +1433,7 @@ class Publication(YAMLRoot):
 @dataclass
 class ConfIDentRecords(YAMLRoot):
     """
-    This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).
+    A container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1644,19 +1646,19 @@ class MetricType(EnumDefinitionImpl):
 
 class ContributorType(EnumDefinitionImpl):
     """
-    An enumaration used to distinguish the contributors of a [PlannedProcess](PlannedProcess) with regard to them
-    being either an organization or a person.
+    An enumaration used to distinguish the contributors of a planned process with regard to them being either an
+    organization or a person.
     """
     organization = PermissibleValue(text="organization",
-                                               description="An institution, or an association that has one or more people as members and which actsas some kind of participant in a [PlannedProcess](PlannedProcess).",
+                                               description="An institution, or an association that has one or more people as members and which actsas some kind of participant in a planned process.",
                                                meaning=OBI["0000245"])
     person = PermissibleValue(text="person",
-                                   description="A human being that acts as some kind of participant in a [PlannedProcess](PlannedProcess).",
+                                   description="A human being that acts as some kind of participant in a planned process.",
                                    meaning=NCBITAXON["9606"])
 
     _defn = EnumDefinition(
         name="ContributorType",
-        description="An enumaration used to distinguish the contributors of a [PlannedProcess](PlannedProcess) with regard to them being either an organization or a person.",
+        description="An enumaration used to distinguish the contributors of a planned process with regard to them being either an organization or a person.",
     )
 
 # Slots

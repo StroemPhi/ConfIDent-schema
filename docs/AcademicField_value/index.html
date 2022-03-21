@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Class: ConfIDentRecords - A model to describe academic events and event series.</title>
+  <title>Slot: value - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Class: ConfIDentRecords";
-    var mkdocs_page_input_path = "ConfIDentRecords.md";
+    var mkdocs_page_name = "Slot: value";
+    var mkdocs_page_input_path = "AcademicField_value.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Class: ConfIDentRecords</li>
+    <li>Slot: value</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,24 +91,19 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="class-confidentrecords">Class: ConfIDentRecords</h1>
-<p>A container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).</p>
-<p>URI: <a href="https://confident.org/ConfIDentRecords">confident:ConfIDentRecords</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEventSeries]&lt;series%200..*-++[ConfIDentRecords],[AcademicEvent]&lt;events%200..*-++[ConfIDentRecords],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEventSeries]&lt;series%200..*-++[ConfIDentRecords],[AcademicEvent]&lt;events%200..*-++[ConfIDentRecords],[AcademicEventSeries],[AcademicEvent]" /></a></p>
-<h2 id="referenced-by-class">Referenced by Class</h2>
-<h2 id="attributes">Attributes</h2>
-<h3 id="own">Own</h3>
+                <h1 id="slot-value">Slot: value</h1>
+<p>The classification label of a certain classification schema.</p>
+<p>URI: <a href="https://confident.org/AcademicField_value">confident:AcademicField_value</a></p>
+<h2 id="domain-and-range">Domain and Range</h2>
+<p><a href="../AcademicField/">AcademicField</a> &#8594;  <sub>1..1</sub> <a href="../String/">String</a></p>
+<h2 id="parents">Parents</h2>
 <ul>
-<li><a href="../confIDentRecords__events/">ConfIDentRecords➞events</a>  <sub>0..*</sub><ul>
-<li>Description: A property to provide a list of academic events within this container.</li>
-<li>Range: <a href="../AcademicEvent/">AcademicEvent</a></li>
+<li>is_a: <a href="../value/">value</a></li>
 </ul>
-</li>
-<li><a href="../confIDentRecords__series/">ConfIDentRecords➞series</a>  <sub>0..*</sub><ul>
-<li>Description: A property to provide a list of academic event series within this container.</li>
-<li>Range: <a href="../AcademicEventSeries/">AcademicEventSeries</a></li>
-</ul>
-</li>
+<h2 id="children">Children</h2>
+<h2 id="used-by">Used by</h2>
+<ul>
+<li><a href="../AcademicField/">AcademicField</a></li>
 </ul>
               
             </div>

@@ -3,7 +3,7 @@
   "description": "This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.",
   "title": "ConfIDent metadata schema - v0.0.1",
   "id": "https://github.com/StroemPhi/ConfIDent-schema/",
-  "version": "0.1.0",
+  "version": "0.3.3",
   "imports": [
     "linkml:types"
   ],
@@ -489,17 +489,17 @@
     {
       "name": "ContributorType",
       "definition_uri": "https://confident.org/ContributorType",
-      "description": "An enumaration used to distinguish the contributors of a [PlannedProcess](PlannedProcess) with regard to them being either an organization or a person.",
+      "description": "An enumaration used to distinguish the contributors of a planned process with regard to them being either an organization or a person.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "permissible_values": [
         {
           "text": "organization",
-          "description": "An institution, or an association that has one or more people as members and which actsas some kind of participant in a [PlannedProcess](PlannedProcess).",
+          "description": "An institution, or an association that has one or more people as members and which actsas some kind of participant in a planned process.",
           "meaning": "obi:0000245"
         },
         {
           "text": "person",
-          "description": "A human being that acts as some kind of participant in a [PlannedProcess](PlannedProcess).",
+          "description": "A human being that acts as some kind of participant in a planned process.",
           "meaning": "NCBITaxon:9606"
         }
       ]
@@ -704,6 +704,7 @@
     {
       "name": "organizers",
       "definition_uri": "https://confident.org/organizers",
+      "description": "A property to provide the organizers of an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "https://confident.org/organizers",
@@ -723,7 +724,7 @@
       "mappings": [
         "https://github.com/tibonto/aeon#AEON_0000040"
       ],
-      "description": "A property to describe the scientific subject of a [PlannedProcess](PlannedProcess) according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifying scheme.",
+      "description": "A property to describe the scientific subject(s) of a planned process, according to some controlled vocabulary or thesaurus. If this is used, its subproperties [value] and [schema_name] are mandatory.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "https://github.com/tibonto/aeon#AEON_0000040",
@@ -740,7 +741,7 @@
     {
       "name": "website",
       "definition_uri": "https://confident.org/website",
-      "description": "A property to provide the URL the official website of a [PlannedProcess](PlannedProcess).",
+      "description": "A property to provide the URL the official website of a planned process.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "https://confident.org/website",
@@ -800,6 +801,7 @@
     {
       "name": "topics",
       "definition_uri": "https://confident.org/topics",
+      "description": "A property to provide the theme and topics of an academic event or event series as free keywords, phrases or text.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "https://confident.org/topics",
@@ -814,6 +816,7 @@
     {
       "name": "metrics",
       "definition_uri": "https://confident.org/metrics",
+      "description": "A property to provide metrics of an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "https://confident.org/metrics",
@@ -848,7 +851,7 @@
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
-      "description": "A property to link a [PlannedProcess](PlannedProcess) with its WikiCFP identifier.",
+      "description": "A property to link a planned process with its WikiCFP identifier.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
@@ -866,7 +869,7 @@
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
-      "description": "A property to link the a [PlannedProcess](PlannedProcess) with its DBLP identifier.",
+      "description": "A property to link the a planned process with its DBLP identifier.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
@@ -1139,9 +1142,10 @@
       "mappings": [
         "http://www.w3.org/2004/02/skos/core#altLabel"
       ],
-      "description": "A property to provide alternative names of a [PlannedProcess](PlannedProcess).",
+      "description": "A property to provide alternative names of a planned process.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "name",
+      "domain": "ProcessName",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#altLabel",
       "multivalued": true,
       "alias": "aliases",
@@ -1210,6 +1214,7 @@
       "name": "metric__int_value",
       "description": "A property to provide an integer value for a metric.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Metric",
       "slot_uri": "https://confident.org/int_value",
       "alias": "int_value",
       "owner": "Metric",
@@ -1223,6 +1228,7 @@
       "name": "metric__str_value",
       "description": "A property to provide a string value for a metric.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Metric",
       "slot_uri": "https://confident.org/str_value",
       "alias": "str_value",
       "owner": "Metric",
@@ -1236,6 +1242,7 @@
       "name": "metric__rate_value",
       "description": "A property to provide a rate value as float for a metric.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Metric",
       "slot_uri": "https://confident.org/rate_value",
       "alias": "rate_value",
       "owner": "Metric",
@@ -1249,6 +1256,7 @@
       "name": "metric__truth_value",
       "description": "A property to provide a truth value for a metric.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Metric",
       "slot_uri": "https://confident.org/truth_value",
       "alias": "truth_value",
       "owner": "Metric",
@@ -1262,6 +1270,7 @@
       "name": "metric__description",
       "description": "A property to provide a description of a metric.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Metric",
       "slot_uri": "https://confident.org/description",
       "alias": "description",
       "owner": "Metric",
@@ -1408,7 +1417,7 @@
     },
     {
       "name": "context__text",
-      "description": "The free text used to provide more context information on a [PlannedProcess](PlannedProcess).",
+      "description": "The free text used to provide more context information on a planned process.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "Context",
       "slot_uri": "https://confident.org/text",
@@ -1500,7 +1509,7 @@
     },
     {
       "name": "confIDentRecords__events",
-      "description": "An attribute that specifies a list of academic events within this container.",
+      "description": "A property to provide a list of academic events within this container.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "ConfIDentRecords",
       "slot_uri": "https://confident.org/events",
@@ -1517,7 +1526,7 @@
     },
     {
       "name": "confIDentRecords__series",
-      "description": "An attribute that specifies a list of academic event series within this container.",
+      "description": "A property to provide a list of academic event series within this container.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "ConfIDentRecords",
       "slot_uri": "https://confident.org/series",
@@ -1535,7 +1544,7 @@
     {
       "name": "AcademicEventSeries_id",
       "definition_uri": "https://confident.org/id",
-      "description": "The autogenerated internal identifier of an academic event series.",
+      "description": "A property to provide an internal id of a schema entity in the ConfIDent plattform.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "id",
       "domain": "AcademicEventSeries",
@@ -1559,7 +1568,7 @@
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
-      "description": "A property to provide the name(s) of a AcademicEventSeries, which itself if further differentiated (e.g. official name, acronym, etc).",
+      "description": "A property to provide a name of the academic event or series, which itself if further differentiated (e.g. official name, acronym, etc).",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "process_name",
       "domain": "AcademicEventSeries",
@@ -1582,7 +1591,7 @@
       "exact_mappings": [
         "http://schema.datacite.org/meta/kernel-4.4/metadata.xsdurl"
       ],
-      "description": "A property to provide the website to which a persistent identifier is resolving and which contains all the metadata about an academic event series.",
+      "description": "A property to provide the website to which a persistent identifier is resolving and which contains all the metadata about an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "landing_page",
       "domain": "AcademicEventSeries",
@@ -1607,7 +1616,7 @@
       "exact_mappings": [
         "http://schema.datacite.org/meta/kernel-4.4/metadata.xsddoi"
       ],
-      "description": "A property to provide DOI for an academic event series.",
+      "description": "A property to provide a digital object identifier (DOI) according to https://doi.org/.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "doi",
       "domain": "AcademicEventSeries",
@@ -1627,7 +1636,7 @@
     {
       "name": "AcademicEventSeries_organizers",
       "definition_uri": "https://confident.org/organizers",
-      "description": "A property to provide the organizers of an academic event series.",
+      "description": "A property to provide the organizers of an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "organizers",
       "domain": "AcademicEventSeries",
@@ -1652,7 +1661,7 @@
       "mappings": [
         "https://github.com/tibonto/aeon#AEON_0000040"
       ],
-      "description": "A property to describe the scientific subject(s) of an academic event series according to some controlled vocabulary or thesaurus. If this is used, its subproperties [value] and [schema_name] are mandatory.",
+      "description": "A property to describe the scientific subject(s) of a planned process, according to some controlled vocabulary or thesaurus. If this is used, its subproperties [value] and [schema_name] are mandatory.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "academic_fields",
       "domain": "AcademicEventSeries",
@@ -1674,7 +1683,7 @@
     {
       "name": "AcademicEventSeries_website",
       "definition_uri": "https://confident.org/website",
-      "description": "A property to provide the URL the official website of a AcademicEventSeries.",
+      "description": "A property to provide the URL the official website of an academic event series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "website",
       "domain": "AcademicEventSeries",
@@ -1715,7 +1724,10 @@
     {
       "name": "AcademicEventSeries_publications",
       "definition_uri": "https://confident.org/publications",
-      "description": "The published works that are related to an academic event series, such as proceedings and video recordings of talks. It will be most common that the publications of an academic event series are the set of publications associated with the individual events of the series.",
+      "description": "The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.",
+      "comments": [
+        "It will be most common that the publications of an academic event series are the set of publications associated with the individual events of the series."
+      ],
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "publications",
       "domain": "AcademicEventSeries",
@@ -1737,7 +1749,10 @@
     {
       "name": "AcademicEventSeries_topics",
       "definition_uri": "https://confident.org/topics",
-      "description": "A property to provide the theme and topics of an academic event series as free keywords, phrases or text. Most likely the values of this property will be the set of topics aggregated from the academic events of the series.",
+      "description": "A property to provide the theme and topics of an academic event or event series as free keywords, phrases or text.",
+      "comments": [
+        "Most likely the values of this property will be the set of topics aggregated from the academic events of the series."
+      ],
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "topics",
       "domain": "AcademicEventSeries",
@@ -1757,7 +1772,7 @@
     {
       "name": "AcademicEventSeries_metrics",
       "definition_uri": "https://confident.org/metrics",
-      "description": "A property to provide metrics of an academic event series.",
+      "description": "A property to provide metrics of an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "metrics",
       "domain": "AcademicEventSeries",
@@ -1778,7 +1793,7 @@
     {
       "name": "AcademicEventSeries_context_info",
       "definition_uri": "https://confident.org/context_info",
-      "description": "A property to provide extra information on the academic event series.",
+      "description": "A property to provide extra information, such as call of papers event description.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "context_info",
       "domain": "AcademicEventSeries",
@@ -1863,7 +1878,7 @@
     {
       "name": "AcademicEvent_id",
       "definition_uri": "https://confident.org/id",
-      "description": "The autogenerated internal identifier of an academic event.",
+      "description": "A property to provide an internal id of a schema entity in the ConfIDent plattform.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "id",
       "domain": "AcademicEvent",
@@ -1887,7 +1902,7 @@
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
-      "description": "A property to provide the name(s) of a [AcademicEvent](AcademicEvent), which itself if further differentiated (e.g. official name, acronym, etc).",
+      "description": "A property to provide a name of the academic event or series, which itself if further differentiated (e.g. official name, acronym, etc).",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "process_name",
       "domain": "AcademicEvent",
@@ -1910,7 +1925,7 @@
       "exact_mappings": [
         "http://schema.datacite.org/meta/kernel-4.4/metadata.xsdurl"
       ],
-      "description": "A property to provide the website to which a persistent identifier is resolving and which contains all the metadata about a [AcademicEvent](AcademicEvent).",
+      "description": "A property to provide the website to which a persistent identifier is resolving and which contains all the metadata about an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "landing_page",
       "domain": "AcademicEvent",
@@ -1935,7 +1950,7 @@
       "exact_mappings": [
         "http://schema.datacite.org/meta/kernel-4.4/metadata.xsddoi"
       ],
-      "description": "A property to provide a DOI for an academic event.",
+      "description": "A property to provide a digital object identifier (DOI) according to https://doi.org/.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "doi",
       "domain": "AcademicEvent",
@@ -1979,7 +1994,7 @@
     {
       "name": "AcademicEvent_organizers",
       "definition_uri": "https://confident.org/organizers",
-      "description": "A property to provide the organizers of an academic event.",
+      "description": "A property to provide the organizers of an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "organizers",
       "domain": "AcademicEvent",
@@ -2004,7 +2019,7 @@
       "mappings": [
         "https://github.com/tibonto/aeon#AEON_0000040"
       ],
-      "description": "A property to describe the scientific subject(s) of an academic event according to some controlled vocabulary or thesaurus. If this is used, its subproperties [value] and [schema_name] are mandatory.",
+      "description": "A property to describe the scientific subject(s) of a planned process, according to some controlled vocabulary or thesaurus. If this is used, its subproperties [value] and [schema_name] are mandatory.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "academic_fields",
       "domain": "AcademicEvent",
@@ -2026,7 +2041,7 @@
     {
       "name": "AcademicEvent_website",
       "definition_uri": "https://confident.org/website",
-      "description": "A property to provide the URL the official website of a [AcademicEvent](AcademicEvent).",
+      "description": "A property to provide the URL the official website of an academic event.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "website",
       "domain": "AcademicEvent",
@@ -2067,7 +2082,7 @@
     {
       "name": "AcademicEvent_publications",
       "definition_uri": "https://confident.org/publications",
-      "description": "The published works that are related to an academic event, such as proceedings and video recordings of talks.",
+      "description": "The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "publications",
       "domain": "AcademicEvent",
@@ -2089,7 +2104,7 @@
     {
       "name": "AcademicEvent_topics",
       "definition_uri": "https://confident.org/topics",
-      "description": "A property to provide the theme and topics of an academic event series as free keywords, phrases or text. Most likely the values of this property will be the set of topics aggregated from the academic events of the series.",
+      "description": "A property to provide the theme and topics of an academic event or event series as free keywords, phrases or text.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "topics",
       "domain": "AcademicEvent",
@@ -2109,7 +2124,7 @@
     {
       "name": "AcademicEvent_metrics",
       "definition_uri": "https://confident.org/metrics",
-      "description": "A property to provide metrics of an academic event series.",
+      "description": "A property to provide metrics of an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "metrics",
       "domain": "AcademicEvent",
@@ -2130,7 +2145,7 @@
     {
       "name": "AcademicEvent_context_info",
       "definition_uri": "https://confident.org/context_info",
-      "description": "A property to provide extra information, such as a call of papers or event description.",
+      "description": "A property to provide extra information, such as call of papers event description.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "context_info",
       "domain": "AcademicEvent",
@@ -2514,6 +2529,25 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "AcademicField_value",
+      "definition_uri": "https://confident.org/value",
+      "description": "The classification label of a certain classification schema.",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "value",
+      "domain": "AcademicField",
+      "slot_uri": "https://confident.org/value",
+      "alias": "value",
+      "owner": "AcademicField",
+      "domain_of": [
+        "AcademicField"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "value",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "Contributor_type",
       "definition_uri": "https://confident.org/type",
       "mappings": [
@@ -2819,7 +2853,7 @@
       "mappings": [
         "aeon:0000090"
       ],
-      "description": "The container for the various names denoting a [PlannedProcess](PlannedProcess)",
+      "description": "The container for the various names denoting a planned process",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slots": [
         "processName__official_name",
@@ -2869,8 +2903,9 @@
         },
         {
           "name": "aliases",
-          "description": "A property to provide alternative names of a [PlannedProcess](PlannedProcess).",
+          "description": "A property to provide alternative names of a planned process.",
           "is_a": "name",
+          "domain": "ProcessName",
           "slot_uri": "skos:altLabel",
           "multivalued": true,
           "range": "string",
@@ -3060,7 +3095,7 @@
     {
       "name": "Metric",
       "definition_uri": "https://confident.org/Metric",
-      "description": "A container for statistical information about a [PlannedProcess](PlannedProcess).",
+      "description": "A container for statistical information about a planned process.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slots": [
         "Metric_type",
@@ -3075,30 +3110,35 @@
         {
           "name": "int_value",
           "description": "A property to provide an integer value for a metric.",
+          "domain": "Metric",
           "range": "integer",
           "@type": "SlotDefinition"
         },
         {
           "name": "str_value",
           "description": "A property to provide a string value for a metric.",
+          "domain": "Metric",
           "range": "string",
           "@type": "SlotDefinition"
         },
         {
           "name": "rate_value",
           "description": "A property to provide a rate value as float for a metric.",
+          "domain": "Metric",
           "range": "float",
           "@type": "SlotDefinition"
         },
         {
           "name": "truth_value",
           "description": "A property to provide a truth value for a metric.",
+          "domain": "Metric",
           "range": "boolean",
           "@type": "SlotDefinition"
         },
         {
           "name": "description",
           "description": "A property to provide a description of a metric.",
+          "domain": "Metric",
           "range": "string",
           "@type": "SlotDefinition"
         }
@@ -3292,13 +3332,13 @@
     {
       "name": "AcademicField",
       "definition_uri": "https://confident.org/AcademicField",
-      "description": "An academic field is the scientific subject of the [PlannedProcess](PlannedProcess) according to some controlled vocabulary or thesaurus and as such requires the scheme URI.",
+      "description": "An academic field is the scientific subject of a planned process according to some controlled vocabulary or thesaurus and as such requires the scheme URI.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "mixins": [
         "SchemaBasedThing"
       ],
       "slots": [
-        "value",
+        "AcademicField_value",
         "schema_name",
         "schema_base_uri"
       ],
@@ -3320,7 +3360,7 @@
       "attributes": [
         {
           "name": "text",
-          "description": "The free text used to provide more context information on a [PlannedProcess](PlannedProcess).",
+          "description": "The free text used to provide more context information on a planned process.",
           "domain": "Context",
           "range": "string",
           "@type": "SlotDefinition"
@@ -3576,7 +3616,7 @@
     {
       "name": "ConfIDentRecords",
       "definition_uri": "https://confident.org/ConfIDentRecords",
-      "description": "This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).",
+      "description": "A container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slots": [
         "confIDentRecords__events",
@@ -3586,7 +3626,7 @@
       "attributes": [
         {
           "name": "events",
-          "description": "An attribute that specifies a list of academic events within this container.",
+          "description": "A property to provide a list of academic events within this container.",
           "domain": "ConfIDentRecords",
           "multivalued": true,
           "inlined": true,
@@ -3596,7 +3636,7 @@
         },
         {
           "name": "series",
-          "description": "An attribute that specifies a list of academic event series within this container.",
+          "description": "A property to provide a list of academic event series within this container.",
           "domain": "ConfIDentRecords",
           "multivalued": true,
           "inlined": true,
@@ -3611,9 +3651,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "confident_schema.yaml",
-  "source_file_date": "2022-03-22T00:08:10",
-  "source_file_size": 41895,
-  "generation_date": "2022-03-22T00:08:45",
+  "source_file_date": "2022-03-22T00:34:20",
+  "source_file_size": 39707,
+  "generation_date": "2022-03-22T00:34:52",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

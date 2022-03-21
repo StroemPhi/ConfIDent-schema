@@ -129,6 +129,7 @@
 </ul>
 </li>
 <li><a href="../organizers/">organizers</a>  <sub>0..*</sub><ul>
+<li>Description: A property to provide the organizers of an academic event or series.</li>
 <li>Range: <a href="../Organizer/">Organizer</a></li>
 </ul>
 </li>
@@ -138,12 +139,12 @@
 </ul>
 </li>
 <li><a href="../academic_fields/">academic_fields</a>  <sub>0..*</sub><ul>
-<li>Description: A property to describe the scientific subject of a <a href="PlannedProcess">PlannedProcess</a> according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifying scheme.</li>
+<li>Description: A property to describe the scientific subject(s) of a planned process, according to some controlled vocabulary or thesaurus. If this is used, its subproperties [value] and [schema_name] are mandatory.</li>
 <li>Range: <a href="../AcademicField/">AcademicField</a></li>
 </ul>
 </li>
 <li><a href="../website/">website</a>  <sub>0..1</sub><ul>
-<li>Description: A property to provide the URL the official website of a <a href="PlannedProcess">PlannedProcess</a>.</li>
+<li>Description: A property to provide the URL the official website of a planned process.</li>
 <li>Range: <a href="../Uri/">Uri</a></li>
 </ul>
 </li>
@@ -162,12 +163,12 @@
 </ul>
 </li>
 <li><a href="../wikicfp_id/">wikicfp_id</a>  <sub>0..1</sub><ul>
-<li>Description: A property to link a <a href="PlannedProcess">PlannedProcess</a> with its WikiCFP identifier.</li>
+<li>Description: A property to link a planned process with its WikiCFP identifier.</li>
 <li>Range: <a href="../WikiCfpId/">WikiCfpId</a></li>
 </ul>
 </li>
 <li><a href="../dpbl_id/">dpbl_id</a>  <sub>0..1</sub><ul>
-<li>Description: A property to link the a <a href="PlannedProcess">PlannedProcess</a> with its DBLP identifier.</li>
+<li>Description: A property to link the a planned process with its DBLP identifier.</li>
 <li>Range: <a href="../DblpId/">DblpId</a></li>
 </ul>
 </li>
@@ -176,10 +177,12 @@
 </ul>
 </li>
 <li><a href="../topics/">topics</a>  <sub>0..*</sub><ul>
+<li>Description: A property to provide the theme and topics of an academic event or event series as free keywords, phrases or text.</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 <li><a href="../metrics/">metrics</a>  <sub>0..*</sub><ul>
+<li>Description: A property to provide metrics of an academic event or series.</li>
 <li>Range: <a href="../Metric/">Metric</a></li>
 </ul>
 </li>
