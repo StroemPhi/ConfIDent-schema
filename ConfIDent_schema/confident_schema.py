@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-22T00:02:26
+# Generation date: 2022-03-22T00:08:49
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -1455,8 +1455,7 @@ class ConfIDentRecords(YAMLRoot):
 class EventType(EnumDefinitionImpl):
     """
     The most common minimal event types. For event types that are not in this list, you can use "other" and provide
-    the label of this other event format as strind using
-    [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).
+    the label of this other event format using the [event_format](event_format) property.
     """
     colloquium = PermissibleValue(text="colloquium",
                                            description="A colloquium is an academic meeting that usually lasts only a few hours and serves to discuss a specific topic. Colloquia are usually part of the academic exchange in everyday university life with only one speaker, but can also take place on special occasions (anniversaries, start or end of the lecture phase, etc.) and can have more than one speaker.",
@@ -1497,7 +1496,7 @@ class EventType(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="EventType",
-        description="The most common minimal event types. For event types that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).",
+        description="The most common minimal event types. For event types that are not in this list, you can use \"other\" and provide the label of this other event format using the [event_format](event_format) property.",
     )
 
     @classmethod

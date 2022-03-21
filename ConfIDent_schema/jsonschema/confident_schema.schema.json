@@ -695,7 +695,7 @@
          "type": "string"
       },
       "EventType": {
-         "description": "The most common minimal event types. For event types that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).",
+         "description": "The most common minimal event types. For event types that are not in this list, you can use \"other\" and provide the label of this other event format using the [event_format](event_format) property.",
          "enum": [
             "colloquium",
             "conference",

@@ -254,7 +254,7 @@
     {
       "name": "EventType",
       "definition_uri": "https://confident.org/EventType",
-      "description": "The most common minimal event types. For event types that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).",
+      "description": "The most common minimal event types. For event types that are not in this list, you can use \"other\" and provide the label of this other event format using the [event_format](event_format) property.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "permissible_values": [
         {
@@ -3611,9 +3611,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "confident_schema.yaml",
-  "source_file_date": "2022-03-22T00:02:01",
-  "source_file_size": 41953,
-  "generation_date": "2022-03-22T00:02:22",
+  "source_file_date": "2022-03-22T00:08:10",
+  "source_file_size": 41895,
+  "generation_date": "2022-03-22T00:08:45",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",
