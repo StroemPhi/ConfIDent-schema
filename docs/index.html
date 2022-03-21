@@ -121,29 +121,29 @@
 <li><a href="City/">City</a> - The city in which an academic event takes place.</li>
 <li><a href="ConfIDentRecords/">ConfIDentRecords</a> - This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).</li>
 <li><a href="Context/">Context</a> - A container to provide extra information, such as call of papers event description.</li>
-<li><a href="Contributor/">Contributor</a><ul>
-<li><a href="Attendee/">Attendee</a></li>
-<li><a href="Moderator/">Moderator</a></li>
-<li><a href="Organizer/">Organizer</a><ul>
-<li><a href="CommitteeMember/">CommitteeMember</a><ul>
-<li><a href="CommitteeChair/">CommitteeChair</a></li>
+<li><a href="Contributor/">Contributor</a> - A contributor is a person or organization that holds a contributor role which is being realized in a planned process.<ul>
+<li><a href="Attendee/">Attendee</a> - A attendee of an academic event.</li>
+<li><a href="Moderator/">Moderator</a> - A moderator of an academic event.</li>
+<li><a href="Organizer/">Organizer</a> - An organizer of an academic event or event series.<ul>
+<li><a href="CommitteeMember/">CommitteeMember</a> - A members of an academic event committee.<ul>
+<li><a href="CommitteeChair/">CommitteeChair</a> - The head of an academic event committee.</li>
 </ul>
 </li>
 <li><a href="ContactPerson/">ContactPerson</a> - The contact person of an academic event or event series.</li>
 </ul>
 </li>
-<li><a href="Presenter/">Presenter</a><ul>
-<li><a href="KeynoteSpeaker/">KeynoteSpeaker</a></li>
+<li><a href="Presenter/">Presenter</a> - A person that presents its work at an academic event.<ul>
+<li><a href="KeynoteSpeaker/">KeynoteSpeaker</a> - A 'keynote speaker' is a presenter that is an invited person - often a multiplier in his or her (research) field - responsible for delivering a keynote speech.</li>
 </ul>
 </li>
 <li><a href="Reviewer/">Reviewer</a></li>
-<li><a href="Sponsor/">Sponsor</a></li>
+<li><a href="Sponsor/">Sponsor</a> - A sponsor of an academic event or event series.</li>
 </ul>
 </li>
 <li><a href="Country/">Country</a> - The country in which an academic event takes place.</li>
 <li><a href="Deadline/">Deadline</a> - A container for event deadlines.</li>
 <li><a href="EventFormatSpecification/">EventFormatSpecification</a> - An academic event format specification is a plan specification that classifies a planned gathering of people in an academic context according to some sociocultural format, which provides implicit and explicit details on how this gathing is to be carried out by its participants in terms of achieving certain objectives, fulfiling certain conditions and performing certain actions. It thus concretizes the expectations of the contributors of an academic event. While the explicit details are often provied as concrete parts (e.g. deadline or attendance fee specifications), the implicit details depend on the semantics encoded in the words used for the classification of academic events (e.g. "conference" or "workshop"). Depending on the sociocultural background these classifications can overlap or vary to a certain degree.</li>
-<li><a href="ExternalIdentifier/">ExternalIdentifier</a><ul>
+<li><a href="ExternalIdentifier/">ExternalIdentifier</a> - An identifer of an entity declared in another schema.<ul>
 <li><a href="DblpId/">DblpId</a> - The identifier of an academic event or series in dblp.</li>
 <li><a href="DigitalObjectId/">DigitalObjectId</a> - A centrally registered identifier symbol used to uniquely identify digital objects given by International DOI Foundation.</li>
 <li><a href="GndId/">GndId</a> - The identifier of a thing (item) in the German National authority file.</li>
@@ -152,7 +152,7 @@
 <li><a href="WikidataId/">WikidataId</a> - The identifier of a thing (item) in Wikidata.</li>
 </ul>
 </li>
-<li><a href="Location/">Location</a> - A container for the information about the location in which an <a href="AcademicEvent">AcademicEvent</a> takes place.</li>
+<li><a href="Location/">Location</a> - A container for the information about the location in which an academic event takes place.</li>
 <li><a href="Metric/">Metric</a> - A container for statistical information about a <a href="PlannedProcess">PlannedProcess</a>.</li>
 <li><a href="PlannedProcess/">PlannedProcess</a> - Abstract base class for academic events and event series.<ul>
 <li><a href="AcademicEvent/">AcademicEvent</a> - An academic event is part of the established instruments of science communication as a format for conveying the latest scientific publications. It is defined by the meeting of researchers at a specific time and place (virtual or physical) and with a specific thematic focus to present, hear and discuss these publications. In contrast to other forms of events, academic events should primarily serve the exchange of results and methods of scientific research and their didactic mediation.  Furthermore, a significant participation of scientific organizations in the realization of an academic event is constitutive for this type of event; for example, to distinguish it from events in which researchers mainly act as external experts or with a purely legitimising function.</li>
@@ -172,9 +172,9 @@
 </ul>
 <h3 id="slots">Slots</h3>
 <ul>
-<li><a href="academicEventSeries__series_of/">AcademicEventSeries➞series_of</a> - A property to link to the events that are part of an AcademicEventSeries.</li>
+<li><a href="academicEventSeries__series_of/">AcademicEventSeries➞series_of</a> - A property to link to the events that are part of an academic event series.</li>
 <li><a href="academicEvent__at_location/">AcademicEvent➞at_location</a> - The location of the academic event.</li>
-<li><a href="academicEvent__deadlines/">AcademicEvent➞deadlines</a> - A property to provide deadlines of an <a href="AcademicEvent">AcademicEvent</a>.</li>
+<li><a href="academicEvent__deadlines/">AcademicEvent➞deadlines</a> - A property to provide deadlines of an academic event.</li>
 <li><a href="academicEvent__end_date/">AcademicEvent➞end_date</a> - Similar to start_date but only for the end of an academic event or event series.</li>
 <li><a href="academicEvent__event_format/">AcademicEvent➞event_format</a></li>
 <li><a href="academicEvent__event_mode/">AcademicEvent➞event_mode</a> - The event mode describes whether the event is a physical, virtual or hybrid event.</li>
@@ -184,8 +184,8 @@
 <li><a href="academicEvent__related_to/">AcademicEvent➞related_to</a> - A property to be used</li>
 <li><a href="academicEvent__start_date/">AcademicEvent➞start_date</a> - The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.</li>
 <li><a href="academic_fields/">academic_fields</a> - A property to describe the scientific subject of a <a href="PlannedProcess">PlannedProcess</a> according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifying scheme.<ul>
-<li><a href="AcademicEventSeries_academic_fields/">AcademicEventSeries➞academic_fields</a> - A property to describe the scientific subject(s) of an AcademicEventSeries according to some controlled vocabulary or thesaurus. If this is used, its subproperties [value] and [schema_name] are mandatory.</li>
-<li><a href="AcademicEvent_academic_fields/">AcademicEvent➞academic_fields</a> - A property to describe the scientific subject(s) of an <a href="AcademicEvent">AcademicEvent</a> according to some controlled vocabulary or thesaurus. If this is used, its subproperties [value] and [schema_name] are mandatory.</li>
+<li><a href="AcademicEventSeries_academic_fields/">AcademicEventSeries➞academic_fields</a> - A property to describe the scientific subject(s) of an academic event series according to some controlled vocabulary or thesaurus. If this is used, its subproperties [value] and [schema_name] are mandatory.</li>
+<li><a href="AcademicEvent_academic_fields/">AcademicEvent➞academic_fields</a> - A property to describe the scientific subject(s) of an academic event according to some controlled vocabulary or thesaurus. If this is used, its subproperties [value] and [schema_name] are mandatory.</li>
 </ul>
 </li>
 <li><a href="confIDentRecords__events/">ConfIDentRecords➞events</a> - An attribute that specifies a list of academic events within this container.</li>
@@ -202,32 +202,32 @@
 </ul>
 </li>
 <li><a href="deadline__deadline_date/">Deadline➞deadline_date</a> - The date of a deadline.</li>
-<li><a href="deadline__deadline_other/">Deadline➞deadline_other</a> - This property can be used to specify another kind of deadline, if this type of deadline is not within the allowed values of DeadlineType.</li>
+<li><a href="deadline__deadline_other/">Deadline➞deadline_other</a> - A property to specify another type of deadline, if this type of deadline is not within the allowed values of <a href="DeadlineType">DeadlineType</a>.</li>
 <li><a href="doi/">doi</a> - A property to provide a digital object identifier (DOI) according to https://doi.org/.<ul>
-<li><a href="AcademicEventSeries_doi/">AcademicEventSeries➞doi</a> - A property to provide DOI for an AcademicEventSeries.</li>
-<li><a href="AcademicEvent_doi/">AcademicEvent➞doi</a> - A property to provide a DOI for an <a href="AcademicEvent">AcademicEvent</a>.</li>
+<li><a href="AcademicEventSeries_doi/">AcademicEventSeries➞doi</a> - A property to provide DOI for an academic event series.</li>
+<li><a href="AcademicEvent_doi/">AcademicEvent➞doi</a> - A property to provide a DOI for an academic event.</li>
 </ul>
 </li>
 <li><a href="dpbl_id/">dpbl_id</a> - A property to link the a <a href="PlannedProcess">PlannedProcess</a> with its DBLP identifier.<ul>
-<li><a href="AcademicEventSeries_dpbl_id/">AcademicEventSeries➞dpbl_id</a> - A property to link the an AcademicEventSeries with its <a href="DblpId">DBLP identifier</a>.</li>
-<li><a href="AcademicEvent_dpbl_id/">AcademicEvent➞dpbl_id</a> - A property to link the an AcademicEventSeries with its <a href="DblpId">DBLP identifier</a>.</li>
+<li><a href="AcademicEventSeries_dpbl_id/">AcademicEventSeries➞dpbl_id</a> - A property to link an academic event series with its <a href="DblpId">DBLP identifier</a>.</li>
+<li><a href="AcademicEvent_dpbl_id/">AcademicEvent➞dpbl_id</a> - A property to link an academic event series with its <a href="DblpId">DBLP identifier</a>.</li>
 </ul>
 </li>
 <li><a href="eventFormatSpecification__specified_as/">EventFormatSpecification➞specified_as</a> - A mandatory property to provide the format of an academic event as string, in order to further specify its type in case it could not be specified according to the possible values of <a href="EventType">EventType</a>.</li>
 <li><a href="external_id/">external_id</a> - A property to provide an external id of a schema entity.</li>
 <li><a href="gnd_id/">gnd_id</a><ul>
-<li><a href="AcademicEventSeries_gnd_id/">AcademicEventSeries➞gnd_id</a> - A property to link the an AcademicEventSeries with its <a href="GndId">GND identifier</a>.</li>
-<li><a href="AcademicEvent_gnd_id/">AcademicEvent➞gnd_id</a> - A property to link the an AcademicEventSeries with its <a href="GndId">GND identifier</a>.</li>
+<li><a href="AcademicEventSeries_gnd_id/">AcademicEventSeries➞gnd_id</a> - A property to link an academic event series with its <a href="GndId">GND identifier</a>.</li>
+<li><a href="AcademicEvent_gnd_id/">AcademicEvent➞gnd_id</a> - A property to link an academic event series with its <a href="GndId">GND identifier</a>.</li>
 </ul>
 </li>
 <li><a href="id/">id</a> - A property to provide an internal id of a schema entity in the ConfIDent plattform.<ul>
-<li><a href="AcademicEventSeries_id/">AcademicEventSeries➞id</a> - The autogenerated internal identifier of an AcademicEventSeries.</li>
-<li><a href="AcademicEvent_id/">AcademicEvent➞id</a> - The autogenerated internal identifier of an <a href="AcademicEvent">AcademicEvent</a>.</li>
+<li><a href="AcademicEventSeries_id/">AcademicEventSeries➞id</a> - The autogenerated internal identifier of an academic event series.</li>
+<li><a href="AcademicEvent_id/">AcademicEvent➞id</a> - The autogenerated internal identifier of an academic event.</li>
 <li><a href="ContactPerson_id/">ContactPerson➞id</a></li>
 </ul>
 </li>
 <li><a href="landing_page/">landing_page</a> - A property to provide the website to which a persistent identifier is resolving and which contains all the metadata about an academic event or series.<ul>
-<li><a href="AcademicEventSeries_landing_page/">AcademicEventSeries➞landing_page</a> - A property to provide the website to which a persistent identifier is resolving and which contains all the metadata about an AcademicEventSeries.</li>
+<li><a href="AcademicEventSeries_landing_page/">AcademicEventSeries➞landing_page</a> - A property to provide the website to which a persistent identifier is resolving and which contains all the metadata about an academic event series.</li>
 <li><a href="AcademicEvent_landing_page/">AcademicEvent➞landing_page</a> - A property to provide the website to which a persistent identifier is resolving and which contains all the metadata about a <a href="AcademicEvent">AcademicEvent</a>.</li>
 </ul>
 </li>
@@ -244,8 +244,8 @@
 <li><a href="metric__str_value/">➞str_value</a> - A property to provide a string value for a metric.</li>
 <li><a href="metric__truth_value/">➞truth_value</a> - A property to provide a truth value for a metric.</li>
 <li><a href="metrics/">metrics</a><ul>
-<li><a href="AcademicEventSeries_metrics/">AcademicEventSeries➞metrics</a> - A property to provide metrics of an AcademicEventSeries.</li>
-<li><a href="AcademicEvent_metrics/">AcademicEvent➞metrics</a> - A property to provide metrics of an AcademicEventSeries.</li>
+<li><a href="AcademicEventSeries_metrics/">AcademicEventSeries➞metrics</a> - A property to provide metrics of an academic event series.</li>
+<li><a href="AcademicEvent_metrics/">AcademicEvent➞metrics</a> - A property to provide metrics of an academic event series.</li>
 </ul>
 </li>
 <li><a href="name/">name</a> - A property to provide a name of a schema entity.<ul>
@@ -258,8 +258,8 @@
 </li>
 <li><a href="organizer__contact/">➞contact</a> - The contact person of an academic event or event series.</li>
 <li><a href="organizers/">organizers</a><ul>
-<li><a href="AcademicEventSeries_organizers/">AcademicEventSeries➞organizers</a> - A property to provide the organizers of an AcademicEventSeries.</li>
-<li><a href="AcademicEvent_organizers/">AcademicEvent➞organizers</a> - A property to provide the organizers of an <a href="AcademicEvent">AcademicEvent</a>.</li>
+<li><a href="AcademicEventSeries_organizers/">AcademicEventSeries➞organizers</a> - A property to provide the organizers of an academic event series.</li>
+<li><a href="AcademicEvent_organizers/">AcademicEvent➞organizers</a> - A property to provide the organizers of an academic event.</li>
 </ul>
 </li>
 <li><a href="process_name/">process_name</a> - A property to provide a name of the academic event or series, which itself if further differentiated (e.g. official name, acronym, etc).<ul>
@@ -268,8 +268,8 @@
 </ul>
 </li>
 <li><a href="publications/">publications</a> - The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.<ul>
-<li><a href="AcademicEventSeries_publications/">AcademicEventSeries➞publications</a> - The published works that are related to an AcademicEventSeries, such as proceedings and video recordings of talks. It will be most common that the publications of an AcademicEventSeries are the set of publications associated with the individual events of the series.</li>
-<li><a href="AcademicEvent_publications/">AcademicEvent➞publications</a> - The published works that are related to an <a href="AcademicEvent">AcademicEvent</a>, such as proceedings and video recordings of talks.</li>
+<li><a href="AcademicEventSeries_publications/">AcademicEventSeries➞publications</a> - The published works that are related to an academic event series, such as proceedings and video recordings of talks. It will be most common that the publications of an academic event series are the set of publications associated with the individual events of the series.</li>
+<li><a href="AcademicEvent_publications/">AcademicEvent➞publications</a> - The published works that are related to an academic event, such as proceedings and video recordings of talks.</li>
 </ul>
 </li>
 <li><a href="schema_base_uri/">schema_base_uri</a> - The base URI of the schema that provides the context for the schema based value.<ul>
@@ -291,8 +291,8 @@
 </ul>
 </li>
 <li><a href="sponsors/">sponsors</a><ul>
-<li><a href="AcademicEventSeries_sponsors/">AcademicEventSeries➞sponsors</a> - A property to provide the sponsors of an AcademicEventSeries.</li>
-<li><a href="AcademicEvent_sponsors/">AcademicEvent➞sponsors</a> - A property to provide the sponsors of an <a href="AcademicEvent">AcademicEvent</a>.</li>
+<li><a href="AcademicEventSeries_sponsors/">AcademicEventSeries➞sponsors</a> - A property to provide the sponsors of an academic event series.</li>
+<li><a href="AcademicEvent_sponsors/">AcademicEvent➞sponsors</a> - A property to provide the sponsors of an academic event.</li>
 </ul>
 </li>
 <li><a href="topics/">topics</a><ul>
@@ -319,8 +319,8 @@
 </ul>
 </li>
 <li><a href="wikicfp_id/">wikicfp_id</a> - A property to link a <a href="PlannedProcess">PlannedProcess</a> with its WikiCFP identifier.<ul>
-<li><a href="AcademicEventSeries_wikicfp_id/">AcademicEventSeries➞wikicfp_id</a> - A property to link an AcademicEventSeries with its <a href="WikiCfpId">WikiCFP identifier</a>.</li>
-<li><a href="AcademicEvent_wikicfp_id/">AcademicEvent➞wikicfp_id</a> - A property to link an AcademicEventSeries with its <a href="WikiCfpId">WikiCFP identifier</a>.</li>
+<li><a href="AcademicEventSeries_wikicfp_id/">AcademicEventSeries➞wikicfp_id</a> - A property to link an academic event series with its <a href="WikiCfpId">WikiCFP identifier</a>.</li>
+<li><a href="AcademicEvent_wikicfp_id/">AcademicEvent➞wikicfp_id</a> - A property to link an academic event series with its <a href="WikiCfpId">WikiCFP identifier</a>.</li>
 </ul>
 </li>
 <li><a href="wikidata_id/">wikidata_id</a> - A property to link an entity with its Wikidata identifier.</li>
@@ -429,5 +429,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-03-21 22:06:18.752977+00:00
+Build Date UTC : 2022-03-21 22:34:55.276261+00:00
 -->

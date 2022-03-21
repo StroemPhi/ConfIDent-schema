@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-21T23:00:00
+# Generation date: 2022-03-21T23:35:15
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -572,6 +572,9 @@ class ProcessName(YAMLRoot):
 
 @dataclass
 class ExternalIdentifier(YAMLRoot):
+    """
+    An identifer of an entity declared in another schema.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFIDENT.ExternalIdentifier
@@ -871,7 +874,7 @@ class ProcessRelation(YAMLRoot):
 @dataclass
 class Location(YAMLRoot):
     """
-    A container for the information about the location in which an [AcademicEvent](AcademicEvent) takes place.
+    A container for the information about the location in which an academic event takes place.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1110,6 +1113,10 @@ class Context(YAMLRoot):
 
 @dataclass
 class Contributor(YAMLRoot):
+    """
+    A contributor is a person or organization that holds a contributor role which is being realized in a planned
+    process.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFIDENT.Contributor
@@ -1143,6 +1150,9 @@ class Contributor(YAMLRoot):
 
 @dataclass
 class Sponsor(Contributor):
+    """
+    A sponsor of an academic event or event series.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFIDENT.Sponsor
@@ -1163,6 +1173,9 @@ class Sponsor(Contributor):
 
 @dataclass
 class Attendee(Contributor):
+    """
+    A attendee of an academic event.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFIDENT.Attendee
@@ -1183,6 +1196,9 @@ class Attendee(Contributor):
 
 @dataclass
 class Moderator(Contributor):
+    """
+    A moderator of an academic event.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFIDENT.Moderator
@@ -1223,6 +1239,9 @@ class Reviewer(Contributor):
 
 @dataclass
 class Organizer(Contributor):
+    """
+    An organizer of an academic event or event series.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFIDENT.Organizer
@@ -1278,6 +1297,9 @@ class ContactPerson(Organizer):
 
 @dataclass
 class CommitteeMember(Organizer):
+    """
+    A members of an academic event committee.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFIDENT.CommitteeMember
@@ -1298,6 +1320,9 @@ class CommitteeMember(Organizer):
 
 @dataclass
 class CommitteeChair(CommitteeMember):
+    """
+    The head of an academic event committee.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFIDENT.CommitteeChair
@@ -1318,6 +1343,9 @@ class CommitteeChair(CommitteeMember):
 
 @dataclass
 class Presenter(Contributor):
+    """
+    A person that presents its work at an academic event.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFIDENT.Presenter
@@ -1338,6 +1366,10 @@ class Presenter(Contributor):
 
 @dataclass
 class KeynoteSpeaker(Presenter):
+    """
+    A 'keynote speaker' is a presenter that is an invited person - often a multiplier in his or her (research) field -
+    responsible for delivering a keynote speech.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFIDENT.KeynoteSpeaker
