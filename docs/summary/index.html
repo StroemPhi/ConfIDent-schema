@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slot: summary - A model to describe academic events and event series.</title>
+  <title>Class: Summary - A model to describe academic events and event series.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: summary";
-    var mkdocs_page_input_path = "summary.md";
+    var mkdocs_page_name = "Class: Summary";
+    var mkdocs_page_input_path = "Summary.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: summary</li>
+    <li>Class: Summary</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,17 +91,30 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-summary">Slot: summary</h1>
-<p>URI: <a href="https://confident.org/summary">confident:summary</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>0..1</sub> <a href="../String/">String</a></p>
-<h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
-<h2 id="used-by">Used by</h2>
+                <h1 id="class-summary">Class: Summary</h1>
+<p>A container to provide extra information, such as call of papers event description.</p>
+<p>URI: <a href="https://confident.org/Summary">confident:Summary</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20context_info%200..1&gt;[Summary&#124;text:string%20%3F;licence_str:string%20%3F;license_url:uriorcurie%20%3F],[PlannedProcess]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess]++-%20context_info%200..1&gt;[Summary&#124;text:string%20%3F;licence_str:string%20%3F;license_url:uriorcurie%20%3F],[PlannedProcess]" /></a></p>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li><a href="../AcademicEvent/">AcademicEvent</a></li>
-<li><a href="../AcademicEventSeries/">AcademicEventSeries</a></li>
-<li><a href="../PlannedProcess/">PlannedProcess</a></li>
+<li><strong><a href="../PlannedProcess/">PlannedProcess</a></strong> <em><a href="../context_info/">context_info</a></em>  <sub>0..1</sub>  <strong><a href="./">Summary</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../summary__text/">Summary➞text</a>  <sub>0..1</sub><ul>
+<li>Description: The free text used to provide a summary or context information on a <a href="docs/PlannedProcess">PlannedProcess</a>.</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../summary__licence_str/">Summary➞licence_str</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../summary__license_url/">Summary➞license_url</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
 </ul>
               
             </div>

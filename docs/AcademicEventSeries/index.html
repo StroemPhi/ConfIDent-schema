@@ -94,7 +94,7 @@
                 <h1 id="class-academiceventseries">Class: AcademicEventSeries</h1>
 <p>An academic event series describes the set of academic events which take place on a regular basis and thus have an established common identity. This identity is constituted, for example, through institutional continuity in the hosting of a series (e.g. by a specialised society), thematic focuses and/or a common label under which a series is defined (particularly name and acronym). Nevertheless, it is possible that each of these criteria may change over time.</p>
 <p>URI: <a href="https://confident.org/AcademicEventSeries">confident:AcademicEventSeries</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[PlannedProcess],[Organizer],[Metric],[GndId],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[ConfIDentRecords],[AcademicField],[AcademicEvent]&lt;series_of%200..*-++[AcademicEventSeries&#124;doi(i):uriorcurie%20%3F;landing_page(i):uriorcurie%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;website(i):uri%20%3F;summary(i):string%20%3F;id(i):uriorcurie;aliases(i):string%20*],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecords]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[PlannedProcess],[Organizer],[Metric],[GndId],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[ConfIDentRecords],[AcademicField],[AcademicEvent]&lt;series_of%200..*-++[AcademicEventSeries&#124;doi(i):uriorcurie%20%3F;landing_page(i):uriorcurie%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;website(i):uri%20%3F;summary(i):string%20%3F;id(i):uriorcurie;aliases(i):string%20*],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecords]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[Summary],[Sponsor],[ProcessName],[PlannedProcess],[Organizer],[Metric],[GndId],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[ConfIDentRecords],[AcademicField],[AcademicEvent]&lt;series_of%200..*-++[AcademicEventSeries&#124;doi(i):uriorcurie%20%3F;landing_page(i):uriorcurie%20%3F;outputs(i):string%20*;topics(i):string%20*;website(i):uri%20%3F;id(i):uriorcurie;aliases(i):string%20*],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecords]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[Summary],[Sponsor],[ProcessName],[PlannedProcess],[Organizer],[Metric],[GndId],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[ConfIDentRecords],[AcademicField],[AcademicEvent]&lt;series_of%200..*-++[AcademicEventSeries&#124;doi(i):uriorcurie%20%3F;landing_page(i):uriorcurie%20%3F;outputs(i):string%20*;topics(i):string%20*;website(i):uri%20%3F;id(i):uriorcurie;aliases(i):string%20*],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecords]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../PlannedProcess/">PlannedProcess</a> - Abstract base class for academic events and event series.</li>
@@ -126,7 +126,7 @@
 </ul>
 </li>
 <li><a href="../dates/">dates</a>  <sub>0..1</sub><ul>
-<li>Description: A property refering to a date container that holds the start date, end date and status of a planned process.</li>
+<li>Description: A property refering to a date container that holds the start date, end date and status of a <a href="docs/PlannedProcess">PlannedProcess</a>.</li>
 <li>Range: <a href="../Date/">Date</a></li>
 </ul>
 </li>
@@ -140,7 +140,7 @@
 </ul>
 </li>
 <li><a href="../sponsors/">sponsors</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../Sponsor/">Sponsor</a></li>
 </ul>
 </li>
 <li><a href="../outputs/">outputs</a>  <sub>0..*</sub><ul>
@@ -153,7 +153,7 @@
 </ul>
 </li>
 <li><a href="../academic_fields/">academic_fields</a>  <sub>0..*</sub><ul>
-<li>Description: A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.</li>
+<li>Description: A property used to describe the scientific subject of the <a href="docs/PlannedProcess">PlannedProcess</a> according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.</li>
 <li>Range: <a href="../AcademicField/">AcademicField</a></li>
 </ul>
 </li>
@@ -165,19 +165,23 @@
 <li>Range: <a href="../Uri/">Uri</a></li>
 </ul>
 </li>
-<li><a href="../summary/">summary</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
+<li><a href="../context_info/">context_info</a>  <sub>0..1</sub><ul>
+<li>Description: A property to provide extra information, such as call of papers event description.</li>
+<li>Range: <a href="../Summary/">Summary</a></li>
 </ul>
 </li>
 <li><a href="../wikidata_id/">wikidata_id</a>  <sub>0..1</sub><ul>
+<li>Description: A property to link the an entity with its WikiCFP identifier.</li>
 <li>Range: <a href="../WikidataId/">WikidataId</a></li>
 </ul>
 </li>
 <li><a href="../wikicfp_id/">wikicfp_id</a>  <sub>0..1</sub><ul>
+<li>Description: A property to link the a <a href="docs/PlannedProcess">PlannedProcess</a> with its WikiCFP identifier.</li>
 <li>Range: <a href="../WikiCfpId/">WikiCfpId</a></li>
 </ul>
 </li>
 <li><a href="../dpbl_id/">dpbl_id</a>  <sub>0..1</sub><ul>
+<li>Description: A property to link the a <a href="docs/PlannedProcess">PlannedProcess</a> with its DBLP identifier.</li>
 <li>Range: <a href="../DblpId/">DblpId</a></li>
 </ul>
 </li>

@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-03-21T08:59:06\n    Schema: ConfIDent-schema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/StroemPhi/ConfIDent-schema/\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
+   "_comments": "Auto generated from confident_schema.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-03-21T10:13:39\n    Schema: ConfIDent-schema\n    metamodel version: 1.7.0\n    model version: 0.0.1\n    \n    id: https://github.com/StroemPhi/ConfIDent-schema/\n    description: This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.\n    license: https://creativecommons.org/licenses/by/4.0/\n    ",
    "@context": {
       "aeon": {
          "@id": "https://github.com/tibonto/aeon#AEON_",
@@ -10,6 +10,10 @@
          "@prefix": true
       },
       "confident": "https://confident.org/",
+      "datacite": {
+         "@id": "http://schema.datacite.org/meta/kernel-4.4/metadata.xsd",
+         "@prefix": true
+      },
       "dblp_series": "https://dblp.org/db/conf/",
       "dc": "http://purl.org/dc/terms/",
       "doi": {
@@ -86,6 +90,9 @@
          "@id": "sdo:telephone"
       },
       "id": "@id",
+      "context_info": {
+         "@type": "@id"
+      },
       "duration": {
          "@type": "xsd:dateTime"
       },
@@ -185,6 +192,12 @@
          "@id": "skos:perfLabel"
       },
       "schema_base_uri": {
+         "@type": "@id"
+      },
+      "sponsors": {
+         "@type": "@id"
+      },
+      "license_url": {
          "@type": "@id"
       },
       "website": {

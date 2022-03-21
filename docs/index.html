@@ -117,7 +117,7 @@
 <p>This is a schema for the ConfIDent project that describes the necessary metadata requirements of academic events and event series.</p>
 <h3 id="classes">Classes</h3>
 <ul>
-<li><a href="AcademicField/">AcademicField</a> - An academic field is the scientific subject of the planned process according to some controlled vocabulary or thesaurus and as such requires the scheme URI.</li>
+<li><a href="AcademicField/">AcademicField</a> - An academic field is the scientific subject of the <a href="docs/PlannedProcess">PlannedProcess</a> according to some controlled vocabulary or thesaurus and as such requires the scheme URI.</li>
 <li><a href="City/">City</a></li>
 <li><a href="ConfIDentRecords/">ConfIDentRecords</a> - This is a container to be able to bundle academic event and series data in one data file (e.g. YAML or JSON).</li>
 <li><a href="Contributor/">Contributor</a><ul>
@@ -140,7 +140,7 @@
 </ul>
 </li>
 <li><a href="Country/">Country</a></li>
-<li><a href="Date/">Date</a> - A container for the start and end date, the date status as well as the duration of a planned process.</li>
+<li><a href="Date/">Date</a> - A container for the start and end date, the date status as well as the duration of a <a href="docs/PlannedProcess">PlannedProcess</a>.</li>
 <li><a href="Deadline/">Deadline</a> - A container for event deadlines.</li>
 <li><a href="EventFormatSpecification/">EventFormatSpecification</a> - An academic event format specification is a plan specification that classifies a planned gathering of people in an academic context according to some sociocultural format, which provides implicit and explicit details on how this gathing is to be carried out by its participants in terms of achieving certain objectives, fulfiling certain conditions and performing certain actions. It thus concretizes the expectations of the contributers of an academic event. While the explicit details are often provied as concrete parts (e.g. deadline or attendance fee specifications), the implicit details depend on the semantics encoded in the words used for the classification of academic events (e.g. "conference" or "workshop"). Depending on the sociocultural background these classifications can overlap or vary to a certain degree.</li>
 <li><a href="ExternalIdentifier/">ExternalIdentifier</a><ul>
@@ -161,6 +161,7 @@
 <li><a href="ProcessName/">ProcessName</a></li>
 <li><a href="ProcessRelation/">ProcessRelation</a></li>
 <li><a href="Region/">Region</a></li>
+<li><a href="Summary/">Summary</a> - A container to provide extra information, such as call of papers event description.</li>
 <li><a href="Venue/">Venue</a></li>
 </ul>
 <h3 id="mixins">Mixins</h3>
@@ -177,27 +178,28 @@
 <li><a href="academicEvent__event_mode/">AcademicEvent➞event_mode</a> - The event mode describes whether the event is a physical, virtual or hybrid event.</li>
 <li><a href="academicEvent__in_series/">AcademicEvent➞in_series</a> - The relation used to provide the series of which an AcademicEvent is a part.</li>
 <li><a href="academicEvent__ordinal/">AcademicEvent➞ordinal</a> - The ordnial number of an academic event within its series.</li>
-<li><a href="academicEvent__related_to/">AcademicEvent➞related_to</a></li>
-<li><a href="academic_fields/">academic_fields</a> - A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.</li>
+<li><a href="academicEvent__related_to/">AcademicEvent➞related_to</a> - A property to be used</li>
+<li><a href="academic_fields/">academic_fields</a> - A property used to describe the scientific subject of the <a href="docs/PlannedProcess">PlannedProcess</a> according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.</li>
 <li><a href="confIDentRecords__events/">ConfIDentRecords➞events</a> - An attribute that specifies a list of academic events within this container.</li>
 <li><a href="confIDentRecords__series/">ConfIDentRecords➞series</a> - An attribute that specifies a list of academic event series within this container.</li>
 <li><a href="contact/">contact</a> - The contact person of an academic event or event series.</li>
 <li><a href="contactPerson__email/">ContactPerson➞email</a> - The email address of the contact person.</li>
 <li><a href="contactPerson__telephone/">ContactPerson➞telephone</a> - The telephone number of the contact person.</li>
+<li><a href="context_info/">context_info</a> - A property to provide extra information, such as call of papers event description.</li>
 <li><a href="date__duration/">Date➞duration</a> - The duration of an event or series which gets automatically derived, if a stard_date and end_date have been provided.</li>
 <li><a href="date__end_date/">Date➞end_date</a> - Similar to start_date but only for the end of an academic event or event series.</li>
 <li><a href="date__event_status/">Date➞event_status</a></li>
 <li><a href="date__start_date/">Date➞start_date</a> - The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.</li>
-<li><a href="dates/">dates</a> - A property refering to a date container that holds the start date, end date and status of a planned process.</li>
+<li><a href="dates/">dates</a> - A property refering to a date container that holds the start date, end date and status of a <a href="docs/PlannedProcess">PlannedProcess</a>.</li>
 <li><a href="deadline__deadline_date/">Deadline➞deadline_date</a> - The date of a deadline.</li>
 <li><a href="deadline__deadline_other/">Deadline➞deadline_other</a> - This property can be used to specify another kind of deadline, if this type of deadline is not within the allowed values of DeadlineType.</li>
 <li><a href="doi/">doi</a> - A digital object identifier (DOI) according to https://doi.org/.</li>
-<li><a href="dpbl_id/">dpbl_id</a></li>
+<li><a href="dpbl_id/">dpbl_id</a> - A property to link the a <a href="docs/PlannedProcess">PlannedProcess</a> with its DBLP identifier.</li>
 <li><a href="eventFormatSpecification__other_format/">EventFormatSpecification➞other_format</a></li>
 <li><a href="eventFormatSpecification__specified_as/">EventFormatSpecification➞specified_as</a></li>
-<li><a href="external_id/">external_id</a> - a property to provide the internal id of a schema entity</li>
+<li><a href="external_id/">external_id</a> - A property to provide the external id of a schema entity.</li>
 <li><a href="gnd_id/">gnd_id</a></li>
-<li><a href="id/">id</a> - a property to provide the internal id of a schema entity<ul>
+<li><a href="id/">id</a> - A property to provide the internal id of a schema entity.<ul>
 <li><a href="ContactPerson_id/">ContactPerson➞id</a></li>
 <li><a href="EventFormatSpecification_id/">EventFormatSpecification➞id</a></li>
 </ul>
@@ -244,7 +246,9 @@
 </ul>
 </li>
 <li><a href="sponsors/">sponsors</a></li>
-<li><a href="summary/">summary</a></li>
+<li><a href="summary__licence_str/">Summary➞licence_str</a></li>
+<li><a href="summary__license_url/">Summary➞license_url</a></li>
+<li><a href="summary__text/">Summary➞text</a> - The free text used to provide a summary or context information on a <a href="docs/PlannedProcess">PlannedProcess</a>.</li>
 <li><a href="topics/">topics</a></li>
 <li><a href="type/">type</a> - an abstract property used to specify the type of a thing<ul>
 <li><a href="Deadline_type/">Deadline➞type</a> - The type of deadline.</li>
@@ -258,8 +262,8 @@
 <li><a href="AcademicEvent_website/">AcademicEvent➞website</a> - the official website of an academic event</li>
 </ul>
 </li>
-<li><a href="wikicfp_id/">wikicfp_id</a></li>
-<li><a href="wikidata_id/">wikidata_id</a></li>
+<li><a href="wikicfp_id/">wikicfp_id</a> - A property to link the a <a href="docs/PlannedProcess">PlannedProcess</a> with its WikiCFP identifier.</li>
+<li><a href="wikidata_id/">wikidata_id</a> - A property to link the an entity with its WikiCFP identifier.</li>
 </ul>
 <h3 id="enums">Enums</h3>
 <ul>
@@ -363,5 +367,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-03-21 07:58:58.595780+00:00
+Build Date UTC : 2022-03-21 09:13:30.365007+00:00
 -->

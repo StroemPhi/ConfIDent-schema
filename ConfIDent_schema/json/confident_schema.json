@@ -72,6 +72,10 @@
     {
       "prefix_prefix": "ex",
       "prefix_reference": "https://example.com/"
+    },
+    {
+      "prefix_prefix": "datacite",
+      "prefix_reference": "http://schema.datacite.org/meta/kernel-4.4/metadata.xsd"
     }
   ],
   "emit_prefixes": [
@@ -460,7 +464,7 @@
     {
       "name": "id",
       "definition_uri": "https://confident.org/id",
-      "description": "a property to provide the internal id of a schema entity",
+      "description": "A property to provide the internal id of a schema entity.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/id",
       "identifier": true,
@@ -484,7 +488,7 @@
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
-      "description": "a property to provide the internal id of a schema entity",
+      "description": "A property to provide the external id of a schema entity.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
       "multivalued": true,
@@ -500,6 +504,9 @@
     {
       "name": "doi",
       "definition_uri": "https://confident.org/doi",
+      "exact_mappings": [
+        "http://schema.datacite.org/meta/kernel-4.4/metadata.xsddoi"
+      ],
       "description": "A digital object identifier (DOI) according to https://doi.org/.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/doi",
@@ -619,6 +626,9 @@
     {
       "name": "landing_page",
       "definition_uri": "https://confident.org/landing_page",
+      "exact_mappings": [
+        "http://schema.datacite.org/meta/kernel-4.4/metadata.xsdurl"
+      ],
       "description": "The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
@@ -633,7 +643,7 @@
     {
       "name": "dates",
       "definition_uri": "https://confident.org/dates",
-      "description": "A property refering to a date container that holds the start date, end date and status of a planned process.",
+      "description": "A property refering to a date container that holds the start date, end date and status of a [PlannedProcess](docs/PlannedProcess).",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/dates",
       "inlined": true,
@@ -648,6 +658,7 @@
       "name": "organizers",
       "definition_uri": "https://confident.org/organizers",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "PlannedProcess",
       "slot_uri": "https://confident.org/organizers",
       "multivalued": true,
       "inlined": true,
@@ -664,6 +675,7 @@
       "definition_uri": "https://confident.org/contact",
       "description": "The contact person of an academic event or event series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "PlannedProcess",
       "slot_uri": "https://confident.org/contact",
       "inlined": true,
       "owner": "PlannedProcess",
@@ -677,14 +689,16 @@
       "name": "sponsors",
       "definition_uri": "https://confident.org/sponsors",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "PlannedProcess",
       "slot_uri": "https://confident.org/sponsors",
       "multivalued": true,
+      "inlined": true,
       "inlined_as_list": true,
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
       ],
-      "range": "string",
+      "range": "Sponsor",
       "@type": "SlotDefinition"
     },
     {
@@ -692,6 +706,7 @@
       "definition_uri": "https://confident.org/outputs",
       "description": "The published works that are related to the academic event or event series, such as proceedings and video recordings of talks.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "PlannedProcess",
       "slot_uri": "https://confident.org/outputs",
       "multivalued": true,
       "owner": "PlannedProcess",
@@ -705,6 +720,7 @@
       "name": "topics",
       "definition_uri": "https://confident.org/topics",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "PlannedProcess",
       "slot_uri": "https://confident.org/topics",
       "multivalued": true,
       "owner": "PlannedProcess",
@@ -720,7 +736,7 @@
       "mappings": [
         "https://github.com/tibonto/aeon#AEON_0000040"
       ],
-      "description": "A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.",
+      "description": "A property used to describe the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "https://github.com/tibonto/aeon#AEON_0000040",
@@ -739,6 +755,7 @@
       "name": "metrics",
       "definition_uri": "https://confident.org/metrics",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "PlannedProcess",
       "slot_uri": "https://confident.org/metrics",
       "multivalued": true,
       "inlined": true,
@@ -763,15 +780,18 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "summary",
-      "definition_uri": "https://confident.org/summary",
+      "name": "context_info",
+      "definition_uri": "https://confident.org/context_info",
+      "description": "A property to provide extra information, such as call of papers event description.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "slot_uri": "https://confident.org/summary",
+      "domain": "PlannedProcess",
+      "slot_uri": "https://confident.org/context_info",
+      "inlined": true,
       "owner": "PlannedProcess",
       "domain_of": [
         "PlannedProcess"
       ],
-      "range": "string",
+      "range": "Summary",
       "@type": "SlotDefinition"
     },
     {
@@ -780,6 +800,7 @@
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
+      "description": "A property to link the an entity with its WikiCFP identifier.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
       "inlined": true,
@@ -796,7 +817,9 @@
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
+      "description": "A property to link the a [PlannedProcess](docs/PlannedProcess) with its WikiCFP identifier.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "PlannedProcess",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
       "inlined": true,
       "owner": "PlannedProcess",
@@ -812,7 +835,9 @@
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
+      "description": "A property to link the a [PlannedProcess](docs/PlannedProcess) with its DBLP identifier.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "PlannedProcess",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
       "inlined": true,
       "owner": "PlannedProcess",
@@ -941,6 +966,7 @@
     },
     {
       "name": "academicEvent__related_to",
+      "description": "A property to be used",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "AcademicEvent",
       "slot_uri": "https://confident.org/related_to",
@@ -1025,6 +1051,9 @@
       "name": "processName__official_name",
       "mappings": [
         "http://www.w3.org/2004/02/skos/core#perfLabel"
+      ],
+      "exact_mappings": [
+        "http://schema.datacite.org/meta/kernel-4.4/metadata.xsdtitle"
       ],
       "description": "The official name of an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
@@ -1307,6 +1336,46 @@
         "Venue"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "summary__text",
+      "description": "The free text used to provide a summary or context information on a [PlannedProcess](docs/PlannedProcess).",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Summary",
+      "slot_uri": "https://confident.org/text",
+      "alias": "text",
+      "owner": "Summary",
+      "domain_of": [
+        "Summary"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "summary__licence_str",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Summary",
+      "slot_uri": "https://confident.org/licence_str",
+      "alias": "licence_str",
+      "owner": "Summary",
+      "domain_of": [
+        "Summary"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "summary__license_url",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "Summary",
+      "slot_uri": "https://confident.org/license_url",
+      "alias": "license_url",
+      "owner": "Summary",
+      "domain_of": [
+        "Summary"
+      ],
+      "range": "uriorcurie",
       "@type": "SlotDefinition"
     },
     {
@@ -1606,7 +1675,7 @@
     {
       "name": "EventFormatSpecification_id",
       "definition_uri": "https://confident.org/id",
-      "description": "a property to provide the internal id of a schema entity",
+      "description": "A property to provide the internal id of a schema entity.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "id",
       "domain": "EventFormatSpecification",
@@ -1685,7 +1754,7 @@
     {
       "name": "ContactPerson_id",
       "definition_uri": "https://confident.org/id",
-      "description": "a property to provide the internal id of a schema entity",
+      "description": "A property to provide the internal id of a schema entity.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "id",
       "domain": "ContactPerson",
@@ -1749,7 +1818,6 @@
       "slots": [
         "doi",
         "landing_page",
-        "landing_page",
         "dates",
         "organizers",
         "contact",
@@ -1759,7 +1827,7 @@
         "academic_fields",
         "metrics",
         "website",
-        "summary",
+        "context_info",
         "wikidata_id",
         "wikicfp_id",
         "dpbl_id",
@@ -1797,7 +1865,7 @@
         "academic_fields",
         "metrics",
         "website",
-        "summary",
+        "context_info",
         "wikidata_id",
         "wikicfp_id",
         "dpbl_id",
@@ -1848,7 +1916,7 @@
         "topics",
         "academic_fields",
         "metrics",
-        "summary",
+        "context_info",
         "wikidata_id",
         "wikicfp_id",
         "dpbl_id",
@@ -1922,6 +1990,7 @@
         },
         {
           "name": "related_to",
+          "description": "A property to be used",
           "domain": "AcademicEvent",
           "multivalued": true,
           "range": "ProcessRelation",
@@ -1935,7 +2004,7 @@
     {
       "name": "Date",
       "definition_uri": "https://confident.org/Date",
-      "description": "A container for the start and end date, the date status as well as the duration of a planned process.",
+      "description": "A container for the start and end date, the date status as well as the duration of a [PlannedProcess](docs/PlannedProcess).",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slots": [
         "date__start_date",
@@ -2001,6 +2070,9 @@
       "attributes": [
         {
           "name": "official_name",
+          "exact_mappings": [
+            "datacite:title"
+          ],
           "description": "The official name of an academic event or series.",
           "is_a": "name",
           "domain": "ProcessName",
@@ -2366,7 +2438,7 @@
     {
       "name": "AcademicField",
       "definition_uri": "https://confident.org/AcademicField",
-      "description": "An academic field is the scientific subject of the planned process according to some controlled vocabulary or thesaurus and as such requires the scheme URI.",
+      "description": "An academic field is the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some controlled vocabulary or thesaurus and as such requires the scheme URI.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "mixins": [
         "SchemaBasedThing"
@@ -2378,6 +2450,41 @@
       ],
       "slot_usage": {},
       "class_uri": "https://confident.org/AcademicField",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Summary",
+      "definition_uri": "https://confident.org/Summary",
+      "description": "A container to provide extra information, such as call of papers event description.",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "slots": [
+        "summary__text",
+        "summary__licence_str",
+        "summary__license_url"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "text",
+          "description": "The free text used to provide a summary or context information on a [PlannedProcess](docs/PlannedProcess).",
+          "domain": "Summary",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "licence_str",
+          "domain": "Summary",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "license_url",
+          "domain": "Summary",
+          "range": "uriorcurie",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://confident.org/Summary",
       "@type": "ClassDefinition"
     },
     {
@@ -2606,9 +2713,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "confident_schema.yaml",
-  "source_file_date": "2022-03-21T08:41:47",
-  "source_file_size": 24032,
-  "generation_date": "2022-03-21T08:59:14",
+  "source_file_date": "2022-03-21T10:13:18",
+  "source_file_size": 25519,
+  "generation_date": "2022-03-21T10:13:48",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

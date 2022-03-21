@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-21T08:59:19
+# Generation date: 2022-03-21T10:13:52
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -36,6 +36,7 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 AEON = CurieNamespace('aeon', 'https://github.com/tibonto/aeon#AEON_')
 BFO = CurieNamespace('bfo', 'http://purl.obolibrary.org/obo/BFO_')
 CONFIDENT = CurieNamespace('confident', 'https://confident.org/')
+DATACITE = CurieNamespace('datacite', 'http://schema.datacite.org/meta/kernel-4.4/metadata.xsd')
 DBLP_SERIES = CurieNamespace('dblp_series', 'https://dblp.org/db/conf/')
 DC = CurieNamespace('dc', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://doi.org/')
@@ -213,13 +214,13 @@ class PlannedProcess(YAMLRoot):
     dates: Optional[Union[dict, "Date"]] = None
     organizers: Optional[Union[Dict[Union[str, OrganizerId], Union[dict, "Organizer"]], List[Union[dict, "Organizer"]]]] = empty_dict()
     contact: Optional[Union[dict, "ContactPerson"]] = None
-    sponsors: Optional[Union[str, List[str]]] = empty_list()
+    sponsors: Optional[Union[Dict[Union[str, SponsorId], Union[dict, "Sponsor"]], List[Union[dict, "Sponsor"]]]] = empty_dict()
     outputs: Optional[Union[str, List[str]]] = empty_list()
     topics: Optional[Union[str, List[str]]] = empty_list()
     academic_fields: Optional[Union[Union[dict, "AcademicField"], List[Union[dict, "AcademicField"]]]] = empty_list()
     metrics: Optional[Union[Union[dict, "Metric"], List[Union[dict, "Metric"]]]] = empty_list()
     website: Optional[Union[str, URI]] = None
-    summary: Optional[str] = None
+    context_info: Optional[Union[dict, "Summary"]] = None
     wikidata_id: Optional[Union[dict, "WikidataId"]] = None
     wikicfp_id: Optional[Union[dict, "WikiCfpId"]] = None
     dpbl_id: Optional[Union[dict, "DblpId"]] = None
@@ -240,9 +241,6 @@ class PlannedProcess(YAMLRoot):
         if self.landing_page is not None and not isinstance(self.landing_page, URIorCURIE):
             self.landing_page = URIorCURIE(self.landing_page)
 
-        if self.landing_page is not None and not isinstance(self.landing_page, URIorCURIE):
-            self.landing_page = URIorCURIE(self.landing_page)
-
         if self.dates is not None and not isinstance(self.dates, Date):
             self.dates = Date(**as_dict(self.dates))
 
@@ -251,9 +249,7 @@ class PlannedProcess(YAMLRoot):
         if self.contact is not None and not isinstance(self.contact, ContactPerson):
             self.contact = ContactPerson(**as_dict(self.contact))
 
-        if not isinstance(self.sponsors, list):
-            self.sponsors = [self.sponsors] if self.sponsors is not None else []
-        self.sponsors = [v if isinstance(v, str) else str(v) for v in self.sponsors]
+        self._normalize_inlined_as_list(slot_name="sponsors", slot_type=Sponsor, key_name="id", keyed=True)
 
         if not isinstance(self.outputs, list):
             self.outputs = [self.outputs] if self.outputs is not None else []
@@ -274,8 +270,8 @@ class PlannedProcess(YAMLRoot):
         if self.website is not None and not isinstance(self.website, URI):
             self.website = URI(self.website)
 
-        if self.summary is not None and not isinstance(self.summary, str):
-            self.summary = str(self.summary)
+        if self.context_info is not None and not isinstance(self.context_info, Summary):
+            self.context_info = Summary(**as_dict(self.context_info))
 
         if self.wikidata_id is not None and not isinstance(self.wikidata_id, WikidataId):
             self.wikidata_id = WikidataId(**as_dict(self.wikidata_id))
@@ -399,7 +395,8 @@ class AcademicEvent(PlannedProcess):
 @dataclass
 class Date(YAMLRoot):
     """
-    A container for the start and end date, the date status as well as the duration of a planned process.
+    A container for the start and end date, the date status as well as the duration of a
+    [PlannedProcess](docs/PlannedProcess).
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -899,8 +896,8 @@ class Venue(YAMLRoot):
 @dataclass
 class AcademicField(YAMLRoot):
     """
-    An academic field is the scientific subject of the planned process according to some controlled vocabulary or
-    thesaurus and as such requires the scheme URI.
+    An academic field is the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some
+    controlled vocabulary or thesaurus and as such requires the scheme URI.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -922,6 +919,35 @@ class AcademicField(YAMLRoot):
 
         if self.schema_base_uri is not None and not isinstance(self.schema_base_uri, URIorCURIE):
             self.schema_base_uri = URIorCURIE(self.schema_base_uri)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Summary(YAMLRoot):
+    """
+    A container to provide extra information, such as call of papers event description.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CONFIDENT.Summary
+    class_class_curie: ClassVar[str] = "confident:Summary"
+    class_name: ClassVar[str] = "Summary"
+    class_model_uri: ClassVar[URIRef] = CONFIDENT.Summary
+
+    text: Optional[str] = None
+    licence_str: Optional[str] = None
+    license_url: Optional[Union[str, URIorCURIE]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.text is not None and not isinstance(self.text, str):
+            self.text = str(self.text)
+
+        if self.licence_str is not None and not isinstance(self.licence_str, str):
+            self.licence_str = str(self.licence_str)
+
+        if self.license_url is not None and not isinstance(self.license_url, URIorCURIE):
+            self.license_url = URIorCURIE(self.license_url)
 
         super().__post_init__(**kwargs)
 

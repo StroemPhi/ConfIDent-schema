@@ -25,6 +25,7 @@ prefixes:
   dblp_series: https://dblp.org/db/conf/
   doi: https://doi.org/
   ex: https://example.com/
+  datacite: http://schema.datacite.org/meta/kernel-4.4/metadata.xsd
 default_prefix: confident
 default_range: string
 
@@ -63,7 +64,6 @@ classes:
     slots:
       - doi
       - landing_page
-      - landing_page
       - dates
       - organizers
       - contact
@@ -73,7 +73,7 @@ classes:
       - academic_fields
       - metrics
       - website
-      - summary
+      - context_info
       - wikidata_id
       - wikicfp_id
       - dpbl_id
@@ -142,6 +142,7 @@ classes:
         inlined: true
         inlined_as_list: true
       related_to:
+        description: A property to be used
         multivalued: true
         domain: AcademicEvent
         range: ProcessRelation       
@@ -151,7 +152,7 @@ classes:
     close_mappings:
       - sdo:Event
   Date:
-    description: A container for the start and end date, the date status as well as the duration of a planned process.
+    description: A container for the start and end date, the date status as well as the duration of a [PlannedProcess](docs/PlannedProcess).
     attributes:
       start_date:
         description: The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.
@@ -188,6 +189,8 @@ classes:
         domain: ProcessName
         range: string
         required: true
+        exact_mappings:
+          - datacite:title
       acronym:
         description: The official acronym of an academic event or series.
         is_a: name
@@ -349,7 +352,23 @@ classes:
   AcademicField:
     mixins:
       - SchemaBasedThing
-    description: An academic field is the scientific subject of the planned process according to some controlled vocabulary or thesaurus and as such requires the scheme URI.
+    description: An academic field is the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some controlled vocabulary or thesaurus and as such requires the scheme URI.
+  Summary:
+    description: A container to provide extra information, such as call of papers event description.
+    attributes:
+      text:
+        description: The free text used to provide a summary or context information on a [PlannedProcess](docs/PlannedProcess). 
+        domain: Summary
+        range: string
+      licence_str:
+        domain: Summary
+        range: string
+      license_url:
+        domain: Summary
+        range: uriorcurie
+
+
+
 # contributors
   Contributor:
     mixins:
@@ -418,11 +437,11 @@ classes:
 slots:
 # common slots
   id:
-    description: a property to provide the internal id of a schema entity
+    description: A property to provide the internal id of a schema entity.
     identifier: true
     range: uriorcurie
   external_id:
-    description: a property to provide the internal id of a schema entity
+    description: A property to provide the external id of a schema entity.
     slot_uri: iao:0000235
     multivalued: true
     inlined_as_list: true
@@ -430,6 +449,8 @@ slots:
   doi:
     description: A digital object identifier (DOI) according to https://doi.org/.
     range: uriorcurie
+    exact_mappings:
+      - datacite:doi
   gnd_id:
     slot_uri: iao:0000235
     range: GndId
@@ -453,36 +474,44 @@ slots:
   type:
     abstract: true
     description: an abstract property used to specify the type of a thing
-# planned process slots
+# PlannedProcess slots
   landing_page:
     description: The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.
     domain: PlannedProcess
     range: uriorcurie
+    exact_mappings:
+      - datacite:url
   dates:
-    description: A property refering to a date container that holds the start date, end date and status of a planned process.
+    description: A property refering to a date container that holds the start date, end date and status of a [PlannedProcess](docs/PlannedProcess).
     inlined: true
     range: Date
   organizers:
     description:
     multivalued: true
     inlined_as_list: true
+    domain: PlannedProcess
     range: Organizer
   contact:
     description: The contact person of an academic event or event series.
+    domain: PlannedProcess
     range: ContactPerson
     inlined: true 
   sponsors:
     multivalued: true
     inlined_as_list: true
+    domain: PlannedProcess
+    range: Sponsor
   outputs:
     description: The published works that are related to the academic event or event series, such as proceedings and video recordings of talks. 
     multivalued: true
+    domain: PlannedProcess
   topics:
     multivalued: true
+    domain: PlannedProcess
     range: string
   academic_fields:
     slot_uri: aeon:0000040
-    description: A property used to describe the scientific subject of the planned process according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.
+    description: A property used to describe the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.
     multivalued: true
     inlined_as_list: true
     recommended: true
@@ -491,18 +520,27 @@ slots:
   metrics:
     multivalued: true
     inlined_as_list: true
+    domain: PlannedProcess
     range: Metric
   website:
     range: uri
-  summary:
+  context_info:
+    description: A property to provide extra information, such as call of papers event description.
+    domain: PlannedProcess
+    range: Summary
   wikidata_id:
+    description: A property to link the an entity with its WikiCFP identifier.
     slot_uri: iao:0000235
     range: WikidataId
   wikicfp_id:
+    description: A property to link the a [PlannedProcess](docs/PlannedProcess) with its WikiCFP identifier.
     slot_uri: iao:0000235
+    domain: PlannedProcess
     range: WikiCfpId
   dpbl_id:
+    description: A property to link the a [PlannedProcess](docs/PlannedProcess) with its DBLP identifier.
     slot_uri: iao:0000235
+    domain: PlannedProcess
     range: DblpId
 
 #####################################
