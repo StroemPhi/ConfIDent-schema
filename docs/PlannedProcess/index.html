@@ -92,8 +92,9 @@
             <div class="section">
               
                 <h1 id="class-plannedprocess">Class: PlannedProcess</h1>
+<p>Abstract base class for academic events and event series.</p>
 <p>URI: <a href="https://confident.org/PlannedProcess">confident:PlannedProcess</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[DblpId]&lt;dpbl_id%200..1-++[PlannedProcess&#124;doi:uriorcurie%20%3F;landing_page:uriorcurie%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;id:uriorcurie;aliases:string%20*],[WikiCfpId]&lt;wikicfp_id%200..1-++[PlannedProcess],[WikidataId]&lt;wikidata_id%200..1-++[PlannedProcess],[Metric]&lt;metrics%200..*-++[PlannedProcess],[AcademicField]&lt;academic_fields%200..*-++[PlannedProcess],[ContactPerson]&lt;contact%200..1-++[PlannedProcess],[Organizer]&lt;organizers%200..*-++[PlannedProcess],[Date]&lt;date%200..1-++[PlannedProcess],[ProcessName]&lt;name%200..1-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[NamedThing],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[NamedThing],[Metric],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[AcademicField],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[DblpId]&lt;dpbl_id%200..1-++[PlannedProcess&#124;doi:uriorcurie%20%3F;landing_page:uriorcurie%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;website:string%20%3F;logo:string%20%3F;summary:string%20%3F;id:uriorcurie;aliases:string%20*],[WikiCfpId]&lt;wikicfp_id%200..1-++[PlannedProcess],[WikidataId]&lt;wikidata_id%200..1-++[PlannedProcess],[Metric]&lt;metrics%200..*-++[PlannedProcess],[AcademicField]&lt;academic_fields%200..*-++[PlannedProcess],[ContactPerson]&lt;contact%200..1-++[PlannedProcess],[Organizer]&lt;organizers%200..*-++[PlannedProcess],[Date]&lt;date%200..1-++[PlannedProcess],[ProcessName]&lt;name%200..1-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[NamedThing],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[NamedThing],[Metric],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[AcademicField],[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[DblpId]&lt;dpbl_id%200..1-++[PlannedProcess&#124;doi:uriorcurie%20%3F;landing_page:uriorcurie%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;website:uri%20%3F;summary:string%20%3F;id:uriorcurie;aliases:string%20*],[WikiCfpId]&lt;wikicfp_id%200..1-++[PlannedProcess],[WikidataId]&lt;wikidata_id%200..1-++[PlannedProcess],[Metric]&lt;metrics%200..*-++[PlannedProcess],[AcademicField]&lt;academic_fields%200..*-++[PlannedProcess],[ContactPerson]&lt;contact%200..1-++[PlannedProcess],[Organizer]&lt;organizers%200..*-++[PlannedProcess],[Date]&lt;date%200..1-++[PlannedProcess],[ProcessName]&lt;name%200..1-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[NamedThing],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[NamedThing],[Metric],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[AcademicField],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[DblpId]&lt;dpbl_id%200..1-++[PlannedProcess&#124;doi:uriorcurie%20%3F;landing_page:uriorcurie%20%3F;sponsors:string%20*;outputs:string%20*;topics:string%20*;website:uri%20%3F;summary:string%20%3F;id:uriorcurie;aliases:string%20*],[WikiCfpId]&lt;wikicfp_id%200..1-++[PlannedProcess],[WikidataId]&lt;wikidata_id%200..1-++[PlannedProcess],[Metric]&lt;metrics%200..*-++[PlannedProcess],[AcademicField]&lt;academic_fields%200..*-++[PlannedProcess],[ContactPerson]&lt;contact%200..1-++[PlannedProcess],[Organizer]&lt;organizers%200..*-++[PlannedProcess],[Date]&lt;date%200..1-++[PlannedProcess],[ProcessName]&lt;name%200..1-++[PlannedProcess],[PlannedProcess]uses%20-.-&gt;[NamedThing],[PlannedProcess]^-[AcademicEventSeries],[PlannedProcess]^-[AcademicEvent],[Organizer],[NamedThing],[Metric],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[AcademicField],[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../NamedThing/">NamedThing</a></li>
@@ -113,7 +114,7 @@
 </ul>
 </li>
 <li><a href="../plannedProcess__landing_page/">PlannedProcess➞landing_page</a>  <sub>0..1</sub><ul>
-<li>Description: The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.</li>
+<li>Description: The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.</li>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
@@ -123,7 +124,7 @@
 </ul>
 </li>
 <li><a href="../plannedProcess__date/">➞date</a>  <sub>0..1</sub><ul>
-<li>Description: A subproperty refering to a date container that contains the start date, end date and status of a planned process.</li>
+<li>Description: A property refering to a date container that holds the start date, end date and status of a planned process.</li>
 <li>Range: <a href="../Date/">Date</a></li>
 </ul>
 </li>
@@ -159,11 +160,7 @@
 </ul>
 </li>
 <li><a href="../plannedProcess__website/">➞website</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../plannedProcess__logo/">➞logo</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../Uri/">Uri</a></li>
 </ul>
 </li>
 <li><a href="../plannedProcess__summary/">➞summary</a>  <sub>0..1</sub><ul>
@@ -186,6 +183,7 @@
 <h3 id="mixed-in-from-namedthing">Mixed in from NamedThing:</h3>
 <ul>
 <li><a href="../id/">id</a>  <sub>1..1</sub><ul>
+<li>Description: a property to provide the internal id of a schema entity</li>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
@@ -193,6 +191,7 @@
 <h3 id="mixed-in-from-namedthing_1">Mixed in from NamedThing:</h3>
 <ul>
 <li><a href="../external_id/">external_id</a>  <sub>0..*</sub><ul>
+<li>Description: a property to provide the internal id of a schema entity</li>
 <li>Range: <a href="../ExternalIdentifier/">ExternalIdentifier</a></li>
 </ul>
 </li>

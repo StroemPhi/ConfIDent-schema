@@ -92,25 +92,27 @@
             <div class="section">
               
                 <h1 id="class-deadline">Class: Deadline</h1>
+<p>A container for event deadlines.</p>
 <p>URI: <a href="https://confident.org/Deadline">confident:Deadline</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEvent]++-%20deadlines%200..*&gt;[Deadline&#124;deadline_date:datetime;deadline_other:string%20%3F;type:DeadlineType],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEvent]++-%20deadlines%200..*&gt;[Deadline&#124;deadline_date:datetime;deadline_other:string%20%3F;type:DeadlineType],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEvent]++-%20deadlines%200..*&gt;[Deadline&#124;type:DeadlineType;deadline_date:datetime;deadline_other:string%20%3F],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEvent]++-%20deadlines%200..*&gt;[Deadline&#124;type:DeadlineType;deadline_date:datetime;deadline_other:string%20%3F],[AcademicEvent]" /></a></p>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li><strong>None</strong> <em><a href="../academicEvent__deadlines/">➞deadlines</a></em>  <sub>0..*</sub>  <strong><a href="./">Deadline</a></strong></li>
+<li><strong><a href="../AcademicEvent/">AcademicEvent</a></strong> <em><a href="../academicEvent__deadlines/">AcademicEvent➞deadlines</a></em>  <sub>0..*</sub>  <strong><a href="./">Deadline</a></strong></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
+<li><a href="../Deadline_type/">Deadline➞type</a>  <sub>1..1</sub><ul>
+<li>Description: The type of deadline.</li>
+<li>Range: <a href="../DeadlineType/">DeadlineType</a></li>
+</ul>
+</li>
 <li><a href="../deadline__deadline_date/">➞deadline_date</a>  <sub>1..1</sub><ul>
 <li>Range: <a href="../Datetime/">Datetime</a></li>
 </ul>
 </li>
 <li><a href="../deadline__deadline_other/">➞deadline_other</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../Deadline_type/">Deadline➞type</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../DeadlineType/">DeadlineType</a></li>
 </ul>
 </li>
 </ul>

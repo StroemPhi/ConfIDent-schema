@@ -55,6 +55,7 @@ classes:
       - aliases
 # processes
   PlannedProcess:
+    description: Abstract base class for academic events and event series.
     class_uri: obi:0000011
     abstract: true
     mixins:
@@ -63,7 +64,7 @@ classes:
       - doi
     attributes:
       landing_page:
-        description: The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.
+        description: The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.
         domain: PlannedProcess
         range: uriorcurie
       name:
@@ -71,10 +72,11 @@ classes:
         slot_uri: iao:0000235
         range: ProcessName
       date:
-        description: A subproperty refering to a date container that contains the start date, end date and status of a planned process.
+        description: A property refering to a date container that holds the start date, end date and status of a planned process.
         inlined: true
         range: Date
       organizers:
+        description:
         multivalued: true
         inlined_as_list: true
         range: Organizer
@@ -104,7 +106,7 @@ classes:
         inlined_as_list: true
         range: Metric
       website:
-      logo:
+        range: uri
       summary:
       wikidata_id:
         slot_uri: iao:0000235
@@ -149,6 +151,8 @@ classes:
         description: The event mode describes whether the event is a physical, virtual or hybrid event.
         range: EventMode
       at_location:
+        description: The location of the academic event.
+        domain: AcademicEvent
         range: Location
       in_series:
         description: The relation used to provide the series of which an AcademicEvent is a part.
@@ -156,12 +160,14 @@ classes:
         domain: AcademicEvent
         range: AcademicEventSeries
       ordinal:
+        description: The ordnial number of an academic event within its series.
         slot_uri: aeon:event_number
         recommended: true
-        description: The ordnial number of an academic event within its series. 
         domain: AcademicEvent
         range: integer
       deadlines:
+        description: A property to deadline_type is mandatory.
+        domain: AcademicEvent
         range: Deadline
         recommended: true
         multivalued: true
@@ -169,7 +175,11 @@ classes:
         inlined_as_list: true
       related_to:
         multivalued: true
+        domain: AcademicEvent
         range: ProcessRelation       
+    slot_usage:
+      website:
+        description: the official website of an academic event
     close_mappings:
       - sdo:Event
   Date:
@@ -202,12 +212,14 @@ classes:
         description: The official name of an academic event or series.
         is_a: name
         slot_uri: skos:perfLabel
+        domain: ProcessName
         range: string
         required: true
       acronym:
         description: The official acronym of an academic event or series.
         is_a: name
         slot_uri: aeon:0000091
+        domain: ProcessName
         range: string
         recommended: true
       former_name:
@@ -286,6 +298,9 @@ classes:
         domain: EventFormatSpecification
         range: EventFormat
   Deadline:
+    description: A container for event deadlines.
+    slots:
+      - type
     attributes:
       deadline_date:
         range: datetime
@@ -294,6 +309,7 @@ classes:
         range: string
     slot_usage:
       type: 
+        description: The type of deadline.
         range: DeadlineType
         required: true
   Metric:
@@ -424,9 +440,11 @@ classes:
 slots:
 # common slots
   id:
+    description: a property to provide the internal id of a schema entity
     identifier: true
     range: uriorcurie
   external_id:
+    description: a property to provide the internal id of a schema entity
     slot_uri: iao:0000235
     multivalued: true
     inlined_as_list: true
@@ -452,7 +470,11 @@ slots:
   schema_name:
     range: string
   schema_base_uri:
+    description: The base URI of a schema. 
     range: uriorcurie
+  type:
+    abstract: true
+    description: an abstract property used to specify the type of a thing
 
 
 #####################################

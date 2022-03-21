@@ -94,10 +94,10 @@
                 <h1 id="class-academiceventseries">Class: AcademicEventSeries</h1>
 <p>An academic event series describes the set of academic events which take place on a regular basis and thus have an established common identity. This identity is constituted, for example, through institutional continuity in the hosting of a series (e.g. by a specialised society), thematic focuses and/or a common label under which a series is defined (particularly name and acronym). Nevertheless, it is possible that each of these criteria may change over time.</p>
 <p>URI: <a href="https://confident.org/AcademicEventSeries">confident:AcademicEventSeries</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[PlannedProcess],[Organizer],[Metric],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[ConfIDentRecords],[AcademicField],[AcademicEvent]&lt;series_of%200..*-++[AcademicEventSeries&#124;doi(i):uriorcurie%20%3F;landing_page(i):uriorcurie%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;id(i):uriorcurie;aliases(i):string%20*],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecords]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[PlannedProcess],[Organizer],[Metric],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[ConfIDentRecords],[AcademicField],[AcademicEvent]&lt;series_of%200..*-++[AcademicEventSeries&#124;doi(i):uriorcurie%20%3F;landing_page(i):uriorcurie%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;website(i):string%20%3F;logo(i):string%20%3F;summary(i):string%20%3F;id(i):uriorcurie;aliases(i):string%20*],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecords]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[PlannedProcess],[Organizer],[Metric],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[ConfIDentRecords],[AcademicField],[AcademicEvent]&lt;series_of%200..*-++[AcademicEventSeries&#124;doi(i):uriorcurie%20%3F;landing_page(i):uriorcurie%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;website(i):uri%20%3F;summary(i):string%20%3F;id(i):uriorcurie;aliases(i):string%20*],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecords]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[WikidataId],[WikiCfpId],[ProcessName],[PlannedProcess],[Organizer],[Metric],[ExternalIdentifier],[DblpId],[Date],[ContactPerson],[ConfIDentRecords],[AcademicField],[AcademicEvent]&lt;series_of%200..*-++[AcademicEventSeries&#124;doi(i):uriorcurie%20%3F;landing_page(i):uriorcurie%20%3F;sponsors(i):string%20*;outputs(i):string%20*;topics(i):string%20*;website(i):uri%20%3F;summary(i):string%20%3F;id(i):uriorcurie;aliases(i):string%20*],[AcademicEvent]-%20in_series%200..1&gt;[AcademicEventSeries],[ConfIDentRecords]++-%20series%200..*&gt;[AcademicEventSeries],[PlannedProcess]^-[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
-<li>is_a: <a href="../PlannedProcess/">PlannedProcess</a></li>
+<li>is_a: <a href="../PlannedProcess/">PlannedProcess</a> - Abstract base class for academic events and event series.</li>
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
@@ -121,7 +121,7 @@
 </ul>
 </li>
 <li><a href="../plannedProcess__landing_page/">PlannedProcess➞landing_page</a>  <sub>0..1</sub><ul>
-<li>Description: The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.</li>
+<li>Description: The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.</li>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
@@ -131,7 +131,7 @@
 </ul>
 </li>
 <li><a href="../plannedProcess__date/">➞date</a>  <sub>0..1</sub><ul>
-<li>Description: A subproperty refering to a date container that contains the start date, end date and status of a planned process.</li>
+<li>Description: A property refering to a date container that holds the start date, end date and status of a planned process.</li>
 <li>Range: <a href="../Date/">Date</a></li>
 </ul>
 </li>
@@ -167,11 +167,7 @@
 </ul>
 </li>
 <li><a href="../plannedProcess__website/">➞website</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-<li><a href="../plannedProcess__logo/">➞logo</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../Uri/">Uri</a></li>
 </ul>
 </li>
 <li><a href="../plannedProcess__summary/">➞summary</a>  <sub>0..1</sub><ul>

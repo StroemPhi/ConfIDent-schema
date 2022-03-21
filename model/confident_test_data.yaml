@@ -13,7 +13,7 @@ name:
 event_format:
   specified_as: other
   other_format: breakout session
-date:
+dates:
   start_date: "2021-06-23"
   end_date: "2021-06-25"
   event_status: as scheduled
@@ -25,7 +25,8 @@ external_id:
     schema_name: dblp
 wikidata_id: 
   value: Q108430463
-
+gnd_id:
+  value: gnd-1234
 dpbl_id:
   value: vivo/vivo2020
 wikicfp_id:

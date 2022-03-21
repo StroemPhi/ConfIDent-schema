@@ -19,7 +19,8 @@
                "type": "array"
             },
             "at_location": {
-               "$ref": "#/$defs/Location"
+               "$ref": "#/$defs/Location",
+               "description": "The location of the academic event."
             },
             "contact": {
                "$ref": "#/$defs/ContactPerson",
@@ -27,9 +28,10 @@
             },
             "date": {
                "$ref": "#/$defs/Date",
-               "description": "A subproperty refering to a date container that contains the start date, end date and status of a planned process."
+               "description": "A property refering to a date container that holds the start date, end date and status of a planned process."
             },
             "deadlines": {
+               "description": "A property to deadline_type is mandatory.",
                "items": {
                   "$ref": "#/$defs/Deadline"
                },
@@ -51,12 +53,14 @@
                "description": "The event mode describes whether the event is a physical, virtual or hybrid event."
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "in_series": {
@@ -64,10 +68,7 @@
                "type": "string"
             },
             "landing_page": {
-               "description": "The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.",
-               "type": "string"
-            },
-            "logo": {
+               "description": "The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.",
                "type": "string"
             },
             "metrics": {
@@ -119,6 +120,7 @@
                "type": "array"
             },
             "website": {
+               "description": "the official website of an academic event",
                "type": "string"
             },
             "wikicfp_id": {
@@ -158,7 +160,7 @@
             },
             "date": {
                "$ref": "#/$defs/Date",
-               "description": "A subproperty refering to a date container that contains the start date, end date and status of a planned process."
+               "description": "A property refering to a date container that holds the start date, end date and status of a planned process."
             },
             "doi": {
                "description": "A digital object identifier (DOI) according to https://doi.org/.",
@@ -168,19 +170,18 @@
                "$ref": "#/$defs/DblpId"
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "landing_page": {
-               "description": "The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.",
-               "type": "string"
-            },
-            "logo": {
+               "description": "The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.",
                "type": "string"
             },
             "metrics": {
@@ -249,6 +250,7 @@
          "description": "An academic field is the scientific subject of the planned process according to some controlled vocabulary or thesaurus and as such requires the scheme URI.",
          "properties": {
             "schema_base_uri": {
+               "description": "The base URI of a schema.",
                "type": "string"
             },
             "schema_name": {
@@ -274,12 +276,14 @@
                "type": "array"
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -297,6 +301,7 @@
          "description": "",
          "properties": {
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -321,12 +326,14 @@
                "type": "array"
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -351,12 +358,14 @@
                "type": "array"
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -409,12 +418,14 @@
                "type": "string"
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -443,12 +454,14 @@
                "type": "array"
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -466,6 +479,7 @@
          "description": "",
          "properties": {
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -513,6 +527,7 @@
          "description": "The identifier of an academic event or series in dblp.",
          "properties": {
             "schema_base_uri": {
+               "description": "The base URI of a schema.",
                "type": "string"
             },
             "schema_name": {
@@ -528,7 +543,7 @@
       },
       "Deadline": {
          "additionalProperties": false,
-         "description": "",
+         "description": "A container for event deadlines.",
          "properties": {
             "deadline_date": {
                "format": "date-time",
@@ -538,12 +553,13 @@
                "type": "string"
             },
             "type": {
-               "$ref": "#/$defs/DeadlineType"
+               "$ref": "#/$defs/DeadlineType",
+               "description": "The type of deadline."
             }
          },
          "required": [
-            "deadline_date",
-            "type"
+            "type",
+            "deadline_date"
          ],
          "title": "Deadline",
          "type": "object"
@@ -591,6 +607,7 @@
          "description": "An academic event format specification is a plan specification that classifies a planned gathering of people in an academic context according to some sociocultural format, which provides implicit and explicit details on how this gathing is to be carried out by its participants in terms of achieving certain objectives, fulfiling certain conditions and performing certain actions. It thus concretizes the expectations of the contributers of an academic event. While the explicit details are often provied as concrete parts (e.g. deadline or attendance fee specifications), the implicit details depend on the semantics encoded in the words used for the classification of academic events (e.g. \"conference\" or \"workshop\"). Depending on the sociocultural background these classifications can overlap or vary to a certain degree.",
          "properties": {
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "other_format": {
@@ -634,6 +651,7 @@
          "description": "",
          "properties": {
             "schema_base_uri": {
+               "description": "The base URI of a schema.",
                "type": "string"
             },
             "schema_name": {
@@ -652,6 +670,7 @@
          "description": "The identifier of a thing (item) in the German National authority file.",
          "properties": {
             "schema_base_uri": {
+               "description": "The base URI of a schema.",
                "type": "string"
             },
             "schema_name": {
@@ -677,12 +696,14 @@
                "type": "array"
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -745,12 +766,11 @@
                "type": "boolean"
             },
             "type": {
-               "$ref": "#/$defs/MetricType"
+               "$ref": "#/$defs/MetricType",
+               "description": "an abstract property used to specify the type of a thing"
             }
          },
-         "required": [
-            "type"
-         ],
+         "required": [],
          "title": "Metric",
          "type": "object"
       },
@@ -780,12 +800,14 @@
                "type": "array"
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -810,12 +832,14 @@
                "type": "array"
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -840,12 +864,14 @@
                "type": "array"
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -900,12 +926,11 @@
          "description": "",
          "properties": {
             "type": {
-               "$ref": "#/$defs/RelationType"
+               "$ref": "#/$defs/RelationType",
+               "description": "an abstract property used to specify the type of a thing"
             }
          },
-         "required": [
-            "type"
-         ],
+         "required": [],
          "title": "ProcessRelation",
          "type": "object"
       },
@@ -914,6 +939,7 @@
          "description": "",
          "properties": {
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -951,12 +977,14 @@
                "type": "array"
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -981,12 +1009,14 @@
                "type": "array"
             },
             "external_id": {
+               "description": "a property to provide the internal id of a schema entity",
                "items": {
                   "$ref": "#/$defs/ExternalIdentifier"
                },
                "type": "array"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -1004,6 +1034,7 @@
          "description": "The identifier of a publication in the TIB catalog.",
          "properties": {
             "schema_base_uri": {
+               "description": "The base URI of a schema.",
                "type": "string"
             },
             "schema_name": {
@@ -1025,6 +1056,7 @@
                "type": "string"
             },
             "id": {
+               "description": "a property to provide the internal id of a schema entity",
                "type": "string"
             },
             "name": {
@@ -1042,6 +1074,7 @@
          "description": "The identifier of an academic event or series in WikiCFP.",
          "properties": {
             "schema_base_uri": {
+               "description": "The base URI of a schema.",
                "type": "string"
             },
             "schema_name": {
@@ -1060,6 +1093,7 @@
          "description": "The identifier of a thing (item) in Wikidata.",
          "properties": {
             "schema_base_uri": {
+               "description": "The base URI of a schema.",
                "type": "string"
             },
             "schema_name": {

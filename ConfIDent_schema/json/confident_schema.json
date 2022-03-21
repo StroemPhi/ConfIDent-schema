@@ -456,6 +456,7 @@
     {
       "name": "id",
       "definition_uri": "https://confident.org/id",
+      "description": "a property to provide the internal id of a schema entity",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/id",
       "identifier": true,
@@ -479,6 +480,7 @@
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
+      "description": "a property to provide the internal id of a schema entity",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
       "multivalued": true,
@@ -582,6 +584,7 @@
     {
       "name": "schema_base_uri",
       "definition_uri": "https://confident.org/schema_base_uri",
+      "description": "The base URI of a schema.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/schema_base_uri",
       "owner": "SchemaBasedThing",
@@ -592,8 +595,22 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "type",
+      "definition_uri": "https://confident.org/type",
+      "description": "an abstract property used to specify the type of a thing",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "abstract": true,
+      "slot_uri": "https://confident.org/type",
+      "owner": "Deadline",
+      "domain_of": [
+        "Deadline"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "plannedProcess__landing_page",
-      "description": "The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.",
+      "description": "The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "https://confident.org/landing_page",
@@ -624,7 +641,7 @@
     },
     {
       "name": "plannedProcess__date",
-      "description": "A subproperty refering to a date container that contains the start date, end date and status of a planned process.",
+      "description": "A property refering to a date container that holds the start date, end date and status of a planned process.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/date",
       "inlined": true,
@@ -751,19 +768,7 @@
       "domain_of": [
         "PlannedProcess"
       ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "plannedProcess__logo",
-      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "slot_uri": "https://confident.org/logo",
-      "alias": "logo",
-      "owner": "PlannedProcess",
-      "domain_of": [
-        "PlannedProcess"
-      ],
-      "range": "string",
+      "range": "uri",
       "@type": "SlotDefinition"
     },
     {
@@ -878,7 +883,9 @@
     },
     {
       "name": "academicEvent__at_location",
+      "description": "The location of the academic event.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "AcademicEvent",
       "slot_uri": "https://confident.org/at_location",
       "inlined": true,
       "alias": "at_location",
@@ -924,7 +931,9 @@
     },
     {
       "name": "academicEvent__deadlines",
+      "description": "A property to deadline_type is mandatory.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "AcademicEvent",
       "slot_uri": "https://confident.org/deadlines",
       "multivalued": true,
       "inlined": true,
@@ -941,6 +950,7 @@
     {
       "name": "academicEvent__related_to",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "domain": "AcademicEvent",
       "slot_uri": "https://confident.org/related_to",
       "multivalued": true,
       "inlined": true,
@@ -1023,6 +1033,7 @@
       "description": "The official name of an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "name",
+      "domain": "ProcessName",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#perfLabel",
       "alias": "official_name",
       "owner": "ProcessName",
@@ -1041,6 +1052,7 @@
       "description": "The official acronym of an academic event or series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "name",
+      "domain": "ProcessName",
       "slot_uri": "https://github.com/tibonto/aeon#AEON_0000091",
       "alias": "acronym",
       "owner": "ProcessName",
@@ -1365,11 +1377,20 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "type",
+      "name": "AcademicEvent_website",
+      "description": "the official website of an academic event",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "slot_uri": "https://confident.org/type",
-      "range": "DeadlineType",
-      "required": true,
+      "is_a": "plannedProcess__website",
+      "domain": "AcademicEvent",
+      "slot_uri": "https://confident.org/website",
+      "alias": "website",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "website",
+      "range": "uri",
       "@type": "SlotDefinition"
     },
     {
@@ -1393,6 +1414,7 @@
     {
       "name": "WikidataId_schema_base_uri",
       "definition_uri": "https://confident.org/schema_base_uri",
+      "description": "The base URI of a schema.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "schema_base_uri",
       "domain": "WikidataId",
@@ -1429,6 +1451,7 @@
     {
       "name": "GndId_schema_base_uri",
       "definition_uri": "https://confident.org/schema_base_uri",
+      "description": "The base URI of a schema.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "schema_base_uri",
       "domain": "GndId",
@@ -1465,6 +1488,7 @@
     {
       "name": "TibkatId_schema_base_uri",
       "definition_uri": "https://confident.org/schema_base_uri",
+      "description": "The base URI of a schema.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "schema_base_uri",
       "domain": "TibkatId",
@@ -1501,6 +1525,7 @@
     {
       "name": "DblpId_schema_base_uri",
       "definition_uri": "https://confident.org/schema_base_uri",
+      "description": "The base URI of a schema.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "schema_base_uri",
       "domain": "DblpId",
@@ -1537,6 +1562,7 @@
     {
       "name": "WikiCfpId_schema_base_uri",
       "definition_uri": "https://confident.org/schema_base_uri",
+      "description": "The base URI of a schema.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "schema_base_uri",
       "domain": "WikiCfpId",
@@ -1555,6 +1581,7 @@
     {
       "name": "EventFormatSpecification_id",
       "definition_uri": "https://confident.org/id",
+      "description": "a property to provide the internal id of a schema entity",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "id",
       "domain": "EventFormatSpecification",
@@ -1574,8 +1601,11 @@
     },
     {
       "name": "Deadline_type",
+      "definition_uri": "https://confident.org/type",
+      "description": "The type of deadline.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "type",
+      "abstract": true,
       "domain": "Deadline",
       "slot_uri": "https://confident.org/type",
       "alias": "type",
@@ -1591,8 +1621,11 @@
     },
     {
       "name": "Metric_type",
+      "definition_uri": "https://confident.org/type",
+      "description": "an abstract property used to specify the type of a thing",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "type",
+      "abstract": true,
       "domain": "Metric",
       "slot_uri": "https://confident.org/type",
       "alias": "type",
@@ -1603,13 +1636,15 @@
       "is_usage_slot": true,
       "usage_slot_name": "type",
       "range": "MetricType",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "ProcessRelation_type",
+      "definition_uri": "https://confident.org/type",
+      "description": "an abstract property used to specify the type of a thing",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "type",
+      "abstract": true,
       "domain": "ProcessRelation",
       "slot_uri": "https://confident.org/type",
       "alias": "type",
@@ -1620,12 +1655,12 @@
       "is_usage_slot": true,
       "usage_slot_name": "type",
       "range": "RelationType",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "ContactPerson_id",
       "definition_uri": "https://confident.org/id",
+      "description": "a property to provide the internal id of a schema entity",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "is_a": "id",
       "domain": "ContactPerson",
@@ -1680,6 +1715,7 @@
       "mappings": [
         "obi:0000011"
       ],
+      "description": "Abstract base class for academic events and event series.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "abstract": true,
       "mixins": [
@@ -1698,7 +1734,6 @@
         "plannedProcess__academic_fields",
         "plannedProcess__metrics",
         "plannedProcess__website",
-        "plannedProcess__logo",
         "plannedProcess__summary",
         "plannedProcess__wikidata_id",
         "plannedProcess__wikicfp_id",
@@ -1711,7 +1746,7 @@
       "attributes": [
         {
           "name": "landing_page",
-          "description": "The website to which the persistent identifier is linking and which contains all the metadata about an academic event or series.",
+          "description": "The website to which a persistent identifier is linking and which contains all the metadata about an academic event or series.",
           "domain": "PlannedProcess",
           "range": "uriorcurie",
           "@type": "SlotDefinition"
@@ -1725,7 +1760,7 @@
         },
         {
           "name": "date",
-          "description": "A subproperty refering to a date container that contains the start date, end date and status of a planned process.",
+          "description": "A property refering to a date container that holds the start date, end date and status of a planned process.",
           "inlined": true,
           "range": "Date",
           "@type": "SlotDefinition"
@@ -1782,10 +1817,7 @@
         },
         {
           "name": "website",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "logo",
+          "range": "uri",
           "@type": "SlotDefinition"
         },
         {
@@ -1839,7 +1871,6 @@
         "plannedProcess__academic_fields",
         "plannedProcess__metrics",
         "plannedProcess__website",
-        "plannedProcess__logo",
         "plannedProcess__summary",
         "plannedProcess__wikidata_id",
         "plannedProcess__wikicfp_id",
@@ -1890,8 +1921,6 @@
         "plannedProcess__topics",
         "plannedProcess__academic_fields",
         "plannedProcess__metrics",
-        "plannedProcess__website",
-        "plannedProcess__logo",
         "plannedProcess__summary",
         "plannedProcess__wikidata_id",
         "plannedProcess__wikicfp_id",
@@ -1905,7 +1934,8 @@
         "academicEvent__in_series",
         "academicEvent__ordinal",
         "academicEvent__deadlines",
-        "academicEvent__related_to"
+        "academicEvent__related_to",
+        "AcademicEvent_website"
       ],
       "slot_usage": {},
       "attributes": [
@@ -1927,6 +1957,8 @@
         },
         {
           "name": "at_location",
+          "description": "The location of the academic event.",
+          "domain": "AcademicEvent",
           "range": "Location",
           "@type": "SlotDefinition"
         },
@@ -1949,6 +1981,8 @@
         },
         {
           "name": "deadlines",
+          "description": "A property to deadline_type is mandatory.",
+          "domain": "AcademicEvent",
           "multivalued": true,
           "inlined": true,
           "inlined_as_list": true,
@@ -1958,6 +1992,7 @@
         },
         {
           "name": "related_to",
+          "domain": "AcademicEvent",
           "multivalued": true,
           "range": "ProcessRelation",
           "@type": "SlotDefinition"
@@ -2033,6 +2068,7 @@
           "name": "official_name",
           "description": "The official name of an academic event or series.",
           "is_a": "name",
+          "domain": "ProcessName",
           "slot_uri": "skos:perfLabel",
           "range": "string",
           "required": true,
@@ -2042,6 +2078,7 @@
           "name": "acronym",
           "description": "The official acronym of an academic event or series.",
           "is_a": "name",
+          "domain": "ProcessName",
           "slot_uri": "aeon:0000091",
           "range": "string",
           "recommended": true,
@@ -2198,11 +2235,12 @@
     {
       "name": "Deadline",
       "definition_uri": "https://confident.org/Deadline",
+      "description": "A container for event deadlines.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slots": [
+        "Deadline_type",
         "deadline__deadline_date",
-        "deadline__deadline_other",
-        "Deadline_type"
+        "deadline__deadline_other"
       ],
       "slot_usage": {},
       "attributes": [
@@ -2627,9 +2665,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "confident_schema.yaml",
-  "source_file_date": "2022-03-20T21:22:15",
-  "source_file_size": 22313,
-  "generation_date": "2022-03-20T21:25:57",
+  "source_file_date": "2022-03-20T22:40:04",
+  "source_file_size": 23199,
+  "generation_date": "2022-03-20T22:41:13",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

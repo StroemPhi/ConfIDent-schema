@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-20T21:26:07
+# Generation date: 2022-03-20T22:41:23
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -23,8 +23,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Boolean, Datetime, Float, Integer, String, Uriorcurie
-from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDateTime
+from linkml_runtime.linkml_model.types import Boolean, Datetime, Float, Integer, String, Uri, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, URI, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
 version = "0.0.1"
@@ -197,6 +197,9 @@ class NamedThing(YAMLRoot):
 
 @dataclass
 class PlannedProcess(YAMLRoot):
+    """
+    Abstract base class for academic events and event series.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = OBI["0000011"]
@@ -216,8 +219,7 @@ class PlannedProcess(YAMLRoot):
     topics: Optional[Union[str, List[str]]] = empty_list()
     academic_fields: Optional[Union[Union[dict, "AcademicField"], List[Union[dict, "AcademicField"]]]] = empty_list()
     metrics: Optional[Union[Union[dict, "Metric"], List[Union[dict, "Metric"]]]] = empty_list()
-    website: Optional[str] = None
-    logo: Optional[str] = None
+    website: Optional[Union[str, URI]] = None
     summary: Optional[str] = None
     wikidata_id: Optional[Union[dict, "WikidataId"]] = None
     wikicfp_id: Optional[Union[dict, "WikiCfpId"]] = None
@@ -268,11 +270,8 @@ class PlannedProcess(YAMLRoot):
             self.metrics = [self.metrics] if self.metrics is not None else []
         self.metrics = [v if isinstance(v, Metric) else Metric(**as_dict(v)) for v in self.metrics]
 
-        if self.website is not None and not isinstance(self.website, str):
-            self.website = str(self.website)
-
-        if self.logo is not None and not isinstance(self.logo, str):
-            self.logo = str(self.logo)
+        if self.website is not None and not isinstance(self.website, URI):
+            self.website = URI(self.website)
 
         if self.summary is not None and not isinstance(self.summary, str):
             self.summary = str(self.summary)
@@ -353,6 +352,7 @@ class AcademicEvent(PlannedProcess):
     ordinal: Optional[int] = None
     deadlines: Optional[Union[Union[dict, "Deadline"], List[Union[dict, "Deadline"]]]] = empty_list()
     related_to: Optional[Union[Union[dict, "ProcessRelation"], List[Union[dict, "ProcessRelation"]]]] = empty_list()
+    website: Optional[Union[str, URI]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -379,7 +379,12 @@ class AcademicEvent(PlannedProcess):
             self.deadlines = [self.deadlines] if self.deadlines is not None else []
         self.deadlines = [v if isinstance(v, Deadline) else Deadline(**as_dict(v)) for v in self.deadlines]
 
-        self._normalize_inlined_as_dict(slot_name="related_to", slot_type=ProcessRelation, key_name="type", keyed=False)
+        if not isinstance(self.related_to, list):
+            self.related_to = [self.related_to] if self.related_to is not None else []
+        self.related_to = [v if isinstance(v, ProcessRelation) else ProcessRelation(**as_dict(v)) for v in self.related_to]
+
+        if self.website is not None and not isinstance(self.website, URI):
+            self.website = URI(self.website)
 
         super().__post_init__(**kwargs)
 
@@ -652,6 +657,9 @@ class EventFormatSpecification(YAMLRoot):
 
 @dataclass
 class Deadline(YAMLRoot):
+    """
+    A container for event deadlines.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = CONFIDENT.Deadline
@@ -659,20 +667,20 @@ class Deadline(YAMLRoot):
     class_name: ClassVar[str] = "Deadline"
     class_model_uri: ClassVar[URIRef] = CONFIDENT.Deadline
 
-    deadline_date: Union[str, XSDDateTime] = None
     type: Union[str, "DeadlineType"] = None
+    deadline_date: Union[str, XSDDateTime] = None
     deadline_other: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.deadline_date):
-            self.MissingRequiredField("deadline_date")
-        if not isinstance(self.deadline_date, XSDDateTime):
-            self.deadline_date = XSDDateTime(self.deadline_date)
-
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         if not isinstance(self.type, DeadlineType):
             self.type = DeadlineType(self.type)
+
+        if self._is_empty(self.deadline_date):
+            self.MissingRequiredField("deadline_date")
+        if not isinstance(self.deadline_date, XSDDateTime):
+            self.deadline_date = XSDDateTime(self.deadline_date)
 
         if self.deadline_other is not None and not isinstance(self.deadline_other, str):
             self.deadline_other = str(self.deadline_other)
@@ -689,19 +697,14 @@ class Metric(YAMLRoot):
     class_name: ClassVar[str] = "Metric"
     class_model_uri: ClassVar[URIRef] = CONFIDENT.Metric
 
-    type: Union[str, "MetricType"] = None
     int_value: Optional[int] = None
     str_value: Optional[str] = None
     rate_value: Optional[float] = None
     truth_value: Optional[Union[bool, Bool]] = None
     other_metric: Optional[str] = None
+    type: Optional[Union[str, "MetricType"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        if not isinstance(self.type, MetricType):
-            self.type = MetricType(self.type)
-
         if self.int_value is not None and not isinstance(self.int_value, int):
             self.int_value = int(self.int_value)
 
@@ -717,6 +720,9 @@ class Metric(YAMLRoot):
         if self.other_metric is not None and not isinstance(self.other_metric, str):
             self.other_metric = str(self.other_metric)
 
+        if self.type is not None and not isinstance(self.type, MetricType):
+            self.type = MetricType(self.type)
+
         super().__post_init__(**kwargs)
 
 
@@ -729,12 +735,10 @@ class ProcessRelation(YAMLRoot):
     class_name: ClassVar[str] = "ProcessRelation"
     class_model_uri: ClassVar[URIRef] = CONFIDENT.ProcessRelation
 
-    type: Union[str, "RelationType"] = None
+    type: Optional[Union[str, "RelationType"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        if not isinstance(self.type, RelationType):
+        if self.type is not None and not isinstance(self.type, RelationType):
             self.type = RelationType(self.type)
 
         super().__post_init__(**kwargs)

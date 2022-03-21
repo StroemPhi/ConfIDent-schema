@@ -93,15 +93,16 @@
               
                 <h1 id="class-processrelation">Class: ProcessRelation</h1>
 <p>URI: <a href="https://confident.org/ProcessRelation">confident:ProcessRelation</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEvent]++-%20related_to%200..*&gt;[ProcessRelation&#124;type:RelationType],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEvent]++-%20related_to%200..*&gt;[ProcessRelation&#124;type:RelationType],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEvent]++-%20related_to%200..*&gt;[ProcessRelation&#124;type:RelationType%20%3F],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[AcademicEvent]++-%20related_to%200..*&gt;[ProcessRelation&#124;type:RelationType%20%3F],[AcademicEvent]" /></a></p>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li><strong>None</strong> <em><a href="../academicEvent__related_to/">➞related_to</a></em>  <sub>0..*</sub>  <strong><a href="./">ProcessRelation</a></strong></li>
+<li><strong><a href="../AcademicEvent/">AcademicEvent</a></strong> <em><a href="../academicEvent__related_to/">AcademicEvent➞related_to</a></em>  <sub>0..*</sub>  <strong><a href="./">ProcessRelation</a></strong></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../ProcessRelation_type/">ProcessRelation➞type</a>  <sub>1..1</sub><ul>
+<li><a href="../ProcessRelation_type/">ProcessRelation➞type</a>  <sub>0..1</sub><ul>
+<li>Description: an abstract property used to specify the type of a thing</li>
 <li>Range: <a href="../RelationType/">RelationType</a></li>
 </ul>
 </li>
