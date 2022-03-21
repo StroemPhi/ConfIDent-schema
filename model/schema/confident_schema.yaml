@@ -152,7 +152,7 @@ classes:
     close_mappings:
       - sdo:Event
   Date:
-    description: A container for the start and end date, the date status as well as the duration of a [PlannedProcess](docs/PlannedProcess).
+    description: A container for the start and end date, the date status as well as the duration of a [PlannedProcess](PlannedProcess).
     attributes:
       start_date:
         description: The start date of an academic event or event series. Wheres the latter will in reality most likely be the start date of the first event of this series, unless there is some other source from which it is possible to derive the date of the inception of the series.
@@ -352,12 +352,12 @@ classes:
   AcademicField:
     mixins:
       - SchemaBasedThing
-    description: An academic field is the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some controlled vocabulary or thesaurus and as such requires the scheme URI.
+    description: An academic field is the scientific subject of the [PlannedProcess](PlannedProcess) according to some controlled vocabulary or thesaurus and as such requires the scheme URI.
   Summary:
     description: A container to provide extra information, such as call of papers event description.
     attributes:
       text:
-        description: The free text used to provide a summary or context information on a [PlannedProcess](docs/PlannedProcess). 
+        description: The free text used to provide a summary or context information on a [PlannedProcess](PlannedProcess). 
         domain: Summary
         range: string
       licence_str:
@@ -482,7 +482,7 @@ slots:
     exact_mappings:
       - datacite:url
   dates:
-    description: A property refering to a date container that holds the start date, end date and status of a [PlannedProcess](docs/PlannedProcess).
+    description: A property refering to a date container that holds the start date, end date and status of a [PlannedProcess](PlannedProcess).
     inlined: true
     range: Date
   organizers:
@@ -511,7 +511,7 @@ slots:
     range: string
   academic_fields:
     slot_uri: aeon:0000040
-    description: A property used to describe the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.
+    description: A property used to describe the scientific subject of the [PlannedProcess](PlannedProcess) according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.
     multivalued: true
     inlined_as_list: true
     recommended: true
@@ -533,12 +533,12 @@ slots:
     slot_uri: iao:0000235
     range: WikidataId
   wikicfp_id:
-    description: A property to link the a [PlannedProcess](docs/PlannedProcess) with its WikiCFP identifier.
+    description: A property to link the a [PlannedProcess](PlannedProcess) with its WikiCFP identifier.
     slot_uri: iao:0000235
     domain: PlannedProcess
     range: WikiCfpId
   dpbl_id:
-    description: A property to link the a [PlannedProcess](docs/PlannedProcess) with its DBLP identifier.
+    description: A property to link the a [PlannedProcess](PlannedProcess) with its DBLP identifier.
     slot_uri: iao:0000235
     domain: PlannedProcess
     range: DblpId

@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-21T10:22:18
+# Generation date: 2022-03-21T11:14:40
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -396,7 +396,7 @@ class AcademicEvent(PlannedProcess):
 class Date(YAMLRoot):
     """
     A container for the start and end date, the date status as well as the duration of a
-    [PlannedProcess](docs/PlannedProcess).
+    [PlannedProcess](PlannedProcess).
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -896,8 +896,8 @@ class Venue(YAMLRoot):
 @dataclass
 class AcademicField(YAMLRoot):
     """
-    An academic field is the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some
-    controlled vocabulary or thesaurus and as such requires the scheme URI.
+    An academic field is the scientific subject of the [PlannedProcess](PlannedProcess) according to some controlled
+    vocabulary or thesaurus and as such requires the scheme URI.
     """
     _inherited_slots: ClassVar[List[str]] = []
 

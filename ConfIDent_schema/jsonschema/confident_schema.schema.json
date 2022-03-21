@@ -5,7 +5,7 @@
          "description": "An academic event is part of the established instruments of science communication as a format for conveying the latest scientific outputs. It is defined by the meeting of researchers at a specific time and place (virtual or physical) and with a specific thematic focus to present, hear and discuss these outputs. In contrast to other forms of events, academic events should primarily serve the exchange of results and methods of scientific research and their didactic mediation.  Furthermore, a significant participation of scientific organizations in the realization of an academic event is constitutive for this type of event; for example, to distinguish it from events in which researchers mainly act as external experts or with a purely legitimising function.",
          "properties": {
             "academic_fields": {
-               "description": "A property used to describe the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.",
+               "description": "A property used to describe the scientific subject of the [PlannedProcess](PlannedProcess) according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.",
                "items": {
                   "$ref": "#/$defs/AcademicField"
                },
@@ -32,7 +32,7 @@
             },
             "dates": {
                "$ref": "#/$defs/Date",
-               "description": "A property refering to a date container that holds the start date, end date and status of a [PlannedProcess](docs/PlannedProcess)."
+               "description": "A property refering to a date container that holds the start date, end date and status of a [PlannedProcess](PlannedProcess)."
             },
             "deadlines": {
                "description": "A property to deadline_type is mandatory.",
@@ -47,7 +47,7 @@
             },
             "dpbl_id": {
                "$ref": "#/$defs/DblpId",
-               "description": "A property to link the a [PlannedProcess](docs/PlannedProcess) with its DBLP identifier."
+               "description": "A property to link the a [PlannedProcess](PlannedProcess) with its DBLP identifier."
             },
             "event_format": {
                "$ref": "#/$defs/EventFormatSpecification",
@@ -131,7 +131,7 @@
             },
             "wikicfp_id": {
                "$ref": "#/$defs/WikiCfpId",
-               "description": "A property to link the a [PlannedProcess](docs/PlannedProcess) with its WikiCFP identifier."
+               "description": "A property to link the a [PlannedProcess](PlannedProcess) with its WikiCFP identifier."
             },
             "wikidata_id": {
                "$ref": "#/$defs/WikidataId",
@@ -149,7 +149,7 @@
          "description": "An academic event series describes the set of academic events which take place on a regular basis and thus have an established common identity. This identity is constituted, for example, through institutional continuity in the hosting of a series (e.g. by a specialised society), thematic focuses and/or a common label under which a series is defined (particularly name and acronym). Nevertheless, it is possible that each of these criteria may change over time.",
          "properties": {
             "academic_fields": {
-               "description": "A property used to describe the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.",
+               "description": "A property used to describe the scientific subject of the [PlannedProcess](PlannedProcess) according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.",
                "items": {
                   "$ref": "#/$defs/AcademicField"
                },
@@ -172,7 +172,7 @@
             },
             "dates": {
                "$ref": "#/$defs/Date",
-               "description": "A property refering to a date container that holds the start date, end date and status of a [PlannedProcess](docs/PlannedProcess)."
+               "description": "A property refering to a date container that holds the start date, end date and status of a [PlannedProcess](PlannedProcess)."
             },
             "doi": {
                "description": "A digital object identifier (DOI) according to https://doi.org/.",
@@ -180,7 +180,7 @@
             },
             "dpbl_id": {
                "$ref": "#/$defs/DblpId",
-               "description": "A property to link the a [PlannedProcess](docs/PlannedProcess) with its DBLP identifier."
+               "description": "A property to link the a [PlannedProcess](PlannedProcess) with its DBLP identifier."
             },
             "external_id": {
                "description": "A property to provide the external id of a schema entity.",
@@ -247,7 +247,7 @@
             },
             "wikicfp_id": {
                "$ref": "#/$defs/WikiCfpId",
-               "description": "A property to link the a [PlannedProcess](docs/PlannedProcess) with its WikiCFP identifier."
+               "description": "A property to link the a [PlannedProcess](PlannedProcess) with its WikiCFP identifier."
             },
             "wikidata_id": {
                "$ref": "#/$defs/WikidataId",
@@ -262,7 +262,7 @@
       },
       "AcademicField": {
          "additionalProperties": false,
-         "description": "An academic field is the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some controlled vocabulary or thesaurus and as such requires the scheme URI.",
+         "description": "An academic field is the scientific subject of the [PlannedProcess](PlannedProcess) according to some controlled vocabulary or thesaurus and as such requires the scheme URI.",
          "properties": {
             "schema_base_uri": {
                "description": "The base URI of a schema.",
@@ -509,7 +509,7 @@
       },
       "Date": {
          "additionalProperties": false,
-         "description": "A container for the start and end date, the date status as well as the duration of a [PlannedProcess](docs/PlannedProcess).",
+         "description": "A container for the start and end date, the date status as well as the duration of a [PlannedProcess](PlannedProcess).",
          "properties": {
             "duration": {
                "description": "The duration of an event or series which gets automatically derived, if a stard_date and end_date have been provided.",
@@ -1058,7 +1058,7 @@
                "type": "string"
             },
             "text": {
-               "description": "The free text used to provide a summary or context information on a [PlannedProcess](docs/PlannedProcess).",
+               "description": "The free text used to provide a summary or context information on a [PlannedProcess](PlannedProcess).",
                "type": "string"
             }
          },

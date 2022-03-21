@@ -643,7 +643,7 @@
     {
       "name": "dates",
       "definition_uri": "https://confident.org/dates",
-      "description": "A property refering to a date container that holds the start date, end date and status of a [PlannedProcess](docs/PlannedProcess).",
+      "description": "A property refering to a date container that holds the start date, end date and status of a [PlannedProcess](PlannedProcess).",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slot_uri": "https://confident.org/dates",
       "inlined": true,
@@ -736,7 +736,7 @@
       "mappings": [
         "https://github.com/tibonto/aeon#AEON_0000040"
       ],
-      "description": "A property used to describe the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.",
+      "description": "A property used to describe the scientific subject of the [PlannedProcess](PlannedProcess) according to some controlled vocabulary or thesaurus. Requires the as subproperties the name and if possible the URL of the identifiying scheme.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "https://github.com/tibonto/aeon#AEON_0000040",
@@ -817,7 +817,7 @@
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
-      "description": "A property to link the a [PlannedProcess](docs/PlannedProcess) with its WikiCFP identifier.",
+      "description": "A property to link the a [PlannedProcess](PlannedProcess) with its WikiCFP identifier.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
@@ -835,7 +835,7 @@
       "mappings": [
         "http://purl.obolibrary.org/obo/IAO_0000235"
       ],
-      "description": "A property to link the a [PlannedProcess](docs/PlannedProcess) with its DBLP identifier.",
+      "description": "A property to link the a [PlannedProcess](PlannedProcess) with its DBLP identifier.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "PlannedProcess",
       "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
@@ -1340,7 +1340,7 @@
     },
     {
       "name": "summary__text",
-      "description": "The free text used to provide a summary or context information on a [PlannedProcess](docs/PlannedProcess).",
+      "description": "The free text used to provide a summary or context information on a [PlannedProcess](PlannedProcess).",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "domain": "Summary",
       "slot_uri": "https://confident.org/text",
@@ -2004,7 +2004,7 @@
     {
       "name": "Date",
       "definition_uri": "https://confident.org/Date",
-      "description": "A container for the start and end date, the date status as well as the duration of a [PlannedProcess](docs/PlannedProcess).",
+      "description": "A container for the start and end date, the date status as well as the duration of a [PlannedProcess](PlannedProcess).",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slots": [
         "date__start_date",
@@ -2438,7 +2438,7 @@
     {
       "name": "AcademicField",
       "definition_uri": "https://confident.org/AcademicField",
-      "description": "An academic field is the scientific subject of the [PlannedProcess](docs/PlannedProcess) according to some controlled vocabulary or thesaurus and as such requires the scheme URI.",
+      "description": "An academic field is the scientific subject of the [PlannedProcess](PlannedProcess) according to some controlled vocabulary or thesaurus and as such requires the scheme URI.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "mixins": [
         "SchemaBasedThing"
@@ -2466,7 +2466,7 @@
       "attributes": [
         {
           "name": "text",
-          "description": "The free text used to provide a summary or context information on a [PlannedProcess](docs/PlannedProcess).",
+          "description": "The free text used to provide a summary or context information on a [PlannedProcess](PlannedProcess).",
           "domain": "Summary",
           "range": "string",
           "@type": "SlotDefinition"
@@ -2713,9 +2713,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "confident_schema.yaml",
-  "source_file_date": "2022-03-21T10:19:05",
-  "source_file_size": 25519,
-  "generation_date": "2022-03-21T10:22:14",
+  "source_file_date": "2022-03-21T11:14:01",
+  "source_file_size": 25484,
+  "generation_date": "2022-03-21T11:14:35",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",
