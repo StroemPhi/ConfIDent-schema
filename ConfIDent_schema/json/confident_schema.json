@@ -254,7 +254,7 @@
     {
       "name": "EventType",
       "definition_uri": "https://confident.org/EventType",
-      "description": "The permissible values defined in this enum class represent the most common minimal event types. For event types that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).",
+      "description": "The most common minimal event types. For event types that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "permissible_values": [
         {
@@ -337,6 +337,7 @@
     {
       "name": "EventStatus",
       "definition_uri": "https://confident.org/EventStatus",
+      "description": "The status of the academic event which indicates if it takes place as planned.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "permissible_values": [
         {
@@ -360,6 +361,7 @@
     {
       "name": "EventMode",
       "definition_uri": "https://confident.org/EventMode",
+      "description": "An enum to specify if an academic event is in person, virtual or a hybrid of both.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "permissible_values": [
         {
@@ -379,6 +381,7 @@
     {
       "name": "DeadlineType",
       "definition_uri": "https://confident.org/DeadlineType",
+      "description": "An enum that specifies the possible kinds of deadlines of an academic event.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "permissible_values": [
         {
@@ -426,6 +429,7 @@
     {
       "name": "RelationType",
       "definition_uri": "https://confident.org/RelationType",
+      "description": "The kinds of relations that are allowed between academic events.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "permissible_values": [
         {
@@ -449,19 +453,9 @@
       ]
     },
     {
-      "name": "SeriesMetricType",
-      "definition_uri": "https://confident.org/SeriesMetricType",
-      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
-      "permissible_values": [
-        {
-          "text": "frequency",
-          "description": "The time frame in which the events of a series reoccur."
-        }
-      ]
-    },
-    {
-      "name": "EventMetricType",
-      "definition_uri": "https://confident.org/EventMetricType",
+      "name": "MetricType",
+      "definition_uri": "https://confident.org/MetricType",
+      "description": "The possible metric of an academic event.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "permissible_values": [
         {
@@ -481,6 +475,10 @@
         },
         {
           "text": "has childcare options"
+        },
+        {
+          "text": "frequency",
+          "description": "The time frame in which the events of a series reoccur."
         },
         {
           "text": "is accessible",
@@ -519,6 +517,7 @@
       "domain_of": [
         "PlannedProcess",
         "Deadline",
+        "Metric",
         "ProcessRelation",
         "Contributor"
       ],
@@ -2477,6 +2476,25 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "Metric_type",
+      "definition_uri": "https://confident.org/type",
+      "description": "A property to provide the type of relation between academic events.",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "type",
+      "abstract": true,
+      "domain": "Metric",
+      "slot_uri": "https://confident.org/type",
+      "alias": "type",
+      "owner": "Metric",
+      "domain_of": [
+        "Metric"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "MetricType",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "ProcessRelation_type",
       "definition_uri": "https://confident.org/type",
       "description": "A property to provide the type of process relation.",
@@ -3045,6 +3063,7 @@
       "description": "A container for statistical information about a [PlannedProcess](PlannedProcess).",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slots": [
+        "Metric_type",
         "metric__int_value",
         "metric__str_value",
         "metric__rate_value",
@@ -3090,7 +3109,7 @@
     {
       "name": "ProcessRelation",
       "definition_uri": "https://confident.org/ProcessRelation",
-      "description": "A container for relations of between academic events.",
+      "description": "A container for relations between academic events.",
       "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
       "slots": [
         "ProcessRelation_type"
@@ -3592,9 +3611,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "confident_schema.yaml",
-  "source_file_date": "2022-03-21T23:43:33",
-  "source_file_size": 41465,
-  "generation_date": "2022-03-21T23:44:09",
+  "source_file_date": "2022-03-22T00:02:01",
+  "source_file_size": 41953,
+  "generation_date": "2022-03-22T00:02:22",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

@@ -94,7 +94,7 @@
                 <h1 id="class-metric">Class: Metric</h1>
 <p>A container for statistical information about a <a href="PlannedProcess">PlannedProcess</a>.</p>
 <p>URI: <a href="https://confident.org/Metric">confident:Metric</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[AcademicEventSeries]++-%20metrics%200..*&gt;[Metric&#124;int_value:integer%20%3F;str_value:string%20%3F;rate_value:float%20%3F;truth_value:boolean%20%3F;description:string%20%3F],[AcademicEvent]++-%20metrics%200..*&gt;[Metric],[PlannedProcess]++-%20metrics%200..*&gt;[Metric],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[AcademicEventSeries]++-%20metrics%200..*&gt;[Metric&#124;int_value:integer%20%3F;str_value:string%20%3F;rate_value:float%20%3F;truth_value:boolean%20%3F;description:string%20%3F],[AcademicEvent]++-%20metrics%200..*&gt;[Metric],[PlannedProcess]++-%20metrics%200..*&gt;[Metric],[AcademicEventSeries],[AcademicEvent]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[AcademicEventSeries]++-%20metrics%200..*&gt;[Metric&#124;type:MetricType%20%3F;int_value:integer%20%3F;str_value:string%20%3F;rate_value:float%20%3F;truth_value:boolean%20%3F;description:string%20%3F],[AcademicEvent]++-%20metrics%200..*&gt;[Metric],[PlannedProcess]++-%20metrics%200..*&gt;[Metric],[AcademicEventSeries],[AcademicEvent]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[AcademicEventSeries]++-%20metrics%200..*&gt;[Metric&#124;type:MetricType%20%3F;int_value:integer%20%3F;str_value:string%20%3F;rate_value:float%20%3F;truth_value:boolean%20%3F;description:string%20%3F],[AcademicEvent]++-%20metrics%200..*&gt;[Metric],[PlannedProcess]++-%20metrics%200..*&gt;[Metric],[AcademicEventSeries],[AcademicEvent]" /></a></p>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
 <li><strong><a href="../AcademicEventSeries/">AcademicEventSeries</a></strong> <em><a href="../AcademicEventSeries_metrics/">AcademicEventSeries➞metrics</a></em>  <sub>0..*</sub>  <strong><a href="./">Metric</a></strong></li>
@@ -104,6 +104,11 @@
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
+<li><a href="../Metric_type/">Metric➞type</a>  <sub>0..1</sub><ul>
+<li>Description: A property to provide the type of relation between academic events.</li>
+<li>Range: <a href="../MetricType/">MetricType</a></li>
+</ul>
+</li>
 <li><a href="../metric__int_value/">➞int_value</a>  <sub>0..1</sub><ul>
 <li>Description: A property to provide an integer value for a metric.</li>
 <li>Range: <a href="../Integer/">Integer</a></li>

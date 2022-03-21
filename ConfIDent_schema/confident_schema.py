@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-21T23:44:13
+# Generation date: 2022-03-22T00:02:26
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -825,6 +825,7 @@ class Metric(YAMLRoot):
     class_name: ClassVar[str] = "Metric"
     class_model_uri: ClassVar[URIRef] = CONFIDENT.Metric
 
+    type: Optional[Union[str, "MetricType"]] = None
     int_value: Optional[int] = None
     str_value: Optional[str] = None
     rate_value: Optional[float] = None
@@ -832,6 +833,9 @@ class Metric(YAMLRoot):
     description: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.type is not None and not isinstance(self.type, MetricType):
+            self.type = MetricType(self.type)
+
         if self.int_value is not None and not isinstance(self.int_value, int):
             self.int_value = int(self.int_value)
 
@@ -853,7 +857,7 @@ class Metric(YAMLRoot):
 @dataclass
 class ProcessRelation(YAMLRoot):
     """
-    A container for relations of between academic events.
+    A container for relations between academic events.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1450,8 +1454,8 @@ class ConfIDentRecords(YAMLRoot):
 # Enumerations
 class EventType(EnumDefinitionImpl):
     """
-    The permissible values defined in this enum class represent the most common minimal event types. For event types
-    that are not in this list, you can use "other" and provide the label of this other event format as strind using
+    The most common minimal event types. For event types that are not in this list, you can use "other" and provide
+    the label of this other event format as strind using
     [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).
     """
     colloquium = PermissibleValue(text="colloquium",
@@ -1493,7 +1497,7 @@ class EventType(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="EventType",
-        description="The permissible values defined in this enum class represent the most common minimal event types. For event types that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).",
+        description="The most common minimal event types. For event types that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).",
     )
 
     @classmethod
@@ -1512,7 +1516,9 @@ class EventType(EnumDefinitionImpl):
                                  meaning=AEON["00001117"]) )
 
 class EventStatus(EnumDefinitionImpl):
-
+    """
+    The status of the academic event which indicates if it takes place as planned.
+    """
     postponed = PermissibleValue(text="postponed")
     delayed = PermissibleValue(text="delayed")
     canceled = PermissibleValue(text="canceled")
@@ -1520,6 +1526,7 @@ class EventStatus(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="EventStatus",
+        description="The status of the academic event which indicates if it takes place as planned.",
     )
 
     @classmethod
@@ -1529,7 +1536,9 @@ class EventStatus(EnumDefinitionImpl):
                                  description="Default: used to indicate that the event takes place as planned.") )
 
 class EventMode(EnumDefinitionImpl):
-
+    """
+    An enum to specify if an academic event is in person, virtual or a hybrid of both.
+    """
     online = PermissibleValue(text="online",
                                    description="The event takes place in a virtual location.")
     hybrid = PermissibleValue(text="hybrid",
@@ -1537,6 +1546,7 @@ class EventMode(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="EventMode",
+        description="An enum to specify if an academic event is in person, virtual or a hybrid of both.",
     )
 
     @classmethod
@@ -1546,12 +1556,15 @@ class EventMode(EnumDefinitionImpl):
                                  description="The event takes place in a physical location.") )
 
 class DeadlineType(EnumDefinitionImpl):
-
+    """
+    An enum that specifies the possible kinds of deadlines of an academic event.
+    """
     other = PermissibleValue(text="other",
                                  description="This value is to be used, if the other allowed values are not applicable.")
 
     _defn = EnumDefinition(
         name="DeadlineType",
+        description="An enum that specifies the possible kinds of deadlines of an academic event.",
     )
 
     @classmethod
@@ -1585,7 +1598,9 @@ class DeadlineType(EnumDefinitionImpl):
                                  meaning=AEON["0000069"]) )
 
 class RelationType(EnumDefinitionImpl):
-
+    """
+    The kinds of relations that are allowed between academic events.
+    """
     isUmbrellaEventOf = PermissibleValue(text="isUmbrellaEventOf")
     hasUmbrellaEvent = PermissibleValue(text="hasUmbrellaEvent")
     isJointEventOf = PermissibleValue(text="isJointEventOf")
@@ -1595,21 +1610,19 @@ class RelationType(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="RelationType",
+        description="The kinds of relations that are allowed between academic events.",
     )
 
-class SeriesMetricType(EnumDefinitionImpl):
-
+class MetricType(EnumDefinitionImpl):
+    """
+    The possible metric of an academic event.
+    """
     frequency = PermissibleValue(text="frequency",
                                          description="The time frame in which the events of a series reoccur.")
 
     _defn = EnumDefinition(
-        name="SeriesMetricType",
-    )
-
-class EventMetricType(EnumDefinitionImpl):
-
-    _defn = EnumDefinition(
-        name="EventMetricType",
+        name="MetricType",
+        description="The possible metric of an academic event.",
     )
 
     @classmethod

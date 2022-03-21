@@ -160,7 +160,7 @@
 </ul>
 </li>
 <li><a href="ProcessName/">ProcessName</a> - The container for the various names denoting a <a href="PlannedProcess">PlannedProcess</a></li>
-<li><a href="ProcessRelation/">ProcessRelation</a> - A container for relations of between academic events.</li>
+<li><a href="ProcessRelation/">ProcessRelation</a> - A container for relations between academic events.</li>
 <li><a href="Publication/">Publication</a> - A published work, e.g. proceedings or conferenc paper, that is the output of an academic event or series.</li>
 <li><a href="Region/">Region</a> - The region in which an academic event takes place. For non USA events this might often be negligible.</li>
 <li><a href="Venue/">Venue</a> - The venue at which an academic event takes place.</li>
@@ -304,6 +304,7 @@
 <li><a href="AcademicEvent_type/">AcademicEvent➞type</a> - A property to specify the subtype of the academic event according to a controlled list defined in <a href="EventType">EventType</a>. If the</li>
 <li><a href="Contributor_type/">Contributor➞type</a> - A property to provide the information whether the contributor is an organization or person.</li>
 <li><a href="Deadline_type/">Deadline➞type</a> - The type of deadline.</li>
+<li><a href="Metric_type/">Metric➞type</a> - A property to provide the type of relation between academic events.</li>
 <li><a href="ProcessRelation_type/">ProcessRelation➞type</a> - A property to provide the type of process relation.</li>
 </ul>
 </li>
@@ -328,13 +329,12 @@
 <h3 id="enums">Enums</h3>
 <ul>
 <li><a href="ContributorType/">ContributorType</a> - An enumaration used to distinguish the contributors of a <a href="PlannedProcess">PlannedProcess</a> with regard to them being either an organization or a person.</li>
-<li><a href="DeadlineType/">DeadlineType</a></li>
-<li><a href="EventMetricType/">EventMetricType</a></li>
-<li><a href="EventMode/">EventMode</a></li>
-<li><a href="EventStatus/">EventStatus</a></li>
-<li><a href="EventType/">EventType</a> - The permissible values defined in this enum class represent the most common minimal event types. For event types that are not in this list, you can use "other" and provide the label of this other event format as strind using <a href="https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/">other_format</a>.</li>
-<li><a href="RelationType/">RelationType</a></li>
-<li><a href="SeriesMetricType/">SeriesMetricType</a></li>
+<li><a href="DeadlineType/">DeadlineType</a> - An enum that specifies the possible kinds of deadlines of an academic event.</li>
+<li><a href="EventMode/">EventMode</a> - An enum to specify if an academic event is in person, virtual or a hybrid of both.</li>
+<li><a href="EventStatus/">EventStatus</a> - The status of the academic event which indicates if it takes place as planned.</li>
+<li><a href="EventType/">EventType</a> - The most common minimal event types. For event types that are not in this list, you can use "other" and provide the label of this other event format as strind using <a href="https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/">other_format</a>.</li>
+<li><a href="MetricType/">MetricType</a> - The possible metric of an academic event.</li>
+<li><a href="RelationType/">RelationType</a> - The kinds of relations that are allowed between academic events.</li>
 </ul>
 <h3 id="subsets">Subsets</h3>
 <h3 id="types">Types</h3>
@@ -429,5 +429,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-03-21 22:43:52.545802+00:00
+Build Date UTC : 2022-03-21 23:02:05.915138+00:00
 -->

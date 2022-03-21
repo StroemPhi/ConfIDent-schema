@@ -177,9 +177,8 @@ classes:
       metrics:
         description: A property to provide metrics of an academic event series.
         multivalued: true
-        inlined_as_list: true
         domain: AcademicEventSeries
-        range: SeriesMetricType
+        range: Metric
         required: false
         recommended: false
       context_info:
@@ -374,7 +373,7 @@ classes:
         multivalued: true
         inlined_as_list: true
         domain: AcademicEventSeries
-        range: EventMetricType
+        range: Metric
         required: false
         recommended: false
       context_info:
@@ -563,8 +562,15 @@ classes:
       description:
         description: A property to provide a description of a metric.
         range: string
+    slots:
+      - type
+    slot_usage:
+      type:
+        description: A property to provide the type of relation between academic events.
+        domain: Metric
+        range: MetricType
   ProcessRelation:
-    description: A container for relations of between academic events.
+    description: A container for relations between academic events.
     slots:
       - type
     slot_usage:
@@ -985,13 +991,8 @@ enums:
       isJointEventOf:
       isColocatedEventOf:
       isSubEventOf:
-      hasSubEvent:
-  SeriesMetricType:
-    description: The possible metric of an academic event series.
-    permissible_values:
-      frequency:
-        description: The time frame in which the events of a series reoccur.  
-  EventMetricType:
+      hasSubEvent:  
+  MetricType:
     description: The possible metric of an academic event.
     permissible_values:
       submitted papers:
@@ -1000,6 +1001,8 @@ enums:
       number of attendees:
       number of tracks:
       has childcare options:
+      frequency:
+        description: The time frame in which the events of a series reoccur.
       is accessible:
         description: If true then the event is accessible for people with impairments.
   ContributorType:

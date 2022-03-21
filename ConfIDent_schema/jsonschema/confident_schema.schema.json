@@ -621,7 +621,7 @@
          "type": "object"
       },
       "DeadlineType": {
-         "description": "",
+         "description": "An enum that specifies the possible kinds of deadlines of an academic event.",
          "enum": [
             "submission deadline",
             "notification deadline",
@@ -672,22 +672,8 @@
          "title": "EventFormatSpecification",
          "type": "object"
       },
-      "EventMetricType": {
-         "description": "",
-         "enum": [
-            "submitted papers",
-            "accepted papers",
-            "accepted short papers",
-            "number of attendees",
-            "number of tracks",
-            "has childcare options",
-            "is accessible"
-         ],
-         "title": "EventMetricType",
-         "type": "string"
-      },
       "EventMode": {
-         "description": "",
+         "description": "An enum to specify if an academic event is in person, virtual or a hybrid of both.",
          "enum": [
             "on site",
             "online",
@@ -697,7 +683,7 @@
          "type": "string"
       },
       "EventStatus": {
-         "description": "",
+         "description": "The status of the academic event which indicates if it takes place as planned.",
          "enum": [
             "as scheduled",
             "postponed",
@@ -709,7 +695,7 @@
          "type": "string"
       },
       "EventType": {
-         "description": "The permissible values defined in this enum class represent the most common minimal event types. For event types that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).",
+         "description": "The most common minimal event types. For event types that are not in this list, you can use \"other\" and provide the label of this other event format as strind using [other_format](https://stroemphi.github.io/ConfIDent-schema/academicEvent__other_format/).",
          "enum": [
             "colloquium",
             "conference",
@@ -860,11 +846,30 @@
             "truth_value": {
                "description": "A property to provide a truth value for a metric.",
                "type": "boolean"
+            },
+            "type": {
+               "$ref": "#/$defs/MetricType",
+               "description": "A property to provide the type of relation between academic events."
             }
          },
          "required": [],
          "title": "Metric",
          "type": "object"
+      },
+      "MetricType": {
+         "description": "The possible metric of an academic event.",
+         "enum": [
+            "submitted papers",
+            "accepted papers",
+            "accepted short papers",
+            "number of attendees",
+            "number of tracks",
+            "has childcare options",
+            "frequency",
+            "is accessible"
+         ],
+         "title": "MetricType",
+         "type": "string"
       },
       "Moderator": {
          "additionalProperties": false,
@@ -996,7 +1001,7 @@
       },
       "ProcessRelation": {
          "additionalProperties": false,
-         "description": "A container for relations of between academic events.",
+         "description": "A container for relations between academic events.",
          "properties": {
             "type": {
                "$ref": "#/$defs/RelationType",
@@ -1064,7 +1069,7 @@
          "type": "object"
       },
       "RelationType": {
-         "description": "",
+         "description": "The kinds of relations that are allowed between academic events.",
          "enum": [
             "isUmbrellaEventOf",
             "hasUmbrellaEvent",
@@ -1105,14 +1110,6 @@
          ],
          "title": "Reviewer",
          "type": "object"
-      },
-      "SeriesMetricType": {
-         "description": "",
-         "enum": [
-            "frequency"
-         ],
-         "title": "SeriesMetricType",
-         "type": "string"
       },
       "Sponsor": {
          "additionalProperties": false,
