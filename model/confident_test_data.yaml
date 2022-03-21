@@ -2,21 +2,21 @@
 ### Academic Event Example ###
 ##############################
 id: confident:event/qsdh-en13
-doi: doi:10.25798/qsdh-en13
+doi: 
+  value: 10.25798/qsdh-en13
 landing_page: https://vivoconference.org/vivo2021
-name: 
+process_name: 
   official_name: 12th Annual / International VIVO Conference 2021
   acronym: VIVO 2021
   aliases: 
     - VIVO Conference 2021
     - 12th VIVO Conference 2021
-event_format:
-  specified_as: other
-  other_format: breakout session
-dates:
-  start_date: "2021-06-23"
-  end_date: "2021-06-25"
-  event_status: as scheduled
+type: conference
+#event_format:
+#  specified_as: ad-hoc meeting of university presidents
+start_date: "2021-06-23"
+end_date: "2021-06-25"
+event_status: as scheduled
 event_mode: hybrid
 ordinal: 12
 external_id:
@@ -40,10 +40,10 @@ organizers:
       value: 04aj4c181
       schema_base_uri: https://ror.org/
       schema_name: ROR
-contact:
-  name: Christian Hauschke
-  email: hauschke@tib.eu
-  telephone: 0049 511 762 1234
+    contact:
+      name: Christian Hauschke
+      email: hauschke@tib.eu
+      telephone: 0049 511 762 1234
 in_series: doi:10.25798/ea2h-xq32
 academic_fields:
   - value: ontology
@@ -56,5 +56,6 @@ topics:
   - reseach information systems
   - open research
 website: https://vivoconference.org/vivo2020/
-summary: some summary
+context_info: 
+  text: some summary
 

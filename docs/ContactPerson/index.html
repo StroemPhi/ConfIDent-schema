@@ -92,8 +92,9 @@
             <div class="section">
               
                 <h1 id="class-contactperson">Class: ContactPerson</h1>
+<p>The contact person of an academic event or event series.</p>
 <p>URI: <a href="https://confident.org/ContactPerson">confident:ContactPerson</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[Organizer],[ExternalIdentifier],[PlannedProcess]++-%20contact%200..1&gt;[ContactPerson&#124;id:uriorcurie;email:string%20%3F;telephone:string%20%3F;name(i):string%20%3F;aliases(i):string%20*],[Organizer]^-[ContactPerson]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[Organizer],[ExternalIdentifier],[PlannedProcess]++-%20contact%200..1&gt;[ContactPerson&#124;id:uriorcurie;email:string%20%3F;telephone:string%20%3F;name(i):string%20%3F;aliases(i):string%20*],[Organizer]^-[ContactPerson]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[Organizer],[ExternalIdentifier],[PlannedProcess]++-%20contact%200..1&gt;[ContactPerson&#124;email:string%20%3F;telephone:string%20%3F;id:uriorcurie;type(i):ContributorType%20%3F;name(i):string%20%3F],[Organizer]++-%20contact%200..1&gt;[ContactPerson],[Organizer]^-[ContactPerson]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PlannedProcess],[Organizer],[ExternalIdentifier],[PlannedProcess]++-%20contact%200..1&gt;[ContactPerson&#124;email:string%20%3F;telephone:string%20%3F;id:uriorcurie;type(i):ContributorType%20%3F;name(i):string%20%3F],[Organizer]++-%20contact%200..1&gt;[ContactPerson],[Organizer]^-[ContactPerson]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../Organizer/">Organizer</a></li>
@@ -101,15 +102,11 @@
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
 <li><strong><a href="../PlannedProcess/">PlannedProcess</a></strong> <em><a href="../contact/">contact</a></em>  <sub>0..1</sub>  <strong><a href="./">ContactPerson</a></strong></li>
+<li><strong>None</strong> <em><a href="../organizer__contact/">➞contact</a></em>  <sub>0..1</sub>  <strong><a href="./">ContactPerson</a></strong></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../ContactPerson_id/">ContactPerson➞id</a>  <sub>1..1</sub><ul>
-<li>Description: A property to provide the internal id of a schema entity.</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
 <li><a href="../contactPerson__email/">ContactPerson➞email</a>  <sub>0..1</sub><ul>
 <li>Description: The email address of the contact person.</li>
 <li>Range: <a href="../String/">String</a></li>
@@ -118,6 +115,24 @@
 <li><a href="../contactPerson__telephone/">ContactPerson➞telephone</a>  <sub>0..1</sub><ul>
 <li>Description: The telephone number of the contact person.</li>
 <li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../ContactPerson_id/">ContactPerson➞id</a>  <sub>1..1</sub><ul>
+<li>Description: A property to provide an internal id of a schema entity in the ConfIDent plattform.</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-organizer">Inherited from Organizer:</h3>
+<ul>
+<li><a href="../Contributor_type/">Contributor➞type</a>  <sub>0..1</sub><ul>
+<li>Description: A property to provide the information whether the contributor is an organization or person.</li>
+<li>Range: <a href="../ContributorType/">ContributorType</a></li>
+</ul>
+</li>
+<li><a href="../organizer__contact/">➞contact</a>  <sub>0..1</sub><ul>
+<li>Description: The contact person of an academic event or event series.</li>
+<li>Range: <a href="./">ContactPerson</a></li>
 </ul>
 </li>
 </ul>
