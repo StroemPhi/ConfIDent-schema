@@ -149,7 +149,7 @@
             },
             "wikidata_id": {
                "$ref": "#/$defs/WikidataId",
-               "description": "A property to link an entity with its Wikidata identifier."
+               "description": "A property to link an academic event with its [Wikidata identifier](WikidataId)."
             }
          },
          "required": [
@@ -269,7 +269,7 @@
             },
             "wikidata_id": {
                "$ref": "#/$defs/WikidataId",
-               "description": "A property to link an entity with its Wikidata identifier."
+               "description": "A property to link an academic event series with its [Wikidata identifier](WikidataId)."
             }
          },
          "required": [

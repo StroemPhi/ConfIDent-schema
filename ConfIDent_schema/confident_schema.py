@@ -1,5 +1,5 @@
 # Auto generated from confident_schema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-22T00:34:56
+# Generation date: 2022-03-22T08:39:47
 # Schema: ConfIDent-schema
 #
 # id: https://github.com/StroemPhi/ConfIDent-schema/
@@ -333,6 +333,7 @@ class AcademicEventSeries(PlannedProcess):
     context_info: Optional[Union[dict, "Context"]] = None
     gnd_id: Optional[Union[dict, "DblpId"]] = None
     wikicfp_id: Optional[Union[dict, "WikiCfpId"]] = None
+    wikidata_id: Optional[Union[dict, "WikidataId"]] = None
     dpbl_id: Optional[Union[dict, "DblpId"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -385,6 +386,9 @@ class AcademicEventSeries(PlannedProcess):
         if self.wikicfp_id is not None and not isinstance(self.wikicfp_id, WikiCfpId):
             self.wikicfp_id = WikiCfpId(**as_dict(self.wikicfp_id))
 
+        if self.wikidata_id is not None and not isinstance(self.wikidata_id, WikidataId):
+            self.wikidata_id = WikidataId(**as_dict(self.wikidata_id))
+
         if self.dpbl_id is not None and not isinstance(self.dpbl_id, DblpId):
             self.dpbl_id = DblpId(**as_dict(self.dpbl_id))
 
@@ -434,6 +438,7 @@ class AcademicEvent(PlannedProcess):
     context_info: Optional[Union[dict, "Context"]] = None
     gnd_id: Optional[Union[dict, "DblpId"]] = None
     wikicfp_id: Optional[Union[dict, "WikiCfpId"]] = None
+    wikidata_id: Optional[Union[dict, "WikidataId"]] = None
     dpbl_id: Optional[Union[dict, "DblpId"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -523,6 +528,9 @@ class AcademicEvent(PlannedProcess):
 
         if self.wikicfp_id is not None and not isinstance(self.wikicfp_id, WikiCfpId):
             self.wikicfp_id = WikiCfpId(**as_dict(self.wikicfp_id))
+
+        if self.wikidata_id is not None and not isinstance(self.wikidata_id, WikidataId):
+            self.wikidata_id = WikidataId(**as_dict(self.wikidata_id))
 
         if self.dpbl_id is not None and not isinstance(self.dpbl_id, DblpId):
             self.dpbl_id = DblpId(**as_dict(self.dpbl_id))

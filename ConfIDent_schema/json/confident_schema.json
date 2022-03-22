@@ -1854,6 +1854,28 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "AcademicEventSeries_wikidata_id",
+      "definition_uri": "https://confident.org/wikidata_id",
+      "mappings": [
+        "http://purl.obolibrary.org/obo/IAO_0000235"
+      ],
+      "description": "A property to link an academic event series with its [Wikidata identifier](WikidataId).",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "wikidata_id",
+      "domain": "AcademicEventSeries",
+      "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
+      "inlined": true,
+      "alias": "wikidata_id",
+      "owner": "AcademicEventSeries",
+      "domain_of": [
+        "AcademicEventSeries"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "wikidata_id",
+      "range": "WikidataId",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "AcademicEventSeries_dpbl_id",
       "definition_uri": "https://confident.org/dpbl_id",
       "mappings": [
@@ -2203,6 +2225,28 @@
       "is_usage_slot": true,
       "usage_slot_name": "wikicfp_id",
       "range": "WikiCfpId",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AcademicEvent_wikidata_id",
+      "definition_uri": "https://confident.org/wikidata_id",
+      "mappings": [
+        "http://purl.obolibrary.org/obo/IAO_0000235"
+      ],
+      "description": "A property to link an academic event with its [Wikidata identifier](WikidataId).",
+      "from_schema": "https://github.com/StroemPhi/ConfIDent-schema/",
+      "is_a": "wikidata_id",
+      "domain": "AcademicEvent",
+      "slot_uri": "http://purl.obolibrary.org/obo/IAO_0000235",
+      "inlined": true,
+      "alias": "wikidata_id",
+      "owner": "AcademicEvent",
+      "domain_of": [
+        "AcademicEvent"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "wikidata_id",
+      "range": "WikidataId",
       "@type": "SlotDefinition"
     },
     {
@@ -2675,7 +2719,6 @@
       "slots": [
         "type",
         "contact",
-        "wikidata_id",
         "name",
         "external_id",
         "academicEventSeries__series_of",
@@ -2693,6 +2736,7 @@
         "AcademicEventSeries_context_info",
         "AcademicEventSeries_gnd_id",
         "AcademicEventSeries_wikicfp_id",
+        "AcademicEventSeries_wikidata_id",
         "AcademicEventSeries_dpbl_id"
       ],
       "slot_usage": {},
@@ -2723,7 +2767,6 @@
       "is_a": "PlannedProcess",
       "slots": [
         "contact",
-        "wikidata_id",
         "name",
         "external_id",
         "academicEvent__start_date",
@@ -2751,6 +2794,7 @@
         "AcademicEvent_context_info",
         "AcademicEvent_gnd_id",
         "AcademicEvent_wikicfp_id",
+        "AcademicEvent_wikidata_id",
         "AcademicEvent_dpbl_id"
       ],
       "slot_usage": {},
@@ -3651,9 +3695,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "confident_schema.yaml",
-  "source_file_date": "2022-03-22T00:34:20",
-  "source_file_size": 39707,
-  "generation_date": "2022-03-22T00:34:52",
+  "source_file_date": "2022-03-22T08:38:53",
+  "source_file_size": 40250,
+  "generation_date": "2022-03-22T08:39:42",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",
