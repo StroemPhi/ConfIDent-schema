@@ -1,9 +1,9 @@
-model_organization: stroemphi         # Name of github individual / organization where this clone exists (e.g. linkml / mygithub)
+model_organization: StroemPhi         # Name of github individual / organization where this clone exists (e.g. linkml / mygithub)
 model_name: ConfIDent-schema          # Name of target repository (e.g. my-wonderful-model)
 root_schema: confident_schema         # Name of the base schema file (w/o .yaml)
 model_root_class: PlannedProcess      # Name of the base class in the schema for testing
 
-model_author: Philip Strömert                 
+model_author: Philip Strömert            
 model_author_email: philip.stroemert@tib.eu          
 model_synopsis: A model to describe academic events and event series.  # One liner about the model
 model_description: |-         # Longer description of the model
@@ -33,5 +33,5 @@ keywords: [linkml, LOD, Modeling, Linked open data, model]
 #   shex -- LinkML model definition in ShEx
 #   sqlddl -- SQL ddl of the model
 #   model -- copy model/schema to distribution directory
-generate: [jsonld_context, json_schema, model]
+generate: [jsonld_context, json_schema, model, json]
 
